@@ -1,7 +1,7 @@
 /* 전체 컨테이너: 가운데 정렬 + 가변 거터 */
 .result {
   position: relative;
-  width: min(100%, var(--canvas-max));
+  width: min(100%, 425px);
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
