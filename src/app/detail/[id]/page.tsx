@@ -3,18 +3,7 @@ import Link from 'next/link';
 import styles from './detail.module.scss';
 import Image from 'next/image';
 
-type DetailPageProps = {
-  params: { id: string };
-  searchParams?: Record<string, string | string[] | undefined>;
-};
-
-const DetailPage = ({ params }: DetailPageProps) => {
-  const { id } = params;
-
-  if (!id) {
-    return <div role='alert'>잘못된 접근입니다.</div>;
-  }
-
+const DetailPage = () => {
   return (
     <main aria-label='메인비주얼' className={styles.landingMain}>
       <Image
