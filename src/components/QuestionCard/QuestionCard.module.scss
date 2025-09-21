@@ -1,0 +1,98 @@
+/* Utility layouts */
+.centerGrid {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+.pageCenter {
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+/* QuestionCard */
+.card {
+  position: relative;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+}
+
+.cardQnum {
+  color: #ffffff;
+  font-weight: 800;
+  width: 100%;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.cardTitle {
+  margin: 0;
+  padding: 12px 16px 0 16px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.25;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.cardOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 100px;
+  width: 80%;
+}
+
+.fullWidth {
+  display: block;
+  width: 100%;
+}
+
+.optionBtn {
+  display: grid;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.optionLabelStrong {
+  font-weight: 800;
+}
+
+.optionText {
+  font-weight: 500;
+  width: 100%;
+}

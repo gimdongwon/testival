@@ -2,11 +2,11 @@
   position: relative;
 
   width: min(100%, 425px);
-  max-width: 430px;
+  max-width: 375px;
   margin: 0 auto;
-  height: 932px;
+  height: 812px;
 
-  aspect-ratio: 430 / 932;
+  aspect-ratio: 375 / 812;
   .heroBg {
     position: absolute;
     inset: 0;
@@ -22,14 +22,14 @@
   }
   .primaryLinkBtn {
     position: absolute;
-    min-width: 345px;
-    bottom: 151px;
-    height: 56px;
-    line-height: 56px;
+    min-width: 300px;
+    bottom: 132px;
+    height: 48px;
+    line-height: 48px;
     background: #fff;
     border-radius: 8px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 18px;
     color: #000;
     font-family: noto sans KR;

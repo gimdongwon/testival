@@ -1,0 +1,21 @@
+.loadingPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 425px;
+  height: 100%;
+  background-image: url('/content_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.loadingText {
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
+}

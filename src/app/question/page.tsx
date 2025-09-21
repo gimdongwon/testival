@@ -4,6 +4,7 @@ import React from 'react';
 import QuestionCard, {
   QuestionOption,
 } from '@/components/QuestionCard/QuestionCard';
+import styles from './question.module.scss';
 
 const sampleOptions: QuestionOption[] = [
   { id: 'A', label: 'A.', text: '이번 여행을 위한 플레이리스트 준비 완료' },
@@ -19,13 +20,12 @@ const QuestionPage: React.FC = () => {
   };
 
   return (
-    <div className='page-center'>
+    <div className={styles.pageContainer}>
       <QuestionCard
-        number={2}
-        title={'차 안에서 음악은?'}
+        number={1}
+        title={`여행 전날 밤,제일 중요한 것은?`}
         options={sampleOptions}
         onSelect={handleSelect}
-        backgroundImage={undefined}
       />
     </div>
   );

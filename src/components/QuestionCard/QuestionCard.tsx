@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import styles from './QuestionCard.module.scss';
 
 export type QuestionOption = {
   id: string;
@@ -22,44 +23,27 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   title,
   options,
   onSelect,
-  backgroundImage,
 }) => {
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
-
-  const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
-    optionId: string
-  ) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      onSelect?.(optionId);
-    }
-  };
-
   return (
-    <div className='center-grid' ref={containerRef}>
-      <div className='card'>
-        {backgroundImage ? (
-          <img src={backgroundImage} alt='' aria-hidden className='card-bg' />
-        ) : null}
-        <div className='card-header' aria-label='질문지 상단'>
-          <span aria-hidden>🚗</span>
-          <span className='card-qnum'>Q{number}.</span>
+    <div className={styles.centerGrid}>
+      <div className={styles.card}>
+        <div className={styles.cardHeader} aria-label='질문지 상단'>
+          <span className={styles.cardQnum}>Q{number}.</span>
         </div>
 
-        <h2 className='card-title'>{title}</h2>
+        <h2 className={styles.cardTitle}>{title}</h2>
 
-        <div className='card-options' role='list'>
+        <div className={styles.cardOptions} role='list'>
           {options.map((opt) => (
-            <Link href='/result' className='full-width' key={opt.id}>
+            <Link href='/loading' className={styles.fullWidth} key={opt.id}>
               <button
                 onClick={() => onSelect?.(opt.id)}
-                onKeyDown={(e) => handleKeyDown(e, opt.id)}
                 aria-label={`${opt.label} ${opt.text}`}
-                className='option-btn'
+                className={styles.optionBtn}
               >
-                <span className='option-label-strong'>{opt.label}</span>
-                <span className='option-text'>{opt.text}</span>
+                <span className={styles.optionText}>
+                  {opt.label} {opt.text}
+                </span>
               </button>
             </Link>
           ))}
