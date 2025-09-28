@@ -5,9 +5,14 @@ import ResultClient from './result.client';
 
 export const revalidate = 600;
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const repo = getQuizRepository();
-  const def = await repo.getById(params.id);
+  const { id } = await params;
+  const def = await repo.getById(id);
   if (!def) return notFound();
   return <ResultClient def={def} />;
 }

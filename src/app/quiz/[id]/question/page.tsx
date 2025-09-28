@@ -4,13 +4,14 @@ import { notFound } from 'next/navigation';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
 import QuizQuestionClient from './question.client';
 
-interface QuestionPageProps {
-  params: { id: string };
-}
-
-const QuestionPage = async ({ params }: QuestionPageProps) => {
+const QuestionPage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
   const repo = getQuizRepository();
-  const def = await repo.getById(params.id);
+  const { id } = await params;
+  const def = await repo.getById(id);
   if (!def) return notFound();
 
   return (
