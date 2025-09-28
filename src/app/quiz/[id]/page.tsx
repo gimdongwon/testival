@@ -2,12 +2,17 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './detail.module.scss';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { getQuizRepository } from '@/infrastructure/quiz.repository';
 
-const DetailPage = () => {
+const DetailPage = async ({ params }: { params: { id: string } }) => {
+  const repo = getQuizRepository();
+  const def = await repo.getById(params.id);
+  if (!def) return notFound();
   return (
     <main aria-label='메인비주얼' className={styles.landingMain}>
       <Image
-        src='/main.png'
+        src='/images/quiz/chuseok/main.png'
         width={720}
         height={1280}
         alt=''
@@ -15,7 +20,7 @@ const DetailPage = () => {
       />
       <div className={styles.warpper}>
         <Link
-          href='/question'
+          href={`/quiz/${params.id}/question`}
           aria-label='테스트 시작하기'
           role='button'
           className={styles.primaryLinkBtn}

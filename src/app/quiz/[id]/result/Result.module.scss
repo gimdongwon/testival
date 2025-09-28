@@ -13,10 +13,10 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url('/result_background.png');
+  background-image: url('/images/quiz/chuseok/result_cover.png');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 1273px;
+  height: 973px;
 }
 
 /* 헤더 */
@@ -61,13 +61,11 @@
   aspect-ratio: 320 / 260; /* 대략적인 비율(그림 영역). 필요시 조정 */
   border-radius: 8px;
   overflow: hidden;
-  background: #2b2a2a;
-  box-shadow: var(--shadow);
-  border: 3px solid rgba(0, 0, 0, 0.5);
 }
 .figureInner :global(img) {
   object-fit: cover;
   object-position: center;
+  // border-radius: 200px;
 }
 
 /* 한 줄 인용 */
@@ -84,6 +82,7 @@
 
 /* 설명/공유 카드 */
 .card {
+  margin-top: 50px;
   color: #666;
   border-radius: 12px;
   padding: 18px 18px 20px;

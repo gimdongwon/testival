@@ -12,7 +12,7 @@ const LoadingContent: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push('/result');
+      router.push('result');
     }, 3000);
     return () => clearTimeout(timer);
   }, [router]);

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import styles from './QuestionCard.module.scss';
 
 export type QuestionOption = {
@@ -35,7 +34,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 
         <div className={styles.cardOptions} role='list'>
           {options.map((opt) => (
-            <Link href='/loading' className={styles.fullWidth} key={opt.id}>
+            <div className={styles.fullWidth} key={opt.id}>
               <button
                 onClick={() => onSelect?.(opt.id)}
                 aria-label={`${opt.label} ${opt.text}`}
@@ -45,7 +44,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                   {opt.label} {opt.text}
                 </span>
               </button>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
