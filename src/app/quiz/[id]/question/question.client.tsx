@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useMemo } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import type { TestDefinition } from '@/domain/quiz.schema';
 import QuestionCard, {
   QuestionOption,
@@ -12,7 +12,6 @@ import { useQuizView, quizActions } from '@/store/quizStore';
 const LABELS = ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'];
 
 export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
-  const { id } = useParams<{ id: string }>();
   const router = useRouter();
   const testId = def.meta.id;
 
@@ -38,7 +37,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
 
   const handleSelect = (choiceId: string) => {
     quizActions.choose(testId, q.id, choiceId);
-    if (index === total - 1) router.push(`/quiz/${id}/result`);
+    if (index === total - 1) router.push(`/quiz/${testId}/loading`);
     else quizActions.next(testId, total);
   };
 

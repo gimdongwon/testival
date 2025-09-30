@@ -1,159 +1,89 @@
 // app/quiz/[id]/result/result.client.tsx
 'use client';
+/* eslint-disable @next/next/no-img-element */
 
-import Image from 'next/image';
-import { useEffect, useMemo } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import type { TestDefinition } from '@/domain/quiz.schema';
-import { score } from '@/lib/scoring';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import styles from './Result.module.scss';
-import { useQuizView } from '@/store/quizStore';
 
-function splitParagraphs(text?: string) {
-  if (!text) return [];
-  // 두 줄 개행을 단락 구분으로 사용
-  return text
-    .split(/\n{2,}/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-}
-
-export default function ResultClient({ def }: { def: TestDefinition }) {
+export default function ResultClient() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
-  const testId = def.meta.id;
-  const { selected } = useQuizView(testId);
+  const testId = id;
+  const searchParams = useSearchParams();
+  const type = searchParams.get('type');
 
-  // 가드: 선택 없이 결과로 오면 인트로로 보냄
-  useEffect(() => {
-    const hasAny = def.questions.some((q) => selected[q.id]);
-    if (!hasAny) router.replace(`/quiz/${id}`);
-  }, [def, id, router, selected]);
-
-  // 채점
-  const { top } = useMemo(() => score(def, selected), [def, selected]);
-
-  // 데이터 매핑
-  const shortLine = def.messages?.[top]; // 인용부(짧은 문장)
-  const detail = def.resultDetails?.[top];
-  const title = detail?.title ?? top;
-  const name = detail?.name ?? top;
-  const descParas = splitParagraphs(detail?.description);
-  const img = detail?.image;
-  const keywords = detail?.keywords ?? [];
-
-  // (선택) 이모지/아이콘은 타입별로 매핑하고 싶으면 여기서 결정하세요.
-  const leftEmoji = '✨';
-  const rightEmoji = '✨';
-
-  const handleShareClick = () => {
-    const url = typeof window !== 'undefined' ? window.location.href : '';
-    const shareText = `${def.meta.title} – ${title}\n${
-      shortLine ? `“${shortLine}”\n` : ''
-    }${keywords.map((k) => `#${k}`).join(' ')}`;
-    const textToCopy = `${shareText}\n${url}`;
-
-    if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(textToCopy).finally(() => {
-        alert('링크가 복사되었습니다.');
-      });
-      router.push(`/quiz/${def.meta.id}`);
+  const handleClickShareBtn = () => {
+    // 현재 URL을 복사하는 함수입니다.
+    if (typeof window === 'undefined' || !window?.location?.href) {
+      alert('URL을 복사할 수 없습니다.');
       return;
     }
 
-    try {
-      const textarea = document.createElement('textarea');
-      textarea.value = textToCopy;
-      textarea.setAttribute('readonly', '');
-      textarea.style.position = 'absolute';
-      textarea.style.left = '-9999px';
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-    } catch {
-      // ignore
-    } finally {
-      alert('링크가 복사되었습니다.');
-    }
-  };
+    const currentUrl = window.location.href;
 
+    if (
+      navigator.clipboard &&
+      typeof navigator.clipboard.writeText === 'function'
+    ) {
+      navigator.clipboard
+        .writeText(currentUrl)
+        .then(() => {
+          alert('URL이 복사되었습니다!');
+        })
+        .catch(() => {
+          alert('URL 복사에 실패했습니다. 다시 시도해주세요.');
+        });
+      return;
+    }
+
+    // fallback: execCommand (구형 브라우저 지원)
+    const textArea = document.createElement('textarea');
+    textArea.value = currentUrl;
+    textArea.style.position = 'fixed'; // 화면 스크롤 영향 방지
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) {
+        alert('URL이 복사되었습니다!');
+      } else {
+        alert('URL 복사에 실패했습니다. 다시 시도해주세요.');
+      }
+    } catch (err) {
+      alert('URL 복사에 실패했습니다. 다시 시도해주세요.');
+    }
+
+    document.body.removeChild(textArea);
+  };
+  const handleClickResetBtn = () => {
+    router.push(`/quiz/${testId}`);
+  };
   return (
     <section className={styles.result} aria-label='테스트 결과'>
-      {/* 배경 레이어 */}
-      <div className={styles.bg} aria-hidden />
-
-      {/* 상단 타이틀 */}
-      <header className={styles.header}>
-        <p className={styles.kicker}>당신의 테스트 결과는..</p>
-        <h1 className={styles.title}>
-          <span className={styles.emoji} aria-hidden>
-            {leftEmoji}
-          </span>
-          <strong>{name} 유형</strong>
-          <span className={styles.emoji} aria-hidden>
-            {rightEmoji}
-          </span>
-        </h1>
-      </header>
-
-      {/* 결과 일러스트 카드 */}
-      {img && (
-        <figure className={styles.figure} aria-label='결과 이미지'>
-          <div className={styles.figureInner}>
-            <Image
-              src={img} // JSON의 resultDetails.image
-              alt=''
-              fill
-              sizes='(max-width: 480px) 80vw, 425px'
-              priority
-            />
-          </div>
-        </figure>
-      )}
-
-      {/* 한 문장 결과(인용) */}
-      {shortLine && (
-        <blockquote className={styles.quote}>
-          <p>“{shortLine}”</p>
-        </blockquote>
-      )}
-
-      {/* 설명 카드 */}
-      <section className={styles.card} aria-labelledby='desc-heading'>
-        <h2 id='desc-heading' className={styles.cardTitle}>
-          {title}
-        </h2>
-        <div className={styles.cardBody}>
-          {descParas.length > 0 ? (
-            descParas.map((p, i) => <p key={i}>{p}</p>)
-          ) : (
-            <p>상세 설명이 준비 중입니다.</p>
-          )}
-        </div>
-
-        {/* 공유 문구: 키워드 해시태그 변환 */}
-        {keywords.length > 0 && (
-          <>
-            <h2 id='share-heading' className={styles.cardTitle}>
-              당신의 연휴 키워드
-            </h2>
-            <div className={styles.cardBody}>
-              {/* 기본 문구 */}
-              <p>
-                {def.meta.title} – {title}
-              </p>
-              {/* 해시태그 */}
-              <p>{keywords.map((k) => `#${k}`).join(' ')}</p>
-            </div>
-          </>
-        )}
-      </section>
+      {/* 배경 이미지: 폭 100%, 높이 자동 */}
+      <img
+        className={styles.bgImage}
+        alt='테스트 결과 이미지'
+        src={`/images/quiz/${id}/result_${type}.png`}
+        draggable={false}
+      />
 
       {/* 공유 버튼 */}
-      <button className={styles.shareBtn} onClick={handleShareClick}>
-        테스트 공유하기
-      </button>
+      <div className={styles.shareBtnWrapper}>
+        <button className={styles.shareBtn} onClick={handleClickShareBtn}>
+          <img src='/images/quiz/chuseok/share_btn.png' alt='테스트 공유하기' />
+        </button>
+        <button
+          className={styles.resetBtn}
+          aria-label='테스트 초기화'
+          onClick={handleClickResetBtn}
+        >
+          <img src='/images/quiz/chuseok/reset_btn.png' alt='' aria-hidden />
+        </button>
+      </div>
     </section>
   );
 }

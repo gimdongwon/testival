@@ -27,6 +27,7 @@ export const ResultDetailZ = z.object({
   description: z.string().min(1),
   image: z.string().min(1), // 예: "/images/quiz/chuseok-basic/result_1.png"
   keywords: z.array(z.string().min(1)).min(1).max(10).default([]),
+  type: z.string().min(1),
 });
 
 /** 메타정보 */

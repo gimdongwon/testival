@@ -21,49 +21,55 @@
       "name": "집콕",
       "title": "집이야 말로 최고의 쉼",
       "description": "연휴에 계획 있냐고? 아무것도 안 하는 게 계획이다. \n\n집이 최고의 휴양지. 몰디브, 모히또도 집보다는 못한다. 누구에게도 시간을 방해 받지 않고 가만히 쉴 수 있는 연휴 동안은 혼신을 다해 나 홀로 모든 잡념을 잊고 몸·마음의 건강을 돌본다",
-      "image": "/images/quiz/chuseok/result_1.png",
-      "keywords": ["익숙함", "충전", "차분함", "솔플"]
+      "image": "/images/quiz/chuseok/result_house.png",
+      "keywords": ["익숙함", "충전", "차분함", "솔플"],
+      "type": "house"
     },
     "사이버망령": {
       "name": "사이버망령",
       "title": "사이버 세상으로 다이브",
       "description": "그간 일상에 치여서 미뤄 두었던 콘텐츠(게임/넷플/웹툰)를 이번 연휴에 실컷 즐길 테야. 그리운 공기.",
-      "image": "/images/quiz/chuseok/result_2.png",
-      "keywords": ["몰입", "콘텐츠", "인터넷중독"]
+      "image": "/images/quiz/chuseok/result_cyberGhost.png",
+      "keywords": ["몰입", "콘텐츠", "인터넷중독"],
+      "type": "cyberGhost"
     },
     "애국보수": {
       "name": "애국보수",
       "title": "여행을 떠나요(국내로)",
       "description": "해외는 너무 멀고, 준비할 것도 많고 그렇다고 집에만 있기는 아쉬운 당신.\n고즈넉하고 여유로운 국내가 정답일 수 있다.\n당일치기, 1박 2일도 좋다. 당신과 함께 있다면. \n멀지 않은 곳으로 훅 떠나 여유와 즐거움, 두 마리 토끼를 다 챙기는 안정형 여행자.",
-      "image": "/images/quiz/chuseok/result_3.png",
-      "keywords": ["근거리", "가볍게", "힐링", "소소한 설렘", "안정"]
+      "image": "/images/quiz/chuseok/result_patriotism.png",
+      "keywords": ["근거리", "가볍게", "힐링", "소소한 설렘", "안정"],
+      "type": "patriotism"
     },
     "해외여행": {
       "name": "해외여행",
       "title": "더 넓은 세상, 가줄게",
       "description": "인생은 짧고, 추억은 길다.  이게 어떻게 찾아온 연휴인데, 그냥 보낼 수는 없다. 최소 반년 전부터 차곡차곡 준비해서 끝내주는 추억을 만들 준비 완료.",
-      "image": "/images/quiz/chuseok/result_4.png",
-      "keywords": ["계획형", "장거리", "깊은 경험", "새로움"]
+      "image": "/images/quiz/chuseok/result_overseasTrip.png",
+      "keywords": ["계획형", "장거리", "깊은 경험", "새로움"],
+      "type": "overseasTrip"
     },
     "패밀리즘": {
       "name": "패밀리즘",
       "title": "명절은 가족과 함께",
       "description": "명절의 진정한 의미는 사랑하는 가족들과 웃고 떠들고, 명절 음식을 먹으며 쉬는 것.\n가족들과 시끌벅적한 시간을 보내고, 다시 힘차게 살자.",
-      "image": "/images/quiz/chuseok/result_5.png",
-      "keywords": ["유대", "온기", "일상", "안정감"]
+      "image": "/images/quiz/chuseok/result_family.png",
+      "keywords": ["유대", "온기", "일상", "안정감"],
+      "type": "family"
     },
     "party": {
       "name": "party",
       "title": "제대로 즐겨보자",
       "description": "다음날 걱정 없이 신나게 놀 타이밍! 올데이 올나잇 파티로 브레이크 없이 간다.",
-      "image": "/images/quiz/chuseok/result_6.png",
-      "keywords": ["에너지", "시끌벅적", "새로움", "음악", "도파민"]
+      "image": "/images/quiz/chuseok/result_party.png",
+      "keywords": ["에너지", "시끌벅적", "새로움", "음악", "도파민"],
+      "type": "party"
     }
   },
   "questions": [
     {
       "id": "q1",
-      "title": "이번 주 임시공휴일이 생겼다! 뭘할까?",
+      "title": "이번 주 임시공휴일이 \n생겼다! 뭘 할까?",
       "choices": [
         {
           "id": "q1a",
@@ -89,7 +95,7 @@
     },
     {
       "id": "q2",
-      "title": "오랜만에 쉬는 주말 아침, 눈을 뜨자마자 나는?",
+      "title": "오랜만에 쉬는 주말 아침,\n눈을 뜨자마자 나는?",
       "choices": [
         {
           "id": "q2a",
@@ -115,7 +121,7 @@
     },
     {
       "id": "q3",
-      "title": "오늘 저녁은 진짜 제대로 먹고 싶은데… 어떻게 할까?",
+      "title": "오늘 저녁은 진짜 제대로\n먹고 싶은데… 어떻게 할까?",
       "choices": [
         {
           "id": "q3a",
@@ -141,7 +147,7 @@
     },
     {
       "id": "q4",
-      "title": "취미를 하나 새로 시작해 볼까? 뭐부터 하지?",
+      "title": "취미를 하나 새로 시작해\n볼까? 뭐부터 하지?",
       "choices": [
         {
           "id": "q4a",
@@ -150,7 +156,7 @@
         },
         {
           "id": "q4b",
-          "label": "온라인으로 커뮤니티부터 찾아보고 고인물들의 꿀팁을 읽어본다",
+          "label": "온라인으로 커뮤니티부터 찾아보고\n고인물들의 꿀팁을 읽어본다",
           "weights": { "사이버망령": 2 }
         },
         {
@@ -167,7 +173,7 @@
     },
     {
       "id": "q5",
-      "title": "단톡방에서 갑자기 친구들끼리 싸우기 시작한다.",
+      "title": "단톡방에서 친구들이\n갑자기 싸우기 시작한다.",
       "choices": [
         {
           "id": "q5a",
@@ -193,7 +199,7 @@
     },
     {
       "id": "q6",
-      "title": "최근 한 달 동안 사진첩에서 가장 비중을 많이 차지하는 건?",
+      "title": "최근 한 달, 사진첩에서 가장\n비중을 많이 차지하는 건?",
       "choices": [
         {
           "id": "q6a",
