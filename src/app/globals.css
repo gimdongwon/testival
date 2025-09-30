@@ -31,6 +31,10 @@ a {
   text-decoration: none;
 }
 
-.body {
-  /* max-width: 430px; */
+@font-face {
+  font-family: 'Yeossihyangyakeonhae';
+  src: url('/fonts/Yeossihyangyakeonhae.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
