@@ -1,10 +1,8 @@
 .landingMain {
   position: relative;
 
-  width: min(100%, 425px);
-  max-width: 375px;
+  width: min(100%, 430px);
   margin: 0 auto;
-  height: 812px;
 
   aspect-ratio: 375 / 812;
   .heroBg {
@@ -21,9 +19,9 @@
     width: 100%;
   }
   .primaryLinkBtn {
-    position: absolute;
+    position: fixed;
     min-width: 300px;
-    bottom: 132px;
+    bottom: 48px;
     height: 48px;
     line-height: 48px;
     background: #000;

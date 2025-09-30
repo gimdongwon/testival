@@ -40,9 +40,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 aria-label={`${opt.label} ${opt.text}`}
                 className={styles.optionBtn}
               >
-                <span className={styles.optionText}>
-                  {opt.label} {opt.text}
-                </span>
+                <span className={styles.optionLabel}>{opt.label}</span>
+                <span className={styles.optionText}>{opt.text}</span>
               </button>
             </div>
           ))}
