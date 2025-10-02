@@ -53,6 +53,7 @@ export default function ResultClient() {
         alert('URL 복사에 실패했습니다. 다시 시도해주세요.');
       }
     } catch (err) {
+      console.error(err);
       alert('URL 복사에 실패했습니다. 다시 시도해주세요.');
     }
 

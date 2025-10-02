@@ -1,11 +1,12 @@
 // app/quiz/[id]/result/page.tsx
 import ResultClient from './result.client';
 import type { Metadata } from 'next';
-type Props = { params: { id: string } };
+
+type Props = { params: Promise<{ id: string }> };
 export const revalidate = 600;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
   const SITE_URL = 'https://testival.kr';
   const title = 'Testival 결과 페이지';
   const desc = 'Testival 결과 페이지';
