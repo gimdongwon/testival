@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "id": "chuseok_money",
+    "title": "이번 명절 내가 내야할 잔소리 비용은?",
+    "description": "명절 잔소리로 인한 정신적 지출(?)을 가늠해보는 테스트",
+    "mode": "amount-sum",
+    "resultTypes": ["zero", "oneToThree", "fourToFive", "sixToNine", "tenPlus"],
+    "locale": "ko",
+    "version": 1
+  },
+  "resultDetails": {
+    "zero": {
+      "name": "0원",
+      "title": "지갑을 지켜내는데\n성공하셨군요!",
+      "description": "눈치 만점, 센스 만점! 잔소리는 커녕, 배려 넘치는 말만 해 주는 당신은 이미 가족들의 뜨거운 사랑을 받고 있을 듯하네요. 앞으로도 그 마음 그대로 지켜 주세요!",
+      "image": "/images/quiz/chuseok_money/result_zero.png",
+      "keywords": ["평화주의", "센스", "배려", "눈치만점"],
+      "type": "zero"
+    },
+    "oneToThree": {
+      "name": "1~3만원대",
+      "title": "이 정도면\n지갑은 무사합니다",
+      "description": "오랜만에 만난 가족끼리 한 두 마디 아무 말 정도는 충분히 할 수 있죠. 기분좋게 모두에게 아이스크림을 사 주고 있는 그대로 사셔도 될 것 같네요~",
+      "image": "/images/quiz/chuseok_money/result_oneToThree.png",
+      "keywords": ["라이트", "여유", "아이스크림", "온화"],
+      "type": "oneToThree"
+    },
+    "fourToFive": {
+      "name": "4~5만원대",
+      "title": "적당히 용돈을\n주고 싶으셨던 당신!",
+      "description": "적당히 용돈을 주고 싶으셨던 당신. 센스가 좋은데요? 시원~하게 치킨 한 번 시켜 줍시다!",
+      "image": "/images/quiz/chuseok_money/result_fourToFive.png",
+      "keywords": ["치킨", "센스", "적당함", "밸런스"],
+      "type": "fourToFive"
+    },
+    "sixToNine": {
+      "name": "6~9만원대",
+      "title": "그 관심은,\n현금처럼 진심이네요!",
+      "description": "가족들과 대화는 하고 싶은데, 방법을 잘 모르는 모양이에요. 괜찮아요. 그 관심만큼 용돈을 주면, 그 마음도 모두에게 잘 전달될 거예요.",
+      "image": "/images/quiz/chuseok_money/result_sixToNine.png",
+      "keywords": ["관심", "배려", "학습", "성장"],
+      "type": "sixToNine"
+    },
+    "tenPlus": {
+      "name": "10만원 이상",
+      "title": "오늘만큼은\n당신이 만수르",
+      "description": "그야말로 살신성인의 자세. 오늘 이 자리를 위해 시원하게 쏘겠다는 그 마음 잊지 않겠습니다. 마음껏 잔소리하세요! 무엇이든지 다 물어보세요! #무례해도괜찮아",
+      "image": "/images/quiz/chuseok_money/result_tenPlus.png",
+      "keywords": ["스폰서", "통크게", "직진", "하드모드"],
+      "type": "tenPlus"
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "심심해 보이는\n중학생 조카에게 건넬 말은?",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "요즘 공부는 잘 하고 있니?",
+          "amount": 1
+        },
+        {
+          "id": "q1b",
+          "label": "친구랑은 보통 뭐하고 노니?",
+          "amount": 0
+        },
+        {
+          "id": "q1c",
+          "label": "말을 걸지 않는다.",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "조카가 고3이라는 걸\n알았다. 뭐라고 할까?",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "대학은 어디어디 넣을 거니?",
+          "amount": 1
+        },
+        {
+          "id": "q2b",
+          "label": "모의고사 성적은 어때?",
+          "amount": 1
+        },
+        {
+          "id": "q2c",
+          "label": "많이 힘들지?(요아정 기프티콘을 보내며)",
+          "amount": -1
+        },
+        {
+          "id": "q2d",
+          "label": "뭐 먹고 싶은 거 있어? 수능 끝나면\n이모/삼촌이 맛있는 거 사 줄게.",
+          "amount": -0.5
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "취준생인 조카에게…",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "요즘 취업이 힘들다더라. 고생이 많다.",
+          "amount": 0.5
+        },
+        {
+          "id": "q3b",
+          "label": "너가 시험 준비한지 몇 년 됐지? 힘들겠다.",
+          "amount": 1
+        },
+        {
+          "id": "q3c",
+          "label": "면접은 좀 보러 다니니?",
+          "amount": 1
+        },
+        {
+          "id": "q3d",
+          "label": "(커피 기프티콘을 보낸다)",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "얼마 전에 취업한 조카에게…",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "너 연봉은 얼마 받니?",
+          "amount": 2
+        },
+        {
+          "id": "q4b",
+          "label": "회사는 다닐만해?",
+          "amount": 0
+        },
+        {
+          "id": "q4c",
+          "label": "일 재밌어? 프로젝트는 어때?",
+          "amount": -0.5
+        },
+        {
+          "id": "q4d",
+          "label": "요즘 드라마 얘기로 화제를 돌린다.",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "아직 결혼하지 않은\n조카에게…",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "결혼은 언제 할 거니?",
+          "amount": 1
+        },
+        {
+          "id": "q5b",
+          "label": "만나는 사람은 있어?",
+          "amount": 1
+        },
+        {
+          "id": "q5c",
+          "label": "내가 소개라도 해 줄까?",
+          "amount": 1
+        },
+        {
+          "id": "q5d",
+          "label": "저번에 여행 다녀왔다면서? 어땠어?",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "오랜만에 보니까\n조금 달라진 것 같은데?",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "어쩐지 살이 좀 찐 것 같다?",
+          "amount": 2
+        },
+        {
+          "id": "q6b",
+          "label": "살이 빠진 것 같아. 밥은 잘 먹고 다니니?",
+          "amount": 1
+        },
+        {
+          "id": "q6c",
+          "label": "스타일이 좀 바뀐 것 같다.",
+          "amount": -0.5
+        },
+        {
+          "id": "q6d",
+          "label": "너도 슬슬 관리 좀 해야지.",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "결혼한 조카가\n배우자와 함께 왔다.",
+      "choices": [
+        {
+          "id": "q7a",
+          "label": "아이 생각은 있니?",
+          "amount": 1
+        },
+        {
+          "id": "q7b",
+          "label": "조카의 배우자한테 조카와 사는 건\n힘들지 않은지 장난스레 묻기.",
+          "amount": -0.5
+        },
+        {
+          "id": "q7c",
+          "label": "조카의 배우자가 어떤 사람인지 궁금해.\n어느 학교, 어느 직장인지 묻기",
+          "amount": 0.5
+        },
+        {
+          "id": "q7d",
+          "label": "신혼여행은 어땠는지 묻기",
+          "amount": -0.5
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "다른 사람들이 명절 상을\n차리기 시작한다. 나는",
+      "choices": [
+        {
+          "id": "q8a",
+          "label": "가만히 있는 게 도와주는 것.\n방에 들어가 앉아서 부를 때까지 폰만 본다.",
+          "amount": 1
+        },
+        {
+          "id": "q8b",
+          "label": "설거지를 맡는다",
+          "amount": -1
+        },
+        {
+          "id": "q8c",
+          "label": "밖으로 심부름 하러 다녀온다.",
+          "amount": 1
+        },
+        {
+          "id": "q8d",
+          "label": "이미 상 차리느라 바쁘다",
+          "amount": -2
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "title": "보너스 할인!",
+      "choices": [
+        {
+          "id": "q9a",
+          "label": "장 볼 때 동행했다.",
+          "amount": 1
+        },
+        {
+          "id": "q9b",
+          "label": "아이들끼리 놀라고 용돈 줬다.",
+          "amount": -1
+        },
+        {
+          "id": "q9c",
+          "label": "장거리 운전을 맡았다.",
+          "amount": -1
+        },
+        {
+          "id": "q9d",
+          "label": "어른들 스마트폰 사용법 가르쳐 주었다.\n(은행/앱 설치 등)",
+          "amount": -1
+        }
+      ]
+    }
+  ]
+}

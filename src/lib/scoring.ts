@@ -2,7 +2,33 @@
 import type { TestDefinition } from '@/domain/quiz.schema';
 
 export function score(def: TestDefinition, selected: Record<string, string>) {
-  // weighted 전제
+  if (def.meta.mode === 'amount-sum') {
+    let totalAmount = 0;
+    for (const q of def.questions) {
+      const choiceId = selected[q.id];
+      const choice = q.choices.find((c) => c.id === choiceId);
+      if (!choice) continue;
+      if (typeof choice.amount === 'number') {
+        totalAmount += choice.amount;
+      }
+    }
+
+    // 브라켓 매핑(만원 단위)
+    const bracket =
+      totalAmount <= 0
+        ? 'zero'
+        : totalAmount <= 3
+        ? 'oneToThree'
+        : totalAmount <= 5
+        ? 'fourToFive'
+        : totalAmount <= 9
+        ? 'sixToNine'
+        : 'tenPlus';
+
+    return { vector: { totalAmount }, top: bracket };
+  }
+
+  // weighted 전제(기존 동작 유지)
   const acc: Record<string, number> = {};
   for (const q of def.questions) {
     const choiceId = selected[q.id];
@@ -13,7 +39,6 @@ export function score(def: TestDefinition, selected: Record<string, string>) {
     }
   }
 
-  // 동률 시 resultTypes 순서를 우선순위로 사용(안정적)
   const order = def.meta.resultTypes;
   const top = order
     .slice()

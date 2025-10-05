@@ -9,6 +9,8 @@ export const ChoiceZ = z.object({
   weights: z.record(z.string(), z.number()).optional(),
   // type-count 모드 대비 확장용(현재 데이터에는 없음)
   mapType: z.string().optional(),
+  // amount-sum 모드에서 쓰는 금액(만원 단위, 음수 허용)
+  amount: z.number().optional(),
 });
 
 /** 문항 */
@@ -35,7 +37,7 @@ export const TestMetaZ = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   description: z.string().optional(),
-  mode: z.enum(['weighted', 'type-count']),
+  mode: z.enum(['weighted', 'type-count', 'amount-sum']),
   resultTypes: z.array(z.string().min(1)).min(2),
   thumbnail: z.string().optional(),
   locale: z.string().default('ko'),
@@ -108,6 +110,22 @@ export const TestDefinitionZ = z
               code: z.ZodIssueCode.custom,
               message: `mapType "${c.mapType}"는 meta.resultTypes에 존재하지 않습니다.`,
               path: ['questions', qi, 'choices', ci, 'mapType'],
+            });
+          }
+        });
+      });
+    }
+
+    // 5) amount-sum 모드에서 amount 필수 검증
+    if (data.meta.mode === 'amount-sum') {
+      data.questions.forEach((q, qi) => {
+        q.choices.forEach((c, ci) => {
+          if (typeof c.amount !== 'number') {
+            ctx.addIssue({
+              code: z.ZodIssueCode.custom,
+              message:
+                'amount-sum 모드에서는 모든 선택지에 amount(숫자)가 필요합니다.',
+              path: ['questions', qi, 'choices', ci, 'amount'],
             });
           }
         });
