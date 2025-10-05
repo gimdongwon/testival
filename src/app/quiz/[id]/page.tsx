@@ -10,10 +10,18 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const def = await repo.getById(id);
   if (!def) return notFound();
+  // id별 버튼 색상 분기(확장 용이)
+  const variantById: Record<string, 'black' | 'white'> = {
+    chuseok: 'black',
+    chuseok_money: 'white',
+  };
+  const variantClass =
+    variantById[id] === 'white' ? styles.whiteBtn : styles.blackBtn;
+
   return (
     <main aria-label='메인비주얼' className={styles.landingMain}>
       <Image
-        src='/images/quiz/chuseok/main.png'
+        src={`/images/quiz/${id}/main.png`}
         width={720}
         height={1280}
         alt=''
@@ -24,7 +32,7 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           href={`/quiz/${id}/question`}
           aria-label='테스트 시작하기'
           role='button'
-          className={styles.primaryLinkBtn}
+          className={`${styles.primaryLinkBtn} ${variantClass}`}
         >
           테스트 시작하기
         </Link>

@@ -2,7 +2,6 @@
   position: relative;
 
   width: min(100%, 430px);
-  margin: 0 auto;
 
   aspect-ratio: 375 / 812;
   .heroBg {
@@ -20,17 +19,32 @@
   }
   .primaryLinkBtn {
     position: fixed;
+    width: 80%;
+    max-width: 345px;
     min-width: 300px;
     bottom: 48px;
     height: 48px;
     line-height: 48px;
-    background: #000;
+    background: var(--btn-bg, #000);
     border-radius: 8px;
     text-align: center;
     font-weight: 500;
     font-size: 18px;
-    color: #fff;
+    color: var(--btn-color, #fff);
     font-family: noto sans KR;
     box-sizing: border-box;
+  }
+
+  /* Variants: compose with .primaryLinkBtn */
+  .blackBtn {
+    --btn-bg: #000;
+    --btn-color: #fff;
+    --btn-border: transparent;
+  }
+
+  .whiteBtn {
+    --btn-bg: #fff;
+    --btn-color: #000;
+    --btn-border: #111;
   }
 }

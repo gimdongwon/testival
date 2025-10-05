@@ -15,6 +15,8 @@ export type QuestionCardProps = {
   options: QuestionOption[];
   onSelect?: (optionId: string) => void;
   backgroundImage?: string; // 배경 이미지 경로 (선택)
+  style?: React.CSSProperties;
+  optionClassName?: string;
 };
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -22,6 +24,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   title,
   options,
   onSelect,
+  style,
+  optionClassName,
 }) => {
   return (
     <div className={styles.centerGrid}>
@@ -38,7 +42,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
               <button
                 onClick={() => onSelect?.(opt.id)}
                 aria-label={`${opt.label} ${opt.text}`}
-                className={styles.optionBtn}
+                className={`${styles.optionBtn} ${optionClassName ?? ''}`}
+                style={style}
               >
                 <span className={styles.optionLabel}>{opt.label}</span>
                 <span className={styles.optionText}>{opt.text}</span>

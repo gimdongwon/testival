@@ -18,9 +18,7 @@ const QuestionPage = async ({
     <div
       className={styles.pageContainer}
       style={{
-        backgroundImage: `url(${
-          def.meta.thumbnail ?? '/content_background.png'
-        })`,
+        backgroundImage: `url(/images/quiz/${id}/content_background.png)`,
       }}
     >
       <QuizQuestionClient def={def} />

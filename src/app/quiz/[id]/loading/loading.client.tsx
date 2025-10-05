@@ -24,7 +24,14 @@ const LoadingContent = ({ def }: { def: TestDefinition }) => {
     return () => clearTimeout(timer);
   }, [router, testId, top, type]);
 
-  return <div className={styles.loadingPage}></div>;
+  return (
+    <div
+      className={styles.loadingPage}
+      style={{
+        backgroundImage: `url(/images/quiz/${testId}/loading.png)`,
+      }}
+    ></div>
+  );
 };
 
 export default LoadingContent;

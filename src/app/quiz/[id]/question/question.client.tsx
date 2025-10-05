@@ -7,6 +7,7 @@ import type { TestDefinition } from '@/domain/quiz.schema';
 import QuestionCard, {
   QuestionOption,
 } from '@/components/common/QuestionCard/QuestionCard';
+import questionCardStyles from '@/components/common/QuestionCard/QuestionCard.module.scss';
 import { useQuizView, quizActions } from '@/store/quizStore';
 
 const LABELS = ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'];
@@ -41,6 +42,14 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     else quizActions.next(testId, total);
   };
 
+  // 테스트별 옵션 버튼 테마 클래스 분기(인라인 스타일 제거)
+  const optionClassById: Record<string, string> = {
+    chuseok: questionCardStyles.optionChuseokDark,
+    chuseok_money: questionCardStyles.optionDark,
+  };
+  const optionClassName =
+    optionClassById[testId] ?? questionCardStyles.optionLight;
+
   return (
     <div style={{ maxWidth: 720, margin: '0 auto', padding: 24 }}>
       <QuestionCard
@@ -48,6 +57,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
         title={q.title}
         options={options}
         onSelect={handleSelect}
+        optionClassName={optionClassName}
       />
     </div>
   );

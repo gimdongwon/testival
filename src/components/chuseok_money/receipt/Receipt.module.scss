@@ -1,0 +1,149 @@
+.receipt {
+  border: 1px solid #000;
+  background-color: #000;
+}
+
+.receiptWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 114px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.receiptInner {
+  position: relative; /* 기준 컨테이너 */
+  width: 86%; /* 이미지 실제 렌더링 크기와 동일 */
+  height: 453px;
+}
+
+.receipt {
+  display: block;
+  height: 453px;
+  border: 1px solid #000;
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none; /* 배경이 포인터 이벤트를 가로채지 않도록 */
+}
+
+.receiptContent {
+  position: absolute;
+  inset: 0; /* 상하좌우 0으로 꽉 채움 */
+  display: flex;
+  flex-direction: column;
+  padding: 24px 22px;
+  color: #000;
+  pointer-events: none; /* 내용 클릭 방지 (필요 시 제거) */
+}
+
+.receiptTitle {
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 1;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.receiptDescription {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Shilla_Culture(B)';
+}
+
+.receiptDivider {
+  margin: 6px 0 10px;
+  border: 0;
+  border-top: 3px dashed #000;
+}
+
+.receiptList {
+  list-style: none;
+  margin: 5px 0;
+  padding: 0 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.receiptItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.receiptItemTitle {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.receiptItemPrice {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.receiptTotal {
+  margin-left: auto;
+  margin-top: auto;
+  font-weight: 900;
+  font-size: 54px;
+  color: #ff1a1a;
+  font-family: 'Shilla_Culture(B)';
+}
+
+/* =================
+     하단 UI
+     ================= */
+.bottomWrapper {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  z-index: 3;
+  margin-top: 20px;
+}
+
+.bottomHeadline {
+  color: #fff;
+  font-weight: 900;
+  font-size: clamp(20px, 6vw, 28px);
+  text-align: center;
+  line-height: 1.22;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  word-break: keep-all;
+  letter-spacing: -0.02em;
+}
+
+.bottomCard {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 430px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #111;
+  padding: 20px 18px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  outline: none;
+  pointer-events: auto; /* 카드 내부 상호작용 가능 */
+}
+
+.bottomCardLine {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.bottomCardLine:last-child {
+  margin-bottom: 0;
+}

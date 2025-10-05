@@ -1,6 +1,8 @@
 // app/quiz/[id]/result/page.tsx
+import { notFound } from 'next/navigation';
 import ResultClient from './result.client';
 import type { Metadata } from 'next';
+import { getQuizRepository } from '@/infrastructure/quiz.repository';
 
 type Props = { params: Promise<{ id: string }> };
 export const revalidate = 600;
@@ -34,6 +36,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Page() {
-  return <ResultClient />;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const repo = getQuizRepository();
+  const def = await repo.getById(id);
+  if (!def) return notFound();
+  return <ResultClient def={def} />;
 }

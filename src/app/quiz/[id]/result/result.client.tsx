@@ -1,15 +1,24 @@
 // app/quiz/[id]/result/result.client.tsx
 'use client';
-/* eslint-disable @next/next/no-img-element */
 
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import styles from './Result.module.scss';
+import ResetIcon from '@/components/icons/reset';
+import ShareIcon from '@/components/icons/share';
+import Image from 'next/image';
+import Receipt from '@/components/chuseok_money/receipt';
+import { useMemo } from 'react';
+import { useQuizView } from '@/store/quizStore';
+import { score } from '@/lib/scoring';
+import type { TestDefinition, ResultDetail } from '@/domain/quiz.schema';
 
-export default function ResultClient() {
-  const { id } = useParams<{ id: string }>();
+export default function ResultClient({ def }: { def: TestDefinition }) {
   const router = useRouter();
-  const testId = id;
   const searchParams = useSearchParams();
+  const testId = def.meta.id;
+  const { selected } = useQuizView(testId);
+
+  // chuseok 전용 이미지 분기용(type은 로딩 단계에서 쿼리로 전달됨)
   const type = searchParams.get('type');
 
   const handleClickShareBtn = () => {
@@ -62,27 +71,82 @@ export default function ResultClient() {
   const handleClickResetBtn = () => {
     router.push(`/quiz/${testId}`);
   };
+  const isChuseokPage = testId === 'chuseok';
+  const btnVariantClass = isChuseokPage ? styles.btnDark : styles.btnLight;
+  const containerVariantClass = isChuseokPage
+    ? styles.resultLight
+    : styles.resultDark;
+
+  // chuseok_money 전용: 선택 항목 리스트와 합계, 결과 상세 계산
+  const { items, total, detail } = useMemo<{
+    items: Array<{ id: string; title: string; amount: number }>;
+    total: number;
+    detail?: ResultDetail;
+  }>(() => {
+    if (def.meta.mode !== 'amount-sum') {
+      return { items: [], total: 0, detail: undefined };
+    }
+    const built = def.questions
+      .map((q) => {
+        const choiceId = selected[q.id];
+        const choice = q.choices.find((c) => c.id === choiceId);
+        if (!choice) return null;
+        const amount = typeof choice.amount === 'number' ? choice.amount : 0;
+        return { id: choice.id, title: choice.label, amount };
+      })
+      .filter(Boolean) as Array<{ id: string; title: string; amount: number }>;
+    const totalAmount = built.reduce((sum, it) => sum + it.amount, 0);
+    const scored = score(def, selected);
+    const topKey = scored.top as keyof typeof def.resultDetails;
+    const detailInfo = def.resultDetails[topKey];
+    return { items: built, total: totalAmount, detail: detailInfo };
+  }, [def, selected]);
+
   return (
-    <section className={styles.result} aria-label='테스트 결과'>
+    <section
+      className={`${styles.result} ${containerVariantClass}`}
+      aria-label='테스트 결과'
+    >
       {/* 배경 이미지: 폭 100%, 높이 자동 */}
-      <img
+      <Image
         className={styles.bgImage}
         alt='테스트 결과 이미지'
-        src={`/images/quiz/${id}/result_${type}.png`}
+        src={
+          isChuseokPage
+            ? `/images/quiz/${testId}/result_${type}.png`
+            : `/images/quiz/${testId}/result.png`
+        }
         draggable={false}
+        width={720}
+        height={1280}
       />
+      {!isChuseokPage && (
+        <Receipt id={testId} items={items} total={total} detail={detail} />
+      )}
 
       {/* 공유 버튼 */}
       <div className={styles.shareBtnWrapper}>
-        <button className={styles.shareBtn} onClick={handleClickShareBtn}>
-          <img src='/images/quiz/chuseok/share_btn.png' alt='테스트 공유하기' />
+        <button
+          className={`${styles.shareBtn} ${btnVariantClass}`}
+          onClick={handleClickShareBtn}
+        >
+          <span>테스트 공유하기</span>
+          <ShareIcon
+            color={isChuseokPage ? '#fff' : '#000'}
+            width={13}
+            height={13}
+          />
         </button>
         <button
-          className={styles.resetBtn}
-          aria-label='테스트 초기화'
+          className={`${styles.resetBtn} ${btnVariantClass}`}
+          aria-label='테스트 다시하기'
           onClick={handleClickResetBtn}
         >
-          <img src='/images/quiz/chuseok/reset_btn.png' alt='' aria-hidden />
+          <ResetIcon
+            color={isChuseokPage ? '#fff' : '#000'}
+            width={18}
+            height={21}
+          />
         </button>
       </div>
     </section>
