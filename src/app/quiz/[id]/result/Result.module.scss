@@ -6,24 +6,38 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100dvh; /* 화면 높이 꽉 */
   max-width: 430px;
-  padding-bottom: calc(
-    96px + env(safe-area-inset-bottom)
-  ); /* 하단 고정 버튼 영역 + 안전 영역 확보 */
-  background-color: var(--result-bg, #000);
+  /* 스크롤 살리기 */
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: #000;
 }
 
 /* 배경 이미지: 가로 꽉 채우고 세로 자동, 전체 표시 */
 .bgImage {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover; /* 세로/가로 모두 꽉 채움 */
   object-position: top center;
   user-select: none;
   -webkit-user-drag: none;
+  z-index: 0;
+}
+
+/* 본문/영수증 등은 배경 위에 */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* 하단 고정 버튼과 겹치지 않도록 빈 공간 확보 */
+.bottomSpacer {
+  height: calc(96px + env(safe-area-inset-bottom));
+  flex: 0 0 auto;
 }
 
 .shareBtnWrapper {
@@ -99,13 +113,4 @@
 .btnLight {
   --btn-bg: #fff;
   --btn-fg: #000;
-}
-
-/* Result container variants */
-.resultLight {
-  --result-bg: #fff;
-}
-
-.resultDark {
-  --result-bg: #000;
 }

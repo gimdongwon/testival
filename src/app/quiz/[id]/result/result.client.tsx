@@ -117,12 +117,17 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
             : `/images/quiz/${testId}/result.png`
         }
         draggable={false}
-        width={720}
-        height={1280}
+        fill // ← width/height 대신 fill 사용(Next Image)
+        sizes='(max-width: 430px) 100vw, 430px'
+        priority
       />
-      {!isChuseokPage && (
-        <Receipt id={testId} items={items} total={total} detail={detail} />
-      )}
+      <div className={styles.content}>
+        {!isChuseokPage && (
+          <Receipt id={testId} items={items} total={total} detail={detail} />
+        )}
+      </div>
+      {/* 하단 고정 버튼과 겹치지 않도록 여백 확보 */}
+      <div className={styles.bottomSpacer} aria-hidden />
 
       {/* 공유 버튼 */}
       <div className={styles.shareBtnWrapper}>
