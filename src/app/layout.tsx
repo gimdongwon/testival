@@ -1,18 +1,7 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from './providers';
 import Script from 'next/script';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 const siteUrl = 'https://testival.kr';
 const defaultTitle = 'Testival';
@@ -59,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PVQVPLJC');`}
         </Script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} body`}>
+      <body>
         <noscript>
           <iframe
             src='https://www.googletagmanager.com/ns.html?id=GTM-PVQVPLJC'
