@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 const siteUrl = 'https://testival.kr';
 
-type LayoutProps = Readonly<{
+type QuizLayoutProps = Readonly<{
   children: React.ReactNode;
 }>;
 
@@ -13,9 +13,9 @@ type Params = {
 export async function generateMetadata({
   params,
 }: {
-  params: Params;
+  params: Promise<Params>;
 }): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
 
   const titleById: Record<string, string> = {
     chuseok: '추석 테스트',
@@ -59,6 +59,6 @@ export async function generateMetadata({
   };
 }
 
-export default function QuizLayout({ children }: LayoutProps) {
+export default function QuizLayout({ children }: QuizLayoutProps) {
   return <>{children}</>;
 }
