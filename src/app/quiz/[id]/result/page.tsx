@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const SITE_URL = 'https://testival.kr';
   const title = 'Testival 결과 페이지';
   const desc = 'Testival 결과 페이지';
-  const img = `${SITE_URL}/images/quiz/chuseok/ogResult.png`;
+  const img = `${SITE_URL}/images/quiz/${id}/ogResult.png`;
 
   return {
     title,

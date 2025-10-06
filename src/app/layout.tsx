@@ -10,12 +10,12 @@ const defaultImage = `${siteUrl}/images/quiz/chuseok/ogImage.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: defaultTitle, template: '%s | 서비스 이름' },
+  title: { default: defaultTitle, template: '%s | testival' },
   description: defaultDesc,
   openGraph: {
     type: 'website',
     url: siteUrl,
-    siteName: '서비스 이름',
+    siteName: 'testival',
     title: defaultTitle,
     description: defaultDesc,
     locale: 'ko_KR',
