@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import './globals.css';
 import Providers from './providers';
 import Script from 'next/script';
+import GAListener from '@/lib/ga-listener';
 
 const siteUrl = 'https://testival.kr';
 const defaultTitle = 'Testival';
@@ -40,6 +42,19 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
+        {/* GA4 gtag.js */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          strategy='afterInteractive'
+        />
+        <Script id='gtag-init' strategy='afterInteractive'>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);} 
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', { send_page_view: false });
+          `}
+        </Script>
         <Script id='google-tag-manager' strategy='afterInteractive'>
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -57,6 +72,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
+        {/* SPA page_view tracking */}
+        <Suspense fallback={null}>
+          <GAListener />
+        </Suspense>
         <Providers>{children}</Providers>
       </body>
     </html>
