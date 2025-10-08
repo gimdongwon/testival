@@ -4,6 +4,7 @@ import './globals.css';
 import Providers from './providers';
 import Script from 'next/script';
 import GAListener from '@/lib/ga-listener';
+import { Analytics } from '@vercel/analytics/next';
 
 const siteUrl = 'https://testival.kr';
 const defaultTitle = 'Testival';
@@ -75,6 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* SPA page_view tracking */}
         <Suspense fallback={null}>
           <GAListener />
+          <Analytics />
         </Suspense>
         <Providers>{children}</Providers>
       </body>
