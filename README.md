@@ -1,27 +1,149 @@
 # Testival
 
-## Todo
+간단한 JSON 정의만으로 다양한 성격의 테스트(성향 테스트, 금액 합산 테스트 등)를 구성하고, Next.js App Router로 SSR/CSR 혼합 렌더링하는 퀴즈 플랫폼입니다.
 
-- [] 스타일링 완성
-  - [] 메인
-  - [] 질문
-  - [] 결과
-- [] 가중치 로직 개발
-- [] 결과 페이지 매핑
-- [] 배포
+### 데모 경로
 
-## page naming
+- `/:` 테스트 목록
+- `/quiz/:id:` 테스트 랜딩
+- `/quiz/:id/question:` 문항 진행
+- `/quiz/:id/loading:` 결과 산출 전 로딩
+- `/quiz/:id/result:` 결과 페이지
 
-- `/`: 메인 페이지로 home 기능
-- `/quiz/:id/:pageNum`: 퀴즈 도메인으로 id는 quiz의 id이고 pageNum은 해당 퀴즈의 page 순서를 의미함
-- `/quiz/:id/loading`: loading 페이지
-- `/quiz/:id/result`: 해당 퀴즈 도메인의 결과를 보여주는 페이지로 새로고침 시
+## 빠른 시작
 
-## use library
+### 요구사항
 
-- zod: 런타임에서 데이터 형태를 검증하고(Type Guard), 동시에 TypeScript 타입을 생성/일치시켜주는 작은 라이브러리 => 외부/파일에서 들어오는 JSON이 스키마대로 맞는지 실행 시점에 확인하고, 맞다면 타입이 자동으로 좁혀져 이후 코드가 안전해짐.
-- zustand
+- Node.js 18+ (권장 LTS)
+- Yarn 1.x
 
-## 참고 사항
+### 설치 & 실행
 
-- 테스트 중 새로고침시 테스트 맨 처음 페이지로 이동
+```bash
+yarn
+yarn dev
+```
+
+### 빌드 & 배포 실행
+
+```bash
+yarn build
+yarn start
+```
+
+## 스택
+
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
+- Zustand (진행 상태/선택 관리)
+- Zod (콘텐츠 스키마 검증)
+- @tanstack/react-query (프로바이더 구성 및 Devtools)
+
+## 프로젝트 구조
+
+```text
+src/
+  app/
+    page.tsx                  // 테스트 목록
+    layout.tsx                // 전역 메타/GA/Providers
+    quiz/[id]/
+      page.tsx               // 테스트 랜딩
+      layout.tsx             // 테스트별 메타/OG
+      question/
+        page.tsx             // 서버에서 정의 로드 + 배경
+        question.client.tsx  // 문항 진행 클라이언트
+      result/
+        page.tsx             // 결과 메타/OG + 데이터 로드
+        result.client.tsx    // 결과 렌더링
+  content/                    // 테스트 정의(JSON)
+    chuseok/
+      index.json
+      chuseok.json
+    chuseok_money/
+      index.json
+      chuseok_money.json
+  domain/
+    quiz.schema.ts            // Zod 스키마/타입
+  infrastructure/
+    quiz.repository.ts        // Repository 인터페이스/팩토리
+    quiz.fs.repository.ts     // 파일 시스템 기반 구현
+  store/
+    quizStore.ts              // 진행 인덱스/선택 상태(Zustand)
+  lib/
+    scoring.ts                // 스코어링(가중치/금액 합산)
+    ga-listener.tsx           // SPA page_view 추적
+  components/
+    common/QuestionCard       // 문항 카드 UI
+    chuseok_money/receipt     // 영수증 UI
+```
+
+## 콘텐츠 스키마
+
+모든 테스트는 `src/content/**.json`으로 정의되며 런타임에 Zod로 검증됩니다. 주요 스키마는 `src/domain/quiz.schema.ts` 참고.
+
+- **meta.mode**: `weighted | type-count | amount-sum`
+  - `weighted`: 선택지별 `weights: { 타입: 숫자 }` 합산 후 최상위 타입 도출
+  - `amount-sum`: 선택지별 `amount(만원)` 합산 → 구간(`zero|oneToThree|fourToFive|sixToNine|tenPlus`) 매핑
+  - `type-count`: 향후 확장용(`mapType` 지원)
+- **resultDetails**: 타입 키 → 상세 정보(`name/title/description/image/keywords/type`)
+- **questions[].choices**:
+  - `weighted`: `weights` 필요
+  - `amount-sum`: `amount` 필요(음수 허용)
+
+검증 규칙 예시
+
+- `resultDetails`/`messages` 키는 `meta.resultTypes`에 존재해야 함
+- `weighted`에서는 모든 `weights` 키가 `meta.resultTypes`에 포함되어야 함
+- `amount-sum`에서는 모든 선택지에 `amount` 숫자 필요
+
+## 데이터 로딩
+
+- `FSQuizRepository`가 `src/content` 하위 네임스페이스를 탐색하고 `index.json`/`*.json`을 동적 import 후 검증합니다.
+- `getQuizRepository().list()`로 목록, `getQuizRepository().getById(id)`로 개별 테스트를 획득합니다.
+
+## 진행/상태 관리
+
+- `quizStore`에서 테스트별 현재 문항 인덱스와 선택 기록을 관리합니다.
+- 진입/리로드 시 `start(testId)`로 0번 인덱스부터 시작합니다.
+- 선택 시 `choose(testId, qId, cId)` → 마지막 문항이면 `/loading`으로 이동, 아니면 `next()`.
+
+## 스코어링
+
+- `lib/scoring.ts`
+  - `amount-sum`: 합계 계산 → 금액 브라켓 키 도출
+  - `weighted`: 타입별 가중치 합산 → 최상위 타입 결정(동점 시 선언 순서 우선)
+
+## 접근성/UX
+
+- 버튼에 `aria-label`, 리스트/리전 역할 지정, `aria-live`로 동적 값 전달
+- 키보드 포커스 고려, 이미지에 `alt` 제공(배경 이미지는 시각 장식용 `alt` 처리)
+
+## SEO/공유
+
+- 전역/페이지 메타 및 OG 이미지 설정: `app/layout.tsx`, `quiz/[id]/layout.tsx`, `quiz/[id]/result/page.tsx`
+- 결과/테스트 별 OG 이미지: `public/images/quiz/:id/{ogImage,ogResult}.png`
+
+## 분석 도구
+
+- GA4 gtag 및 GTM 스니펫(`NEXT_PUBLIC_GA_ID` 필요)
+- SPA 네비게이션에서 `page_view` 전송: `lib/ga-listener.tsx`
+
+## SVG 사용
+
+- `next.config.ts`에서 SVGR 설정. `?component`로 React 컴포넌트 사용 가능, `?url`로 URL 사용 가능.
+
+## 환경변수
+
+- `NEXT_PUBLIC_GA_ID`: Google Analytics ID (예: `G-XXXXXX`)
+
+## 새로운 테스트 추가 방법
+
+1. `src/content/<namespace>/index.json`에 `{ metaList: [{ id, title }] }` 추가
+2. 동일 디렉토리에 `<id>.json` 정의 파일 추가(스키마 준수)
+3. `public/images/quiz/<id>/`에 필요한 이미지 배치(`main.png`, `content_background.png`, `result.png` 또는 `result_<type>.png`, `ogImage.png`, `ogResult.png` 등)
+4. 필요 시 스타일(`.scss`)과 옵션 버튼 테마 클래스 추가
+
+## 라이선스
+
+사내/개인 프로젝트 용도로 사용 중. 필요 시 라이선스를 명시하세요.
