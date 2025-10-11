@@ -41,21 +41,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='ko'>
       <head>
-        {/* GA4 gtag.js */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-          strategy='afterInteractive'
-        />
-        <Script id='gtag-init' strategy='afterInteractive'>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);} 
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', { send_page_view: false });
-          `}
-        </Script>
         <Script id='google-tag-manager' strategy='afterInteractive'>
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -64,10 +51,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PVQVPLJC');`}
         </Script>
         <Script
+          id='adsbygoogle'
           async
+          strategy='afterInteractive'
           src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9943215492404656'
           crossOrigin='anonymous'
-        ></Script>
+        />
       </head>
       <body>
         <noscript>
