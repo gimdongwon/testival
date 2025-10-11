@@ -28,6 +28,17 @@
   z-index: 0;
 }
 
+/* 세로로 긴 결과 이미지를 일반 흐름에 표시하여 스크롤되도록 함 */
+.longImage {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  z-index: 0;
+}
+
 /* 본문/영수증 등은 배경 위에 */
 .content {
   position: relative;

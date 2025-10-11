@@ -107,27 +107,34 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
       className={`${styles.result} ${containerVariantClass}`}
       aria-label='테스트 결과'
     >
-      {/* 배경 이미지: 폭 100%, 높이 자동 */}
-      <Image
-        className={styles.bgImage}
-        alt='테스트 결과 이미지'
-        src={
-          isChuseokPage
-            ? `/images/quiz/${testId}/result_${type}.png`
-            : `/images/quiz/${testId}/result.png`
-        }
-        draggable={false}
-        fill // ← width/height 대신 fill 사용(Next Image)
-        sizes='(max-width: 430px) 100vw, 430px'
-        priority
-      />
+      {/* 배경/결과 이미지 렌더링 */}
+      {isChuseokPage ? (
+        // 추석 결과는 세로로 긴 이미지가 있어, 일반 흐름으로 배치하여 스크롤 가능하게 처리
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          className={styles.longImage}
+          alt='테스트 결과 이미지'
+          src={`/images/quiz/${testId}/result_${type}.png`}
+          draggable={false}
+        />
+      ) : (
+        <Image
+          className={styles.bgImage}
+          alt='테스트 결과 이미지'
+          src={`/images/quiz/${testId}/result.png`}
+          draggable={false}
+          fill
+          sizes='(max-width: 430px) 100vw, 430px'
+          priority
+        />
+      )}
       <div className={styles.content}>
         {!isChuseokPage && (
           <Receipt id={testId} items={items} total={total} detail={detail} />
         )}
       </div>
       {/* 하단 고정 버튼과 겹치지 않도록 여백 확보 */}
-      <div className={styles.bottomSpacer} aria-hidden />
+      {!isChuseokPage && <div className={styles.bottomSpacer} aria-hidden />}
 
       {/* 공유 버튼 */}
       <div className={styles.shareBtnWrapper}>
