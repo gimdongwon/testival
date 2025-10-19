@@ -14,6 +14,7 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const variantById: Record<string, 'black' | 'white'> = {
     chuseok: 'black',
     chuseok_money: 'white',
+    seat: 'white',
   };
   const variantClass =
     variantById[id] === 'white' ? styles.whiteBtn : styles.blackBtn;

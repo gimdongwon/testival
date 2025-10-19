@@ -50,6 +50,16 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const optionClassName =
     optionClassById[testId] ?? questionCardStyles.optionLight;
 
+  // 페이지별 질문 텍스트 색상/폰트 매핑
+  const questionTextColorById: Record<string, string> = {
+    seat: '#fff',
+  };
+  const questionFontById: Record<string, string | undefined> = {
+    seat: 'WAGURI',
+  };
+  const questionTextColor = questionTextColorById[testId] ?? '#000';
+  const questionFontFamily = questionFontById[testId];
+
   return (
     <div style={{ maxWidth: 720, margin: '0 auto', padding: 24 }}>
       <QuestionCard
@@ -58,6 +68,8 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
         options={options}
         onSelect={handleSelect}
         optionClassName={optionClassName}
+        questionTextColor={questionTextColor}
+        questionFontFamily={questionFontFamily}
       />
     </div>
   );

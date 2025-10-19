@@ -71,11 +71,48 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
   const handleClickResetBtn = () => {
     router.push(`/quiz/${testId}`);
   };
-  const isChuseokPage = testId === 'chuseok';
-  const btnVariantClass = isChuseokPage ? styles.btnDark : styles.btnLight;
-  const containerVariantClass = isChuseokPage
-    ? styles.resultLight
-    : styles.resultDark;
+  // 페이지별 결과 UI 설정 매핑(확장 용이)
+  const resultConfigById: Record<
+    string,
+    {
+      theme: 'black' | 'white';
+      imageMode: 'long' | 'bg';
+      showReceipt: boolean;
+      showBottomSpacer: boolean;
+    }
+  > = {
+    chuseok: {
+      theme: 'black',
+      imageMode: 'long',
+      showReceipt: false,
+      showBottomSpacer: false,
+    },
+    chuseok_money: {
+      theme: 'white',
+      imageMode: 'bg',
+      showReceipt: true,
+      showBottomSpacer: true,
+    },
+    seat: {
+      theme: 'white',
+      imageMode: 'long',
+      showReceipt: false,
+      showBottomSpacer: true,
+    },
+  };
+  const config = resultConfigById[testId] ?? {
+    theme: 'black' as const,
+    imageMode: 'long' as const,
+    showReceipt: false,
+    showBottomSpacer: true,
+  };
+
+  // 컨테이너/버튼/아이콘 색상은 테마에서 파생
+  const containerVariantClass =
+    config.theme === 'white' ? styles.resultLight : styles.resultDark;
+  const btnVariantClass =
+    config.theme === 'white' ? styles.btnLight : styles.btnDark;
+  const iconColor = config.theme === 'white' ? '#000' : '#fff';
 
   // chuseok_money 전용: 선택 항목 리스트와 합계, 결과 상세 계산
   const { items, total, detail } = useMemo<{
@@ -108,7 +145,7 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
       aria-label='테스트 결과'
     >
       {/* 배경/결과 이미지 렌더링 */}
-      {isChuseokPage ? (
+      {config.imageMode === 'long' ? (
         // 추석 결과는 세로로 긴 이미지가 있어, 일반 흐름으로 배치하여 스크롤 가능하게 처리
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -129,12 +166,14 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
         />
       )}
       <div className={styles.content}>
-        {!isChuseokPage && (
+        {config.showReceipt && (
           <Receipt id={testId} items={items} total={total} detail={detail} />
         )}
       </div>
       {/* 하단 고정 버튼과 겹치지 않도록 여백 확보 */}
-      {!isChuseokPage && <div className={styles.bottomSpacer} aria-hidden />}
+      {config.showBottomSpacer && (
+        <div className={styles.bottomSpacer} aria-hidden />
+      )}
 
       {/* 공유 버튼 */}
       <div className={styles.shareBtnWrapper}>
@@ -143,22 +182,14 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
           onClick={handleClickShareBtn}
         >
           <span>테스트 공유하기</span>
-          <ShareIcon
-            color={isChuseokPage ? '#fff' : '#000'}
-            width={13}
-            height={13}
-          />
+          <ShareIcon color={iconColor} width={13} height={13} />
         </button>
         <button
           className={`${styles.resetBtn} ${btnVariantClass}`}
           aria-label='테스트 다시하기'
           onClick={handleClickResetBtn}
         >
-          <ResetIcon
-            color={isChuseokPage ? '#fff' : '#000'}
-            width={18}
-            height={21}
-          />
+          <ResetIcon color={iconColor} width={18} height={21} />
         </button>
       </div>
     </section>

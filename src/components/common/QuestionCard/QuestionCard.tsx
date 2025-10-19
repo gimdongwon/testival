@@ -17,6 +17,8 @@ export type QuestionCardProps = {
   backgroundImage?: string; // 배경 이미지 경로 (선택)
   style?: React.CSSProperties;
   optionClassName?: string;
+  questionTextColor?: string;
+  questionFontFamily?: string;
 };
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -26,15 +28,30 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   onSelect,
   style,
   optionClassName,
+  questionTextColor,
+  questionFontFamily,
 }) => {
   return (
     <div className={styles.centerGrid}>
       <div className={styles.card}>
         <div className={styles.cardHeader} aria-label='질문지 상단'>
-          <span className={styles.cardQnum}>Q{number}.</span>
+          <span
+            className={styles.cardQnum}
+            style={{ color: questionTextColor, fontFamily: questionFontFamily }}
+          >
+            Q{number}.
+          </span>
         </div>
 
-        <h2 className={styles.cardTitle}>{title}</h2>
+        <h2
+          className={styles.cardTitle}
+          style={{
+            color: questionTextColor,
+            fontFamily: questionFontFamily,
+          }}
+        >
+          {title}
+        </h2>
 
         <div className={styles.cardOptions} role='list'>
           {options.map((opt) => (
