@@ -20,11 +20,13 @@ export async function generateMetadata({
   const titleById: Record<string, string> = {
     chuseok: '추석 테스트',
     chuseok_money: '추석 용돈 테스트',
+    seat: '친구들과 여행가는 차 안, 내 자리는?',
   };
 
   const descriptionById: Record<string, string> = {
     chuseok: 'Testival - 추석 테스트',
     chuseok_money: 'Testival - 추석 용돈 테스트',
+    seat: 'Testival - 친구들과 여행가는 차 안, 내 자리는?',
   };
 
   const resolvedTitle = titleById[id] ?? 'Testival';
