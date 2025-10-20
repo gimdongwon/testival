@@ -4,22 +4,32 @@ import ResultClient from './result.client';
 import type { Metadata } from 'next';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
 
-type Props = { params: Promise<{ id: string }> };
+type Props = {
+  params: Promise<{
+    id: string;
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 export const revalidate = 600;
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: Props): Promise<Metadata> {
   const { id } = await params;
+  const { type } = await searchParams;
+  if (!type) return notFound();
   const SITE_URL = 'https://testival.kr';
-  const title = 'Testival 결과 페이지';
-  const desc = 'Testival 결과 페이지';
-  const img = `${SITE_URL}/images/quiz/${id}/ogResult.png`;
+  const title = `Testival ${id} 결과`;
+  const desc = `Testival ${id} 결과 페이지`;
+  const img = `${SITE_URL}/images/quiz/${id}/result_${type}.png`;
 
   return {
     title,
     description: desc,
     openGraph: {
       type: 'article',
-      siteName: '서비스 이름',
+      siteName: `Testival ${id}`,
       url: `${SITE_URL}/quiz/${id}/result`,
       title,
       description: desc,
