@@ -9,7 +9,7 @@ import { Analytics } from '@vercel/analytics/next';
 const siteUrl = 'https://testival.kr';
 const defaultTitle = 'Testival';
 const defaultDesc = 'Testival';
-const defaultImage = `${siteUrl}/images/quiz/chuseok/ogImage.png?v=${new Date().getTime()}`;
+const defaultImage = `${siteUrl}/images/quiz/chuseok/ogImage.png`;
 const defaultImageAlt = '미리보기 이미지';
 const defaultImageWidth = 1200;
 const defaultImageHeight = 630;
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     images: [
       {
-        url: defaultImage,
+        url: `${defaultImage}?v=${new Date().getTime()}`,
         width: defaultImageWidth,
         height: defaultImageHeight,
         alt: defaultImageAlt,
