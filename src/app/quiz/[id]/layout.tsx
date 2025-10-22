@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   const resolvedTitle = titleById[id] ?? 'Testival';
   const resolvedDescription = descriptionById[id] ?? 'Testival';
-  const ogImage = `${siteUrl}/images/quiz/${id}/ogImage.png`;
+  const ogImage = `${siteUrl}/images/quiz/${id}/og-image.png`;
 
   return {
     metadataBase: new URL(siteUrl),
