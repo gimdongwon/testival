@@ -9,8 +9,10 @@ import { Analytics } from '@vercel/analytics/next';
 const siteUrl = 'https://testival.kr';
 const defaultTitle = 'Testival';
 const defaultDesc = 'Testival';
-const defaultImage = `${siteUrl}/images/quiz/chuseok/ogImage.png`;
-
+const defaultImage = `${siteUrl}/images/quiz/chuseok/ogImage.png?v=${new Date().getTime()}`;
+const defaultImageAlt = '미리보기 이미지';
+const defaultImageWidth = 1200;
+const defaultImageHeight = 630;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: defaultTitle, template: '%s | testival' },
@@ -23,7 +25,12 @@ export const metadata: Metadata = {
     description: defaultDesc,
     locale: 'ko_KR',
     images: [
-      { url: defaultImage, width: 1200, height: 630, alt: '미리보기 이미지' },
+      {
+        url: defaultImage,
+        width: defaultImageWidth,
+        height: defaultImageHeight,
+        alt: defaultImageAlt,
+      },
     ],
   },
   twitter: {
