@@ -1,9 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './detail.module.scss';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
+import MainImageSlide from '@/components/MainImageSlide/MainImageSlide';
+import fs from 'fs';
+import path from 'path';
 
 const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const repo = getQuizRepository();
@@ -19,15 +21,31 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const variantClass =
     variantById[id] === 'white' ? styles.whiteBtn : styles.blackBtn;
 
+  const dir = path.join(process.cwd(), 'public', 'images', 'quiz', id);
+  let images: string[] = [];
+  try {
+    const files = fs.readdirSync(dir);
+    images = files
+      .filter((file) => /^main(\d*)\.png$/.test(file))
+      .sort((a, b) => {
+        const numA =
+          a === 'main.png'
+            ? 0
+            : parseInt(a.match(/^main(\d+)\.png$/)?.[1] || '0');
+        const numB =
+          b === 'main.png'
+            ? 0
+            : parseInt(b.match(/^main(\d+)\.png$/)?.[1] || '0');
+        return numA - numB;
+      })
+      .map((file) => `/images/quiz/${id}/${file}`);
+  } catch {
+    // 디렉토리 없을 때는 기본 main.png만
+    images = [`/images/quiz/${id}/main.png`];
+  }
   return (
     <main aria-label='메인비주얼' className={styles.landingMain}>
-      <Image
-        src={`/images/quiz/${id}/main.png`}
-        width={720}
-        height={1280}
-        alt=''
-        className={styles.heroBg}
-      />
+      <MainImageSlide id={id} images={images} />
       <div className={styles.warpper}>
         <Link
           href={`/quiz/${id}/question`}
