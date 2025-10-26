@@ -9,3 +9,28 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.contentContainer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.progress {
+  /* container for a11y progress bar */
+  width: 100%;
+}
+
+.progressTrack {
+  height: 8px;
+  width: 100%;
+  background-color: #e0e0e0;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #555;
+  transition: width 200ms ease;
+  width: var(--progress, 0%);
+}

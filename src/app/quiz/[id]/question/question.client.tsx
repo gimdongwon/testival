@@ -2,6 +2,7 @@
 'use client';
 
 import { useEffect, useMemo } from 'react';
+import type { CSSProperties } from 'react';
 import { useRouter } from 'next/navigation';
 import type { TestDefinition } from '@/domain/quiz.schema';
 import QuestionCard, {
@@ -9,6 +10,7 @@ import QuestionCard, {
 } from '@/components/common/QuestionCard/QuestionCard';
 import questionCardStyles from '@/components/common/QuestionCard/QuestionCard.module.scss';
 import { useQuizView, quizActions } from '@/store/quizStore';
+import styles from './question.module.scss';
 
 const LABELS = ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'];
 
@@ -25,6 +27,9 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
 
   const total = def.questions.length;
   const q = def.questions[index];
+
+  const currentStep = index + 1;
+  const progressPercent = Math.round((currentStep / total) * 100);
 
   const options: QuestionOption[] = useMemo(
     () =>
@@ -60,17 +65,36 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const questionTextColor = questionTextColorById[testId] ?? '#000';
   const questionFontFamily = questionFontById[testId];
 
+  const progressStyle: CSSProperties & Record<'--progress', string> = {
+    ['--progress']: `${progressPercent}%`,
+  };
+
   return (
-    <div style={{ maxWidth: 720, margin: '0 auto', padding: 24 }}>
-      <QuestionCard
-        number={index + 1}
-        title={q.title}
-        options={options}
-        onSelect={handleSelect}
-        optionClassName={optionClassName}
-        questionTextColor={questionTextColor}
-        questionFontFamily={questionFontFamily}
-      />
-    </div>
+    <>
+      <div
+        className={styles.progress}
+        role='progressbar'
+        aria-label='퀴즈 진행도'
+        aria-valuemin={0}
+        aria-valuemax={total}
+        aria-valuenow={currentStep}
+        tabIndex={0}
+      >
+        <div className={styles.progressTrack}>
+          <div className={styles.progressFill} style={progressStyle} />
+        </div>
+      </div>
+      <div className={styles.contentContainer}>
+        <QuestionCard
+          number={currentStep}
+          title={q.title}
+          options={options}
+          onSelect={handleSelect}
+          optionClassName={optionClassName}
+          questionTextColor={questionTextColor}
+          questionFontFamily={questionFontFamily}
+        />
+      </div>
+    </>
   );
 }
