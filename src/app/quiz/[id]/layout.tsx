@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import quizMeta from '@/content/quiz-meta.json';
 
 const siteUrl = 'https://testival.kr';
 
@@ -17,20 +18,27 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
 
-  const titleById: Record<string, string> = {
-    chuseok: '추석 테스트',
-    chuseok_money: '추석 용돈 테스트',
-    seat: '친구들과 여행가는 차 안, 내 자리는?',
+  type QuizMetaEntry = Readonly<{
+    id: string;
+    title: string;
+    description?: string;
+  }>;
+
+  const getMetaById = (
+    quizId: string
+  ): { title: string; description: string } => {
+    const list = (quizMeta as { metas: QuizMetaEntry[] }).metas;
+    const found = list.find((m) => m.id === quizId);
+    if (!found) {
+      return { title: 'Testival', description: 'Testival' };
+    }
+    const title = found.title ?? 'Testival';
+    const description = found.description ?? `Testival - ${title}`;
+    return { title, description };
   };
 
-  const descriptionById: Record<string, string> = {
-    chuseok: 'Testival - 추석 테스트',
-    chuseok_money: 'Testival - 추석 용돈 테스트',
-    seat: 'Testival - 친구들과 여행가는 차 안, 내 자리는?',
-  };
-
-  const resolvedTitle = titleById[id] ?? 'Testival';
-  const resolvedDescription = descriptionById[id] ?? 'Testival';
+  const { title: resolvedTitle, description: resolvedDescription } =
+    getMetaById(id);
   const ogImage = `${siteUrl}/images/quiz/${id}/og-image.png`;
 
   return {
