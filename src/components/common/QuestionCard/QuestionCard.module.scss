@@ -132,4 +132,36 @@
 
 .optionLabel {
   flex-shrink: 0;
+  font-weight: 700;
+  margin-top: 36px;
+}
+
+/* 2지선다 그리드 타일 스타일(세로 가운데 정렬) */
+.optionTile {
+  height: 150px;
+  /* 고정 상단 라벨 + 가변 본문 영역을 위한 2행 그리드 */
+  display: grid;
+  grid-template-rows: 28px 1fr; /* 1행: 라벨 고정 높이 */
+  row-gap: 8px;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  padding: 8px 12px;
+}
+
+/* 타일 모드에서는 텍스트가 남는 영역을 채우지 않도록 해 중앙 정렬 유지 */
+.optionTile .optionText {
+  flex: 0 0 auto;
+  /* 본문을 자신의 영역(2행)에서 정확히 가운데 배치 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.optionTile .optionLabel {
+  flex: 0 0 auto;
+  /* 라벨은 항상 1행에 위치(고정 높이 영역) */
+  align-self: center;
+  justify-self: center;
 }

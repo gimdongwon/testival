@@ -47,27 +47,40 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     else quizActions.next(testId, total);
   };
 
-  // 테스트별 옵션 버튼 테마 클래스 분기(인라인 스타일 제거)
-  const optionClassById: Record<string, string> = {
-    chuseok: questionCardStyles.optionChuseokDark,
-    chuseok_money: questionCardStyles.optionDark,
-  };
+  // JSON UI 설정 기반 옵션/질문 스타일
+  const qUi =
+    (
+      def as unknown as {
+        ui?: {
+          question?: {
+            optionVariant?: 'light' | 'dark' | 'chuseokDark';
+            questionTextColor?: string;
+            questionFontFamily?: string;
+            progressFillColor?: string;
+          };
+        };
+      }
+    ).ui?.question ?? {};
   const optionClassName =
-    optionClassById[testId] ?? questionCardStyles.optionLight;
+    qUi.optionVariant === 'chuseokDark'
+      ? questionCardStyles.optionChuseokDark
+      : qUi.optionVariant === 'dark'
+      ? questionCardStyles.optionDark
+      : questionCardStyles.optionLight;
+  const questionTextColor = qUi.questionTextColor ?? '#000';
+  const questionFontFamily = qUi.questionFontFamily;
 
-  // 페이지별 질문 텍스트 색상/폰트 매핑
-  const questionTextColorById: Record<string, string> = {
-    seat: '#fff',
-  };
-  const questionFontById: Record<string, string | undefined> = {
-    seat: 'WAGURI',
-  };
-  const questionTextColor = questionTextColorById[testId] ?? '#000';
-  const questionFontFamily = questionFontById[testId];
-
-  const progressStyle: CSSProperties & Record<'--progress', string> = {
+  const progressStyle: CSSProperties &
+    Record<'--progress' | '--progress-fill-color', string> = {
     ['--progress']: `${progressPercent}%`,
+    ['--progress-fill-color']: qUi.progressFillColor ?? '#555',
   };
+
+  // classroom 콘텐츠는 2지선다형 UI를 사용(확장 가능하도록 조건 기반)
+  const isTwoChoiceGrid =
+    def.meta.id === 'classroom' &&
+    Array.isArray(options) &&
+    options.length === 2;
 
   return (
     <>
@@ -93,6 +106,12 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           optionClassName={optionClassName}
           questionTextColor={questionTextColor}
           questionFontFamily={questionFontFamily}
+          columns={isTwoChoiceGrid ? 2 : 1}
+          optionFontFamily={
+            def.meta.id === 'classroom'
+              ? `'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif`
+              : undefined
+          }
         />
       </div>
     </>

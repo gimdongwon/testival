@@ -18,6 +18,21 @@
     "locale": "ko",
     "version": 1
   },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "long",
+      "showReceipt": false,
+      "showBottomSpacer": true,
+      "backgroundColor": "#FFFFFF"
+    },
+    "landing": { "buttonTheme": "white" },
+    "question": {
+      "optionVariant": "light",
+      "questionTextColor": "#fff",
+      "questionFontFamily": "WAGURI"
+    }
+  },
   "resultDetails": {
     "운전석": {
       "name": "운전석형",

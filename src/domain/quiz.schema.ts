@@ -32,6 +32,33 @@ export const ResultDetailZ = z.object({
   type: z.string().min(1),
 });
 
+/** 결과 페이지 UI 설정(콘텐츠 JSON에서 오버라이드 가능) */
+export const ResultUIConfigZ = z.object({
+  theme: z.enum(['black', 'white']),
+  imageMode: z.enum(['long', 'bg']),
+  showReceipt: z.boolean().default(false),
+  showBottomSpacer: z.boolean().default(true),
+  backgroundColor: z.string().optional(),
+});
+
+export const LandingUIConfigZ = z.object({
+  buttonTheme: z.enum(['black', 'white']).default('black'),
+});
+
+export const QuestionUIConfigZ = z.object({
+  optionVariant: z.enum(['light', 'dark', 'chuseokDark']).default('light'),
+  questionTextColor: z.string().optional(),
+  questionFontFamily: z.string().optional(),
+  progressFillColor: z.string().optional(),
+});
+
+/** 테스트별 UI 설정 */
+export const TestUIZ = z.object({
+  result: ResultUIConfigZ.optional(),
+  landing: LandingUIConfigZ.optional(),
+  question: QuestionUIConfigZ.optional(),
+});
+
 /** 메타정보 */
 export const TestMetaZ = z.object({
   id: z.string().min(1),
@@ -52,6 +79,8 @@ export const TestDefinitionZ = z
     resultDetails: z.record(z.string(), ResultDetailZ).default({}),
     // 짧은 카피(선택): 타입 키 → 짧은 문구
     messages: z.record(z.string(), z.string()).optional(),
+    // UI 설정(선택): 결과 페이지 등 렌더링 설정
+    ui: TestUIZ.optional(),
     questions: z.array(QuestionZ).min(1, '최소 1개 이상의 문항이 필요합니다.'),
   })
   .superRefine((data, ctx) => {

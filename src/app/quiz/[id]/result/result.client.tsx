@@ -8,6 +8,7 @@ import ShareIcon from '@/components/icons/share';
 import Image from 'next/image';
 import Receipt from '@/components/chuseok_money/receipt';
 import { useMemo } from 'react';
+import type { CSSProperties } from 'react';
 import { useQuizView } from '@/store/quizStore';
 import { score } from '@/lib/scoring';
 import type { TestDefinition, ResultDetail } from '@/domain/quiz.schema';
@@ -71,36 +72,21 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
   const handleClickResetBtn = () => {
     router.push(`/quiz/${testId}`);
   };
-  // 페이지별 결과 UI 설정 매핑(확장 용이)
-  const resultConfigById: Record<
-    string,
-    {
-      theme: 'black' | 'white';
-      imageMode: 'long' | 'bg';
-      showReceipt: boolean;
-      showBottomSpacer: boolean;
+  // 콘텐츠 JSON의 UI 설정 우선 적용(없으면 하드코딩 맵으로 폴백)
+  const jsonConfig = (
+    def as unknown as {
+      ui?: {
+        result?: {
+          theme: 'black' | 'white';
+          imageMode: 'long' | 'bg';
+          showReceipt: boolean;
+          showBottomSpacer: boolean;
+          backgroundColor?: string;
+        };
+      };
     }
-  > = {
-    chuseok: {
-      theme: 'black',
-      imageMode: 'long',
-      showReceipt: false,
-      showBottomSpacer: false,
-    },
-    chuseok_money: {
-      theme: 'white',
-      imageMode: 'bg',
-      showReceipt: true,
-      showBottomSpacer: true,
-    },
-    seat: {
-      theme: 'white',
-      imageMode: 'long',
-      showReceipt: false,
-      showBottomSpacer: true,
-    },
-  };
-  const config = resultConfigById[testId] ?? {
+  ).ui?.result;
+  const config = jsonConfig ?? {
     theme: 'black' as const,
     imageMode: 'long' as const,
     showReceipt: false,
@@ -113,6 +99,11 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
   const btnVariantClass =
     config.theme === 'white' ? styles.btnLight : styles.btnDark;
   const iconColor = config.theme === 'white' ? '#000' : '#fff';
+  const resultBgStyle: CSSProperties & Record<'--result-bg-color', string> = {
+    ['--result-bg-color']:
+      (jsonConfig?.backgroundColor as string | undefined) ??
+      (config.theme === 'white' ? '#fff' : '#000'),
+  };
 
   // chuseok_money 전용: 선택 항목 리스트와 합계, 결과 상세 계산
   const { items, total, detail } = useMemo<{
@@ -143,6 +134,7 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
     <section
       className={`${styles.result} ${containerVariantClass}`}
       aria-label='테스트 결과'
+      style={resultBgStyle}
     >
       {/* 배경/결과 이미지 렌더링 */}
       {config.imageMode === 'long' ? (

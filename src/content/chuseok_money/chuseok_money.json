@@ -8,6 +8,17 @@
     "locale": "ko",
     "version": 1
   },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "bg",
+      "showReceipt": true,
+      "showBottomSpacer": true,
+      "backgroundColor": "#FFFFFF"
+    },
+    "landing": { "buttonTheme": "white" },
+    "question": { "optionVariant": "dark" }
+  },
   "resultDetails": {
     "zero": {
       "name": "0원",

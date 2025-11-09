@@ -11,7 +11,7 @@
   /* 스크롤 살리기 */
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #000;
+  background-color: var(--result-bg-color, #000);
 }
 
 /* 배경 이미지: 가로 꽉 채우고 세로 자동, 전체 표시 */

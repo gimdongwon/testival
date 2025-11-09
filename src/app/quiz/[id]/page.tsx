@@ -12,14 +12,15 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const def = await repo.getById(id);
   if (!def) return notFound();
-  // id별 버튼 색상 분기(확장 용이)
-  const variantById: Record<string, 'black' | 'white'> = {
-    chuseok: 'black',
-    chuseok_money: 'white',
-    seat: 'white',
-  };
+  // JSON UI 설정 기반 버튼 색상
+  const buttonTheme =
+    (
+      def as unknown as {
+        ui?: { landing?: { buttonTheme?: 'black' | 'white' } };
+      }
+    ).ui?.landing?.buttonTheme ?? 'black';
   const variantClass =
-    variantById[id] === 'white' ? styles.whiteBtn : styles.blackBtn;
+    buttonTheme === 'white' ? styles.whiteBtn : styles.blackBtn;
 
   const dir = path.join(process.cwd(), 'public', 'images', 'quiz', id);
   let images: string[] = [];

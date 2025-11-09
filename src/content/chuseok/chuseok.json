@@ -16,6 +16,17 @@
     "locale": "ko",
     "version": 1
   },
+  "ui": {
+    "result": {
+      "theme": "black",
+      "imageMode": "long",
+      "showReceipt": false,
+      "showBottomSpacer": false,
+      "backgroundColor": "#000000"
+    },
+    "landing": { "buttonTheme": "black" },
+    "question": { "optionVariant": "chuseokDark" }
+  },
   "resultDetails": {
     "집콕": {
       "name": "집콕",
