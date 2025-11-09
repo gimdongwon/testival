@@ -47,6 +47,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
               color: optionFontFamily ? '#FB2575' : questionTextColor,
               fontFamily: optionFontFamily ?? questionFontFamily,
               WebkitTextStroke: optionFontFamily ? '2.5px #fff' : undefined,
+              paintOrder: optionFontFamily ? 'stroke fill' : undefined,
             }}
           >
             Q{number}.
@@ -59,6 +60,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             color: optionFontFamily ? '#fff' : questionTextColor,
             fontFamily: optionFontFamily ?? questionFontFamily,
             WebkitTextStroke: optionFontFamily ? '2.5px black' : undefined,
+            paintOrder: optionFontFamily ? 'stroke fill' : undefined,
           }}
         >
           {title}

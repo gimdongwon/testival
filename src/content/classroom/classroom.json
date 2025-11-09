@@ -17,7 +17,7 @@
   },
   "ui": {
     "result": {
-      "theme": "white",
+      "theme": "black",
       "imageMode": "long",
       "showReceipt": false,
       "showBottomSpacer": true,

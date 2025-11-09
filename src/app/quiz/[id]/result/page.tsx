@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import ResultClient from './result.client';
 import type { Metadata } from 'next';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
+import quizMeta from '@/content/quiz-meta.json';
 
 type Props = {
   params: Promise<{
@@ -20,8 +21,24 @@ export async function generateMetadata({
   const { type } = await searchParams;
   if (!type) return notFound();
   const SITE_URL = 'https://testival.kr';
-  const title = `Testival ${id} 결과`;
-  const desc = `Testival ${id} 결과 페이지`;
+  type QuizMetaEntry = Readonly<{
+    id: string;
+    title: string;
+    description?: string;
+  }>;
+  const getMetaById = (
+    quizId: string
+  ): { title: string; description: string } => {
+    const list = (quizMeta as { metas: QuizMetaEntry[] }).metas;
+    const found = list.find((m) => m.id === quizId);
+    if (!found) {
+      return { title: 'Testival', description: 'Testival' };
+    }
+    const baseTitle = found.title ?? 'Testival';
+    const baseDescription = found.description ?? `Testival - ${baseTitle}`;
+    return { title: baseTitle, description: baseDescription };
+  };
+  const { title, description: desc } = getMetaById(id);
   const img = `${SITE_URL}/images/quiz/${id}/result_${type}.png`;
 
   return {
