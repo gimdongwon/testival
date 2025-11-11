@@ -150,10 +150,11 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
         <Image
           className={styles.bgImage}
           alt='테스트 결과 이미지'
-          src={`/images/quiz/${testId}/result.png`}
+          src={`/images/quiz/${testId}/result.png?20251112`}
           draggable={false}
           fill
           sizes='(max-width: 430px) 100vw, 430px'
+          height={1228}
           priority
         />
       )}

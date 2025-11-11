@@ -27,8 +27,8 @@ export default function MainImageSlide({
         <Image
           key={src}
           src={src}
-          width={720}
-          height={1280}
+          width={375}
+          height={812}
           alt=''
           className={`${styles.mainImage} ${i === index ? styles.visible : ''}`}
           priority={i === 0}
