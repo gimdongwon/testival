@@ -7,7 +7,31 @@ import {
   type TestDefinition,
   TestMetaZ,
 } from '@/domain/quiz.schema';
-import { kv } from '@vercel/kv';
+
+// KV 클라이언트를 조건부로 import
+type KVClient = {
+  get: <T = unknown>(key: string) => Promise<T | null>;
+  incr: (key: string) => Promise<number>;
+  keys: (pattern: string) => Promise<string[]>;
+  mget: <T = unknown[]>(...keys: string[]) => Promise<T>;
+};
+
+let kv: KVClient | null = null;
+
+// 환경 변수가 유효한 경우에만 KV 클라이언트 초기화
+if (
+  process.env.KV_REST_API_URL &&
+  process.env.KV_REST_API_TOKEN &&
+  process.env.KV_REST_API_URL.startsWith('https://')
+) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const kvModule = require('@vercel/kv');
+    kv = kvModule.kv as KVClient;
+  } catch {
+    console.warn('Vercel KV is not configured. View counts will be disabled.');
+  }
+}
 
 export class FSQuizRepository {
   getTestDefinition: (() => TestDefinition) | undefined;
@@ -73,6 +97,10 @@ export class FSQuizRepository {
   }
 
   async getViewCount(id: string): Promise<number> {
+    if (!kv) {
+      console.warn('KV not configured, returning 0 views');
+      return 0;
+    }
     try {
       const key = `quiz:views:${id}`;
       const views = (await kv.get<number>(key)) ?? 0;
@@ -84,6 +112,10 @@ export class FSQuizRepository {
   }
 
   async getAllViewCounts(): Promise<Record<string, number>> {
+    if (!kv) {
+      console.warn('KV not configured, returning empty views');
+      return {};
+    }
     try {
       const keys = await kv.keys('quiz:views:*');
 
@@ -107,6 +139,10 @@ export class FSQuizRepository {
   }
 
   async incrementViewCount(id: string): Promise<number> {
+    if (!kv) {
+      console.warn('KV not configured, cannot increment view count');
+      return 0;
+    }
     try {
       const key = `quiz:views:${id}`;
       await kv.incr(key);
