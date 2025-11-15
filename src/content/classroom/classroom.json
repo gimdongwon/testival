@@ -24,7 +24,26 @@
       "backgroundColor": "#FF6AA2"
     },
     "landing": { "buttonTheme": "white" },
-    "question": { "optionVariant": "light", "progressFillColor": "#FF6AA2" }
+    "question": {
+      "optionVariant": "light",
+      "progressFillColor": "#FF6AA2",
+      "optionFontFamily": "'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif",
+      "questionNumberStyle": {
+        "color": "#FB2575",
+        "fontFamily": "'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif",
+        "WebkitTextStroke": "2.5px #fff",
+        "paintOrder": "stroke fill"
+      },
+      "questionTitleStyle": {
+        "color": "#fff",
+        "fontFamily": "'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif",
+        "WebkitTextStroke": "2.5px black",
+        "paintOrder": "stroke fill"
+      },
+      "optionLabelStyle": {
+        "fontFamily": "'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif"
+      }
+    }
   },
   "resultDetails": {
     "front": {

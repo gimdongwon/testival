@@ -69,6 +69,7 @@ export const TestMetaZ = z.object({
   thumbnail: z.string().optional(),
   locale: z.string().default('ko'),
   version: z.number().int().positive().default(1),
+  views: z.number().int().nonnegative().default(0),
 });
 
 /** 전체 테스트 정의 */

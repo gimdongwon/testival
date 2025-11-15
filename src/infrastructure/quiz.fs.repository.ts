@@ -7,6 +7,7 @@ import {
   type TestDefinition,
   TestMetaZ,
 } from '@/domain/quiz.schema';
+import { kv } from '@vercel/kv';
 
 export class FSQuizRepository {
   getTestDefinition: (() => TestDefinition) | undefined;
@@ -69,5 +70,51 @@ export class FSQuizRepository {
       }
     }
     return all;
+  }
+
+  async getViewCount(id: string): Promise<number> {
+    try {
+      const key = `quiz:views:${id}`;
+      const views = (await kv.get<number>(key)) ?? 0;
+      return views;
+    } catch (error) {
+      console.error('Failed to get view count:', error);
+      return 0;
+    }
+  }
+
+  async getAllViewCounts(): Promise<Record<string, number>> {
+    try {
+      const keys = await kv.keys('quiz:views:*');
+
+      if (!keys || keys.length === 0) {
+        return {};
+      }
+
+      const values = await kv.mget<number[]>(...keys);
+      const viewsMap: Record<string, number> = {};
+
+      keys.forEach((key, index) => {
+        const quizId = key.replace('quiz:views:', '');
+        viewsMap[quizId] = values[index] ?? 0;
+      });
+
+      return viewsMap;
+    } catch (error) {
+      console.error('Failed to get all view counts:', error);
+      return {};
+    }
+  }
+
+  async incrementViewCount(id: string): Promise<number> {
+    try {
+      const key = `quiz:views:${id}`;
+      await kv.incr(key);
+      const views = (await kv.get<number>(key)) ?? 1;
+      return views;
+    } catch (error) {
+      console.error('Failed to increment view count:', error);
+      return 0;
+    }
   }
 }

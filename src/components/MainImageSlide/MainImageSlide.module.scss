@@ -5,19 +5,71 @@
   overflow: hidden;
 }
 
-.mainImage {
-  position: absolute;
-  inset: 0;
+.swiper {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  will-change: opacity;
 }
 
-.visible {
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideLink {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+
+  &:focus {
+    outline: 2px solid #4a90e2;
+    outline-offset: -2px;
+  }
+}
+
+.slideImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+// Swiper Pagination 커스텀 스타일
+.bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
   opacity: 1;
-  z-index: 1;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.bulletActive {
+  width: 24px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+// Swiper Pagination 컨테이너 위치 조정
+.wrapper :global(.swiper-pagination) {
+  bottom: 16px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 모바일에서 터치 피드백
+@media (hover: none) and (pointer: coarse) {
+  .slideLink:active {
+    opacity: 0.9;
+  }
 }

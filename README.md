@@ -39,6 +39,7 @@ yarn start
 - Zustand (진행 상태/선택 관리)
 - Zod (콘텐츠 스키마 검증)
 - @tanstack/react-query (프로바이더 구성 및 Devtools)
+- Vercel KV (Redis) - 조회수 카운팅
 
 ## 프로젝트 구조
 
@@ -129,6 +130,19 @@ src/
 - GA4 gtag 및 GTM 스니펫(`NEXT_PUBLIC_GA_ID` 필요)
 - SPA 네비게이션에서 `page_view` 전송: `lib/ga-listener.tsx`
 
+## 조회수 카운팅
+
+- Vercel KV (Redis)를 사용하여 각 퀴즈의 조회수를 실시간으로 카운팅합니다.
+- 퀴즈 상세 페이지 진입 시 자동으로 조회수가 증가합니다.
+- 메인 페이지 목록에서 각 퀴즈의 조회수를 확인할 수 있습니다.
+
+### 주요 구성
+
+- **API Route**: `/api/quiz/[id]/view` (GET: 조회, POST: 증가)
+- **Hook**: `useViewCount(quizId)` - 조회수 가져오기 및 증가
+- **Component**: `ViewTracker` - 페이지 진입 시 자동 조회수 증가
+- **Storage Key**: `quiz:views:{quizId}` 형식으로 Redis에 저장
+
 ## SVG 사용
 
 - `next.config.ts`에서 SVGR 설정. `?component`로 React 컴포넌트 사용 가능, `?url`로 URL 사용 가능.
@@ -136,6 +150,22 @@ src/
 ## 환경변수
 
 - `NEXT_PUBLIC_GA_ID`: Google Analytics ID (예: `G-XXXXXX`)
+- `KV_REST_API_URL`: Vercel KV REST API URL
+- `KV_REST_API_TOKEN`: Vercel KV REST API Token
+- `KV_REST_API_READ_ONLY_TOKEN`: Vercel KV REST API Read Only Token (선택)
+
+### Vercel KV 설정
+
+1. Vercel 대시보드에서 프로젝트 선택
+2. Storage 탭에서 "Create Database" → "KV" 선택
+3. 생성된 KV 데이터베이스를 프로젝트에 연결
+4. 환경 변수가 자동으로 설정됩니다
+
+로컬 개발 시에는 `.env.local` 파일에 다음을 추가:
+```bash
+KV_REST_API_URL="your_kv_rest_api_url"
+KV_REST_API_TOKEN="your_kv_rest_api_token"
+```
 
 ## 새로운 테스트 추가 방법
 
