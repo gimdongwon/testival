@@ -5,6 +5,9 @@ import MainImageSlide from '@/components/MainImageSlide/MainImageSlide';
 import QuizListCard from '@/components/common/QuizListCard';
 import styles from './page.module.scss';
 
+// 조회수를 실시간으로 반영하기 위해 revalidate 설정
+export const revalidate = 10; // 10초마다 페이지 재생성
+
 const Home = async () => {
   const repo = getQuizRepository();
   const list = await repo.list();
