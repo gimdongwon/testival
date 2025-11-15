@@ -50,7 +50,11 @@ export class FSQuizRepository {
         const parsed = (metaList as unknown[])
           .map((raw: unknown) => {
             try {
-              const m = TestMetaZ.pick({ id: true, title: true }).parse(raw);
+              const m = TestMetaZ.pick({
+                id: true,
+                title: true,
+                thumbnail: true,
+              }).parse(raw);
               return { meta: m as TestDefinition['meta'] };
             } catch {
               return null;

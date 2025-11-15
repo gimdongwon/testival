@@ -23,6 +23,12 @@ export type QuestionCardProps = {
   columns?: number;
   /** 옵션 라벨/텍스트 및 컨테이너의 폰트 패밀리(케이스별 오버라이드용) */
   optionFontFamily?: string;
+  /** Q번호(Q1, Q2 등)에 적용할 커스텀 스타일 */
+  questionNumberStyle?: React.CSSProperties;
+  /** 질문 제목에 적용할 커스텀 스타일 */
+  questionTitleStyle?: React.CSSProperties;
+  /** 옵션 라벨(A, B 등)에 적용할 커스텀 스타일 */
+  optionLabelStyle?: React.CSSProperties;
 };
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -36,6 +42,9 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   questionFontFamily,
   columns = 1,
   optionFontFamily,
+  questionNumberStyle,
+  questionTitleStyle,
+  optionLabelStyle,
 }) => {
   return (
     <div className={styles.centerGrid}>
@@ -44,10 +53,9 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
           <span
             className={styles.cardQnum}
             style={{
-              color: optionFontFamily ? '#FB2575' : questionTextColor,
-              fontFamily: optionFontFamily ?? questionFontFamily,
-              WebkitTextStroke: optionFontFamily ? '2.5px #fff' : undefined,
-              paintOrder: optionFontFamily ? 'stroke fill' : undefined,
+              color: questionTextColor,
+              fontFamily: questionFontFamily,
+              ...questionNumberStyle,
             }}
           >
             Q{number}.
@@ -57,10 +65,9 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         <h2
           className={styles.cardTitle}
           style={{
-            color: optionFontFamily ? '#fff' : questionTextColor,
-            fontFamily: optionFontFamily ?? questionFontFamily,
-            WebkitTextStroke: optionFontFamily ? '2.5px black' : undefined,
-            paintOrder: optionFontFamily ? 'stroke fill' : undefined,
+            color: questionTextColor,
+            fontFamily: questionFontFamily,
+            ...questionTitleStyle,
           }}
         >
           {title}
@@ -80,7 +87,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                   justifyItems: 'stretch',
                 } as React.CSSProperties)
               : {}),
-            ...(optionFontFamily ? { fontFamily: optionFontFamily } : {}),
+            fontFamily: optionFontFamily,
           }}
         >
           {options.map((opt) => (
@@ -93,14 +100,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 } ${optionClassName ?? ''}`}
                 style={style}
               >
-                <span
-                  className={styles.optionLabel}
-                  style={
-                    optionFontFamily
-                      ? { fontFamily: optionFontFamily }
-                      : undefined
-                  }
-                >
+                <span className={styles.optionLabel} style={optionLabelStyle}>
                   {opt.label}
                 </span>
                 <span className={styles.optionText}>{opt.text}</span>

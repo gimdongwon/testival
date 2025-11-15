@@ -1,3 +1,9 @@
 {
-  "metaList": [{ "id": "classroom", "title": "시끌벅적 교실 속, 내 자리는?" }]
+  "metaList": [
+    {
+      "id": "classroom",
+      "title": "시끌벅적 교실 속, 내 자리는?",
+      "thumbnail": "/images/quiz/classroom/og-image.png"
+    }
+  ]
 }

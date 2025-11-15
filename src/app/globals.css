@@ -67,3 +67,11 @@ a {
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'WAGURI';
+  src: url('/fonts/WAGURI.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

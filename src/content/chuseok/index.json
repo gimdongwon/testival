@@ -1,3 +1,9 @@
 {
-  "metaList": [{ "id": "chuseok", "title": "추석 연휴, 나는 어디에 있을까?" }]
+  "metaList": [
+    {
+      "id": "chuseok",
+      "title": "추석 연휴, 나는 어디에 있을까?",
+      "thumbnail": "/images/quiz/chuseok/og-image.png"
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-
+import Image from 'next/image';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
 async function Home() {
   const repo = getQuizRepository();
@@ -17,6 +17,12 @@ async function Home() {
               tabIndex={0}
               aria-label={`${item.meta.title} 퀴즈로 이동`}
             >
+              <Image
+                src={item.meta.thumbnail ?? ''}
+                alt={item.meta.title}
+                width={100}
+                height={100}
+              />
               {item.meta.title}
             </Link>
           </li>

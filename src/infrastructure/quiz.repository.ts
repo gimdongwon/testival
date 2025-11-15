@@ -4,7 +4,9 @@ import { FSQuizRepository } from './quiz.fs.repository';
 
 export interface QuizRepository {
   getById(id: string): Promise<TestDefinition | null>;
-  list(): Promise<Array<{ meta: Pick<TestMeta, 'id' | 'title'> }>>;
+  list(): Promise<
+    Array<{ meta: Pick<TestMeta, 'id' | 'title' | 'thumbnail'> }>
+  >;
 }
 
 export const getQuizRepository = (): QuizRepository => {

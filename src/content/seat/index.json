@@ -1,3 +1,9 @@
 {
-  "metaList": [{ "id": "seat", "title": "친구들과 여행가는 차 안, 내 자리는?" }]
+  "metaList": [
+    {
+      "id": "seat",
+      "title": "친구들과 여행가는 차 안, 내 자리는?",
+      "thumbnail": "/images/quiz/seat/og-image.png"
+    }
+  ]
 }
