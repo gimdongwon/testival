@@ -1,11 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './detail.module.scss';
 import { notFound } from 'next/navigation';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
-import MainImageSlide from '@/components/MainImageSlide/MainImageSlide';
-import fs from 'fs';
-import path from 'path';
+import ViewTracker from '@/components/quiz/ViewTracker';
 
 const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const repo = getQuizRepository();
@@ -22,31 +21,21 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const variantClass =
     buttonTheme === 'white' ? styles.whiteBtn : styles.blackBtn;
 
-  const dir = path.join(process.cwd(), 'public', 'images', 'quiz', id);
-  let images: string[] = [];
-  try {
-    const files = fs.readdirSync(dir);
-    images = files
-      .filter((file) => /^main(\d*)\.png$/.test(file))
-      .sort((a, b) => {
-        const numA =
-          a === 'main.png'
-            ? 0
-            : parseInt(a.match(/^main(\d+)\.png$/)?.[1] || '0');
-        const numB =
-          b === 'main.png'
-            ? 0
-            : parseInt(b.match(/^main(\d+)\.png$/)?.[1] || '0');
-        return numA - numB;
-      })
-      .map((file) => `/images/quiz/${id}/${file}`);
-  } catch {
-    // 디렉토리 없을 때는 기본 main.png만
-    images = [`/images/quiz/${id}/main.png`];
-  }
+  const mainImage = `/images/quiz/${id}/main.png`;
+
   return (
     <main aria-label='메인비주얼' className={styles.landingMain}>
-      <MainImageSlide id={id} images={images} />
+      <ViewTracker quizId={id} />
+      <div className={styles.imageWrapper}>
+        <Image
+          src={mainImage}
+          alt={def.meta.title}
+          fill
+          priority
+          sizes='(max-width: 430px) 100vw, 430px'
+          className={styles.mainImage}
+        />
+      </div>
       <div className={styles.warpper}>
         <Link
           href={`/quiz/${id}/question`}

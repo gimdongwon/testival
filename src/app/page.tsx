@@ -1,35 +1,51 @@
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
-async function Home() {
+import Header from '@/components/common/Header';
+import MainImageSlide from '@/components/MainImageSlide/MainImageSlide';
+import QuizListCard from '@/components/common/QuizListCard';
+import styles from './page.module.scss';
+
+const Home = async () => {
   const repo = getQuizRepository();
-  const list = await repo.list(); // get() 메서드로 단일 퀴즈 데이터 가져오기
+  const list = await repo.list();
+
+  // 모든 퀴즈의 조회수를 한 번에 가져오기
+  const allViews = await repo.getAllViewCounts();
+
+  // 슬라이드용 메인 이미지 배열 (각 퀴즈의 og-image 사용)
+  const mainSlideImages = list.map(
+    (item) => `/images/quiz/${item.meta.id}/og-image.png`
+  );
+
+  // 슬라이드 클릭 시 이동할 링크 배열
+  const mainSlideLinks = list.map((item) => `/quiz/${item.meta.id}`);
 
   return (
-    <main style={{ maxWidth: 960, margin: '0 auto', padding: 24 }}>
-      <h1>테스트 목록</h1>
-      <ul>
-        {list.map((item) => (
-          <li key={item.meta.id}>
-            <Link
-              href={`/quiz/${item.meta.id}`}
-              tabIndex={0}
-              aria-label={`${item.meta.title} 퀴즈로 이동`}
-            >
-              <Image
-                src={item.meta.thumbnail ?? ''}
-                alt={item.meta.title}
-                width={100}
-                height={100}
+    <div className={styles.container}>
+      <Header />
+
+      <div className={styles.slideSection}>
+        <MainImageSlide images={mainSlideImages} links={mainSlideLinks} />
+      </div>
+
+      <main className={styles.main}>
+        <section className={styles.quizListSection}>
+          <h2 className={styles.sectionTitle}>🔥 추천 심리테스트 보기 🔥</h2>
+          <div className={styles.quizList}>
+            {list.map((item) => (
+              <QuizListCard
+                key={item.meta.id}
+                id={item.meta.id}
+                title={item.meta.title}
+                thumbnail={`/images/quiz/${item.meta.id}/og-image.png`}
+                views={allViews[item.meta.id] ?? 0}
               />
-              {item.meta.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+            ))}
+          </div>
+        </section>
+      </main>
+    </div>
   );
-}
+};
 
 export default Home;
