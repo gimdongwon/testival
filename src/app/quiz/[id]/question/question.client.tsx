@@ -14,6 +14,16 @@ import styles from './question.module.scss';
 
 const LABELS = ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'];
 
+type QuestionUIConfig = {
+  optionVariant?: 'light' | 'dark' | 'chuseokDark';
+  questionTextColor?: string;
+  questionFontFamily?: string;
+  progressFillColor?: string;
+  hideQuestionNumberDot?: boolean;
+  questionNumberStyle?: CSSProperties;
+  questionTitleStyle?: CSSProperties;
+};
+
 export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const router = useRouter();
   const testId = def.meta.id;
@@ -52,12 +62,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     (
       def as unknown as {
         ui?: {
-          question?: {
-            optionVariant?: 'light' | 'dark' | 'chuseokDark';
-            questionTextColor?: string;
-            questionFontFamily?: string;
-            progressFillColor?: string;
-          };
+          question?: QuestionUIConfig;
         };
       }
     ).ui?.question ?? {};
@@ -69,6 +74,9 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
       : questionCardStyles.optionLight;
   const questionTextColor = qUi.questionTextColor ?? '#000';
   const questionFontFamily = qUi.questionFontFamily;
+  const questionNumberStyle = qUi.questionNumberStyle;
+  const questionTitleStyle = qUi.questionTitleStyle;
+  const hideQuestionNumberDot = qUi.hideQuestionNumberDot ?? false;
 
   const progressStyle: CSSProperties &
     Record<'--progress' | '--progress-fill-color', string> = {
@@ -106,6 +114,9 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           optionClassName={optionClassName}
           questionTextColor={questionTextColor}
           questionFontFamily={questionFontFamily}
+          questionNumberStyle={questionNumberStyle}
+          questionTitleStyle={questionTitleStyle}
+          hideQuestionNumberDot={hideQuestionNumberDot}
           columns={isTwoChoiceGrid ? 2 : 1}
           optionFontFamily={
             def.meta.id === 'classroom'
