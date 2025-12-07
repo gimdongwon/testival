@@ -50,6 +50,9 @@ export const QuestionUIConfigZ = z.object({
   questionTextColor: z.string().optional(),
   questionFontFamily: z.string().optional(),
   progressFillColor: z.string().optional(),
+  hideQuestionNumberDot: z.boolean().optional(),
+  questionNumberStyle: z.record(z.string(), z.unknown()).optional(),
+  questionTitleStyle: z.record(z.string(), z.unknown()).optional(),
 });
 
 /** 테스트별 UI 설정 */

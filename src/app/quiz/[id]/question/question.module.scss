@@ -4,6 +4,8 @@
   width: min(100%, 430px);
   height: 100%;
 
+  padding-top: 56px; /* 헤더 높이만큼 여백 확보 (문항 화면 전용) */
+
   background-image: url('/content_background.png');
   background-size: cover;
   background-position: center;

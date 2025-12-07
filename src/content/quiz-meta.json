@@ -19,6 +19,11 @@
       "id": "classroom",
       "title": "시끌벅적 교실 속, 내 자리는?",
       "description": "Testival - 시끌벅적 교실 속, 내 자리는?"
+    },
+    {
+      "id": "nightwear",
+      "title": "내 잠자리 옷은 누구?",
+      "description": "Testival - 내 잠자리 옷은 누구?"
     }
   ]
 }

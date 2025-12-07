@@ -154,6 +154,7 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
           draggable={false}
           fill
           sizes='(max-width: 430px) 100vw, 430px'
+          height={1228}
           priority
         />
       )}

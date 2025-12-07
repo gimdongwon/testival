@@ -56,11 +56,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
             optionVariant?: 'light' | 'dark' | 'chuseokDark';
             questionTextColor?: string;
             questionFontFamily?: string;
-            optionFontFamily?: string;
             progressFillColor?: string;
-            questionNumberStyle?: CSSProperties;
-            questionTitleStyle?: CSSProperties;
-            optionLabelStyle?: CSSProperties;
           };
         };
       }
@@ -73,10 +69,6 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
       : questionCardStyles.optionLight;
   const questionTextColor = qUi.questionTextColor ?? '#000';
   const questionFontFamily = qUi.questionFontFamily;
-  const optionFontFamily = qUi.optionFontFamily;
-  const questionNumberStyle = qUi.questionNumberStyle;
-  const questionTitleStyle = qUi.questionTitleStyle;
-  const optionLabelStyle = qUi.optionLabelStyle;
 
   const progressStyle: CSSProperties &
     Record<'--progress' | '--progress-fill-color', string> = {
@@ -115,10 +107,11 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           questionTextColor={questionTextColor}
           questionFontFamily={questionFontFamily}
           columns={isTwoChoiceGrid ? 2 : 1}
-          optionFontFamily={optionFontFamily}
-          questionNumberStyle={questionNumberStyle}
-          questionTitleStyle={questionTitleStyle}
-          optionLabelStyle={optionLabelStyle}
+          optionFontFamily={
+            def.meta.id === 'classroom'
+              ? `'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif`
+              : undefined
+          }
         />
       </div>
     </>

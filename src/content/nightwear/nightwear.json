@@ -1,0 +1,260 @@
+{
+  "meta": {
+    "id": "nightwear",
+    "title": "내 잠자리 옷은 누구?",
+    "description": "수면 스타일로 알아보는 나의 잠옷 취향 테스트",
+    "mode": "weighted",
+    "resultTypes": ["섹시형", "파자마형", "수면잠옷형", "단체티형", "No.5형"],
+    "thumbnail": "/images/quiz/nightwear/content_background.png",
+    "locale": "ko",
+    "version": 1
+  },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "long",
+      "showReceipt": false,
+      "showBottomSpacer": false,
+      "backgroundColor": "#FF22B6"
+    },
+    "landing": { "buttonTheme": "white" },
+    "question": {
+      "optionVariant": "light",
+      "progressFillColor": "#FF22B6",
+      "questionTextColor": "#fff",
+      "questionFontFamily": "WAGURI",
+      "questionNumberStyle": {
+        "background": "linear-gradient(180deg, rgb(255, 88, 99) 0%, rgb(255, 0, 234) 100%)",
+        "WebkitBackgroundClip": "text",
+        "WebkitTextFillColor": "transparent",
+        "backgroundClip": "text",
+        "color": "transparent",
+        "fontFamily": "WAGURI",
+        "fontSize": "32px",
+        "fontWeight": "400",
+        "WebkitTextStroke": "3px white",
+        "textShadow": "none"
+      },
+      "questionTitleStyle": {
+        "background": "linear-gradient(180deg, rgb(255, 88, 99) 0%, rgb(255, 0, 234) 100%)",
+        "WebkitBackgroundClip": "text",
+        "WebkitTextFillColor": "transparent",
+        "backgroundClip": "text",
+        "color": "transparent",
+        "fontFamily": "WAGURI",
+        "fontSize": "28px",
+        "fontWeight": "400",
+        "lineHeight": "1.2",
+        "WebkitTextStroke": "2px white",
+        "textShadow": "none"
+      }
+    }
+  },
+  "resultDetails": {
+    "섹시형": {
+      "name": "섹시 큐티 빠띠 독기형",
+      "title": "잠든 순간까지 근사하게.",
+      "description": "당신은 자기만의 무드를 완성하는 데 진심인 타입.\n\n조명, 온도, 습도까지 컨트롤하며 감성에 충실하다.\n\n잠드는 순간에도 매혹적인 기분이 필요하니까, 당신의 잠옷은 **섹시하고 귀여운 실크 슬립웨어.**\n\n섹시한 잠옷과 긍정적인 자기 확신으로 하루를 마무리한다.\n\n언제 어디서나 근사한 당신을 모두 부러워하고 있다는 거. 잊지 않기.",
+      "image": "/images/quiz/nightwear/result_sexy.png",
+      "keywords": ["섹시", "큐티", "감성", "독기"],
+      "type": "sexy"
+    },
+    "파자마형": {
+      "name": "느(낌)좋(은) 파자마형",
+      "title": "감성도 실용도 모두 챙기는 완벽 밸런서.",
+      "description": "분위기 만드는 걸 좋아하지만 너무 과한 건 싫은 타입.\n\n일상에서도 작게나마 감성을 챙기는 사람이라, 당신의 잠옷은 **고급스러운 파자마 세트.**\n\n편안하지만 흐트러짐 없는 느낌의 당신.\n\n은근히 주변의 호감을 많이 사고 있을 것.",
+      "image": "/images/quiz/nightwear/result_pajama.png",
+      "keywords": ["파자마", "밸런스", "감성", "고급"],
+      "type": "pajama"
+    },
+    "수면잠옷형": {
+      "name": "따뜻하고 보드라운 수면잠옷형",
+      "title": "따뜻하고 편안함이 최고의 미덕.",
+      "description": "당신에게 밤은 '힐링의 시간'.\n\n귀엽고 부드러운 소재의 잠옷을 입고 마음이 편해야 진짜 쉰다고 느끼는 사람.\n\n따뜻한 수면잠옷, 푹신한 담요, 캐릭터 양말이 잘 어울리는 귀여운 타입.\n\n수면잠옷과 함께 Netflix & Chill.",
+      "image": "/images/quiz/nightwear/result_sleepwear.png",
+      "keywords": ["수면잠옷", "힐링", "따뜻함", "귀여움"],
+      "type": "sleepwear"
+    },
+    "단체티형": {
+      "name": "어디서 받아온 단체티로 돌려막기형",
+      "title": "뭐든 간편하게 해결하는 사람.",
+      "description": "패션보다 기능, 꾸밈보다 효율을 우선시함.\n\n편하게 입을 티가 이렇게 많은데 잠옷에 굳이 돈을 써야하나? 생각하는 현실주의자.\n\n당신의 밤엔 늘 밖에서 안 입는(버리는) 티셔츠나 트레이닝 팬츠가 함께함.\n\n그 안엔 나름 나만의 편안함과 익숙함이 자리하고 있음.",
+      "image": "/images/quiz/nightwear/result_groupTee.png",
+      "keywords": ["단체티", "편함", "효율", "현실주의"],
+      "type": "groupTee"
+    },
+    "No.5형": {
+      "name": "No.5형",
+      "title": "잘 때 무얼 입냐고요? 당연히 넘버 5죠.",
+      "description": "구속감이 싫고, 자유로움을 추구하는 타입.\n\n남이 뭐라 하든, 내 몸이 편해야 그게 진짜 행복.\n\n그래서 당신의 잠옷은 **없다.**\n\n그냥 내 몸 그대로, 가장 자연의 상태를 추구할 뿐.\n\n자유분방하고 솔직해서 주변에서도 묘하게 매력적으로 느껴지는 사람.",
+      "image": "/images/quiz/nightwear/result_no5.png",
+      "keywords": ["No.5", "자유", "편함", "자연"],
+      "type": "no5"
+    }
+  },
+  "messages": {
+    "섹시형": "잠든 순간까지 근사하게.",
+    "파자마형": "감성도 실용도 모두 챙기는 완벽 밸런서.",
+    "수면잠옷형": "따뜻하고 편안함이 최고의 미덕.",
+    "단체티형": "뭐든 간편하게 해결하는 사람.",
+    "No.5형": "잘 때 무얼 입냐고요? 당연히 넘버 5죠."
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "하루를 마치고 집에 오면\n무엇부터 할까?",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "잠깐 누워 있기",
+          "weights": { "단체티형": 1, "No.5형": 2 }
+        },
+        {
+          "id": "q1b",
+          "label": "방 정리부터",
+          "weights": { "섹시형": 1, "파자마형": 1, "단체티형": 1 }
+        },
+        {
+          "id": "q1c",
+          "label": "음악부터 켜기",
+          "weights": { "섹시형": 2, "파자마형": 1 }
+        },
+        {
+          "id": "q1d",
+          "label": "씻고 꼼꼼하게 스킨 케어",
+          "weights": { "수면잠옷형": 1 }
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "밤 10시, 친구가 만나자고\n연락이 오면?",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "너무 늦었지.. 다음에 보자",
+          "weights": { "수면잠옷형": 2, "No.5형": 1 }
+        },
+        {
+          "id": "q2b",
+          "label": "슬리퍼 끌고 근처만 잠깐 나갔다온다",
+          "weights": { "단체티형": 2, "No.5형": 1 }
+        },
+        {
+          "id": "q2c",
+          "label": "친구를 집으로 부른다",
+          "weights": { "파자마형": 2, "수면잠옷형": 1 }
+        },
+        {
+          "id": "q2d",
+          "label": "다시 준비하고 나간다",
+          "weights": { "섹시형": 2, "파자마형": 1 }
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "새로 산 가구가\n마음에 든다. 사진 찍어서\n SNS에 올려볼까?",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "안 올림(귀찮음)",
+          "weights": { "단체티형": 1, "No.5형": 2 }
+        },
+        {
+          "id": "q3b",
+          "label": "적당히 가구만 찍어 올림(무보정)",
+          "weights": { "수면잠옷형": 2, "단체티형": 1 }
+        },
+        {
+          "id": "q3c",
+          "label": "방 정리하고 조명·구도 맞춤",
+          "weights": { "섹시형": 1, "파자마형": 2 }
+        },
+        {
+          "id": "q3d",
+          "label": "방 정리는 물론 내 착장까지 맞춰서\n자연스럽게 연출해서 찍는다",
+          "weights": { "섹시형": 2, "파자마형": 1 }
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "친구가 잠깐 뭘 갖다 주러\n우리 집에 들른다고 한다.",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "편한 차림 그대로 맞이",
+          "weights": { "단체티형": 1, "No.5형": 2 }
+        },
+        {
+          "id": "q4b",
+          "label": "보이는 곳만 급 청소한다",
+          "weights": { "수면잠옷형": 1, "단체티형": 2 }
+        },
+        {
+          "id": "q4c",
+          "label": "은은한 조명도 켜고 방을 예쁘게 꾸민다",
+          "weights": { "섹시형": 2, "파자마형": 1 }
+        },
+        {
+          "id": "q4d",
+          "label": "친구가 잠깐 있다 갈 수도 있으니\n앉을 자리와 차 한잔을 세팅해 둔다",
+          "weights": { "파자마형": 2, "수면잠옷형": 1 }
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "약속 없는 주말 아침,\n알람 없이 일어났다!",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "이불 속에서 더 뒹굴어야지",
+          "weights": { "수면잠옷형": 2, "단체티형": 1, "No.5형": 2 }
+        },
+        {
+          "id": "q5b",
+          "label": "방 정리부터 하고 빨래 돌리자",
+          "weights": { "파자마형": 2, "단체티형": 1 }
+        },
+        {
+          "id": "q5c",
+          "label": "기분 좋게 룸 스프레이도 뿌리고 여유를\n즐긴다",
+          "weights": { "섹시형": 2, "파자마형": 1 }
+        },
+        {
+          "id": "q5d",
+          "label": "여유롭게 동네 산책이나 해 볼까?",
+          "weights": { "수면잠옷형": 1, "단체티형": 2, "No.5형": 1 }
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "딱 3만 원만 써서\n수면템을 산다면?",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "수면 양말이나 보들보들한 담요",
+          "weights": { "파자마형": 1, "수면잠옷형": 2 }
+        },
+        {
+          "id": "q6b",
+          "label": "테이블용 작은 조명이나 향 제품",
+          "weights": { "섹시형": 2, "파자마형": 1 }
+        },
+        {
+          "id": "q6c",
+          "label": "수납바구니/클립 등 침대 주변 정리템",
+          "weights": { "수면잠옷형": 1, "단체티형": 1 }
+        },
+        {
+          "id": "q6d",
+          "label": "안 산다. 필요 없음",
+          "weights": { "단체티형": 1, "No.5형": 2 }
+        }
+      ]
+    }
+  ]
+}

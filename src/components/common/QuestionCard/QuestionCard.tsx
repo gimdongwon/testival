@@ -29,6 +29,8 @@ export type QuestionCardProps = {
   questionTitleStyle?: React.CSSProperties;
   /** 옵션 라벨(A, B 등)에 적용할 커스텀 스타일 */
   optionLabelStyle?: React.CSSProperties;
+  /** 질문 번호 뒤의 점(.) 숨김 여부 */
+  hideQuestionNumberDot?: boolean;
 };
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -45,6 +47,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   questionNumberStyle,
   questionTitleStyle,
   optionLabelStyle,
+  hideQuestionNumberDot = false,
 }) => {
   return (
     <div className={styles.centerGrid}>
@@ -52,23 +55,30 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         <div className={styles.cardHeader} aria-label='질문지 상단'>
           <span
             className={styles.cardQnum}
-            style={{
-              color: questionTextColor,
-              fontFamily: questionFontFamily,
-              ...questionNumberStyle,
-            }}
+            style={
+              questionNumberStyle
+                ? (questionNumberStyle as React.CSSProperties)
+                : {
+                    color: questionTextColor,
+                    fontFamily: questionFontFamily,
+                  }
+            }
           >
-            Q{number}.
+            Q{number}
+            {hideQuestionNumberDot ? '' : '.'}
           </span>
         </div>
 
         <h2
           className={styles.cardTitle}
-          style={{
-            color: questionTextColor,
-            fontFamily: questionFontFamily,
-            ...questionTitleStyle,
-          }}
+          style={
+            questionTitleStyle
+              ? (questionTitleStyle as React.CSSProperties)
+              : {
+                  color: questionTextColor,
+                  fontFamily: questionFontFamily,
+                }
+          }
         >
           {title}
         </h2>
