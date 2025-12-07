@@ -9,11 +9,20 @@
 }
 
 .slideSection {
+  position: relative;
   width: 100%;
-  height: 210px;
+  aspect-ratio: 16 / 9;
+  min-height: 230px;
   background: #ffffff;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 360px) {
+  .slideSection {
+    aspect-ratio: 16 / 10;
+    min-height: 200px;
+  }
 }
 
 .main {
