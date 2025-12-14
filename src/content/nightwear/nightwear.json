@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "nightwear",
-    "title": "내 잠자리 옷은 누구?",
+    "title": "나는 어떤 잠옷을 입을까",
     "description": "수면 스타일로 알아보는 나의 잠옷 취향 테스트",
     "mode": "weighted",
     "resultTypes": ["섹시형", "파자마형", "수면잠옷형", "단체티형", "No.5형"],
