@@ -1,8 +1,8 @@
 {
   "meta": {
     "id": "christmas_cake",
-    "title": "크리스마스 케이크",
-    "description": "크리스마스 케이크 취향으로 알아보는 나의 케이크 유형 테스트",
+    "title": "나와 어울리는 크리스마스 케이크는",
+    "description": "나와 어울리는 크리스마스 케이크는 취향으로 알아보는 나의 케이크 유형 테스트",
     "mode": "amount-sum",
     "resultTypes": [
       "strawberry_king",
