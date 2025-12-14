@@ -24,6 +24,11 @@
       "id": "nightwear",
       "title": "내 잠자리 옷은 누구?",
       "description": "Testival - 내 잠자리 옷은 누구?"
+    },
+    {
+      "id": "christmas_cake",
+      "title": "크리스마스 케이크",
+      "description": "Testival - 크리스마스 케이크"
     }
   ]
 }

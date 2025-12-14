@@ -13,6 +13,19 @@ export const ChoiceZ = z.object({
   amount: z.number().optional(),
 });
 
+/** amount-sum 브라켓(합계 값 → 결과 타입 키) */
+export const AmountSumBracketZ = z.object({
+  key: z.string().min(1),
+  min: z.number().optional(),
+  max: z.number().optional(),
+});
+
+/** 채점 설정(콘텐츠 JSON에서 오버라이드 가능) */
+export const ScoringConfigZ = z.object({
+  // amount-sum 모드에서 합계값 → 결과 타입 키 매핑을 콘텐츠별로 정의
+  amountSumBrackets: z.array(AmountSumBracketZ).min(1).optional(),
+});
+
 /** 문항 */
 export const QuestionZ = z.object({
   id: z.string().min(1),
@@ -83,6 +96,8 @@ export const TestDefinitionZ = z
     resultDetails: z.record(z.string(), ResultDetailZ).default({}),
     // 짧은 카피(선택): 타입 키 → 짧은 문구
     messages: z.record(z.string(), z.string()).optional(),
+    // 채점 설정(선택): 콘텐츠별 채점 규칙 오버라이드
+    scoring: ScoringConfigZ.optional(),
     // UI 설정(선택): 결과 페이지 등 렌더링 설정
     ui: TestUIZ.optional(),
     questions: z.array(QuestionZ).min(1, '최소 1개 이상의 문항이 필요합니다.'),
@@ -162,6 +177,27 @@ export const TestDefinitionZ = z
             });
           }
         });
+      });
+    }
+
+    // 6) amount-sum 브라켓 키 검증(있다면 resultTypes 안에 있어야 함)
+    if (data.scoring?.amountSumBrackets?.length) {
+      data.scoring.amountSumBrackets.forEach((b, bi) => {
+        if (!resultTypes.has(b.key)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: `amountSumBrackets[${bi}].key "${b.key}"는 meta.resultTypes에 존재하지 않습니다.`,
+            path: ['scoring', 'amountSumBrackets', bi, 'key'],
+          });
+        }
+        // min/max 둘 다 없는 브라켓은 의미가 없으므로 막아두기
+        if (typeof b.min !== 'number' && typeof b.max !== 'number') {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: `amountSumBrackets[${bi}]는 min 또는 max 중 하나는 필요합니다.`,
+            path: ['scoring', 'amountSumBrackets', bi],
+          });
+        }
       });
     }
   });

@@ -13,7 +13,30 @@ export function score(def: TestDefinition, selected: Record<string, string>) {
       }
     }
 
-    // 브라켓 매핑(만원 단위)
+    // 콘텐츠별 브라켓 매핑(있으면 우선 적용)
+    const brackets = (
+      def as unknown as {
+        scoring?: {
+          amountSumBrackets?: Array<{
+            key: string;
+            min?: number;
+            max?: number;
+          }>;
+        };
+      }
+    ).scoring?.amountSumBrackets;
+
+    if (Array.isArray(brackets) && brackets.length > 0) {
+      const matched = brackets.find((b) => {
+        const minOk = typeof b.min === 'number' ? totalAmount >= b.min : true;
+        const maxOk = typeof b.max === 'number' ? totalAmount <= b.max : true;
+        return minOk && maxOk;
+      });
+      const top = matched?.key ?? def.meta.resultTypes[0];
+      return { vector: { totalAmount }, top };
+    }
+
+    // 폴백: 기존(잔소리 비용) 브라켓 매핑(만원 단위)
     const bracket =
       totalAmount <= 0
         ? 'zero'

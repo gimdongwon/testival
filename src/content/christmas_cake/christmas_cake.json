@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "id": "christmas_cake",
+    "title": "크리스마스 케이크",
+    "description": "크리스마스 케이크 취향으로 알아보는 나의 케이크 유형 테스트",
+    "mode": "amount-sum",
+    "resultTypes": [
+      "strawberry_king",
+      "old_bakery",
+      "hotel_mousse",
+      "insta_hip",
+      "custom_art",
+      "no_cake"
+    ],
+    "thumbnail": "/images/quiz/christmas_cake/content_background.png",
+    "locale": "ko",
+    "version": 1
+  },
+  "scoring": {
+    "amountSumBrackets": [
+      { "key": "strawberry_king", "max": 1 },
+      { "key": "old_bakery", "min": 2, "max": 3 },
+      { "key": "hotel_mousse", "min": 4, "max": 5 },
+      { "key": "insta_hip", "min": 6, "max": 7 },
+      { "key": "custom_art", "min": 8, "max": 9 },
+      { "key": "no_cake", "min": 10 }
+    ]
+  },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "long",
+      "showReceipt": false,
+      "showBottomSpacer": true,
+      "backgroundColor": "#FFFFFF"
+    },
+    "landing": { "buttonTheme": "black" },
+    "question": {
+      "optionVariant": "light",
+      "questionTextColor": "#fff",
+      "progressFillColor": "#A41D1F"
+    }
+  },
+  "resultDetails": {
+    "strawberry_king": {
+      "name": "전국 3대장 딸기 생크림 케이크",
+      "title": "기다리더라도, 비싸더라도, 맛있으면 장땡.",
+      "description": "당신에게 케이크는 완전히 “디저트” 그 자체야.\n줄을 서더라도, 좀 멀더라도, 맛있다고 소문난 곳이라면 기꺼이 찾아가는 스타일.\n크림, 시트, 딸기의 조합이 완벽해야 만족하고, 비주얼은 평타만 쳐도 괜찮음.\n예쁜 사진보다, 감동적인 한 입이 더 중요하다고 생각하는 타입.",
+      "image": "/images/quiz/christmas_cake/result_strawberry_king.png",
+      "keywords": ["줄 서서 먹는 맛집", "맛 최우선", "후기가 증명한 맛"],
+      "type": "strawberry_king"
+    },
+    "old_bakery": {
+      "name": "동네 빵집 옛날 스타일 케이크",
+      "title": "익숙한 맛, 익숙한 모양, 구관이 명관.",
+      "description": "당신에게 케이크는 “가족” 같은 존재야.\n동네에서 몇 년째 운영 중인 빵집, 살짝 촌스러운 딸기 장식, 진한 크림, 익숙하고도 편안한 맛.\n이런 요소들이 오히려 안정감을 주지.\n화려하지 않아도 괜찮고, 굳이 SNS에 사진을 올릴 필요도 없는,\n추억으로 보정되는 정겨운 케이크.",
+      "image": "/images/quiz/christmas_cake/result_old_bakery.png",
+      "keywords": ["익숙한 맛", "정감", "실속", "가성비"],
+      "type": "old_bakery"
+    },
+    "hotel_mousse": {
+      "name": "국내 5성급 호텔 초콜릿 무스 케이크",
+      "title": "특별한 날에 어울리는 특별한 케이크, 실패 없는 선택.",
+      "description": "당신은 맛과 비주얼을 둘 다 놓치고 싶지 않은 타입.\n호텔 케이크처럼 포장이 깔끔하고, 맛도 평균 이상은 보장되는 선택을 선호한다.\n줄 서서 기다리는 맛집까지는 아니어도, 연말 파티에서 꺼내놓았을 때 적당히 돈 쓴 기분이 나도록 고급스러워야 만족.\n독특한 감성보다는 '깔끔하고 세련된 정석'이 딱 맞는 사람.",
+      "image": "/images/quiz/christmas_cake/result_hotel_mousse.png",
+      "keywords": ["밸런스형", "정석", "Flex"],
+      "type": "hotel_mousse"
+    },
+    "insta_hip": {
+      "name": "힙한 인스타 맛집 케이크",
+      "title": "트렌드, 내가 모를 수 없지.",
+      "description": "당신에게 케이크는 거의 ‘연출 소품’이자 ‘배경’에 가깝다.\n레터링, 귀여운 초, 상자 디자인까지 전부 중요하다.\n맛도 완전 별로만 아니면 괜찮고, 분위기와 사진이 제대로 나오면 이미 성공.\n크리스마스 이후에도 사진을 다시 보면서 “이날 느좋이었지.”라고 흐뭇하게 되새기는 타입.",
+      "image": "/images/quiz/christmas_cake/result_insta_hip.png",
+      "keywords": ["인스타", "감성", "힙스터"],
+      "type": "insta_hip"
+    },
+    "custom_art": {
+      "name": "미친듯이 화려한 디자인의 특별 제작 케이크",
+      "title": "케이크는 예술이다.",
+      "description": "당신에게 케이크는 거의 예술 작품이다.\n층층이 쌓인 데코, 과감한 색감, 비정상적인 형태.\n마치 브랜드 컨셉 케이크마냥 화려한 케이크를 보고 남들은 이걸 이 돈 주고 샀다고? 싶겠지만 어디서든 볼 수 있는 케이크에는 끌리지 않는다.\n맛은 기본만 하면 되고, 중요한 건 “이걸 여기 올려놓는 순간 공간의 분위기가 바뀌는가.”다.",
+      "image": "/images/quiz/christmas_cake/result_custom_art.png",
+      "keywords": ["예술", "유니크", "마이웨이"],
+      "type": "custom_art"
+    },
+    "no_cake": {
+      "name": "케이크 안 먹음",
+      "title": "케이크는 무슨 얼어죽을 놈의 케이크",
+      "description": "솔직히 말해서, 당신에게 크리스마스 케이크는 필수가 아니다.\n누가 사와야지 한 입 정도 먹는 거지, 그 비싼 걸 돈 주고 왜 사야하는지 모르겠다.\n차라리 다른 디저트(과자, 과일, 아이스크림, 술안주 등)가 더 좋은듯.\n일단 테스트는 해야하니까 억지로 케이크를 고르긴 했지만, 사실 별로 케이크를 즐기지 않는 당신.",
+      "image": "/images/quiz/christmas_cake/result_no_cake.png",
+      "keywords": ["디저트불호", "실용", "쿨"],
+      "type": "no_cake"
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "크리스마스 저녁 식당을\n고를 때, 더 중요한 건?",
+      "choices": [
+        { "id": "q1a", "label": "음식이 진짜\n맛있는 집", "amount": 0 },
+        { "id": "q1b", "label": "인테리어가\n예쁜 집", "amount": 1 }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "새로운 곳을\n놀러 간다면,\n더 끌리는 쪽은?",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "오래된\n진짜 맛집이\n많이 있는 동네",
+          "amount": 0
+        },
+        {
+          "id": "q2b",
+          "label": "건물·골목이\n 예쁘고, 사진 찍기\n좋은 동네",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "여행 갔다 와서 사진첩을 보면,\n더 많은 건?",
+      "choices": [
+        { "id": "q3a", "label": "먹은 것, 카페,\n맛집 사진", "amount": 0 },
+        { "id": "q3b", "label": "풍경, 사람, 감성샷", "amount": 1 }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "옷을 살 때,\n둘 중 하나만\n고를 수 있다면?",
+      "choices": [
+        { "id": "q4a", "label": "편하고 오래\n입을 수 있는 옷", "amount": 0 },
+        { "id": "q4b", "label": "조금 불편해도\n예쁜 옷", "amount": 1 }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "집에 친구들을 초대하기\n로 했다. 준비하면서\n더 신경 쓰는 건?",
+      "choices": [
+        { "id": "q5a", "label": "뭐 먹지?", "amount": 0 },
+        { "id": "q5b", "label": "집 치우고 꾸미기", "amount": 1 }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "친구 집들이 선물을\n고를 때 더 끌리는 건?",
+      "choices": [
+        { "id": "q6a", "label": "일상에서 자주\n쓰는 실용템", "amount": 0 },
+        {
+          "id": "q6b",
+          "label": "꼭 필요하진\n않아도 예쁘고\n감성 있는 물건",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "휴대폰을 새로 살 때\n가장 중요한 것은?",
+      "choices": [
+        { "id": "q7a", "label": "기능, 편의", "amount": 0 },
+        { "id": "q7b", "label": "색상, 디자인", "amount": 1 }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "SNS에 뭔가 올릴 때\n더 내 스타일에 가까운 건?",
+      "choices": [
+        {
+          "id": "q8a",
+          "label": "여기 뭐가 맛있고,\n뭐가 좋았는지\n설명·정보 위주로\n쓰는 편이다.",
+          "amount": 0
+        },
+        {
+          "id": "q8b",
+          "label": "글은 짧게,\n사진으로 분위기만\n보여주는 편이다.",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "title": "레스토랑에서\n음식이 나왔을 때,\n나와 더 가까운 쪽은?",
+      "choices": [
+        {
+          "id": "q9a",
+          "label": "사진은 대충\n한두 장 찍고\n먹기 시작한다.",
+          "amount": 0
+        },
+        {
+          "id": "q9b",
+          "label": "각도 바꿔가며\n마음에 들때까지\n여러 장 찍는다.",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "title": "솔직히 말해서, 케이크\n에 대해서 어떻게\n생각하는지?",
+      "choices": [
+        {
+          "id": "q10a",
+          "label": "그래도 크리스마스\n기분 내려면 케이\n크는 꼭 있어야 한\n다고 생각함",
+          "amount": 0
+        },
+        {
+          "id": "q10b",
+          "label": "케이크가 중요한가?\n있어도 그만,\n없어도 그만.",
+          "amount": 10
+        }
+      ]
+    }
+  ]
+}
