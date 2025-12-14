@@ -83,3 +83,20 @@ a {
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Cafe24Classictype-v1.1';
+  src: url('/fonts/Cafe24Classictype-v1.1.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* alias: 점(.)이 들어간 font-family는 따옴표 없이 쓰면 CSS에서 깨질 수 있어 안전한 별칭을 제공 */
+@font-face {
+  font-family: 'Cafe24Classictype';
+  src: url('/fonts/Cafe24Classictype-v1.1.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

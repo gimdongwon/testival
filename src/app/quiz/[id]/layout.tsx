@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import quizMeta from '@/content/quiz-meta.json';
-import QuizHeader from '@/components/common/QuizHeader';
+import Header from '@/components/common/Header';
 import styles from './quizLayout.module.scss';
 
 const siteUrl = 'https://testival.kr';
@@ -74,7 +74,7 @@ export async function generateMetadata({
 export default function QuizLayout({ children }: QuizLayoutProps) {
   return (
     <>
-      <QuizHeader />
+      <Header variant='quiz' />
       <div className={styles.pageWrapper}>{children}</div>
     </>
   );

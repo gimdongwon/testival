@@ -51,11 +51,12 @@
 }
 
 .shareBtnWrapper {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   gap: 10px;
-  position: fixed;
   // left: 0;
   // right: 0;
   bottom: calc(48px + env(safe-area-inset-bottom));
@@ -74,8 +75,8 @@
   height: 48px;
   font-size: 18px;
   font-weight: 500;
-  background-color: var(--btn-bg, transparent);
-  color: var(--btn-fg, inherit);
+  background-color: #fff;
+  color: #000;
   border-radius: 8px;
   text-align: center;
   border: none;
@@ -91,12 +92,13 @@
 }
 
 .resetBtn {
-  flex: 0 0 48px;
-  width: 48px;
+  width: 100%;
   height: 48px;
-  background-color: var(--btn-bg, transparent);
-  color: var(--btn-fg, inherit);
-  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -105,6 +107,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  gap: 8px;
 }
 
 .resetBtn img {

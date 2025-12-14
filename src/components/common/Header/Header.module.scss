@@ -1,15 +1,43 @@
 .header {
   width: 100%;
-  padding: 24px 20px 16px;
+  height: 40px;
+  padding: 12px 0;
   display: flex;
   align-items: center;
   gap: 12px;
   background-color: #ffffff;
 }
 
+.headerQuiz {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding: 12px 0;
+  justify-content: center;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+.innerQuiz {
+  width: 100%;
+  max-width: 430px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
 .divider {
   flex: 1;
   height: 1px;
+}
+
+.logo {
+  height: 16px;
+  width: auto;
+  object-fit: contain;
 }
 
 .title {

@@ -17,6 +17,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: defaultTitle, template: '%s | testival' },
   description: defaultDesc,
+  icons: {
+    icon: [
+      { url: '/images/quiz/common/favicon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/quiz/common/favicon.png', type: 'image/png' },
+    ],
+  },
   openGraph: {
     type: 'website',
     url: siteUrl,

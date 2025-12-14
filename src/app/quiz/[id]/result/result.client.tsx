@@ -150,10 +150,9 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
         <Image
           className={styles.bgImage}
           alt='테스트 결과 이미지'
-          src={`/images/quiz/${testId}/result.png?20251112`}
+          src={`/images/quiz/${testId}/result.png`}
           draggable={false}
-          fill
-          sizes='(max-width: 430px) 100vw, 430px'
+          width={430}
           height={1228}
           priority
         />
@@ -174,15 +173,16 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
           className={`${styles.shareBtn} ${btnVariantClass}`}
           onClick={handleClickShareBtn}
         >
-          <span>테스트 공유하기</span>
-          <ShareIcon color={iconColor} width={13} height={13} />
+          <span>내 결과 공유하기</span>
+          <ShareIcon color={iconColor} width={12} height={16} />
         </button>
         <button
           className={`${styles.resetBtn} ${btnVariantClass}`}
-          aria-label='테스트 다시하기'
+          aria-label='처음부터 다시하기'
           onClick={handleClickResetBtn}
         >
-          <ResetIcon color={iconColor} width={18} height={21} />
+          처음부터 다시하기
+          <ResetIcon color={iconColor} width={13} height={15} />
         </button>
       </div>
     </section>

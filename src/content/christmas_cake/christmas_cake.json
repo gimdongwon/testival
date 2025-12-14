@@ -38,6 +38,7 @@
     "question": {
       "optionVariant": "light",
       "questionTextColor": "#fff",
+      "questionFontFamily": "Cafe24Classictype",
       "progressFillColor": "#A41D1F"
     }
   },
