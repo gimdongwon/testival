@@ -12,8 +12,16 @@ import type { CSSProperties } from 'react';
 import { useQuizView } from '@/store/quizStore';
 import { score } from '@/lib/scoring';
 import type { TestDefinition, ResultDetail } from '@/domain/quiz.schema';
+import RecommendedQuizzes from '@/components/common/RecommendedQuizzes';
+import type { QuizRecommendation } from '@/lib/recommendedQuizzes';
 
-export default function ResultClient({ def }: { def: TestDefinition }) {
+export default function ResultClient({
+  def,
+  recommendedQuizzes,
+}: {
+  def: TestDefinition;
+  recommendedQuizzes: QuizRecommendation[];
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const testId = def.meta.id;
@@ -160,6 +168,14 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
           <Receipt id={testId} items={items} total={total} detail={detail} />
         )}
       </div>
+
+      {/* 추천 퀴즈 섹션 */}
+      {recommendedQuizzes && recommendedQuizzes.length > 0 && (
+        <RecommendedQuizzes
+          quizzes={recommendedQuizzes}
+          theme={config.theme !== 'white' ? 'light' : 'dark'}
+        />
+      )}
 
       {/* 공유 버튼 */}
       <div className={styles.shareBtnWrapper}>

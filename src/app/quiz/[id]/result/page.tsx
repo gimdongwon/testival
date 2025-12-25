@@ -4,6 +4,7 @@ import ResultClient from './result.client';
 import type { Metadata } from 'next';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
 import quizMeta from '@/content/quiz-meta.json';
+import { getRecommendedQuizzes } from '@/lib/recommendedQuizzes';
 
 type Props = {
   params: Promise<{
@@ -72,5 +73,9 @@ export default async function Page({
   const repo = getQuizRepository();
   const def = await repo.getById(id);
   if (!def) return notFound();
-  return <ResultClient def={def} />;
+
+  // 추천 퀴즈 가져오기
+  const recommendedQuizzes = await getRecommendedQuizzes(id, 3);
+
+  return <ResultClient def={def} recommendedQuizzes={recommendedQuizzes} />;
 }
