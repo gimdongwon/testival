@@ -44,12 +44,6 @@
   z-index: 1;
 }
 
-/* 하단 고정 버튼과 겹치지 않도록 빈 공간 확보 */
-.bottomSpacer {
-  height: calc(96px + env(safe-area-inset-bottom));
-  flex: 0 0 auto;
-}
-
 .shareBtnWrapper {
   position: absolute;
   display: flex;

@@ -80,7 +80,6 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
           theme: 'black' | 'white';
           imageMode: 'long' | 'bg';
           showReceipt: boolean;
-          showBottomSpacer: boolean;
           backgroundColor?: string;
         };
       };
@@ -90,7 +89,6 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
     theme: 'black' as const,
     imageMode: 'long' as const,
     showReceipt: false,
-    showBottomSpacer: true,
   };
 
   // 컨테이너/버튼/아이콘 색상은 테마에서 파생

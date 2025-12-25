@@ -21,7 +21,6 @@
       "theme": "black",
       "imageMode": "long",
       "showReceipt": false,
-      "showBottomSpacer": false,
       "backgroundColor": "#000000"
     },
     "landing": { "buttonTheme": "black" },

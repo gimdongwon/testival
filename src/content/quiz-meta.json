@@ -29,6 +29,11 @@
       "id": "christmas_cake",
       "title": "나와 어울리는 크리스마스 케이크는",
       "description": "Testival - 나와 어울리는 크리스마스 케이크는"
+    },
+    {
+      "id": "christmas_present",
+      "title": "올 연말 나는 선물을 받을 수 있을까?",
+      "description": "Testival - 올 연말 나는 선물을 받을 수 있을까?"
     }
   ]
 }

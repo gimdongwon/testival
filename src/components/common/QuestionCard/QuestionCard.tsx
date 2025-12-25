@@ -31,6 +31,7 @@ export type QuestionCardProps = {
   optionLabelStyle?: React.CSSProperties;
   /** 질문 번호 뒤의 점(.) 숨김 여부 */
   hideQuestionNumberDot?: boolean;
+  projectId?: string;
 };
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -48,6 +49,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   questionTitleStyle,
   optionLabelStyle,
   hideQuestionNumberDot = false,
+  projectId,
 }) => {
   return (
     <div className={styles.centerGrid}>
@@ -107,13 +109,33 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 aria-label={`${opt.label} ${opt.text}`}
                 className={`${styles.optionBtn} ${
                   columns > 1 ? styles.optionTile : ''
+                } ${
+                  projectId === 'christmas_present' ? styles.optionCentered : ''
                 } ${optionClassName ?? ''}`}
                 style={style}
               >
-                <span className={styles.optionLabel} style={optionLabelStyle}>
-                  {opt.label}
+                {projectId !== 'christmas_present' && (
+                  <span className={styles.optionLabel} style={optionLabelStyle}>
+                    {opt.label}
+                  </span>
+                )}
+                <span
+                  className={styles.optionText}
+                  style={
+                    projectId === 'christmas_present'
+                      ? {
+                          fontSize: '32px',
+                          fontWeight: '700',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          height: '100%',
+                        }
+                      : undefined
+                  }
+                >
+                  {opt.text}
                 </span>
-                <span className={styles.optionText}>{opt.text}</span>
               </button>
             </div>
           ))}

@@ -50,7 +50,6 @@ export const ResultUIConfigZ = z.object({
   theme: z.enum(['black', 'white']),
   imageMode: z.enum(['long', 'bg']),
   showReceipt: z.boolean().default(false),
-  showBottomSpacer: z.boolean().default(true),
   backgroundColor: z.string().optional(),
 });
 

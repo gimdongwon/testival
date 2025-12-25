@@ -14,7 +14,6 @@
       "theme": "white",
       "imageMode": "long",
       "showReceipt": false,
-      "showBottomSpacer": false,
       "backgroundColor": "#FF22B6"
     },
     "landing": { "buttonTheme": "white" },

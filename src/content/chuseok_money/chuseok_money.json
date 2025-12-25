@@ -13,7 +13,6 @@
       "theme": "white",
       "imageMode": "bg",
       "showReceipt": true,
-      "showBottomSpacer": true,
       "backgroundColor": "#FFFFFF"
     },
     "landing": { "buttonTheme": "white" },

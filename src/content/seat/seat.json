@@ -23,7 +23,6 @@
       "theme": "white",
       "imageMode": "long",
       "showReceipt": false,
-      "showBottomSpacer": true,
       "backgroundColor": "#FFFFFF"
     },
     "landing": { "buttonTheme": "white" },

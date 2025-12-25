@@ -86,7 +86,9 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
 
   // 2지선다형 UI를 사용하는 콘텐츠들(확장 가능하도록 조건 기반)
   const isTwoChoiceGrid =
-    (def.meta.id === 'classroom' || def.meta.id === 'christmas_cake') &&
+    (def.meta.id === 'classroom' ||
+      def.meta.id === 'christmas_cake' ||
+      def.meta.id === 'christmas_present') &&
     Array.isArray(options) &&
     options.length === 2;
 
@@ -123,6 +125,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
               ? `'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif`
               : undefined
           }
+          projectId={def.meta.id}
         />
       </div>
     </>

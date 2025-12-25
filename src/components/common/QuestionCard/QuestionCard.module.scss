@@ -148,6 +148,14 @@
   padding: 8px 12px;
 }
 
+/* christmas_present용 가운데 정렬 스타일 */
+.optionCentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 /* 타일 모드에서는 텍스트가 남는 영역을 채우지 않도록 해 중앙 정렬 유지 */
 .optionTile .optionText {
   flex: 0 0 auto;
