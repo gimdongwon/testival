@@ -162,10 +162,6 @@ export default function ResultClient({ def }: { def: TestDefinition }) {
           <Receipt id={testId} items={items} total={total} detail={detail} />
         )}
       </div>
-      {/* 하단 고정 버튼과 겹치지 않도록 여백 확보 */}
-      {config.showBottomSpacer && (
-        <div className={styles.bottomSpacer} aria-hidden />
-      )}
 
       {/* 공유 버튼 */}
       <div className={styles.shareBtnWrapper}>
