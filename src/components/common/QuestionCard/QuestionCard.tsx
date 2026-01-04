@@ -102,7 +102,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             fontFamily: optionFontFamily,
           }}
         >
-          {options.map((opt) => (
+          {options.map((opt, idx) => (
             <div className={styles.fullWidth} key={opt.id}>
               <button
                 onClick={() => onSelect?.(opt.id)}
@@ -111,10 +111,21 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                   columns > 1 ? styles.optionTile : ''
                 } ${
                   projectId === 'christmas_present' ? styles.optionCentered : ''
+                } ${
+                  projectId === 'travel_photo' ? styles.optionCentered : ''
                 } ${optionClassName ?? ''}`}
-                style={style}
+                style={
+                  projectId === 'travel_photo'
+                    ? {
+                        ...style,
+                        backgroundColor: idx === 0 ? '#FF7700' : '#D25E00',
+                        color: '#fff',
+                        border: 'none',
+                      }
+                    : style
+                }
               >
-                {projectId !== 'christmas_present' && (
+                {projectId !== 'christmas_present' && projectId !== 'travel_photo' && (
                   <span className={styles.optionLabel} style={optionLabelStyle}>
                     {opt.label}
                   </span>
@@ -130,6 +141,15 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                           alignItems: 'center',
                           justifyContent: 'center',
                           height: '100%',
+                        }
+                      : projectId === 'travel_photo'
+                      ? {
+                          fontFamily: 'PyeongchangPeace',
+                          fontWeight: '700',
+                          fontSize: '24px',
+                          lineHeight: '100%',
+                          letterSpacing: '0%',
+                          textAlign: 'center',
                         }
                       : undefined
                   }

@@ -34,6 +34,11 @@
       "id": "christmas_present",
       "title": "올 연말 나는 선물을 받을 수 있을까?",
       "description": "Testival - 올 연말 나는 선물을 받을 수 있을까?"
+    },
+    {
+      "id": "travel_photo",
+      "title": "나의 여행 사진 스타일은?",
+      "description": "Testival - 나의 여행 사진 스타일은?"
     }
   ]
 }

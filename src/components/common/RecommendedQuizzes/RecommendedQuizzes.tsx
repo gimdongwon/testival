@@ -70,3 +70,4 @@ const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
 
 export default RecommendedQuizzes;
 
+

@@ -88,7 +88,8 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const isTwoChoiceGrid =
     (def.meta.id === 'classroom' ||
       def.meta.id === 'christmas_cake' ||
-      def.meta.id === 'christmas_present') &&
+      def.meta.id === 'christmas_present' ||
+      def.meta.id === 'travel_photo') &&
     Array.isArray(options) &&
     options.length === 2;
 
