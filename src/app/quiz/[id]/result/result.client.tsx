@@ -160,7 +160,11 @@ export default function ResultClient({
           draggable={false}
           width={430}
           height={1228}
-          priority
+          loading="lazy"
+          quality={85}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+          sizes="(max-width: 430px) 100vw, 430px"
         />
       )}
       <div className={styles.content}>

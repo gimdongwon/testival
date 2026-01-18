@@ -30,7 +30,11 @@ const QuizListCard: React.FC<QuizListCardProps> = ({
           width={160}
           height={160}
           className={styles.thumbnail}
-          priority
+          loading="lazy"
+          quality={80}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+          sizes="160px"
         />
       </div>
       <div className={styles.content}>

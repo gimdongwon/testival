@@ -2,6 +2,16 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // 이미지 최적화 설정
+  images: {
+    formats: ['image/avif', 'image/webp'], // AVIF와 WebP 포맷 우선 사용
+    minimumCacheTTL: 31536000, // 1년 캐싱
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920], // 디바이스별 최적화된 크기
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // 작은 이미지 크기
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
   webpack(config) {
     // 1) 기존 asset 처리에서 svg 제외
     const assetRule = config.module.rules.find(

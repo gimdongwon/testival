@@ -32,6 +32,9 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           alt={def.meta.title}
           fill
           priority
+          quality={85}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
           sizes='(max-width: 430px) 100vw, 430px'
           className={styles.mainImage}
         />

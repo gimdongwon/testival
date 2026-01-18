@@ -51,6 +51,11 @@ const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
                 alt={quiz.title}
                 width={160}
                 height={160}
+                loading="lazy"
+                quality={80}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+                sizes="160px"
                 className={styles.thumbnail}
               />
             </div>

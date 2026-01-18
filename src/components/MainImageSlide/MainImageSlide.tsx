@@ -51,6 +51,10 @@ export default function MainImageSlide({
                   alt={`슬라이드 ${i + 1}`}
                   className={styles.slideImage}
                   priority={i === 0}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                   sizes='(max-width: 430px) 100vw, 430px'
                 />
               </Link>
@@ -61,6 +65,10 @@ export default function MainImageSlide({
                 alt={`슬라이드 ${i + 1}`}
                 className={styles.slideImage}
                 priority={i === 0}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                quality={85}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                 sizes='(max-width: 430px) 100vw, 430px'
               />
             )}
