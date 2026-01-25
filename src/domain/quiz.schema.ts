@@ -219,7 +219,7 @@ export type LandingUIConfig = z.infer<typeof LandingUIConfigZ>;
 export type QuestionUIConfig = z.infer<typeof QuestionUIConfigZ>;
 
 /** 타입 안전 헬퍼 함수들 */
-export function getQuestionUIConfig(def: TestDefinition): QuestionUIConfig {
+export function getQuestionUIConfig(def: TestDefinition): Partial<QuestionUIConfig> {
   return def.ui?.question ?? {};
 }
 
