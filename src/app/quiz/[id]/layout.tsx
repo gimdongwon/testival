@@ -47,18 +47,30 @@ export async function generateMetadata({
     metadataBase: new URL(siteUrl),
     title: {
       default: resolvedTitle,
-      template: '%s | testival',
+      template: '%s | Testival',
     },
     description: resolvedDescription,
+    keywords: [
+      '심리테스트',
+      '성격테스트',
+      resolvedTitle,
+      '무료테스트',
+      '온라인테스트',
+    ],
     openGraph: {
       type: 'website',
       url: `${siteUrl}/quiz/${id}`,
-      siteName: 'testival',
+      siteName: 'Testival',
       title: resolvedTitle,
       description: resolvedDescription,
       locale: 'ko_KR',
       images: [
-        { url: ogImage, width: 1200, height: 630, alt: '미리보기 이미지' },
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${resolvedTitle} - Testival 심리테스트`,
+        },
       ],
     },
     twitter: {
@@ -68,6 +80,24 @@ export async function generateMetadata({
       images: [ogImage],
     },
     alternates: { canonical: `${siteUrl}/quiz/${id}` },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+    other: {
+      // Kakao 공유를 위한 메타태그
+      'kakao:title': resolvedTitle,
+      'kakao:description': resolvedDescription,
+      'kakao:image': ogImage,
+      // Pinterest 메타태그
+      'pinterest:title': resolvedTitle,
+      'pinterest:description': resolvedDescription,
+      'pinterest:media': ogImage,
+    },
   };
 }
 

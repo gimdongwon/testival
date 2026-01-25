@@ -7,28 +7,44 @@ import GAListener from '@/lib/ga-listener';
 import { Analytics } from '@vercel/analytics/next';
 
 const siteUrl = 'https://testival.kr';
-const defaultTitle = 'Testival';
-const defaultDesc = 'Testival';
+const defaultTitle = 'Testival - 심리테스트 & 재미있는 테스트';
+const defaultDesc =
+  '재미있는 심리테스트, 성격 테스트, 여행 스타일 테스트를 무료로 즐겨보세요. 친구들과 공유하고 나를 발견하는 시간!';
 const defaultImage = `${siteUrl}/images/quiz/chuseok/og-image.png`;
-const defaultImageAlt = '미리보기 이미지';
+const defaultImageAlt = 'Testival 심리테스트 플랫폼 - 나를 발견하는 재미있는 테스트';
 const defaultImageWidth = 1200;
 const defaultImageHeight = 630;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: defaultTitle, template: '%s | testival' },
+  title: { default: defaultTitle, template: '%s | Testival' },
   description: defaultDesc,
+  keywords: [
+    '심리테스트',
+    '성격테스트',
+    '여행테스트',
+    'MBTI',
+    '심리분석',
+    '재미테스트',
+    '성향테스트',
+    '무료테스트',
+    '온라인테스트',
+    '퀴즈',
+  ],
+  authors: [{ name: 'Testival' }],
+  creator: 'Testival',
+  publisher: 'Testival',
+  formatDetection: {
+    telephone: false,
+  },
   icons: {
-    icon: [
-      { url: '/images/quiz/common/favicon.png', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/images/quiz/common/favicon.png', type: 'image/png' },
-    ],
+    icon: [{ url: '/images/quiz/common/favicon.png', type: 'image/png' }],
+    apple: [{ url: '/images/quiz/common/favicon.png', type: 'image/png' }],
   },
   openGraph: {
     type: 'website',
     url: siteUrl,
-    siteName: 'testival',
+    siteName: 'Testival',
     title: defaultTitle,
     description: defaultDesc,
     locale: 'ko_KR',
@@ -48,6 +64,20 @@ export const metadata: Metadata = {
     images: [defaultImage],
   },
   alternates: { canonical: siteUrl },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'google-site-verification-code', // Google Search Console에서 발급받은 코드로 변경
+  },
 };
 
 export default function RootLayout({

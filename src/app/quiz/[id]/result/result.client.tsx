@@ -144,14 +144,14 @@ export default function ResultClient({
         // eslint-disable-next-line @next/next/no-img-element
         <img
           className={styles.longImage}
-          alt='테스트 결과 이미지'
+          alt={`${def.meta.title} 테스트 결과 이미지`}
           src={`/images/quiz/${testId}/result_${type}.png`}
           draggable={false}
         />
       ) : (
         <Image
           className={styles.bgImage}
-          alt='테스트 결과 이미지'
+          alt={`${def.meta.title} 테스트 결과 배경 이미지`}
           src={`/images/quiz/${testId}/result.png`}
           draggable={false}
           width={430}

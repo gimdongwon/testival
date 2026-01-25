@@ -4,6 +4,7 @@ import Header from '@/components/common/Header';
 import MainImageSlide from '@/components/MainImageSlide/MainImageSlide';
 import QuizListCard from '@/components/common/QuizListCard';
 import styles from './page.module.scss';
+import Script from 'next/script';
 
 // 조회수를 실시간으로 반영하기 위해 revalidate 설정
 export const revalidate = 10; // 10초마다 페이지 재생성
@@ -23,31 +24,98 @@ const Home = async () => {
   // 슬라이드 클릭 시 이동할 링크 배열
   const mainSlideLinks = list.map((item) => `/quiz/${item.meta.id}`);
 
+  // Structured Data (JSON-LD) - 웹사이트 정보
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Testival',
+    description: '재미있는 심리테스트, 성격 테스트를 무료로 즐겨보세요',
+    url: 'https://testival.kr',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://testival.kr/?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  // Structured Data (JSON-LD) - 조직 정보
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Testival',
+    url: 'https://testival.kr',
+    logo: 'https://testival.kr/images/quiz/common/favicon.png',
+    description: '심리테스트 & 재미있는 테스트 플랫폼',
+    sameAs: [
+      // SNS 링크가 있다면 여기에 추가
+    ],
+  };
+
+  // Structured Data (JSON-LD) - ItemList (퀴즈 목록)
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: list.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Quiz',
+        name: item.meta.title,
+        url: `https://testival.kr/quiz/${item.meta.id}`,
+        image: `https://testival.kr/images/quiz/${item.meta.id}/og-image.png`,
+      },
+    })),
+  };
+
   return (
-    <div className={styles.container}>
-      <Header />
+    <>
+      {/* Structured Data (JSON-LD) */}
+      <Script
+        id="website-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <Script
+        id="organization-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <Script
+        id="itemlist-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
 
-      <div className={styles.slideSection}>
-        <MainImageSlide images={mainSlideImages} links={mainSlideLinks} />
+      <div className={styles.container}>
+        <Header />
+
+        <div className={styles.slideSection}>
+          <MainImageSlide images={mainSlideImages} links={mainSlideLinks} />
+        </div>
+
+        <main className={styles.main}>
+          {/* SEO를 위한 h1 태그 (시각적으로 숨김) */}
+          <h1 className={styles.visuallyHidden}>
+            Testival - 재미있는 심리테스트 & 성격 테스트
+          </h1>
+
+          <section className={styles.quizListSection}>
+            <h2 className={styles.sectionTitle}>🔥 추천 심리테스트 보기 🔥</h2>
+            <div className={styles.quizList}>
+              {list.map((item) => (
+                <QuizListCard
+                  key={item.meta.id}
+                  id={item.meta.id}
+                  title={item.meta.title}
+                  thumbnail={`/images/quiz/${item.meta.id}/og-image.png`}
+                  views={allViews[item.meta.id] ?? 0}
+                />
+              ))}
+            </div>
+          </section>
+        </main>
       </div>
-
-      <main className={styles.main}>
-        <section className={styles.quizListSection}>
-          <h2 className={styles.sectionTitle}>🔥 추천 심리테스트 보기 🔥</h2>
-          <div className={styles.quizList}>
-            {list.map((item) => (
-              <QuizListCard
-                key={item.meta.id}
-                id={item.meta.id}
-                title={item.meta.title}
-                thumbnail={`/images/quiz/${item.meta.id}/og-image.png`}
-                views={allViews[item.meta.id] ?? 0}
-              />
-            ))}
-          </div>
-        </section>
-      </main>
-    </div>
+    </>
   );
 };
 
