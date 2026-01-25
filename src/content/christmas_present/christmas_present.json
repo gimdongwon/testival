@@ -26,6 +26,12 @@
     "question": {
       "optionVariant": "light",
       "progressFillColor": "#C41E3A",
+      "hideOptionLabel": true,
+      "optionTextStyle": {
+        "fontSize": "32px",
+        "fontWeight": "700",
+        "fontFamily": "'ChungjuKimSaeng', 'Noto Sans KR', sans-serif"
+      },
       "optionFontFamily": "'ChungjuKimSaeng', 'Noto Sans KR', sans-serif",
       "questionNumberStyle": {
         "color": "#fff",

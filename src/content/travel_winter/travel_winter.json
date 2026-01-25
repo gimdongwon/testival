@@ -1,0 +1,381 @@
+{
+  "meta": {
+    "id": "travel_winter",
+    "title": "겨울 여행, 어디로 갈까?",
+    "description": "이번 겨울, 어디로 여행을 가면 좋을까?",
+    "mode": "weighted",
+    "resultTypes": [
+      "domestic_winter_sea",
+      "romantic_snow_mountain",
+      "warm_beach",
+      "australia_nature",
+      "city_shopping",
+      "history_exploration"
+    ],
+    "thumbnail": "/images/quiz/travel_winter/content_background.png",
+    "locale": "ko",
+    "version": 1
+  },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "long",
+      "showReceipt": false,
+      "backgroundColor": "#FFFFFF",
+      "shareBtnBottom": "450px"
+    },
+    "landing": {
+      "buttonTheme": "black"
+    },
+    "question": {
+      "optionVariant": "light",
+      "questionTextColor": "#1A5F7A",
+      "questionFontFamily": "'Noto Sans KR', sans-serif",
+      "progressFillColor": "#4A90E2",
+      "optionColors": ["#fff", "#fff"],
+      "optionLabelStyle": {
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "fontWeight": "500",
+        "fontSize": "20px",
+        "lineHeight": "120%",
+        "textAlign": "center",
+        "color": "#000"
+      },
+      "optionTextStyle": {
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "fontWeight": "500",
+        "fontSize": "20px",
+        "lineHeight": "120%",
+        "textAlign": "center",
+        "color": "#000"
+      },
+      "questionNumberStyle": {
+        "fontFamily": "'Shilla_Culture(B)', 'Noto Sans KR', sans-serif",
+        "fontWeight": "700",
+        "fontSize": "50px",
+        "lineHeight": "100%",
+        "textAlign": "center",
+        "color": "#000",
+        "WebkitTextStroke": "2.5px #fff",
+        "paintOrder": "stroke fill"
+      },
+      "questionTitleStyle": {
+        "fontFamily": "'Shilla_Culture(B)', 'Noto Sans KR', sans-serif",
+        "fontWeight": "700",
+        "fontSize": "30px",
+        "lineHeight": "120%",
+        "textAlign": "center",
+        "color": "#000",
+        "WebkitTextStroke": "2.5px #fff",
+        "paintOrder": "stroke fill"
+      }
+    }
+  },
+  "resultDetails": {
+    "domestic_winter_sea": {
+      "name": "고독한 국내 겨울 바다형",
+      "title": "아무것도 안 하는데 제일 잘 쉬는 사람",
+      "description": "사람이 많은 곳에서는 에너지를 뺏기는 편. 겨울엔 \"조용한 힐링 스팟\"이 답.\n\n당신의 여행 스타일:\n• 일정은 느슨하게, 마음은 단단하게\n• 바다 앞에서 멍 때리는 게 메인 콘텐츠\n• 멀리 가기보단 가까운 곳에서 확실히 쉬는 타입\n\n추천 키워드/코스:\n강릉·속초·양양 / 겨울 바다 산책 / 오션뷰 카페 커피 한잔\n바다 30분 + 낮잠 + 저녁엔 회와 청하 한잔하는 루틴\n\n주의할 점:\n'뭐라도 해야 한다' 강박 생기면 여행이 바로 피곤해짐\n사람 많은 핫플은 한 곳 정도만 찍고 빠지는 게 딱 좋음",
+      "image": "/images/quiz/travel_winter/result_domestic_winter_sea.png",
+      "keywords": [
+        "조용한 힐링",
+        "바다 멍때리기",
+        "느슨한 일정",
+        "가까운 여행"
+      ],
+      "type": "domestic_winter_sea"
+    },
+    "romantic_snow_mountain": {
+      "name": "낭만 설산형",
+      "title": "추운데 왜 가냐고? 추워서 좋은 거니까",
+      "description": "겨울은 겨울답게. 추워도 쌓인 눈을 보면 행복하니까.\n\n당신의 여행 스타일:\n• 명소를 다 봐야하다 보니 일정이 빡빡해짐\n• 눈, 온천, 야경 같은 \"겨울 한정 이벤트\"에 약함\n• 감성도 챙기지만, 알차게 다 보고 오는 것이 더 중요함\n\n추천 키워드/코스:\n삿포로·오타루 / 눈 내리는 거리 / 온천 / 따뜻한 실내 + 창밖 설경\n낮엔 눈구경, 밤엔 온천 조합\n\n주의할 점:\n방한 준비 대충하면 겨울 산은 낭만이 아니라 고문이 됨\n일정 너무 빡빡하면 감성이 사라지고 미션이 되므로 밸런스 잘 맞추기",
+      "image": "/images/quiz/travel_winter/result_romantic_snow_mountain.png",
+      "keywords": ["눈 구경", "온천", "겨울 감성", "알찬 일정"],
+      "type": "romantic_snow_mountain"
+    },
+    "warm_beach": {
+      "name": "따뜻한 바다 휴양지형",
+      "title": "나 쉬러 왔어. 진짜로",
+      "description": "안 그래도 추운데 적어도 휴가는 따뜻해야 하지 않겠냐?\n\n당신의 여행 스타일:\n• 리조트/마사지 등 내 힐링에 돈 쓰는 맛\n• 바다는 수영이 가능한 바다여야 함\n• 여행 목표가 힐링, 회복이라 무리하면 손해\n\n추천 키워드/코스:\n다낭·푸꾸옥·세부 / 호캉스 / 마사지 / 수영장 / 선셋\n오전 늘어지게 늦잠 → 점심 먹고 수영 → 마사지 → 저녁 맛집\n\n주의할 점:\n일정을 잔뜩 넣으면 휴양이 아니라 노동됨\n쇼핑 몰아치기 하면 몸이 못 따라옴",
+      "image": "/images/quiz/travel_winter/result_warm_beach.png",
+      "keywords": ["휴양", "마사지", "호캉스", "힐링"],
+      "type": "warm_beach"
+    },
+    "australia_nature": {
+      "name": "지구 반대편 자연인 형",
+      "title": "광활한 자연과 하나가 되",
+      "description": "멀어도 괜찮아. 광활한 자연을 마주해야 속이 풀림.\n\n당신의 여행 스타일:\n• 사진은 자연 위주, 밤은 별 보면서 산책\n• 이동 시간? 여행의 일부라고 생각함\n• 사람보다 아름다운 자연이 더 큰 만족을 줌\n\n추천 키워드/코스:\n호주 자연 드라이브/해안/국립공원 느낌 / 별 보기 / 작은 도시\n\"하루 한 곳이라도 천천히 제대로 보고 오기\" 전략\n\n주의할 점:\n동선 설계 없이 가면 이동만 하다 끝날 수 있음\n체력 과신하면 중간에 급방전",
+      "image": "/images/quiz/travel_winter/result_australia_nature.png",
+      "keywords": ["자연 탐험", "별 보기", "드라이브", "느긋함"],
+      "type": "australia_nature"
+    },
+    "city_shopping": {
+      "name": "좋(은)느(낌) 도시 쇼핑형",
+      "title": "이거 한국에선 얼만지 알아?",
+      "description": "여행은 도시의 텐션 + 소비의 쾌감. 그리고 '느낌'이 중요함.\n\n당신의 여행 스타일:\n• 편집샵, 핫플, 트렌드에 진심\n• 면세/브랜드/핫한 아이템에 끌림\n• 밤엔 번화가에서 늦게까지 놀아야 여행 온 느낌 남\n\n추천 키워드/코스:\n도쿄 / 상하이 / 편집샵 투어 / 전시·카페 / 야경 / 쇼핑 동선\n구역별로 하루에 1~2스팟을 구경하는 게 효율 최고\n\n주의할 점:\n계획 없이 가면 지출만 크고 만족이 애매해질 수 있음\n체력이 진짜 중요함(편한 신발/휴식 타이밍 잘 챙기기)",
+      "image": "/images/quiz/travel_winter/result_city_shopping.png",
+      "keywords": ["쇼핑", "핫플", "트렌드", "도시 여행"],
+      "type": "city_shopping"
+    },
+    "history_exploration": {
+      "name": "역사·문명 탐험형",
+      "title": "내 눈으로 직접 보는 것의 감동",
+      "description": "직접 보면 생각이 바뀐다. 내 눈으로 직접 보는 것이 중요함.\n\n당신의 여행 스타일:\n• 유명한 장소 인증샷도 좋지만 관련 이야기가 궁금함(역사/문명/박물관)\n• 로컬 기념품 같은 그 나라에서만 구할 수 있는 기념품에 약함\n• 멀리 가는 것도 상관 없다. 대신 의미 있어야 함\n\n추천 키워드/코스:\n유럽 박물관 / 이집트 유적지 / 투어+자유시간 믹스\n낮엔 유적지 투어, 밤엔 정리(기록/사진)\n\n주의할 점:\n공부 안 하고 가면 그냥 멍청한 표정으로 헤헤 머싯따만 말하고 올 수 있음\n미리미리 준비한 동선+예약(입장권/투어)이 승패를 가름",
+      "image": "/images/quiz/travel_winter/result_history_exploration.png",
+      "keywords": ["역사", "문명", "박물관", "의미 있는 여행"],
+      "type": "history_exploration"
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "여행 가서 하고 싶은 건?",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "바다 앞에서\n멍 때리기",
+          "weights": {
+            "domestic_winter_sea": 20,
+            "warm_beach": 20
+          }
+        },
+        {
+          "id": "q1b",
+          "label": "느좋\n편집샵 가기",
+          "weights": {
+            "city_shopping": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "겨울 여행의 날씨는?",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "춥더라도\n눈을 보고 싶다",
+          "weights": {
+            "romantic_snow_mountain": 28
+          }
+        },
+        {
+          "id": "q2b",
+          "label": "겨울엔 반대로\n따뜻한 나라가\n답",
+          "weights": {
+            "warm_beach": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "여행지에서 찍은 사진은 주로?",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "바다·산·\n사막 등\n풍경/자연 위주",
+          "weights": {
+            "australia_nature": 20
+          }
+        },
+        {
+          "id": "q3b",
+          "label": "유명한\n랜드마크\n인증샷",
+          "weights": {
+            "history_exploration": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "하루 일정을 짠다면?",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "적당히\n여유있고\n느슨한 게 좋다",
+          "weights": {
+            "domestic_winter_sea": 20,
+            "romantic_snow_mountain": 28,
+            "warm_beach": 20,
+            "australia_nature": 20
+          }
+        },
+        {
+          "id": "q4b",
+          "label": "하나라도 더\n보고 싶다",
+          "weights": {
+            "city_shopping": 17,
+            "history_exploration": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "돈을 주로 쓰는 부분은?",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "마사지/리조트/\n호캉스 등 휴양",
+          "weights": {
+            "warm_beach": 20
+          }
+        },
+        {
+          "id": "q5b",
+          "label": "투어/체험/\n전시 같은\n새로운 경험",
+          "weights": {
+            "history_exploration": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "이동 시간은?",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "어차피 가는 거\n이왕이면\n멀리 가 볼까?",
+          "weights": {
+            "australia_nature": 20,
+            "history_exploration": 20
+          }
+        },
+        {
+          "id": "q6b",
+          "label": "그다지 멀리\n가고 싶지 않다",
+          "weights": {
+            "domestic_winter_sea": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "여행에서 제일 설레는 단어",
+      "choices": [
+        {
+          "id": "q7a",
+          "label": "쇼핑/핫플/\n트렌드",
+          "weights": {
+            "city_shopping": 17
+          }
+        },
+        {
+          "id": "q7b",
+          "label": "역사/문명/\n박물관",
+          "weights": {
+            "history_exploration": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "여행지에서 기념품을 고르는 기준은?",
+      "choices": [
+        {
+          "id": "q8a",
+          "label": "그 나라에서만\n파는 로컬 소품",
+          "weights": {
+            "history_exploration": 20
+          }
+        },
+        {
+          "id": "q8b",
+          "label": "면세/브랜드/핫한\n아이템",
+          "weights": {
+            "city_shopping": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "title": "바다는 어떤 바다가 좋아?",
+      "choices": [
+        {
+          "id": "q9a",
+          "label": "차갑고 조용한\n겨울 바다",
+          "weights": {
+            "domestic_winter_sea": 20
+          }
+        },
+        {
+          "id": "q9b",
+          "label": "실컷\n수영할 수 있는\n따뜻한 바다",
+          "weights": {
+            "warm_beach": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "title": "여행 첫날 밤에 하고 싶은 것은?",
+      "choices": [
+        {
+          "id": "q10a",
+          "label": "별 보며\n조용히 산책",
+          "weights": {
+            "domestic_winter_sea": 20,
+            "romantic_snow_mountain": 28,
+            "warm_beach": 20,
+            "australia_nature": 20
+          }
+        },
+        {
+          "id": "q10b",
+          "label": "번화가에서\n늦게까지 놀기",
+          "weights": {
+            "city_shopping": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "title": "여행갈 때 둘 중 하나를 선택해야한다면?",
+      "choices": [
+        {
+          "id": "q11a",
+          "label": "멋진 옷",
+          "weights": {
+            "city_shopping": 17
+          }
+        },
+        {
+          "id": "q11b",
+          "label": "편한 옷\n(잠옷 제외)",
+          "weights": {
+            "domestic_winter_sea": 20,
+            "australia_nature": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "title": "여행에서 '체험' 하나만 고른다면?",
+      "choices": [
+        {
+          "id": "q12a",
+          "label": "로드트립/\n하이킹 같은\n자연 체험",
+          "weights": {
+            "australia_nature": 20
+          }
+        },
+        {
+          "id": "q12b",
+          "label": "스키/\n썰매 같은\n스포츠 체험",
+          "weights": {
+            "romantic_snow_mountain": 28
+          }
+        }
+      ]
+    }
+  ]
+}

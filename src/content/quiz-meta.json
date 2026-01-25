@@ -39,6 +39,11 @@
       "id": "travel_photo",
       "title": "나의 여행 사진 스타일은?",
       "description": "Testival - 나의 여행 사진 스타일은?"
+    },
+    {
+      "id": "travel_winter",
+      "title": "겨울 여행, 어디로 갈까?",
+      "description": "Testival - 겨울 여행, 어디로 갈까?"
     }
   ]
 }

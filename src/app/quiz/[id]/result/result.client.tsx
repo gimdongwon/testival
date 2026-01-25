@@ -89,6 +89,7 @@ export default function ResultClient({
           imageMode: 'long' | 'bg';
           showReceipt: boolean;
           backgroundColor?: string;
+          shareBtnBottom?: string;
         };
       };
     }
@@ -97,6 +98,11 @@ export default function ResultClient({
     theme: 'black' as const,
     imageMode: 'long' as const,
     showReceipt: false,
+  };
+  
+  // 공유 버튼 위치 스타일
+  const shareBtnStyle: CSSProperties = {
+    bottom: config.shareBtnBottom || '470px',
   };
 
   // 컨테이너/버튼/아이콘 색상은 테마에서 파생
@@ -182,7 +188,7 @@ export default function ResultClient({
       )}
 
       {/* 공유 버튼 */}
-      <div className={styles.shareBtnWrapper}>
+      <div className={styles.shareBtnWrapper} style={shareBtnStyle}>
         <button
           className={`${styles.shareBtn} ${btnVariantClass}`}
           onClick={handleClickShareBtn}

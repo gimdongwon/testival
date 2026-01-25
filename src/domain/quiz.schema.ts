@@ -51,6 +51,7 @@ export const ResultUIConfigZ = z.object({
   imageMode: z.enum(['long', 'bg']),
   showReceipt: z.boolean().default(false),
   backgroundColor: z.string().optional(),
+  shareBtnBottom: z.string().optional(), // 공유 버튼 하단 위치 (예: "450px")
 });
 
 export const LandingUIConfigZ = z.object({
@@ -63,6 +64,11 @@ export const QuestionUIConfigZ = z.object({
   questionFontFamily: z.string().optional(),
   progressFillColor: z.string().optional(),
   hideQuestionNumberDot: z.boolean().optional(),
+  hideOptionLabel: z.boolean().optional(),
+  optionColors: z.array(z.string()).optional(),
+  optionTextStyle: z.record(z.string(), z.unknown()).optional(),
+  optionLabelStyle: z.record(z.string(), z.unknown()).optional(),
+  optionFontFamily: z.string().optional(),
   questionNumberStyle: z.record(z.string(), z.unknown()).optional(),
   questionTitleStyle: z.record(z.string(), z.unknown()).optional(),
 });

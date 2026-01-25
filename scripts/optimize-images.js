@@ -10,7 +10,7 @@ const path = require('path');
 const IMAGES_DIR = path.join(__dirname, '../public/images');
 const QUALITY = 85; // WebP 품질 (1-100)
 const PNG_QUALITY = 85; // PNG 품질
-const SIZE_THRESHOLD = 2 * 1024 * 1024; // 2MB = 2,097,152 bytes (이 크기 이하는 건너뜀)
+const SIZE_THRESHOLD = 1 * 1024 * 1024; // 1MB = 1,048,576 bytes (이 크기 이하는 건너뜀)
 
 async function optimizeImage(filePath) {
   try {
@@ -24,10 +24,13 @@ async function optimizeImage(filePath) {
     const originalSize = stats.size;
     const originalSizeMB = originalSize / 1024 / 1024;
 
-    // 2MB 이하는 건너뛰기
+    // 상대 경로 표시 (images/ 이하 경로)
+    const relativePath = path.relative(IMAGES_DIR, filePath);
+
+    // 1MB 이하는 건너뛰기
     if (originalSize <= SIZE_THRESHOLD) {
-      console.log(`⏭️  ${path.basename(filePath)}`);
-      console.log(`   크기: ${originalSizeMB.toFixed(2)}MB (2MB 이하 - 건너뜀)\n`);
+      // console.log(`⏭️  ${relativePath}`);
+      // console.log(`   크기: ${originalSizeMB.toFixed(2)}MB (1MB 이하 - 건너뜀)\n`);
       return;
     }
 
@@ -43,7 +46,7 @@ async function optimizeImage(filePath) {
 
       const webpStats = fs.statSync(webpPath);
       const webpSize = webpStats.size;
-      console.log(`📦 WebP 생성: ${path.basename(webpPath)} (${(webpSize / 1024 / 1024).toFixed(2)}MB)`);
+      console.log(`📦 WebP 생성: ${relativePath.replace('.png', '.webp')} (${(webpSize / 1024 / 1024).toFixed(2)}MB)`);
     }
 
     // PNG 파일도 압축
@@ -63,13 +66,14 @@ async function optimizeImage(filePath) {
 
     if (newPngSize < originalSize) {
       fs.renameSync(tempPath, filePath);
-      console.log(`✅ ${path.basename(filePath)}`);
+      console.log(`✅ ${relativePath}`);
       console.log(`   원본: ${originalSizeMB.toFixed(2)}MB → 압축: ${(newPngSize / 1024 / 1024).toFixed(2)}MB (${((1 - newPngSize / originalSize) * 100).toFixed(1)}% 감소)`);
     } else {
       // 압축해도 더 크거나 비슷하면 원본 유지
       fs.unlinkSync(tempPath);
-      console.log(`⏭️  ${path.basename(filePath)}`);
-      console.log(`   원본: ${originalSizeMB.toFixed(2)}MB (압축 효과 없음 - 원본 유지)\n`);
+      // console.log(`⏭️  ${relativePath}`);
+      // console.log(`   원본: ${originalSizeMB.toFixed(2)}MB (압축 효과 없음 - 원본 유지)\n`);
+      return;
     }
 
     // WebP 정보 출력
@@ -115,7 +119,7 @@ async function main() {
   
   console.log('\n✨ 이미지 최적화 완료!');
   console.log('💡 Next.js는 자동으로 WebP 파일을 우선 사용합니다.');
-  console.log('💡 2MB 이하의 파일은 건너뛰었습니다.');
+  console.log('💡 1MB 이하의 파일은 건너뛰었습니다.');
 }
 
 main().catch(console.error);

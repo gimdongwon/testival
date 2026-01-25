@@ -22,6 +22,10 @@ type QuestionUIConfig = {
   hideQuestionNumberDot?: boolean;
   questionNumberStyle?: CSSProperties;
   questionTitleStyle?: CSSProperties;
+  hideOptionLabel?: boolean;
+  optionColors?: string[];
+  optionTextStyle?: CSSProperties;
+  optionLabelStyle?: CSSProperties;
 };
 
 export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
@@ -77,6 +81,13 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const questionNumberStyle = qUi.questionNumberStyle;
   const questionTitleStyle = qUi.questionTitleStyle;
   const hideQuestionNumberDot = qUi.hideQuestionNumberDot ?? false;
+  const hideOptionLabel = qUi.hideOptionLabel ?? false;
+  const optionColors = qUi.optionColors;
+  const optionTextStyle = qUi.optionTextStyle;
+  const optionLabelStyle = qUi.optionLabelStyle;
+
+  // 디버깅: optionTextStyle 확인
+  console.log('travel_winter optionTextStyle:', optionTextStyle);
 
   const progressStyle: CSSProperties &
     Record<'--progress' | '--progress-fill-color', string> = {
@@ -89,7 +100,8 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     (def.meta.id === 'classroom' ||
       def.meta.id === 'christmas_cake' ||
       def.meta.id === 'christmas_present' ||
-      def.meta.id === 'travel_photo') &&
+      def.meta.id === 'travel_photo' ||
+      def.meta.id === 'travel_winter') &&
     Array.isArray(options) &&
     options.length === 2;
 
@@ -120,13 +132,16 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           questionNumberStyle={questionNumberStyle}
           questionTitleStyle={questionTitleStyle}
           hideQuestionNumberDot={hideQuestionNumberDot}
+          hideOptionLabel={hideOptionLabel}
+          optionColors={optionColors}
+          optionTextStyle={optionTextStyle}
+          optionLabelStyle={optionLabelStyle}
           columns={isTwoChoiceGrid ? 2 : 1}
           optionFontFamily={
             def.meta.id === 'classroom'
               ? `'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif`
               : undefined
           }
-          projectId={def.meta.id}
         />
       </div>
     </>

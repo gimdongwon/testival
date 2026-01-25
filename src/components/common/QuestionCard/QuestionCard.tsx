@@ -31,7 +31,12 @@ export type QuestionCardProps = {
   optionLabelStyle?: React.CSSProperties;
   /** 질문 번호 뒤의 점(.) 숨김 여부 */
   hideQuestionNumberDot?: boolean;
-  projectId?: string;
+  /** 옵션 라벨(A., B. 등) 숨김 여부 */
+  hideOptionLabel?: boolean;
+  /** 옵션별 배경색 배열 (인덱스 순서대로 적용) */
+  optionColors?: string[];
+  /** 옵션 텍스트 스타일 */
+  optionTextStyle?: React.CSSProperties;
 };
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -49,7 +54,9 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   questionTitleStyle,
   optionLabelStyle,
   hideQuestionNumberDot = false,
-  projectId,
+  hideOptionLabel = false,
+  optionColors,
+  optionTextStyle,
 }) => {
   return (
     <div className={styles.centerGrid}>
@@ -102,63 +109,54 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             fontFamily: optionFontFamily,
           }}
         >
-          {options.map((opt, idx) => (
-            <div className={styles.fullWidth} key={opt.id}>
-              <button
-                onClick={() => onSelect?.(opt.id)}
-                aria-label={`${opt.label} ${opt.text}`}
-                className={`${styles.optionBtn} ${
-                  columns > 1 ? styles.optionTile : ''
-                } ${
-                  projectId === 'christmas_present' ? styles.optionCentered : ''
-                } ${
-                  projectId === 'travel_photo' ? styles.optionCentered : ''
-                } ${optionClassName ?? ''}`}
-                style={
-                  projectId === 'travel_photo'
-                    ? {
-                        ...style,
-                        backgroundColor: idx === 0 ? '#FF7700' : '#D25E00',
-                        color: '#fff',
-                        border: 'none',
-                      }
-                    : style
+          {options.map((opt, idx) => {
+            // 옵션별 배경색 계산
+            const backgroundColor = optionColors?.[idx];
+            
+            // 배경색이 설정되어 있으면 적용
+            const buttonStyle = backgroundColor
+              ? {
+                  ...style,
+                  backgroundColor,
+                  color: '#fff',
+                  border: 'none',
                 }
-              >
-                {projectId !== 'christmas_present' && projectId !== 'travel_photo' && (
-                  <span className={styles.optionLabel} style={optionLabelStyle}>
-                    {opt.label}
-                  </span>
-                )}
-                <span
-                  className={styles.optionText}
-                  style={
-                    projectId === 'christmas_present'
-                      ? {
-                          fontSize: '32px',
-                          fontWeight: '700',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          height: '100%',
-                        }
-                      : projectId === 'travel_photo'
-                      ? {
-                          fontFamily: 'PyeongchangPeace',
-                          fontWeight: '700',
-                          fontSize: '24px',
-                          lineHeight: '100%',
-                          letterSpacing: '0%',
-                          textAlign: 'center',
-                        }
-                      : undefined
-                  }
+              : style;
+
+            // 디버깅
+            console.log('optionTextStyle in QuestionCard:', optionTextStyle);
+
+            return (
+              <div className={styles.fullWidth} key={opt.id}>
+                <button
+                  onClick={() => onSelect?.(opt.id)}
+                  aria-label={`${opt.label} ${opt.text}`}
+                  className={`${styles.optionBtn} ${
+                    columns > 1 ? styles.optionTile : ''
+                  } ${
+                    hideOptionLabel && columns > 1 ? styles.optionCentered : ''
+                  } ${optionClassName ?? ''}`}
+                  style={buttonStyle}
                 >
-                  {opt.text}
-                </span>
-              </button>
-            </div>
-          ))}
+                  {!hideOptionLabel && (
+                    <span className={styles.optionLabel} style={optionLabelStyle}>
+                      {opt.label}
+                    </span>
+                  )}
+                  <span
+                    className={styles.optionText}
+                    style={
+                      optionTextStyle
+                        ? (optionTextStyle as React.CSSProperties)
+                        : undefined
+                    }
+                  >
+                    {opt.text}
+                  </span>
+                </button>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
