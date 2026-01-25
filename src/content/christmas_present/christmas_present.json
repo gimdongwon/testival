@@ -26,6 +26,7 @@
     "question": {
       "optionVariant": "light",
       "progressFillColor": "#C41E3A",
+      "columns": 2,
       "hideOptionLabel": true,
       "optionTextStyle": {
         "fontSize": "32px",

@@ -41,6 +41,7 @@
       "questionTextColor": "#6F3200",
       "questionFontFamily": "Noto Sans KR",
       "progressFillColor": "#FF6B6B",
+      "columns": 2,
       "hideOptionLabel": true,
       "optionColors": ["#FF7700", "#D25E00"],
       "optionTextStyle": {

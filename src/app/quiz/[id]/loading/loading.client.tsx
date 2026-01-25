@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useQuizView } from '@/store/quizStore';
 import { score } from '@/lib/scoring';
 import { TestDefinition } from '@/domain/quiz.schema';
+import { getResultUIConfig } from '@/domain/quiz.schema';
 import { useMemo } from 'react';
 
 const LoadingContent = ({ def }: { def: TestDefinition }) => {
@@ -17,16 +18,9 @@ const LoadingContent = ({ def }: { def: TestDefinition }) => {
   const type = def.resultDetails[top as keyof typeof def.resultDetails]
     .type as string;
 
-  // UI 설정에서 imageMode 확인
-  const imageMode = (
-    def as unknown as {
-      ui?: {
-        result?: {
-          imageMode: 'long' | 'bg';
-        };
-      };
-    }
-  ).ui?.result?.imageMode ?? 'long';
+  // UI 설정에서 imageMode 확인 - 타입 안전하게 가져오기
+  const resultConfig = getResultUIConfig(def);
+  const imageMode = resultConfig?.imageMode ?? 'long';
 
   useEffect(() => {
     // 결과 페이지로 이동하는 타이머

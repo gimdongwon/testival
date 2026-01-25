@@ -12,6 +12,7 @@ import type { CSSProperties } from 'react';
 import { useQuizView } from '@/store/quizStore';
 import { score } from '@/lib/scoring';
 import type { TestDefinition, ResultDetail } from '@/domain/quiz.schema';
+import { getResultUIConfig } from '@/domain/quiz.schema';
 import RecommendedQuizzes from '@/components/common/RecommendedQuizzes';
 import type { QuizRecommendation } from '@/lib/recommendedQuizzes';
 
@@ -80,21 +81,10 @@ export default function ResultClient({
   const handleClickResetBtn = () => {
     router.push(`/quiz/${testId}`);
   };
-  // 콘텐츠 JSON의 UI 설정 우선 적용(없으면 하드코딩 맵으로 폴백)
-  const jsonConfig = (
-    def as unknown as {
-      ui?: {
-        result?: {
-          theme: 'black' | 'white';
-          imageMode: 'long' | 'bg';
-          showReceipt: boolean;
-          backgroundColor?: string;
-          shareBtnBottom?: string;
-        };
-      };
-    }
-  ).ui?.result;
-  const config = jsonConfig ?? {
+  
+  // 콘텐츠 JSON의 UI 설정 - 타입 안전하게 가져오기
+  const resultUIConfig = getResultUIConfig(def);
+  const config = resultUIConfig ?? {
     theme: 'black' as const,
     imageMode: 'long' as const,
     showReceipt: false,
@@ -113,7 +103,7 @@ export default function ResultClient({
   const iconColor = config.theme === 'white' ? '#000' : '#fff';
   const resultBgStyle: CSSProperties & Record<'--result-bg-color', string> = {
     ['--result-bg-color']:
-      (jsonConfig?.backgroundColor as string | undefined) ??
+      config.backgroundColor ??
       (config.theme === 'white' ? '#fff' : '#000'),
   };
 

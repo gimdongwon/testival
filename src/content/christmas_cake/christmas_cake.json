@@ -38,7 +38,8 @@
       "optionVariant": "light",
       "questionTextColor": "#fff",
       "questionFontFamily": "Cafe24Classictype",
-      "progressFillColor": "#A41D1F"
+      "progressFillColor": "#A41D1F",
+      "columns": 2
     }
   },
   "resultDetails": {

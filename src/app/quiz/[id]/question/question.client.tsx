@@ -5,6 +5,7 @@ import { useEffect, useMemo } from 'react';
 import type { CSSProperties } from 'react';
 import { useRouter } from 'next/navigation';
 import type { TestDefinition } from '@/domain/quiz.schema';
+import { getQuestionUIConfig } from '@/domain/quiz.schema';
 import QuestionCard, {
   QuestionOption,
 } from '@/components/common/QuestionCard/QuestionCard';
@@ -13,20 +14,6 @@ import { useQuizView, quizActions } from '@/store/quizStore';
 import styles from './question.module.scss';
 
 const LABELS = ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'];
-
-type QuestionUIConfig = {
-  optionVariant?: 'light' | 'dark' | 'chuseokDark';
-  questionTextColor?: string;
-  questionFontFamily?: string;
-  progressFillColor?: string;
-  hideQuestionNumberDot?: boolean;
-  questionNumberStyle?: CSSProperties;
-  questionTitleStyle?: CSSProperties;
-  hideOptionLabel?: boolean;
-  optionColors?: string[];
-  optionTextStyle?: CSSProperties;
-  optionLabelStyle?: CSSProperties;
-};
 
 export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const router = useRouter();
@@ -61,15 +48,9 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     else quizActions.next(testId, total);
   };
 
-  // JSON UI 설정 기반 옵션/질문 스타일
-  const qUi =
-    (
-      def as unknown as {
-        ui?: {
-          question?: QuestionUIConfig;
-        };
-      }
-    ).ui?.question ?? {};
+  // JSON UI 설정 - 타입 안전하게 가져오기
+  const qUi = getQuestionUIConfig(def);
+  
   const optionClassName =
     qUi.optionVariant === 'chuseokDark'
       ? questionCardStyles.optionChuseokDark
@@ -78,16 +59,15 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
       : questionCardStyles.optionLight;
   const questionTextColor = qUi.questionTextColor ?? '#000';
   const questionFontFamily = qUi.questionFontFamily;
-  const questionNumberStyle = qUi.questionNumberStyle;
-  const questionTitleStyle = qUi.questionTitleStyle;
+  const questionNumberStyle = qUi.questionNumberStyle as CSSProperties | undefined;
+  const questionTitleStyle = qUi.questionTitleStyle as CSSProperties | undefined;
   const hideQuestionNumberDot = qUi.hideQuestionNumberDot ?? false;
   const hideOptionLabel = qUi.hideOptionLabel ?? false;
   const optionColors = qUi.optionColors;
-  const optionTextStyle = qUi.optionTextStyle;
-  const optionLabelStyle = qUi.optionLabelStyle;
-
-  // 디버깅: optionTextStyle 확인
-  console.log('travel_winter optionTextStyle:', optionTextStyle);
+  const optionTextStyle = qUi.optionTextStyle as CSSProperties | undefined;
+  // optionLabelStyle이 없으면 optionTextStyle을 폴백으로 사용
+  const optionLabelStyle = (qUi.optionLabelStyle ?? qUi.optionTextStyle) as CSSProperties | undefined;
+  const optionFontFamily = qUi.optionFontFamily;
 
   const progressStyle: CSSProperties &
     Record<'--progress' | '--progress-fill-color', string> = {
@@ -95,15 +75,9 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     ['--progress-fill-color']: qUi.progressFillColor ?? '#555',
   };
 
-  // 2지선다형 UI를 사용하는 콘텐츠들(확장 가능하도록 조건 기반)
-  const isTwoChoiceGrid =
-    (def.meta.id === 'classroom' ||
-      def.meta.id === 'christmas_cake' ||
-      def.meta.id === 'christmas_present' ||
-      def.meta.id === 'travel_photo' ||
-      def.meta.id === 'travel_winter') &&
-    Array.isArray(options) &&
-    options.length === 2;
+  // JSON 설정에서 columns 가져오기 (기본값: 1)
+  // 2지선다의 경우 자동으로 2컬럼 적용 가능하도록 fallback 로직 포함
+  const columns = qUi.columns ?? (options.length === 2 ? 1 : 1);
 
   return (
     <>
@@ -136,12 +110,8 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           optionColors={optionColors}
           optionTextStyle={optionTextStyle}
           optionLabelStyle={optionLabelStyle}
-          columns={isTwoChoiceGrid ? 2 : 1}
-          optionFontFamily={
-            def.meta.id === 'classroom'
-              ? `'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif`
-              : undefined
-          }
+          columns={columns}
+          optionFontFamily={optionFontFamily}
         />
       </div>
     </>

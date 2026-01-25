@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './detail.module.scss';
 import { notFound } from 'next/navigation';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
+import { getLandingUIConfig } from '@/domain/quiz.schema';
 import ViewTracker from '@/components/quiz/ViewTracker';
 
 const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
@@ -11,15 +12,11 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const def = await repo.getById(id);
   if (!def) return notFound();
-  // JSON UI 설정 기반 버튼 색상
-  const buttonTheme =
-    (
-      def as unknown as {
-        ui?: { landing?: { buttonTheme?: 'black' | 'white' } };
-      }
-    ).ui?.landing?.buttonTheme ?? 'black';
+  
+  // JSON UI 설정 기반 버튼 색상 - 타입 안전하게 가져오기
+  const landingConfig = getLandingUIConfig(def);
   const variantClass =
-    buttonTheme === 'white' ? styles.whiteBtn : styles.blackBtn;
+    landingConfig.buttonTheme === 'white' ? styles.whiteBtn : styles.blackBtn;
 
   const mainImage = `/images/quiz/${id}/main.png`;
 

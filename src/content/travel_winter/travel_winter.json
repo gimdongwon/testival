@@ -32,15 +32,8 @@
       "questionTextColor": "#1A5F7A",
       "questionFontFamily": "'Noto Sans KR', sans-serif",
       "progressFillColor": "#4A90E2",
+      "columns": 2,
       "optionColors": ["#fff", "#fff"],
-      "optionLabelStyle": {
-        "fontFamily": "'Noto Sans KR', sans-serif",
-        "fontWeight": "500",
-        "fontSize": "20px",
-        "lineHeight": "120%",
-        "textAlign": "center",
-        "color": "#000"
-      },
       "optionTextStyle": {
         "fontFamily": "'Noto Sans KR', sans-serif",
         "fontWeight": "500",

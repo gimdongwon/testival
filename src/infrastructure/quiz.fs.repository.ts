@@ -34,7 +34,6 @@ if (
 }
 
 export class FSQuizRepository {
-  getTestDefinition: (() => TestDefinition) | undefined;
   private getContentRoot(): string {
     return path.join(process.cwd(), 'src', 'content');
   }

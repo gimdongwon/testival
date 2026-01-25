@@ -123,9 +123,6 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 }
               : style;
 
-            // 디버깅
-            console.log('optionTextStyle in QuestionCard:', optionTextStyle);
-
             return (
               <div className={styles.fullWidth} key={opt.id}>
                 <button

@@ -26,6 +26,7 @@
     "question": {
       "optionVariant": "light",
       "progressFillColor": "#FF6AA2",
+      "columns": 2,
       "optionFontFamily": "'MangoByeolbyeol', 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif",
       "questionNumberStyle": {
         "color": "#FB2575",

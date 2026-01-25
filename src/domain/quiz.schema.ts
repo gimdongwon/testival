@@ -71,6 +71,7 @@ export const QuestionUIConfigZ = z.object({
   optionFontFamily: z.string().optional(),
   questionNumberStyle: z.record(z.string(), z.unknown()).optional(),
   questionTitleStyle: z.record(z.string(), z.unknown()).optional(),
+  columns: z.number().int().positive().optional(), // 선택지 그리드 컬럼 수 (기본값: 1)
 });
 
 /** 테스트별 UI 설정 */
@@ -213,3 +214,19 @@ export type Question = z.infer<typeof QuestionZ>;
 export type ResultDetail = z.infer<typeof ResultDetailZ>;
 export type TestMeta = z.infer<typeof TestMetaZ>;
 export type TestDefinition = z.infer<typeof TestDefinitionZ>;
+export type ResultUIConfig = z.infer<typeof ResultUIConfigZ>;
+export type LandingUIConfig = z.infer<typeof LandingUIConfigZ>;
+export type QuestionUIConfig = z.infer<typeof QuestionUIConfigZ>;
+
+/** 타입 안전 헬퍼 함수들 */
+export function getQuestionUIConfig(def: TestDefinition): QuestionUIConfig {
+  return def.ui?.question ?? {};
+}
+
+export function getResultUIConfig(def: TestDefinition): ResultUIConfig | undefined {
+  return def.ui?.result;
+}
+
+export function getLandingUIConfig(def: TestDefinition): LandingUIConfig {
+  return def.ui?.landing ?? { buttonTheme: 'black' };
+}
