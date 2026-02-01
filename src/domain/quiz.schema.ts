@@ -52,6 +52,7 @@ export const ResultUIConfigZ = z.object({
   showReceipt: z.boolean().default(false),
   backgroundColor: z.string().optional(),
   shareBtnBottom: z.string().optional(), // 공유 버튼 하단 위치 (예: "450px")
+  resetBtnBackgroundColor: z.string().optional(), // 처음부터 다시하기 버튼 배경색 (예: "#ED1B7A")
 });
 
 export const LandingUIConfigZ = z.object({

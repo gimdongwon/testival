@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "id": "holiday_activity",
+    "title": "연휴 때 뭐할까?",
+    "description": "이번 연휴, 어떻게 보내면 좋을까?",
+    "mode": "weighted",
+    "resultTypes": [
+      "home_cozy",
+      "cyber_travel",
+      "domestic_trip",
+      "global_trip",
+      "family_love",
+      "party_animal"
+    ],
+    "thumbnail": "/images/quiz/holiday_activity/content_background.png",
+    "locale": "ko",
+    "version": 1
+  },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "long",
+      "showReceipt": false,
+      "backgroundColor": "#FFFFFF",
+      "shareBtnBottom": "450px"
+    },
+    "landing": {
+      "buttonTheme": "black"
+    },
+    "question": {
+      "optionVariant": "light",
+      "questionTextColor": "#1A5F7A",
+      "questionFontFamily": "'MBC1961', 'Noto Sans KR', sans-serif",
+      "progressFillColor": "#4A90E2",
+      "columns": 1,
+      "optionColors": ["#3C2E25", "#3C2E25", "#3C2E25", "#3C2E25"],
+      "optionTextStyle": {
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "fontWeight": "500",
+        "fontSize": "14px",
+        "lineHeight": "120%",
+        "textAlign": "left",
+        "color": "#fff"
+      },
+      "questionNumberStyle": {
+        "fontFamily": "'MBC1961', 'Noto Sans KR', sans-serif",
+        "fontWeight": "400",
+        "fontSize": "48px",
+        "lineHeight": "100%",
+        "textAlign": "center",
+        "color": "#000",
+        "WebkitTextStroke": "2.5px #fff",
+        "paintOrder": "stroke fill"
+      },
+      "questionTitleStyle": {
+        "fontFamily": "'MBC1961', 'Noto Sans KR', sans-serif",
+        "fontWeight": "400",
+        "fontSize": "28px",
+        "lineHeight": "120%",
+        "textAlign": "left",
+        "color": "#000",
+        "WebkitTextStroke": "2.5px #fff",
+        "paintOrder": "stroke fill"
+      }
+    }
+  },
+  "resultDetails": {
+    "home_cozy": {
+      "name": "🛋 집콕 말랑 두쫀쿠",
+      "title": "집이 최고의 휴양지",
+      "description": "연휴에 계획 있냐고? 아무것도 안 하는 게 계획이다.\n\n당신의 연휴 스타일:\n• 집이 최고의 휴양지. 몰디브, 모히또도 집보다는 못한다.\n• 누구에게도 시간을 방해받지 않고 가만히 쉴 수 있는 연휴\n• 혼신을 다해 나 홀로 모든 잡념을 잊고 몸·마음의 건강을 돌본다\n\n추천 활동:\n• 푹 자기 / 이불 속에서 충전 / 나만의 힐링 루틴 / 조용한 독서나 음악 감상\n• 배달 음식 시켜먹기 / 편한 옷 입고 뒹굴기\n\n주의할 점:\n• '뭐라도 해야 하나' 강박 느끼지 말 것\n• SNS 보면서 남들 여행 가는 거 보고 불안해하지 말 것\n• 진정한 휴식은 아무것도 안 하는 것",
+      "image": "/images/quiz/holiday_activity/result_home_cozy.png",
+      "keywords": ["익숙함", "충전", "차분함", "솔플"],
+      "type": "home_cozy"
+    },
+    "cyber_travel": {
+      "name": "💻 사이버 두쫀쿠",
+      "title": "사이버 세상을 여행 중",
+      "description": "연휴에 어디서 뭐 할 거냐고? 사이버 세상을 여행할 예정이다.\n\n당신의 연휴 스타일:\n• 그간 일상에 치여서 바빠서 미뤄 두었던 콘텐츠들, 이번 연휴에 실컷 즐길 준비 완료\n• 가볍게 킨 쇼츠를 3시간째 보고 있지만 뭐 어때? 어차피 내일도 쉬는데\n• 넷플릭스, 게임, 유튜브가 당신의 여행지\n\n추천 활동:\n• 밀린 드라마/영화 정주행 / 게임 몰아하기 / 유튜브 쇼츠 무한 스크롤\n• 온라인 쇼핑 / 웹툰·웹소설 정주행 / 커뮤니티 고인물 되기\n\n주의할 점:\n• 화면 오래 보면 눈 피로 주의\n• 시간 가는 줄 모르고 밤샐 수 있음\n• 연휴 끝나고 '뭐했지?' 싶을 수 있지만 그것도 행복이었다",
+      "image": "/images/quiz/holiday_activity/result_cyber_travel.png",
+      "keywords": ["몰입", "콘텐츠", "인터넷중독"],
+      "type": "cyber_travel"
+    },
+    "domestic_trip": {
+      "name": "🏞 애국 보수 두쫀쿠",
+      "title": "국내가 정답일 수 있다",
+      "description": "해외는 너무 멀고, 준비할 것도 많고 그렇다고 집에만 있기는 아쉬운 당신.\n\n당신의 연휴 스타일:\n• 고즈넉하고 여유로운 국내가 정답일 수 있다\n• 당일치기, 1박 2일도 좋다. 당신과 함께 있다면\n• 멀지 않은 곳으로 훅 떠나 여유와 즐거움 두 마리 토끼를 다 챙기는 안정형\n\n추천 활동:\n• 근교 드라이브 / 온천 여행 / 산책하기 좋은 한적한 마을\n• 맛집 투어 / 카페 호핑 / 포토 스팟 방문\n• 당일치기로 가볍게 다녀오기\n\n주의할 점:\n• 연휴라 사람 많을 수 있으니 예약 필수\n• 너무 욕심내서 빡빡한 일정 짜지 말 것\n• 여유롭게 즐기는 게 핵심",
+      "image": "/images/quiz/holiday_activity/result_domestic_trip.png",
+      "keywords": ["근거리", "가볍게", "힐링", "소소한 설렘", "안정"],
+      "type": "domestic_trip"
+    },
+    "global_trip": {
+      "name": "🌏 글로벌 두쫀쿠",
+      "title": "인생은 짧고, 추억은 길다",
+      "description": "이게 어떻게 찾아온 연휴인데, 그냥 보낼 수는 없다.\n\n당신의 연휴 스타일:\n• 최소 반년 전부터 차곡차곡 준비해서 끝내주는 추억을 만들 준비 완료\n• 장거리 비행도 OK, 시차 적응도 OK, 일정 꽉 채워서 알차게\n• 새로운 문화, 새로운 경험, 새로운 음식 모두 탐험\n\n추천 활동:\n• 유럽 여행 / 동남아 배낭여행 / 미국 로드트립\n• 현지 투어 참여 / 유명 랜드마크 방문 / 로컬 음식 체험\n• 사진 찍고 기록 남기기\n\n주의할 점:\n• 준비 철저히 안 하면 낭패 볼 수 있음 (비자, 환전, 숙소 예약 등)\n• 일정 너무 빡빡하면 피곤해서 오히려 스트레스\n• 여행 보험 꼭 가입하기",
+      "image": "/images/quiz/holiday_activity/result_global_trip.png",
+      "keywords": ["계획형", "장거리", "깊은 경험", "새로움"],
+      "type": "global_trip"
+    },
+    "family_love": {
+      "name": "👨‍👩‍👧‍👦 가족사랑 두쫀쿠",
+      "title": "명절의 진정한 의미",
+      "description": "명절의 진정한 의미는 사랑하는 가족들과 웃고 떠들고, 명절 음식을 먹으며 쉬는 것.\n\n당신의 연휴 스타일:\n• 가족들과 시끌벅적한 시간을 보내고, 다시 힘차게 살자\n• 부모님, 형제자매, 친척들과 오랜만에 얼굴 보며 수다 떨기\n• 명절 음식 함께 준비하고 나눠 먹는 따뜻한 시간\n\n추천 활동:\n• 가족 모임 / 명절 차례 / 함께 음식 만들기\n• 보드게임이나 윷놀이 같은 전통 놀이\n• 가족 사진 찍기 / 어른들께 안부 여쭙기\n\n주의할 점:\n• 명절 스트레스 받지 않도록 마음의 준비 필요\n• 과식 주의 (명절 음식은 맛있지만 칼로리 폭탄)\n• 가족 간 갈등 생기지 않도록 조심스럽게 대화하기",
+      "image": "/images/quiz/holiday_activity/result_family_love.png",
+      "keywords": ["유대", "온기", "일상", "안정감"],
+      "type": "family_love"
+    },
+    "party_animal": {
+      "name": "🎉 파티 두쫀쿠",
+      "title": "올데이 올나잇 파티",
+      "description": "내일 걱정 없이 신나게 놀 타이밍! 올데이 올나잇 파티로 브레이크 없이 간다.\n\n당신의 연휴 스타일:\n• 우리는 모두 친구니까, 이 파티, 저 파티 다 가서 다같이 신나게 놀자!\n• 에너지 넘치고 시끌벅적한 분위기가 좋다\n• 새로운 사람들 만나고 새로운 경험하는 게 즐겁다\n\n추천 활동:\n• 클럽 / 페스티벌 / 파티 / 술자리\n• 친구들과 카운트다운 이벤트 / 새해맞이 행사\n• 번화가에서 늦게까지 놀기\n\n주의할 점:\n• 체력 관리 잘 하기 (연휴 내내 놀다가 지칠 수 있음)\n• 안전하게 귀가하기 (대리운전, 택시 미리 확인)\n• 지갑 관리 주의 (술 먹고 흥 오르면 지출 늘어남)",
+      "image": "/images/quiz/holiday_activity/result_party_animal.png",
+      "keywords": ["에너지", "시끌벅적", "새로움", "음악", "도파민"],
+      "type": "party_animal"
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "이번 주 임시공휴일이\n생겼다! 뭘 할까?",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "푹 자고 아무것도 안 함",
+          "weights": {
+            "home_cozy": 20
+          }
+        },
+        {
+          "id": "q1b",
+          "label": "밀린 넷플릭스, 게임, 유튜브 정주행",
+          "weights": {
+            "cyber_travel": 20,
+            "home_cozy": 10
+          }
+        },
+        {
+          "id": "q1c",
+          "label": "가볍게 동네 산책이나 맛집 가볼까?",
+          "weights": {
+            "domestic_trip": 20,
+            "family_love": 10
+          }
+        },
+        {
+          "id": "q1d",
+          "label": "어디든 가야지! 급하게 갈 곳을 찾아본다.",
+          "weights": {
+            "global_trip": 20,
+            "domestic_trip": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "오랜만에 쉬는 주말 아침,\n눈을 뜨자마자 나는?",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "이불 속에서 충분히 누워 있는다",
+          "weights": {
+            "home_cozy": 20
+          }
+        },
+        {
+          "id": "q2b",
+          "label": "눈 뜨자마자 폰부터 확인",
+          "weights": {
+            "cyber_travel": 20
+          }
+        },
+        {
+          "id": "q2c",
+          "label": "일어나서 오늘 갈 곳과 할 일을 체크",
+          "weights": {
+            "domestic_trip": 10,
+            "global_trip": 20
+          }
+        },
+        {
+          "id": "q2d",
+          "label": "단톡에 \"뭐함?\" 보내기",
+          "weights": {
+            "party_animal": 20,
+            "family_love": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "오늘 저녁은 진짜 제대로\n먹고 싶은데… 어떻게 할까?",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "가족들이랑 상의해서 정해볼까?",
+          "weights": {
+            "family_love": 20
+          }
+        },
+        {
+          "id": "q3b",
+          "label": "리뷰를 꼼꼼히 살펴보고 배달시켜 먹는다",
+          "weights": {
+            "cyber_travel": 20,
+            "home_cozy": 20
+          }
+        },
+        {
+          "id": "q3c",
+          "label": "안 가 봤던 동네 맛집을 도전해 본다",
+          "weights": {
+            "domestic_trip": 20,
+            "party_animal": 10
+          }
+        },
+        {
+          "id": "q3d",
+          "label": "좀 멀어도 평소 궁금했던 레스토랑 예약",
+          "weights": {
+            "global_trip": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "취미를 하나 새로 시작해\n볼까? 뭐부터 하지?",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "집에서 혼자 유튜브 보면서 따라해 본다",
+          "weights": {
+            "home_cozy": 20,
+            "cyber_travel": 10
+          }
+        },
+        {
+          "id": "q4b",
+          "label": "온라인으로 커뮤니티 찾아보고 꿀팁 읽어본다",
+          "weights": {
+            "cyber_travel": 20
+          }
+        },
+        {
+          "id": "q4c",
+          "label": "원데이 클래스를 예약한다",
+          "weights": {
+            "domestic_trip": 20,
+            "family_love": 10
+          }
+        },
+        {
+          "id": "q4d",
+          "label": "사람도 만날 겸 동호회를 들어가볼까?",
+          "weights": {
+            "party_animal": 20,
+            "global_trip": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "단톡방에서 친구들이\n갑자기 싸우기 시작한다.",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "그냥 알림 꺼두고 무시한다",
+          "weights": {
+            "home_cozy": 20
+          }
+        },
+        {
+          "id": "q5b",
+          "label": "눈팅만 하며 상황을 파악한다",
+          "weights": {
+            "cyber_travel": 20
+          }
+        },
+        {
+          "id": "q5c",
+          "label": "조심스럽게 의견을 남긴다",
+          "weights": {
+            "domestic_trip": 20,
+            "family_love": 10
+          }
+        },
+        {
+          "id": "q5d",
+          "label": "적극적으로 중재하거나 판을 키운다",
+          "weights": {
+            "party_animal": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "최근 한 달, 사진첩에서 가장\n비중을 많이 차지하는 건?",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "가족, 일상 사진",
+          "weights": {
+            "family_love": 30
+          }
+        },
+        {
+          "id": "q6b",
+          "label": "웃긴 밈짤, 스크린샷이 대부분",
+          "weights": {
+            "cyber_travel": 20,
+            "home_cozy": 10
+          }
+        },
+        {
+          "id": "q6c",
+          "label": "풍경 사진, 여행지 사진 위주",
+          "weights": {
+            "domestic_trip": 10,
+            "global_trip": 20
+          }
+        },
+        {
+          "id": "q6d",
+          "label": "시끌벅적하게 여럿이서 찍은 단체 사진",
+          "weights": {
+            "party_animal": 20,
+            "family_love": 20
+          }
+        }
+      ]
+    }
+  ]
+}

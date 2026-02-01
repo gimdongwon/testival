@@ -44,6 +44,11 @@
       "id": "travel_winter",
       "title": "겨울 여행, 어디로 갈까?",
       "description": "Testival - 겨울 여행, 어디로 갈까?"
+    },
+    {
+      "id": "holiday_activity",
+      "title": "연휴 때 뭐할까?",
+      "description": "Testival - 연휴 때 뭐할까?"
     }
   ]
 }

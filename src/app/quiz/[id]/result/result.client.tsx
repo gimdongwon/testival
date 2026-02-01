@@ -81,7 +81,7 @@ export default function ResultClient({
   const handleClickResetBtn = () => {
     router.push(`/quiz/${testId}`);
   };
-  
+
   // 콘텐츠 JSON의 UI 설정 - 타입 안전하게 가져오기
   const resultUIConfig = getResultUIConfig(def);
   const config = resultUIConfig ?? {
@@ -89,11 +89,16 @@ export default function ResultClient({
     imageMode: 'long' as const,
     showReceipt: false,
   };
-  
+
   // 공유 버튼 위치 스타일
   const shareBtnStyle: CSSProperties = {
     bottom: config.shareBtnBottom || '470px',
   };
+
+  // 처음부터 다시하기 버튼 배경색 스타일
+  const resetBtnStyle: CSSProperties = config.resetBtnBackgroundColor
+    ? { backgroundColor: config.resetBtnBackgroundColor }
+    : {};
 
   // 컨테이너/버튼/아이콘 색상은 테마에서 파생
   const containerVariantClass =
@@ -103,8 +108,7 @@ export default function ResultClient({
   const iconColor = config.theme === 'white' ? '#000' : '#fff';
   const resultBgStyle: CSSProperties & Record<'--result-bg-color', string> = {
     ['--result-bg-color']:
-      config.backgroundColor ??
-      (config.theme === 'white' ? '#fff' : '#000'),
+      config.backgroundColor ?? (config.theme === 'white' ? '#fff' : '#000'),
   };
 
   // chuseok_money 전용: 선택 항목 리스트와 합계, 결과 상세 계산
@@ -152,15 +156,15 @@ export default function ResultClient({
         <Image
           className={styles.bgImage}
           alt={`${def.meta.title} 테스트 결과 배경 이미지`}
-          src={`/images/quiz/${testId}/result.png`}
+          src={`/images/quiz/${testId}/result.png?v=${Date.now()}`}
           draggable={false}
           width={430}
           height={1228}
-          loading="lazy"
+          loading='lazy'
           quality={85}
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
-          sizes="(max-width: 430px) 100vw, 430px"
+          placeholder='blur'
+          blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=='
+          sizes='(max-width: 430px) 100vw, 430px'
         />
       )}
       <div className={styles.content}>
@@ -190,6 +194,7 @@ export default function ResultClient({
           className={`${styles.resetBtn} ${btnVariantClass}`}
           aria-label='처음부터 다시하기'
           onClick={handleClickResetBtn}
+          style={resetBtnStyle}
         >
           처음부터 다시하기
           <ResetIcon color={iconColor} width={13} height={15} />

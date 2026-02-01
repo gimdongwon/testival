@@ -20,7 +20,8 @@
       "theme": "white",
       "imageMode": "long",
       "showReceipt": false,
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#FFFFFF",
+      "resetBtnBackgroundColor": "#ED1B7A"
     },
     "landing": { "buttonTheme": "black" },
     "question": {
