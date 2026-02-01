@@ -22,7 +22,8 @@
       "imageMode": "long",
       "showReceipt": false,
       "backgroundColor": "#FFFFFF",
-      "shareBtnBottom": "450px"
+      "shareBtnBottom": "450px",
+      "resetBtnBackgroundColor": "#ED1B7A"
     },
     "landing": {
       "buttonTheme": "black"
