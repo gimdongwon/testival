@@ -1,5 +1,7 @@
 import quizMeta from '@/content/quiz-meta.json';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
+import { getAvailableWebP } from '@/lib/resolveQuizImages';
+import { resolveImage } from '@/lib/imageUtils';
 
 interface QuizMeta {
   id: string;
@@ -37,12 +39,15 @@ export const getRecommendedQuizzes = async (
   const allViews = await repo.getAllViewCounts();
 
   // 추천 퀴즈 목록 생성
-  const recommendations = filteredMetas.map((meta) => ({
-    id: meta.id,
-    title: meta.title,
-    thumbnail: `/images/quiz/${meta.id}/main.png`,
-    views: allViews[meta.id] || 0,
-  }));
+  const recommendations = filteredMetas.map((meta) => {
+    const webpFiles = getAvailableWebP(meta.id);
+    return {
+      id: meta.id,
+      title: meta.title,
+      thumbnail: resolveImage(`/images/quiz/${meta.id}/og-image.png`, webpFiles),
+      views: allViews[meta.id] || 0,
+    };
+  });
 
   return recommendations;
 };

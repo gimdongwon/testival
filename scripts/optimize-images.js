@@ -10,7 +10,7 @@ const path = require('path');
 const IMAGES_DIR = path.join(__dirname, '../public/images');
 const QUALITY = 85; // WebP 품질 (1-100)
 const PNG_QUALITY = 85; // PNG 품질
-const SIZE_THRESHOLD = 1 * 1024 * 1024; // 1MB = 1,048,576 bytes (이 크기 이하는 건너뜀)
+const SIZE_THRESHOLD = 500 * 1024; // 500KB = 512,000 bytes (이 크기 이하는 건너뜀)
 
 async function optimizeImage(filePath) {
   try {
@@ -38,16 +38,20 @@ async function optimizeImage(filePath) {
     const webpPath = filePath.replace(/\.png$/i, '.webp');
     const webpExists = fs.existsSync(webpPath);
 
-    // WebP가 없으면 생성
-    if (!webpExists) {
-      await sharp(filePath)
-        .webp({ quality: QUALITY, effort: 6 })
-        .toFile(webpPath);
-
-      const webpStats = fs.statSync(webpPath);
-      const webpSize = webpStats.size;
-      console.log(`📦 WebP 생성: ${relativePath.replace('.png', '.webp')} (${(webpSize / 1024 / 1024).toFixed(2)}MB)`);
+    // WebP가 이미 존재하면 전체 건너뛰기
+    if (webpExists) {
+      // console.log(`⏭️  ${relativePath} (WebP 이미 존재 - 건너뜀)`);
+      return;
     }
+
+    // WebP 생성
+    await sharp(filePath)
+      .webp({ quality: QUALITY, effort: 6 })
+      .toFile(webpPath);
+
+    const webpStats = fs.statSync(webpPath);
+    const webpSize = webpStats.size;
+    console.log(`📦 WebP 생성: ${relativePath.replace('.png', '.webp')} (${(webpSize / 1024 / 1024).toFixed(2)}MB)`);
 
     // PNG 파일도 압축
     const tempPath = filePath + '.temp';
@@ -77,15 +81,7 @@ async function optimizeImage(filePath) {
     }
 
     // WebP 정보 출력
-    if (webpExists) {
-      const webpStats = fs.statSync(webpPath);
-      const webpSize = webpStats.size;
-      console.log(`   WebP: ${(webpSize / 1024 / 1024).toFixed(2)}MB (기존 파일)\n`);
-    } else {
-      const webpStats = fs.statSync(webpPath);
-      const webpSize = webpStats.size;
-      console.log(`   WebP: ${(webpSize / 1024 / 1024).toFixed(2)}MB (${((1 - webpSize / originalSize) * 100).toFixed(1)}% 감소)\n`);
-    }
+    console.log(`   WebP: ${(webpSize / 1024 / 1024).toFixed(2)}MB (${((1 - webpSize / originalSize) * 100).toFixed(1)}% 감소)\n`);
   } catch (error) {
     console.error(`❌ ${filePath} 처리 실패:`, error.message);
   }
@@ -119,7 +115,8 @@ async function main() {
   
   console.log('\n✨ 이미지 최적화 완료!');
   console.log('💡 Next.js는 자동으로 WebP 파일을 우선 사용합니다.');
-  console.log('💡 1MB 이하의 파일은 건너뛰었습니다.');
+  console.log(`💡 ${SIZE_THRESHOLD / 1024}KB 이하의 파일은 건너뛰었습니다.`);
+  console.log('💡 이미 WebP가 존재하는 파일은 건너뛰었습니다.');
 }
 
 main().catch(console.error);

@@ -6,6 +6,8 @@ import styles from './detail.module.scss';
 import { notFound } from 'next/navigation';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
 import { getLandingUIConfig } from '@/domain/quiz.schema';
+import { getAvailableWebP } from '@/lib/resolveQuizImages';
+import { resolveImage } from '@/lib/imageUtils';
 import ViewTracker from '@/components/quiz/ViewTracker';
 
 const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
@@ -19,7 +21,8 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const variantClass =
     landingConfig.buttonTheme === 'white' ? styles.whiteBtn : styles.blackBtn;
 
-  const mainImage = `/images/quiz/${id}/main.png`;
+  const webpFiles = getAvailableWebP(id);
+  const mainImage = resolveImage(`/images/quiz/${id}/main.png`, webpFiles);
 
   // Structured Data (JSON-LD) - 퀴즈 정보
   const quizJsonLd = {

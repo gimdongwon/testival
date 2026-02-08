@@ -11,6 +11,7 @@ import { useMemo } from 'react';
 import type { CSSProperties } from 'react';
 import { useQuizView } from '@/store/quizStore';
 import { score } from '@/lib/scoring';
+import { resolveImage } from '@/lib/imageUtils';
 import type { TestDefinition, ResultDetail } from '@/domain/quiz.schema';
 import { getResultUIConfig } from '@/domain/quiz.schema';
 import RecommendedQuizzes from '@/components/common/RecommendedQuizzes';
@@ -19,9 +20,11 @@ import type { QuizRecommendation } from '@/lib/recommendedQuizzes';
 export default function ResultClient({
   def,
   recommendedQuizzes,
+  webpFiles = [],
 }: {
   def: TestDefinition;
   recommendedQuizzes: QuizRecommendation[];
+  webpFiles?: string[];
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -144,7 +147,10 @@ export default function ResultClient({
           <img
             className={styles.longImage}
             alt={`${def.meta.title} 테스트 결과 이미지`}
-            src={`/images/quiz/${testId}/result_${type}.png`}
+            src={resolveImage(
+              `/images/quiz/${testId}/result_${type}.png`,
+              webpFiles
+            )}
             draggable={false}
           />
           <div className={styles.longOverlay}>
@@ -196,6 +202,7 @@ export default function ResultClient({
                 items={items}
                 total={total}
                 detail={detail}
+                webpFiles={webpFiles}
               />
             )}
           </div>
