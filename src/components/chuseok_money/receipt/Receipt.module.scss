@@ -7,13 +7,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 114px;
-  left: 0;
+  position: relative;
   width: 100%;
-  /* 하단 고정 버튼 영역과 겹침 방지: 충분한 여백 확보 */
-  padding-bottom: calc(160px + env(safe-area-inset-bottom));
-  /* 고정 높이(100%)는 작은 화면에서 겹침을 유발할 수 있어 제거 */
+  margin-top: 114px;
+  padding-bottom: 20px;
   z-index: 2;
 }
 

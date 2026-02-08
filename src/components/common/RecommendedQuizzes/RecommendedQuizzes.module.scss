@@ -1,14 +1,8 @@
 .container {
-  position: absolute;
-  bottom: 50px;
+  position: relative;
   width: 100%;
   padding: 40px 20px 20px;
   z-index: 5;
-}
-
-.containerBg {
-  top: 960px;
-  bottom: auto;
 }
 
 .containerDark {

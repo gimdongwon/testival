@@ -15,13 +15,11 @@ interface QuizRecommendation {
 interface RecommendedQuizzesProps {
   quizzes: QuizRecommendation[];
   theme?: 'light' | 'dark';
-  imageMode?: 'long' | 'bg';
 }
 
 const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
   quizzes,
   theme = 'dark',
-  imageMode = 'long',
 }) => {
   if (!quizzes || quizzes.length === 0) {
     return null;
@@ -31,11 +29,7 @@ const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
     theme === 'light' ? styles.containerLight : styles.containerDark;
 
   return (
-    <section
-      className={`${styles.container} ${containerClass} ${
-        imageMode === 'bg' ? styles.containerBg : ''
-      }`}
-    >
+    <section className={`${styles.container} ${containerClass}`}>
       <div className={styles.header}>
         <span className={styles.emoji}>🔥</span>
         <h2 className={styles.title}>다른 심리테스트 보기</h2>

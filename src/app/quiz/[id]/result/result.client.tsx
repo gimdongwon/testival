@@ -90,11 +90,6 @@ export default function ResultClient({
     showReceipt: false,
   };
 
-  // 공유 버튼 위치 스타일
-  const shareBtnStyle: CSSProperties = {
-    bottom: config.shareBtnBottom || '470px',
-  };
-
   // 처음부터 다시하기 버튼 배경색 스타일
   const resetBtnStyle: CSSProperties = config.resetBtnBackgroundColor
     ? { backgroundColor: config.resetBtnBackgroundColor }
@@ -142,71 +137,94 @@ export default function ResultClient({
       aria-label='테스트 결과'
       style={resultBgStyle}
     >
-      {/* 배경/결과 이미지 렌더링 */}
       {config.imageMode === 'long' ? (
-        // 추석 결과는 세로로 긴 이미지가 있어, 일반 흐름으로 배치하여 스크롤 가능하게 처리
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          className={styles.longImage}
-          alt={`${def.meta.title} 테스트 결과 이미지`}
-          src={`/images/quiz/${testId}/result_${type}.png`}
-          draggable={false}
-        />
+        /* long 모드: 이미지 wrapper 안에서 버튼/추천 퀴즈를 하단 오버레이 */
+        <div className={styles.longImageWrapper}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className={styles.longImage}
+            alt={`${def.meta.title} 테스트 결과 이미지`}
+            src={`/images/quiz/${testId}/result_${type}.png`}
+            draggable={false}
+          />
+          <div className={styles.longOverlay}>
+            <div className={styles.shareBtnWrapper}>
+              <button
+                className={`${styles.shareBtn} ${btnVariantClass}`}
+                onClick={handleClickShareBtn}
+              >
+                <span>내 결과 공유하기</span>
+                <ShareIcon color={iconColor} width={12} height={16} />
+              </button>
+              <button
+                className={`${styles.resetBtn} ${btnVariantClass}`}
+                aria-label='처음부터 다시하기'
+                onClick={handleClickResetBtn}
+                style={resetBtnStyle}
+              >
+                처음부터 다시하기
+                <ResetIcon color={iconColor} width={13} height={15} />
+              </button>
+            </div>
+            {recommendedQuizzes && recommendedQuizzes.length > 0 && (
+              <RecommendedQuizzes
+                quizzes={recommendedQuizzes}
+                theme={config.theme !== 'white' ? 'light' : 'dark'}
+              />
+            )}
+          </div>
+        </div>
       ) : (
-        <Image
-          className={styles.bgImage}
-          alt={`${def.meta.title} 테스트 결과 배경 이미지`}
-          src={`/images/quiz/${testId}/result.png?v=${Date.now()}`}
-          draggable={false}
-          width={430}
-          height={1228}
-          loading='lazy'
-          quality={85}
-          placeholder='blur'
-          blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=='
-        />
+        /* bg 모드: 배경 이미지 위에 normal flow */
+        <>
+          <Image
+            className={styles.bgImage}
+            alt={`${def.meta.title} 테스트 결과 배경 이미지`}
+            src={`/images/quiz/${testId}/result.png?v=${Date.now()}`}
+            draggable={false}
+            width={430}
+            height={1228}
+            loading='lazy'
+            quality={85}
+            placeholder='blur'
+            blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=='
+          />
+          <div className={styles.content}>
+            {config.showReceipt && (
+              <Receipt
+                id={testId}
+                items={items}
+                total={total}
+                detail={detail}
+              />
+            )}
+          </div>
+          <div className={styles.shareBtnWrapper}>
+            <button
+              className={`${styles.shareBtn} ${btnVariantClass}`}
+              onClick={handleClickShareBtn}
+            >
+              <span>내 결과 공유하기</span>
+              <ShareIcon color={iconColor} width={12} height={16} />
+            </button>
+            <button
+              className={`${styles.resetBtn} ${btnVariantClass}`}
+              aria-label='처음부터 다시하기'
+              onClick={handleClickResetBtn}
+              style={resetBtnStyle}
+            >
+              처음부터 다시하기
+              <ResetIcon color={iconColor} width={13} height={15} />
+            </button>
+          </div>
+          {recommendedQuizzes && recommendedQuizzes.length > 0 && (
+            <RecommendedQuizzes
+              quizzes={recommendedQuizzes}
+              theme={config.theme !== 'white' ? 'light' : 'dark'}
+            />
+          )}
+        </>
       )}
-      <div className={styles.content}>
-        {config.showReceipt && (
-          <Receipt id={testId} items={items} total={total} detail={detail} />
-        )}
-      </div>
-
-      {/* 추천 퀴즈 섹션 */}
-      {recommendedQuizzes && recommendedQuizzes.length > 0 && (
-        <RecommendedQuizzes
-          quizzes={recommendedQuizzes}
-          theme={config.theme !== 'white' ? 'light' : 'dark'}
-          imageMode={config.imageMode}
-        />
-      )}
-
-      {/* 공유 버튼 */}
-      <div
-        className={
-          config.imageMode === 'bg'
-            ? styles.shareBtnWrapperBg
-            : styles.shareBtnWrapper
-        }
-        style={config.imageMode === 'bg' ? undefined : shareBtnStyle}
-      >
-        <button
-          className={`${styles.shareBtn} ${btnVariantClass}`}
-          onClick={handleClickShareBtn}
-        >
-          <span>내 결과 공유하기</span>
-          <ShareIcon color={iconColor} width={12} height={16} />
-        </button>
-        <button
-          className={`${styles.resetBtn} ${btnVariantClass}`}
-          aria-label='처음부터 다시하기'
-          onClick={handleClickResetBtn}
-          style={resetBtnStyle}
-        >
-          처음부터 다시하기
-          <ResetIcon color={iconColor} width={13} height={15} />
-        </button>
-      </div>
     </section>
   );
 }
