@@ -15,11 +15,13 @@ interface QuizRecommendation {
 interface RecommendedQuizzesProps {
   quizzes: QuizRecommendation[];
   theme?: 'light' | 'dark';
+  imageMode?: 'long' | 'bg';
 }
 
 const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
   quizzes,
   theme = 'dark',
+  imageMode = 'long',
 }) => {
   if (!quizzes || quizzes.length === 0) {
     return null;
@@ -29,7 +31,11 @@ const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
     theme === 'light' ? styles.containerLight : styles.containerDark;
 
   return (
-    <section className={`${styles.container} ${containerClass}`}>
+    <section
+      className={`${styles.container} ${containerClass} ${
+        imageMode === 'bg' ? styles.containerBg : ''
+      }`}
+    >
       <div className={styles.header}>
         <span className={styles.emoji}>🔥</span>
         <h2 className={styles.title}>다른 심리테스트 보기</h2>
@@ -51,11 +57,11 @@ const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
                 alt={quiz.title}
                 width={160}
                 height={160}
-                loading="lazy"
+                loading='lazy'
                 quality={80}
-                placeholder="blur"
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
-                sizes="160px"
+                placeholder='blur'
+                blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=='
+                sizes='160px'
                 className={styles.thumbnail}
               />
             </div>
@@ -74,5 +80,3 @@ const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
 };
 
 export default RecommendedQuizzes;
-
-

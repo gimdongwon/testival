@@ -13,7 +13,8 @@
       "theme": "white",
       "imageMode": "bg",
       "showReceipt": true,
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#FFFFFF",
+      "resetBtnBackgroundColor": "#ED1B7A"
     },
     "landing": { "buttonTheme": "white" },
     "question": { "optionVariant": "dark" }

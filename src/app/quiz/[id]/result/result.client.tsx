@@ -164,7 +164,6 @@ export default function ResultClient({
           quality={85}
           placeholder='blur'
           blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=='
-          sizes='(max-width: 430px) 100vw, 430px'
         />
       )}
       <div className={styles.content}>
@@ -178,11 +177,19 @@ export default function ResultClient({
         <RecommendedQuizzes
           quizzes={recommendedQuizzes}
           theme={config.theme !== 'white' ? 'light' : 'dark'}
+          imageMode={config.imageMode}
         />
       )}
 
       {/* 공유 버튼 */}
-      <div className={styles.shareBtnWrapper} style={shareBtnStyle}>
+      <div
+        className={
+          config.imageMode === 'bg'
+            ? styles.shareBtnWrapperBg
+            : styles.shareBtnWrapper
+        }
+        style={config.imageMode === 'bg' ? undefined : shareBtnStyle}
+      >
         <button
           className={`${styles.shareBtn} ${btnVariantClass}`}
           onClick={handleClickShareBtn}
