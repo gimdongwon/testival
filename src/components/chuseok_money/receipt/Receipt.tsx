@@ -4,16 +4,13 @@ import React, { useMemo } from 'react';
 import styles from './Receipt.module.scss';
 import type { ResultDetail } from '@/domain/quiz.schema';
 import { commaWithNumber } from '@/lib/commaWithNumber';
-import { resolveImage } from '@/lib/imageUtils';
 
 type ReceiptItem = { id: string; title: string; amount: number };
 
 type ReceiptProps = {
-  id: string;
   items: ReceiptItem[];
   total: number;
   detail?: ResultDetail;
-  webpFiles?: string[];
 };
 
 const formatAmount = (amount: number): string => {
@@ -21,8 +18,7 @@ const formatAmount = (amount: number): string => {
   return `${sign}${commaWithNumber(amount * 10000)}원`;
 };
 
-const Receipt = ({ id, items, total, detail, webpFiles = [] }: ReceiptProps) => {
-  const receiptBg = `url("${resolveImage(`/images/quiz/${id}/receipt.png`, webpFiles)}")`;
+const Receipt = ({ items, total, detail }: ReceiptProps) => {
   const lines = useMemo(() => (detail?.title ?? '').split('\n'), [detail]);
   const descriptionLines = useMemo(
     () => (detail?.description ?? '').split('\n'),
@@ -42,16 +38,10 @@ const Receipt = ({ id, items, total, detail, webpFiles = [] }: ReceiptProps) => 
       <div
         className={styles.receiptInner}
         aria-label='영수증 영역'
-        style={{
-          backgroundImage: receiptBg,
-        }}
       >
         <div
           className={styles.receipt}
           aria-hidden
-          style={{
-            backgroundImage: receiptBg,
-          }}
         >
           <div
             className={styles.receiptContent}

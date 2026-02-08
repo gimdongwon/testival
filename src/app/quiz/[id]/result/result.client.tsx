@@ -198,11 +198,9 @@ export default function ResultClient({
           <div className={styles.content}>
             {config.showReceipt && (
               <Receipt
-                id={testId}
                 items={items}
                 total={total}
                 detail={detail}
-                webpFiles={webpFiles}
               />
             )}
           </div>
