@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "id": "seollal_nag",
+    "title": "설날 명절 잔소리 테스트",
+    "description": "이번 명절, 당신의 잔소리는 과연 얼마일까?",
+    "mode": "amount-sum",
+    "resultTypes": ["zero", "oneToThree", "fourToFive", "sixToNine", "tenPlus"],
+    "locale": "ko",
+    "version": 1
+  },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "bg",
+      "showReceipt": true,
+      "backgroundColor": "#FFFFFF",
+      "resetBtnBackgroundColor": "#000"
+    },
+    "landing": { "buttonTheme": "white" },
+    "question": {
+      "optionVariant": "dark",
+      "hideQuestionNumberPrefix": true,
+      "optionFontFamily": "'ChungjuKimSaeng', 'Noto Sans KR', sans-serif",
+      "optionTextStyle": {
+        "fontFamily": "'ChungjuKimSaeng', 'Noto Sans KR', sans-serif"
+      },
+      "optionLabelStyle": {
+        "fontFamily": "'ChungjuKimSaeng', 'Noto Sans KR', sans-serif"
+      },
+      "questionNumberStyle": {
+        "color": "#fff",
+        "fontFamily": "'ChungjuKimSaeng', 'Noto Sans KR', sans-serif",
+        "WebkitTextStroke": "2.5px #000",
+        "paintOrder": "stroke fill"
+      },
+      "questionTitleStyle": {
+        "color": "#fff",
+        "fontFamily": "'ChungjuKimSaeng', 'Noto Sans KR', sans-serif",
+        "WebkitTextStroke": "2.5px #000",
+        "paintOrder": "stroke fill"
+      }
+    }
+  },
+  "resultDetails": {
+    "zero": {
+      "name": "0원",
+      "title": "오히려 용돈을\n받으셔야 하는 수준",
+      "description": "눈치 만점, 센스 만점! 잔소리는 커녕, 배려 넘치는 말만 해 주는 당신은 이미 가족들의 뜨거운 사랑을 받고 있을 듯하네요. 용돈은 당신이 받아야할 것 같네요. 앞으로도 그 마음 그대로 지켜 주세요!",
+      "image": "/images/quiz/seollal_nag/result_zero.png",
+      "keywords": ["평화주의", "센스", "배려", "눈치만점"],
+      "type": "zero"
+    },
+    "oneToThree": {
+      "name": "1~3만원대",
+      "title": "이 정도면\n양반이에요",
+      "description": "오랜만에 만난 가족끼리 한두 마디 걱정과 조언 정도는 충분히 할 수 있죠. 기분좋게 간식이라도 사와서 다같이 먹으면 분위기도 훈훈해지겠어요.",
+      "image": "/images/quiz/seollal_nag/result_oneToThree.png",
+      "keywords": ["라이트", "여유", "간식", "온화"],
+      "type": "oneToThree"
+    },
+    "fourToFive": {
+      "name": "4~5만원대",
+      "title": "정말 용돈을 주고\n싶으셨던 모양입니다",
+      "description": "원래 애정이란 건 어떻게 보면 잔소리처럼 보이기도 하는 거죠. 그래도 이 정도면 센스 있는 편! 쿨~하게 용돈으로 해결하시면 됩니다.",
+      "image": "/images/quiz/seollal_nag/result_fourToFive.png",
+      "keywords": ["센스", "적당함", "용돈", "밸런스"],
+      "type": "fourToFive"
+    },
+    "sixToNine": {
+      "name": "6~9만원대",
+      "title": "그 관심은,\n현금처럼 진심이네요!",
+      "description": "가족들과 대화는 하고 싶은데, 방법을 잘 모르는 모양이에요. 괜찮아요. 그 관심만큼 용돈을 준다면 가족들도 당신의 잔소리를 기쁘게 들을 겁니다.",
+      "image": "/images/quiz/seollal_nag/result_sixToNine.png",
+      "keywords": ["관심", "진심", "대화", "성장"],
+      "type": "sixToNine"
+    },
+    "tenPlus": {
+      "name": "10만원 이상",
+      "title": "오늘만큼은\n당신이 만수르",
+      "description": "그야말로 살신성인. 오늘 가족들의 화목함을 위해 시원하게 용돈을 쏘겠다는 그 마음 잊지 않겠습니다. 마음껏 잔소리하세요! 무엇이든지 다 물어보고 실컷 혼내세요! 넉넉한 용돈과 함께라면 모두 웃으면서 들어 줄 거예요.",
+      "image": "/images/quiz/seollal_nag/result_tenPlus.png",
+      "keywords": ["스폰서", "통크게", "직진", "하드모드"],
+      "type": "tenPlus"
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "혼자 폰만 하는\n중학생 조카에게..",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "요즘 공부는 잘 하고 있니?",
+          "amount": 1
+        },
+        {
+          "id": "q1b",
+          "label": "요즘 뭐하고 노니?",
+          "amount": 0
+        },
+        {
+          "id": "q1c",
+          "label": "말을 걸지 않는다.",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "고3 조카에게\n뭐라고 할까?",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "대학은 어디 넣을 거니?",
+          "amount": 1
+        },
+        {
+          "id": "q2b",
+          "label": "모의고사 성적 어때?",
+          "amount": 1
+        },
+        {
+          "id": "q2c",
+          "label": "많이 힘들지?(용돈 주기)",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "취준생인 조카에게…",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "요즘 취업이 힘들다던데..",
+          "amount": 0.5
+        },
+        {
+          "id": "q3b",
+          "label": "너가 취준한지 지금 몇 년째지?",
+          "amount": 1
+        },
+        {
+          "id": "q3c",
+          "label": "(커피 기프티콘을 보낸다)",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "얼마 전에 취업한\n조카에게…",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "연봉은 얼마 받니?",
+          "amount": 2
+        },
+        {
+          "id": "q4b",
+          "label": "회사는 다닐만 해?",
+          "amount": 0
+        },
+        {
+          "id": "q4c",
+          "label": "최근 유행하는 넷플릭스 얘기하기.",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "아직 결혼하지 않은\n조카에게…",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "결혼 생각은 있니?",
+          "amount": 1
+        },
+        {
+          "id": "q5b",
+          "label": "남친/여친은 있니?",
+          "amount": 1
+        },
+        {
+          "id": "q5c",
+          "label": "저번에 여행 다녀왔다면서? 어땠어?",
+          "amount": -1
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "어? 오랜만에 보니\n조금 달라진 것 같은데…",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "살이 좀 빠진 것 같네?",
+          "amount": 1
+        },
+        {
+          "id": "q6b",
+          "label": "스타일이 좀 바뀌었나?",
+          "amount": -0.5
+        },
+        {
+          "id": "q6c",
+          "label": "너도 슬슬 관리 좀 해야지.",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "얼마 전 결혼한 조카가\n배우자와 함께 왔다.",
+      "choices": [
+        {
+          "id": "q7a",
+          "label": "아이는 언제 낳으려고?",
+          "amount": 2
+        },
+        {
+          "id": "q7b",
+          "label": "조카 배우자의 직업 물어보기",
+          "amount": 0.5
+        },
+        {
+          "id": "q7c",
+          "label": "신혼여행은 어땠는지 물어보기",
+          "amount": -0.5
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "명절 상차림\n준비할 때 나는",
+      "choices": [
+        {
+          "id": "q8a",
+          "label": "가만히 있는 게 도와주는 것.",
+          "amount": 1
+        },
+        {
+          "id": "q8b",
+          "label": "이미 일하고 있음",
+          "amount": -1
+        },
+        {
+          "id": "q8c",
+          "label": "밖으로 심부름 다녀온다.",
+          "amount": -1
+        }
+      ]
+    }
+  ]
+}

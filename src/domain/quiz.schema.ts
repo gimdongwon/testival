@@ -65,6 +65,7 @@ export const QuestionUIConfigZ = z.object({
   questionFontFamily: z.string().optional(),
   progressFillColor: z.string().optional(),
   hideQuestionNumberDot: z.boolean().optional(),
+  hideQuestionNumberPrefix: z.boolean().optional(),
   hideOptionLabel: z.boolean().optional(),
   optionColors: z.array(z.string()).optional(),
   optionTextStyle: z.record(z.string(), z.unknown()).optional(),

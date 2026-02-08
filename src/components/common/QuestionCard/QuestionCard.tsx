@@ -31,6 +31,8 @@ export type QuestionCardProps = {
   optionLabelStyle?: React.CSSProperties;
   /** 질문 번호 뒤의 점(.) 숨김 여부 */
   hideQuestionNumberDot?: boolean;
+  /** 질문 번호 앞의 "Q" 접두사 숨김 여부 */
+  hideQuestionNumberPrefix?: boolean;
   /** 옵션 라벨(A., B. 등) 숨김 여부 */
   hideOptionLabel?: boolean;
   /** 옵션별 배경색 배열 (인덱스 순서대로 적용) */
@@ -54,6 +56,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   questionTitleStyle,
   optionLabelStyle,
   hideQuestionNumberDot = false,
+  hideQuestionNumberPrefix = false,
   hideOptionLabel = false,
   optionColors,
   optionTextStyle,
@@ -73,7 +76,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                   }
             }
           >
-            Q{number}
+            {hideQuestionNumberPrefix ? '' : 'Q'}{number}
             {hideQuestionNumberDot ? '' : '.'}
           </span>
         </div>

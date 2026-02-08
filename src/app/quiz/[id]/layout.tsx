@@ -24,11 +24,12 @@ export async function generateMetadata({
     id: string;
     title: string;
     description?: string;
+    keywords?: string[];
   }>;
 
   const getMetaById = (
     quizId: string
-  ): { title: string; description: string } => {
+  ): { title: string; description: string; keywords?: string[] } => {
     const list = (quizMeta as { metas: QuizMetaEntry[] }).metas;
     const found = list.find((m) => m.id === quizId);
     if (!found) {
@@ -36,12 +37,26 @@ export async function generateMetadata({
     }
     const title = found.title ?? 'Testival';
     const description = found.description ?? `Testival - ${title}`;
-    return { title, description };
+    return { title, description, keywords: found.keywords };
   };
 
-  const { title: resolvedTitle, description: resolvedDescription } =
-    getMetaById(id);
+  const {
+    title: resolvedTitle,
+    description: resolvedDescription,
+    keywords: quizKeywords,
+  } = getMetaById(id);
   const ogImage = `${siteUrl}/images/quiz/${id}/og-image.png`;
+
+  const defaultKeywords = [
+    '심리테스트',
+    '성격테스트',
+    resolvedTitle,
+    '무료테스트',
+    '온라인테스트',
+  ];
+  const mergedKeywords = quizKeywords
+    ? [...defaultKeywords, ...quizKeywords]
+    : defaultKeywords;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -50,13 +65,7 @@ export async function generateMetadata({
       template: '%s | Testival',
     },
     description: resolvedDescription,
-    keywords: [
-      '심리테스트',
-      '성격테스트',
-      resolvedTitle,
-      '무료테스트',
-      '온라인테스트',
-    ],
+    keywords: mergedKeywords,
     openGraph: {
       type: 'website',
       url: `${siteUrl}/quiz/${id}`,

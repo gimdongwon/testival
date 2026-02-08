@@ -62,6 +62,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const questionNumberStyle = qUi.questionNumberStyle as CSSProperties | undefined;
   const questionTitleStyle = qUi.questionTitleStyle as CSSProperties | undefined;
   const hideQuestionNumberDot = qUi.hideQuestionNumberDot ?? false;
+  const hideQuestionNumberPrefix = qUi.hideQuestionNumberPrefix ?? false;
   const hideOptionLabel = qUi.hideOptionLabel ?? false;
   const optionColors = qUi.optionColors;
   const optionTextStyle = qUi.optionTextStyle as CSSProperties | undefined;
@@ -106,6 +107,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           questionNumberStyle={questionNumberStyle}
           questionTitleStyle={questionTitleStyle}
           hideQuestionNumberDot={hideQuestionNumberDot}
+          hideQuestionNumberPrefix={hideQuestionNumberPrefix}
           hideOptionLabel={hideOptionLabel}
           optionColors={optionColors}
           optionTextStyle={optionTextStyle}
