@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "id": "dujjoenku",
+    "title": "두쫀쿠에 미친 자 테스트",
+    "description": "당신은 두친자일까? 아닐까?",
+    "mode": "weighted",
+    "resultTypes": ["what_is", "beginner", "experienced", "critic", "duchinza"],
+    "locale": "ko",
+    "version": 1
+  },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "long",
+      "showReceipt": false,
+      "backgroundColor": "#d1d8ea",
+      "resetBtnBackgroundColor": "#000"
+    },
+    "landing": { "buttonTheme": "black" },
+    "question": {
+      "optionVariant": "light",
+      "progressFillColor": "#8f9ec4",
+      "columns": 2,
+      "hideOptionLabel": true,
+      "optionTextStyle": {
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "fontFamily": "'Noto Sans KR', sans-serif"
+      },
+      "questionNumberStyle": {
+        "color": "#000",
+        "fontFamily": "'WAGURI', sans-serif",
+        "fontSize": "50px",
+        "letterSpacing": "-2.5px",
+        "WebkitTextStroke": "2.5px #fff"
+      },
+      "questionTitleStyle": {
+        "color": "#fff",
+        "fontFamily": "'WAGURI', sans-serif",
+        "fontSize": "36px",
+        "lineHeight": "1.2",
+        "WebkitTextStroke": "3.5px #000",
+        "paintOrder": "stroke fill"
+      }
+    }
+  },
+  "resultDetails": {
+    "what_is": {
+      "name": "두쫀쿠가 뭐죠?ㅎㅎ;;",
+      "title": "두쫀쿠… 그게 뭐예요?",
+      "description": "주변에서 두쫀쿠 얘기 나오면 그냥 고개만 끄덕이는 타입.\n웨이팅? 오픈런? 그거 왜 해… 솔직히 이해 못함.\n아직 지갑도 시간도 평화로운 사람.\n\n추천 루트: 누가 사주는 거 한 번만 먹어 보세요.\n\"아~ 이게 그거구나.\" 하고 끝날 수도 있고, 인생이 바뀔 수도 있어요.",
+      "image": "/images/quiz/dujjoenku/result_what_is.png",
+      "keywords": ["무관심", "평화", "뉴비"],
+      "type": "what_is"
+    },
+    "beginner": {
+      "name": "두쫀쿠 입문",
+      "title": "아니 맛은 있겠지 당연히… 근데 뭐 굳이?",
+      "description": "두쫀쿠가 뭔지 알기는 아는 상태.\n궁금해서 한번 사 먹은 적은 있음.\n사람들이 이 정도로 열광하는 건 좀 오버같긴 함.\n근데 가끔씩 생각날 때 있음.\n\n추천 루트: 3-4곳 정도 서로 다른 곳에서 사온 두쫀쿠를 먹어 보세요.\n맛을 비교하는 재미가 있답니다.",
+      "image": "/images/quiz/dujjoenku/result_beginner.png",
+      "keywords": ["입문", "궁금", "가끔"],
+      "type": "beginner"
+    },
+    "experienced": {
+      "name": "두쫀쿠 좀 먹어본 놈",
+      "title": "이쯤이면 두쫀쿠를 꽤 잘 알고 있음",
+      "description": "\"어디가 맛있대.\" 추천 받으면 저장해 놓고, 추천해 줄 가게 이름 몇 개는 머릿속에 있음.\n여러 군데 먹어 봤고, 취향도 슬슬 생기고 있음.\n친구랑 같이 두쫀쿠 헌팅하는 재미도 느끼는 중.\n맛있는 두쫀쿠를 위해서라면 웨이팅도 할 만하면 한다.\n\n추천 루트: 그냥 두쫀쿠보다는 소문난 성지를 도장깨기해 볼 차례.",
+      "image": "/images/quiz/dujjoenku/result_experienced.png",
+      "keywords": ["취향", "도장깨기", "맛집"],
+      "type": "experienced"
+    },
+    "critic": {
+      "name": "두쫀쿠 평론가",
+      "title": "당신은 이제 그냥 두쫀쿠에 진심인 사람",
+      "description": "먹는 게 아니라 두쫀쿠 세계관에 몰입해서 거의 연구하고 있음.\n최애 가게가 있고, 여러 번 사먹는 루틴이 있음.\n오픈런/웨이팅도 별 고민없이 시간되면 걍 해봄.\n누가 두쫀쿠 선물해 주면 \"아… 센스 미쳤다\" 하고 감동함.\n카다이프의 바삭함과 촉촉함, 피의 얇음 정도에 따라 당신만의 두쫀쿠 취향을 찾아가는 센스는 이미 백수저 쉐프 그 이상.\n\n추천 루트: 당신만의 두쫀쿠 지도를 만들어 보고, 뉴비에게 전파해 주자.",
+      "image": "/images/quiz/dujjoenku/result_critic.png",
+      "keywords": ["진심", "연구", "평론가"],
+      "type": "critic"
+    },
+    "duchinza": {
+      "name": "두친자",
+      "title": "여기까지 왔다면, 당신은 그냥… 두쫀쿠 그 자체",
+      "description": "사람들은 당신을 \"아 두쫀쿠 좋아하는 그 사람\"으로 기억함.\n최애 가게는 확보했고 + 재방문은 3회 이상.\n웨이팅, 오픈런, 심지어 직접 만들어 먹는 것도 가능.\n\"맛있는 두쫀쿠는 권력\" 이 문장에 고개 끄덕이는 순간 게임 끝.\n당신은 두쫀쿠를 먹는 게 아니라… 두쫀쿠로 세계를 정복하려는 쪽에 가까움.",
+      "image": "/images/quiz/dujjoenku/result_duchinza.png",
+      "keywords": ["두친자", "미친자", "정복"],
+      "type": "duchinza"
+    }
+  },
+  "messages": {
+    "what_is": "두쫀쿠… 그게 뭐예요?",
+    "beginner": "아니 맛은 있겠지 당연히… 근데 뭐 굳이?",
+    "experienced": "이쯤이면 두쫀쿠를 꽤 잘 알고 있음",
+    "critic": "당신은 이제 그냥 두쫀쿠에 진심인 사람",
+    "duchinza": "여기까지 왔다면, 당신은 그냥… 두쫀쿠 그 자체"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "두쫀쿠의\n풀네임을 안다",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "그렇다",
+          "weights": {
+            "beginner": 3,
+            "experienced": 3,
+            "critic": 2,
+            "duchinza": 1
+          }
+        },
+        {
+          "id": "q1b",
+          "label": "아니다",
+          "weights": { "what_is": 4, "beginner": 3 }
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "두쫀쿠를 돈 주고\n사 먹은 적이 있다",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "그렇다",
+          "weights": {
+            "beginner": 3,
+            "experienced": 3.5,
+            "critic": 2,
+            "duchinza": 1
+          }
+        },
+        {
+          "id": "q2b",
+          "label": "아니다",
+          "weights": { "what_is": 4, "beginner": 3 }
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "집/학교/직장 주변에\n두쫀쿠 파는 가게를\n3곳 이상 알고 있다",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "그렇다",
+          "weights": { "experienced": 3, "critic": 3.5, "duchinza": 2 }
+        },
+        {
+          "id": "q3b",
+          "label": "아니다",
+          "weights": { "what_is": 3, "beginner": 3.5, "experienced": 2 }
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "두쫀쿠를 먹기 위해\n30분 이상 웨이팅을\n한 적이 있다",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "그렇다",
+          "weights": { "experienced": 2, "critic": 3.5, "duchinza": 3 }
+        },
+        {
+          "id": "q4b",
+          "label": "아니다",
+          "weights": { "what_is": 2, "beginner": 3, "experienced": 3 }
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "두쫀쿠를 5곳 이상의\n다른 가게에서\n먹어 봤다",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "그렇다",
+          "weights": { "experienced": 3, "critic": 3.5, "duchinza": 2.5 }
+        },
+        {
+          "id": "q5b",
+          "label": "아니다",
+          "weights": { "what_is": 3, "beginner": 3.5, "experienced": 2 }
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "두쫀쿠 오픈런을\n한 적이 있다",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "그렇다",
+          "weights": { "critic": 3, "duchinza": 4 }
+        },
+        {
+          "id": "q6b",
+          "label": "아니다",
+          "weights": { "what_is": 2, "beginner": 3, "experienced": 3 }
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "3번 이상 사먹은\n최애 두쫀쿠 가게가\n있다",
+      "choices": [
+        {
+          "id": "q7a",
+          "label": "그렇다",
+          "weights": { "experienced": 2, "critic": 3.5, "duchinza": 3 }
+        },
+        {
+          "id": "q7b",
+          "label": "아니다",
+          "weights": { "what_is": 2, "beginner": 3, "experienced": 3 }
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "두쫀쿠를\n선물한 적이 있다",
+      "choices": [
+        {
+          "id": "q8a",
+          "label": "그렇다",
+          "weights": { "experienced": 2, "critic": 3.5, "duchinza": 3 }
+        },
+        {
+          "id": "q8b",
+          "label": "아니다",
+          "weights": { "what_is": 2, "beginner": 3, "experienced": 3 }
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "title": "두쫀쿠를 직접\n만들어 본 적이 있다",
+      "choices": [
+        {
+          "id": "q9a",
+          "label": "그렇다",
+          "weights": { "critic": 3, "duchinza": 4 }
+        },
+        {
+          "id": "q9b",
+          "label": "아니다",
+          "weights": {
+            "what_is": 2,
+            "beginner": 3,
+            "experienced": 3,
+            "critic": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "title": "맛있는 두쫀쿠는\n권력과 같다",
+      "choices": [
+        {
+          "id": "q10a",
+          "label": "그렇다",
+          "weights": { "critic": 3, "duchinza": 4 }
+        },
+        {
+          "id": "q10b",
+          "label": "아니다",
+          "weights": { "what_is": 3, "beginner": 3, "experienced": 2 }
+        }
+      ]
+    }
+  ]
+}
