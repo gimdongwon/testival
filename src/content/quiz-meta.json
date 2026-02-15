@@ -1,19 +1,10 @@
 {
   "metas": [
     {
-      "id": "chuseok",
-      "title": "추석 연휴, 나는 어디에 있을까?",
-      "description": "Testival - 추석 연휴, 나는 어디에 있을까?"
-    },
-    {
-      "id": "chuseok_money",
-      "title": "이번 명절 내가 내야할 잔소리 비용은?",
-      "description": "Testival - 이번 명절 내가 내야할 잔소리 비용은?"
-    },
-    {
-      "id": "seat",
-      "title": "친구들과 여행가는 차 안, 내 자리는?",
-      "description": "Testival - 친구들과 여행가는 차 안, 내 자리는?"
+      "id": "dujjoenku",
+      "title": "두쫀쿠에 미친 자 테스트",
+      "description": "당신은 두친자일까? 아닐까?",
+      "keywords": ["두쫀쿠", "두쫀쿠테스트", "두친자", "두쫀구리", "두친놈"]
     },
     {
       "id": "classroom",
@@ -26,14 +17,9 @@
       "description": "Testival - 나는 어떤 잠옷을 입을까"
     },
     {
-      "id": "christmas_cake",
-      "title": "나와 어울리는 크리스마스 케이크는",
-      "description": "Testival - 나와 어울리는 크리스마스 케이크는"
-    },
-    {
-      "id": "christmas_present",
-      "title": "올 연말 나는 선물을 받을 수 있을까?",
-      "description": "Testival - 올 연말 나는 선물을 받을 수 있을까?"
+      "id": "seat",
+      "title": "친구들과 여행가는 차 안, 내 자리는?",
+      "description": "Testival - 친구들과 여행가는 차 안, 내 자리는?"
     },
     {
       "id": "travel_photo",
@@ -54,13 +40,35 @@
       "id": "seollal_nag",
       "title": "설날 명절 잔소리 테스트",
       "description": "이번 명절, 당신의 잔소리는 과연 얼마일까?",
-      "keywords": ["잔소리메뉴판", "잔소리테스트", "잔소리영수증", "명절잔소리", "명절", "잔소리용돈", "설날"]
+      "keywords": [
+        "잔소리메뉴판",
+        "잔소리테스트",
+        "잔소리영수증",
+        "명절잔소리",
+        "명절",
+        "잔소리용돈",
+        "설날"
+      ]
     },
     {
-      "id": "dujjoenku",
-      "title": "두쫀쿠에 미친 자 테스트",
-      "description": "당신은 두친자일까? 아닐까?",
-      "keywords": ["두쫀쿠", "두쫀쿠테스트", "두친자", "두쫀구리", "두친놈"]
+      "id": "christmas_cake",
+      "title": "나와 어울리는 크리스마스 케이크는",
+      "description": "Testival - 나와 어울리는 크리스마스 케이크는"
+    },
+    {
+      "id": "christmas_present",
+      "title": "올 연말 나는 선물을 받을 수 있을까?",
+      "description": "Testival - 올 연말 나는 선물을 받을 수 있을까?"
+    },
+    {
+      "id": "chuseok_money",
+      "title": "이번 명절 내가 내야할 잔소리 비용은?",
+      "description": "Testival - 이번 명절 내가 내야할 잔소리 비용은?"
+    },
+    {
+      "id": "chuseok",
+      "title": "추석 연휴, 나는 어디에 있을까?",
+      "description": "Testival - 추석 연휴, 나는 어디에 있을까?"
     }
   ]
 }

@@ -7,11 +7,11 @@ import GAListener from '@/lib/ga-listener';
 import { Analytics } from '@vercel/analytics/next';
 
 const siteUrl = 'https://testival.kr';
-const defaultTitle = 'Testival - 심리테스트 & 재미있는 테스트';
-const defaultDesc =
-  '재미있는 심리테스트, 성격 테스트, 여행 스타일 테스트를 무료로 즐겨보세요. 친구들과 공유하고 나를 발견하는 시간!';
-const defaultImage = `${siteUrl}/images/quiz/chuseok/og-image.png`;
-const defaultImageAlt = 'Testival 심리테스트 플랫폼 - 나를 발견하는 재미있는 테스트';
+const defaultTitle = 'Testival - 테스티발 심리테스트';
+const defaultDesc = '재미있는 심리테스트를 무료로 즐겨보세요.';
+const defaultImage = `${siteUrl}/images/quiz/common/og-image.png`;
+const defaultImageAlt =
+  'Testival 심리테스트 플랫폼 - 나를 발견하는 재미있는 테스트';
 const defaultImageWidth = 1200;
 const defaultImageHeight = 630;
 

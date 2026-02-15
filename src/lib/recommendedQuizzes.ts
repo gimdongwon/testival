@@ -29,10 +29,9 @@ export const getRecommendedQuizzes = async (
   const metas = (quizMeta as { metas: QuizMeta[] }).metas;
   const repo = getQuizRepository();
 
-  // 현재 퀴즈를 제외하고 역순으로 (최신순)
+  // 현재 퀴즈를 제외하고 quiz-meta.json 순서대로 상위 노출
   const filteredMetas = metas
     .filter((meta) => meta.id !== currentQuizId)
-    .reverse()
     .slice(0, count);
 
   // 모든 조회수를 한 번에 가져옵니다

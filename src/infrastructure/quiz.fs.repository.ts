@@ -92,6 +92,23 @@ export class FSQuizRepository {
         continue;
       }
     }
+
+    // quiz-meta.json 순서에 따라 정렬
+    const quizMeta = await import('@/content/quiz-meta.json');
+    const metaOrder = (
+      (quizMeta as { default?: { metas: { id: string }[] } })?.default ??
+      quizMeta
+    ) as { metas: { id: string }[] };
+    const orderMap = new Map(
+      metaOrder.metas.map((m, i) => [m.id, i])
+    );
+
+    all.sort((a, b) => {
+      const orderA = orderMap.get(a.meta.id) ?? Number.MAX_SAFE_INTEGER;
+      const orderB = orderMap.get(b.meta.id) ?? Number.MAX_SAFE_INTEGER;
+      return orderA - orderB;
+    });
+
     return all;
   }
 

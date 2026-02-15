@@ -16,7 +16,7 @@
       "backgroundColor": "#d1d8ea",
       "resetBtnBackgroundColor": "#000"
     },
-    "landing": { "buttonTheme": "black" },
+    "landing": { "buttonTheme": "white" },
     "question": {
       "optionVariant": "light",
       "progressFillColor": "#8f9ec4",

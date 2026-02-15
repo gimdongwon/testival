@@ -15,6 +15,7 @@ import { resolveImage } from '@/lib/imageUtils';
 import type { TestDefinition, ResultDetail } from '@/domain/quiz.schema';
 import { getResultUIConfig } from '@/domain/quiz.schema';
 import RecommendedQuizzes from '@/components/common/RecommendedQuizzes';
+import CoupangAd from '@/components/common/CoupangAd';
 import type { QuizRecommendation } from '@/lib/recommendedQuizzes';
 
 export default function ResultClient({
@@ -149,7 +150,7 @@ export default function ResultClient({
             alt={`${def.meta.title} 테스트 결과 이미지`}
             src={resolveImage(
               `/images/quiz/${testId}/result_${type}.png`,
-              webpFiles
+              webpFiles,
             )}
             draggable={false}
           />
@@ -197,11 +198,7 @@ export default function ResultClient({
           />
           <div className={styles.content}>
             {config.showReceipt && (
-              <Receipt
-                items={items}
-                total={total}
-                detail={detail}
-              />
+              <Receipt items={items} total={total} detail={detail} />
             )}
           </div>
           <div className={styles.shareBtnWrapper}>
@@ -230,6 +227,9 @@ export default function ResultClient({
           )}
         </>
       )}
+
+      {/* 쿠팡파트너스 광고 - 결과 페이지 최하단 */}
+      <CoupangAd />
     </section>
   );
 }
