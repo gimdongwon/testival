@@ -7,6 +7,25 @@
       "keywords": ["두쫀쿠", "두쫀쿠테스트", "두친자", "두쫀구리", "두친놈"]
     },
     {
+      "id": "holiday_activity",
+      "title": "연휴 때 뭐할까?",
+      "description": "Testival - 연휴 때 뭐할까?"
+    },
+    {
+      "id": "seollal_nag",
+      "title": "설날 명절 잔소리 테스트",
+      "description": "이번 명절, 당신의 잔소리는 과연 얼마일까?",
+      "keywords": [
+        "잔소리메뉴판",
+        "잔소리테스트",
+        "잔소리영수증",
+        "명절잔소리",
+        "명절",
+        "잔소리용돈",
+        "설날"
+      ]
+    },
+    {
       "id": "classroom",
       "title": "시끌벅적 교실 속, 내 자리는?",
       "description": "Testival - 시끌벅적 교실 속, 내 자리는?"
@@ -30,25 +49,6 @@
       "id": "travel_winter",
       "title": "겨울 여행, 어디로 갈까?",
       "description": "Testival - 겨울 여행, 어디로 갈까?"
-    },
-    {
-      "id": "holiday_activity",
-      "title": "연휴 때 뭐할까?",
-      "description": "Testival - 연휴 때 뭐할까?"
-    },
-    {
-      "id": "seollal_nag",
-      "title": "설날 명절 잔소리 테스트",
-      "description": "이번 명절, 당신의 잔소리는 과연 얼마일까?",
-      "keywords": [
-        "잔소리메뉴판",
-        "잔소리테스트",
-        "잔소리영수증",
-        "명절잔소리",
-        "명절",
-        "잔소리용돈",
-        "설날"
-      ]
     },
     {
       "id": "christmas_cake",
