@@ -89,7 +89,7 @@ export default function RootLayout({
     <html lang='ko'>
       <head>
         {/* Google Tag Manager */}
-        <Script id='google-tag-manager' strategy='afterInteractive'>
+        <Script id='google-tag-manager' strategy='beforeInteractive'>
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -99,9 +99,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Google Analytics 4 (gtag.js) */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-          strategy='afterInteractive'
+          strategy='beforeInteractive'
         />
-        <Script id='google-analytics' strategy='afterInteractive'>
+        <Script id='google-analytics' strategy='beforeInteractive'>
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
