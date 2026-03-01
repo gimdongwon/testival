@@ -1,0 +1,130 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 20px 32px;
+  width: 100%;
+  gap: 30px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Hero title section ── */
+
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+  filter: drop-shadow(0 2.4px 9.6px rgba(0, 0, 0, 0.25));
+}
+
+.heroScore {
+  font-size: 79px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 4.75px;
+}
+
+.heroName {
+  font-size: 50px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  line-height: 1.2;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+/* ── Image card ── */
+
+.imageCard {
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+  border: 1.5px solid #000;
+  overflow: hidden;
+}
+
+.resultImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ── Text content card ── */
+
+.contentCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  padding: 30px;
+  background: #fff;
+  border: 1.5px solid #000;
+}
+
+.resultTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  line-height: 1.4;
+  white-space: pre-line;
+  margin: 0 0 10px;
+  width: 100%;
+  word-break: keep-all;
+}
+
+/* ── Description ── */
+
+.description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
+  text-align: left;
+  white-space: pre-line;
+  margin: 0 0 20px;
+  width: 100%;
+  word-break: keep-all;
+}
+
+/* ── Keywords ── */
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.keyword {
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}

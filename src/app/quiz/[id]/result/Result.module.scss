@@ -6,56 +6,14 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100dvh; /* 화면 높이 꽉 */
+  min-height: 100dvh;
   max-width: 430px;
-  /* 스크롤 살리기 */
   overflow-x: hidden;
   overflow-y: auto;
   background-color: var(--result-bg-color, #000);
 }
 
-/* bg 모드: 배경 이미지로 깔림, 컨텐츠가 위에 올라감 */
-.bgImage {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  user-select: none;
-  -webkit-user-drag: none;
-  z-index: 0;
-}
-
-/* long 모드: 이미지 wrapper - 이미지 높이만큼 공간 확보, 하단 오버레이 기준점 */
-.longImageWrapper {
-  position: relative;
-  width: 100%;
-}
-
-.longImage {
-  display: block;
-  width: 100%;
-  height: auto;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* long 모드: 이미지 하단에 버튼/추천 퀴즈를 오버레이 */
-.longOverlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-/* 본문/영수증 등은 배경 위에 */
-.content {
-  position: relative;
-  z-index: 1;
-}
+/* ── 버튼 영역 ── */
 
 .shareBtnWrapper {
   display: flex;
@@ -65,7 +23,6 @@
   gap: 10px;
   width: 100%;
   padding: 20px 30px;
-  z-index: 10;
   max-width: 430px;
   margin: 0 auto;
 }
@@ -79,27 +36,16 @@
   height: 48px;
   font-size: 18px;
   font-weight: 500;
-  background-color: #fff;
-  color: #000;
   border-radius: 8px;
   text-align: center;
   border: none;
   padding: 0;
-  position: relative;
-  overflow: hidden;
   cursor: pointer;
-}
-
-.shareBtn img {
-  display: block;
-  object-fit: cover;
 }
 
 .resetBtn {
   width: 100%;
   height: 48px;
-  background-color: #000;
-  color: #fff;
   font-size: 18px;
   font-weight: 500;
   border-radius: 8px;
@@ -108,26 +54,32 @@
   justify-content: center;
   border: none;
   padding: 0;
-  position: relative;
-  overflow: hidden;
   cursor: pointer;
   gap: 8px;
 }
 
-.resetBtn img {
-  display: block;
-  width: 18px;
-  height: 20px;
-  object-fit: contain;
-}
+/* ── 버튼 테마 variants ── */
 
-/* Variants - combine with .shareBtn / .resetBtn */
 .btnDark {
-  --btn-bg: #000;
-  --btn-fg: #fff;
+  &.shareBtn {
+    background-color: #fff;
+    color: #000;
+  }
+
+  &.resetBtn {
+    background-color: #333;
+    color: #fff;
+  }
 }
 
 .btnLight {
-  --btn-bg: #fff;
-  --btn-fg: #000;
+  &.shareBtn {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+
+  &.resetBtn {
+    background-color: #e5e5e5;
+    color: #1a1a1a;
+  }
 }

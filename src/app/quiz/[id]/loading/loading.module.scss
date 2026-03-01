@@ -6,6 +6,7 @@
   width: 100%;
   max-width: 425px;
   height: 100%;
+  position: relative;
 
   background-size: cover;
   background-position: center;
@@ -15,7 +16,7 @@
 .loadingText {
   font-size: 22px;
   color: #ffffff;
-  font-weight: 800;
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+  font-weight: 700;
   text-align: center;
+  letter-spacing: 2px;
 }

@@ -10,7 +10,7 @@
   },
   "ui": {
     "result": {
-      "theme": "white",
+      "theme": "black",
       "imageMode": "bg",
       "showReceipt": true,
       "backgroundColor": "#FFFFFF",

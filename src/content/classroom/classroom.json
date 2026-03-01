@@ -50,7 +50,7 @@
       "name": "모범생",
       "title": "선생님, 진도 나가요.",
       "description": "맨앞이 공부하기 좋은 자리긴 한데 진짜 공부만 함.\n\n선생님 질문에 혼자 대답하고, 친구보단 선생님이랑 더 말 잘 통하는 스타일. 쌤들한테 예쁨 받음.\n\n공부도 잘하고 성격도 쿨해서 애들한테도 은근히 인기 많음.",
-      "image": "/images/quiz/seat/og-image.png",
+      "image": "/images/quiz/classroom/result_front.png",
       "keywords": ["모범생", "진도", "예쁨", "쿨", "인기"],
       "type": "front"
     },
@@ -58,7 +58,7 @@
       "name": "조용한 아싸",
       "title": "…….(침묵)",
       "description": "솔직히 눈에 안 띔. 그냥 진짜 안 보임.\n\n수업시간에 딴짓은 안 하는데 딱히 열심히도 안 함. 걍 가만히 있음.\n\n존재감 없어서 잘 모르겠는데 뭐 빌려 달라고 하면 잘 빌려 줌. 착함.\n\n단톡에 아무 말 안 하는데 확인은 다 함.\n\n의외로 늘 같이 노는 친구들이 있음. 암튼 착함.",
-      "image": "/images/quiz/seat/og-image.png",
+      "image": "/images/quiz/classroom/result_middleCorner.png",
       "keywords": ["조용", "아싸", "착함", "눈치", "구석"],
       "type": "middleCorner"
     },
@@ -66,7 +66,7 @@
       "name": "인싸",
       "title": "노는 게 제일 좋아, 친구들 모여라!",
       "description": "교실 맨 뒤에서 반 분위기 휘어잡는 타입.\n\n수업 중간에 몰래 과자 나눠 주고, 애들 웃기고 난리 났음.\n\n놀 거 다 노는 것 같은데 정작 시험 점수는 평균 이상이라 은근히 얄미움;;\n\n쌤한텐 약간 까불거리면서 농담하는데 쌤도 은근 좋아함.\n\n애들 다 은근히 얘랑 친해지고 싶어함.",
-      "image": "/images/quiz/seat/og-image.png",
+      "image": "/images/quiz/classroom/result_back.png",
       "keywords": ["인싸", "분위기메이커", "친구", "장난", "평균이상"],
       "type": "back"
     },
@@ -74,7 +74,7 @@
       "name": "마이웨이 힙스터",
       "title": "나는 빠질게.",
       "description": "인싸도 아싸도 아님. 딱히 반 분위기 따라가지도 않고 그냥 하고 싶은 대로 사는듯.\n\n맨날 뭐하는지 잘 모르겠는데 이상하게 존재감이 있음. 가끔 사복 보면 옷 잘 입음.\n\n혼자 창밖 보면서 뭐 생각하는지 아무도 모름.\n\n단톡도 안읽씹, 단체활동도 따로 다니는데 혼자 노는 거 잘함.\n\n어쩐지 그런 모습이 쿨해 보여서 같이 놀고 싶어하는 애들이 늘 있음.",
-      "image": "/images/quiz/seat/og-image.png",
+      "image": "/images/quiz/classroom/result_window.png",
       "keywords": ["마이웨이", "힙스터", "쿨", "단독", "창가"],
       "type": "window"
     },
@@ -82,7 +82,7 @@
       "name": "문제아",
       "title": "복도로 나가서 서 있어!",
       "description": "자리가 있긴 한데 맨날 혼나서 밖에 나가 있음.\n\n나가는 이유도 가지가지임. 숙제 안 해서, 준비물 안 가져와서, 자다가, 떠들다가…\n\n맨날 뒤로 나가서 서 있는데 또 해맑아서 그게 또 귀여움.\n\n선생님도 애들도 은근히 좋아하는 우리반 문제아.",
-      "image": "/images/quiz/seat/og-image.png",
+      "image": "/images/quiz/classroom/result_outside.png",
       "keywords": ["문제아", "복도", "장난", "해맑음"],
       "type": "outside"
     },
@@ -90,7 +90,7 @@
       "name": "선생님",
       "title": "그래도 가야지, 네가 선생인데…",
       "description": "학생이라기에 당신은 인생을 너무나 통달해 버렸군요…\n\n당신의 자리는 바로 교탁입니다.\n\n이미 힘겨운 사회를 멋지게 살아가고 있는 당신께 박수와 응원을 보냅니다.",
-      "image": "/images/quiz/seat/og-image.png",
+      "image": "/images/quiz/classroom/result_teacher.png",
       "keywords": ["선생님", "성숙", "응원", "교탁"],
       "type": "teacher"
     }

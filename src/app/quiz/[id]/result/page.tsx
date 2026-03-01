@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import ResultClient from './result.client';
 import type { Metadata } from 'next';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
-import { getAvailableWebP } from '@/lib/resolveQuizImages';
 import quizMeta from '@/content/quiz-meta.json';
 import { getRecommendedQuizzes } from '@/lib/recommendedQuizzes';
 
@@ -77,13 +76,11 @@ export default async function Page({
 
   // 추천 퀴즈 가져오기
   const recommendedQuizzes = await getRecommendedQuizzes(id, 3);
-  const webpFiles = getAvailableWebP(id);
 
   return (
     <ResultClient
       def={def}
       recommendedQuizzes={recommendedQuizzes}
-      webpFiles={webpFiles}
     />
   );
 }
