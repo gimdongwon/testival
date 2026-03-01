@@ -46,7 +46,7 @@ const LoadingContent = ({ def }: { def: TestDefinition }) => {
         style={{ color: loadingTextColor }}
         aria-live='polite'
       >
-        로딩중
+        로딩중...
       </p>
     </div>
   );

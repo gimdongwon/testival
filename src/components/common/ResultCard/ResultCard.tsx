@@ -12,12 +12,14 @@ type ResultCardProps = {
   fontFamily?: string;
   textStroke?: string;
   heroColor?: string;
+  heroFontWeight?: number;
 };
 
-const ResultCard = ({ result, scoreLabel, fontFamily, textStroke, heroColor }: ResultCardProps) => {
+const ResultCard = ({ result, scoreLabel, fontFamily, textStroke, heroColor, heroFontWeight }: ResultCardProps) => {
   const heroStyle: CSSProperties = {
     ...(fontFamily ? { fontFamily } : {}),
     ...(heroColor ? { color: heroColor } : {}),
+    ...(heroFontWeight ? { fontWeight: heroFontWeight } : {}),
     ...(textStroke
       ? { WebkitTextStroke: textStroke, paintOrder: 'stroke fill' as const }
       : {}),

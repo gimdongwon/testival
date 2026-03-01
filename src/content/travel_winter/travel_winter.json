@@ -22,7 +22,11 @@
       "imageMode": "long",
       "showReceipt": false,
       "backgroundColor": "#FFFFFF",
-      "shareBtnBottom": "450px"
+      "shareBtnBottom": "450px",
+      "resultFontFamily": "'Shilla_Culture(B)', 'Noto Sans KR', sans-serif",
+      "resultTextStroke": "3px #fff",
+      "resultHeroColor": "#0045a5",
+      "resultHeroFontWeight": 700
     },
     "landing": {
       "buttonTheme": "black"
@@ -66,7 +70,7 @@
   },
   "resultDetails": {
     "domestic_winter_sea": {
-      "name": "고독한 국내 겨울 바다형",
+      "name": "고독한\n국내 겨울 바다형",
       "title": "아무것도 안 하는데 제일 잘 쉬는 사람",
       "description": "사람이 많은 곳에서는 에너지를 뺏기는 편. 겨울엔 \"조용한 힐링 스팟\"이 답.\n\n당신의 여행 스타일:\n• 일정은 느슨하게, 마음은 단단하게\n• 바다 앞에서 멍 때리는 게 메인 콘텐츠\n• 멀리 가기보단 가까운 곳에서 확실히 쉬는 타입\n\n추천 키워드/코스:\n강릉·속초·양양 / 겨울 바다 산책 / 오션뷰 카페 커피 한잔\n바다 30분 + 낮잠 + 저녁엔 회와 청하 한잔하는 루틴\n\n주의할 점:\n'뭐라도 해야 한다' 강박 생기면 여행이 바로 피곤해짐\n사람 많은 핫플은 한 곳 정도만 찍고 빠지는 게 딱 좋음",
       "image": "/images/quiz/travel_winter/result_domestic_winter_sea.png",
@@ -87,7 +91,7 @@
       "type": "romantic_snow_mountain"
     },
     "warm_beach": {
-      "name": "따뜻한 바다 휴양지형",
+      "name": "따뜻한\n바다 휴양지형",
       "title": "나 쉬러 왔어. 진짜로",
       "description": "안 그래도 추운데 적어도 휴가는 따뜻해야 하지 않겠냐?\n\n당신의 여행 스타일:\n• 리조트/마사지 등 내 힐링에 돈 쓰는 맛\n• 바다는 수영이 가능한 바다여야 함\n• 여행 목표가 힐링, 회복이라 무리하면 손해\n\n추천 키워드/코스:\n다낭·푸꾸옥·세부 / 호캉스 / 마사지 / 수영장 / 선셋\n오전 늘어지게 늦잠 → 점심 먹고 수영 → 마사지 → 저녁 맛집\n\n주의할 점:\n일정을 잔뜩 넣으면 휴양이 아니라 노동됨\n쇼핑 몰아치기 하면 몸이 못 따라옴",
       "image": "/images/quiz/travel_winter/result_warm_beach.png",
@@ -95,7 +99,7 @@
       "type": "warm_beach"
     },
     "australia_nature": {
-      "name": "지구 반대편 자연인 형",
+      "name": "지구 반대편\n자연인 형",
       "title": "광활한 자연과 하나가 되",
       "description": "멀어도 괜찮아. 광활한 자연을 마주해야 속이 풀림.\n\n당신의 여행 스타일:\n• 사진은 자연 위주, 밤은 별 보면서 산책\n• 이동 시간? 여행의 일부라고 생각함\n• 사람보다 아름다운 자연이 더 큰 만족을 줌\n\n추천 키워드/코스:\n호주 자연 드라이브/해안/국립공원 느낌 / 별 보기 / 작은 도시\n\"하루 한 곳이라도 천천히 제대로 보고 오기\" 전략\n\n주의할 점:\n동선 설계 없이 가면 이동만 하다 끝날 수 있음\n체력 과신하면 중간에 급방전",
       "image": "/images/quiz/travel_winter/result_australia_nature.png",
@@ -103,7 +107,7 @@
       "type": "australia_nature"
     },
     "city_shopping": {
-      "name": "좋(은)느(낌) 도시 쇼핑형",
+      "name": "좋(은)느(낌)\n도시 쇼핑형",
       "title": "이거 한국에선 얼만지 알아?",
       "description": "여행은 도시의 텐션 + 소비의 쾌감. 그리고 '느낌'이 중요함.\n\n당신의 여행 스타일:\n• 편집샵, 핫플, 트렌드에 진심\n• 면세/브랜드/핫한 아이템에 끌림\n• 밤엔 번화가에서 늦게까지 놀아야 여행 온 느낌 남\n\n추천 키워드/코스:\n도쿄 / 상하이 / 편집샵 투어 / 전시·카페 / 야경 / 쇼핑 동선\n구역별로 하루에 1~2스팟을 구경하는 게 효율 최고\n\n주의할 점:\n계획 없이 가면 지출만 크고 만족이 애매해질 수 있음\n체력이 진짜 중요함(편한 신발/휴식 타이밍 잘 챙기기)",
       "image": "/images/quiz/travel_winter/result_city_shopping.png",

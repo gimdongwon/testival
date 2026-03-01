@@ -173,6 +173,7 @@ export default function ResultClient({
             fontFamily={config.resultFontFamily}
             textStroke={config.resultTextStroke}
             heroColor={config.resultHeroColor}
+            heroFontWeight={config.resultHeroFontWeight}
           />
         )
       )}

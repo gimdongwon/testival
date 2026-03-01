@@ -14,7 +14,11 @@
       "theme": "white",
       "imageMode": "long",
       "showReceipt": false,
-      "backgroundColor": "#FF22B6"
+      "backgroundColor": "#FF22B6",
+      "resultFontFamily": "SacheonHanggong",
+      "resultTextStroke": "5px #fff",
+      "resultHeroColor": "#FF22B6",
+      "loadingTextColor": "#FF5863"
     },
     "landing": { "buttonTheme": "white" },
     "question": {

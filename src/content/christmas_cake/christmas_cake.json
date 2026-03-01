@@ -3,7 +3,7 @@
     "id": "christmas_cake",
     "title": "나와 어울리는 크리스마스 케이크는",
     "description": "나와 어울리는 크리스마스 케이크는 취향으로 알아보는 나의 케이크 유형 테스트",
-    "mode": "amount-sum",
+    "mode": "weighted",
     "resultTypes": [
       "strawberry_king",
       "old_bakery",
@@ -31,7 +31,9 @@
       "theme": "white",
       "imageMode": "long",
       "showReceipt": false,
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#FFFFFF",
+      "resultFontFamily": "Cafe24Classictype",
+      "resultHeroColor": "#fff"
     },
     "landing": { "buttonTheme": "black" },
     "question": {
@@ -44,7 +46,7 @@
   },
   "resultDetails": {
     "strawberry_king": {
-      "name": "전국 3대장 딸기 생크림 케이크",
+      "name": "전국 3대장\n딸기 생크림 케이크",
       "title": "기다리더라도, 비싸더라도, 맛있으면 장땡.",
       "description": "당신에게 케이크는 완전히 “디저트” 그 자체야.\n줄을 서더라도, 좀 멀더라도, 맛있다고 소문난 곳이라면 기꺼이 찾아가는 스타일.\n크림, 시트, 딸기의 조합이 완벽해야 만족하고, 비주얼은 평타만 쳐도 괜찮음.\n예쁜 사진보다, 감동적인 한 입이 더 중요하다고 생각하는 타입.",
       "image": "/images/quiz/christmas_cake/result_strawberry_king.png",
@@ -52,7 +54,7 @@
       "type": "strawberry_king"
     },
     "old_bakery": {
-      "name": "동네 빵집 옛날 스타일 케이크",
+      "name": "동네 빵집\n옛날 스타일 케이크",
       "title": "익숙한 맛, 익숙한 모양, 구관이 명관.",
       "description": "당신에게 케이크는 “가족” 같은 존재야.\n동네에서 몇 년째 운영 중인 빵집, 살짝 촌스러운 딸기 장식, 진한 크림, 익숙하고도 편안한 맛.\n이런 요소들이 오히려 안정감을 주지.\n화려하지 않아도 괜찮고, 굳이 SNS에 사진을 올릴 필요도 없는,\n추억으로 보정되는 정겨운 케이크.",
       "image": "/images/quiz/christmas_cake/result_old_bakery.png",
@@ -60,7 +62,7 @@
       "type": "old_bakery"
     },
     "hotel_mousse": {
-      "name": "국내 5성급 호텔 초콜릿 무스 케이크",
+      "name": "국내 5성급 호텔\n초콜릿무스케이크",
       "title": "특별한 날에 어울리는 특별한 케이크, 실패 없는 선택.",
       "description": "당신은 맛과 비주얼을 둘 다 놓치고 싶지 않은 타입.\n호텔 케이크처럼 포장이 깔끔하고, 맛도 평균 이상은 보장되는 선택을 선호한다.\n줄 서서 기다리는 맛집까지는 아니어도, 연말 파티에서 꺼내놓았을 때 적당히 돈 쓴 기분이 나도록 고급스러워야 만족.\n독특한 감성보다는 '깔끔하고 세련된 정석'이 딱 맞는 사람.",
       "image": "/images/quiz/christmas_cake/result_hotel_mousse.png",
@@ -68,7 +70,7 @@
       "type": "hotel_mousse"
     },
     "insta_hip": {
-      "name": "힙한 인스타 맛집 케이크",
+      "name": "힙한 인스타\n맛집 케이크",
       "title": "트렌드, 내가 모를 수 없지.",
       "description": "당신에게 케이크는 거의 ‘연출 소품’이자 ‘배경’에 가깝다.\n레터링, 귀여운 초, 상자 디자인까지 전부 중요하다.\n맛도 완전 별로만 아니면 괜찮고, 분위기와 사진이 제대로 나오면 이미 성공.\n크리스마스 이후에도 사진을 다시 보면서 “이날 느좋이었지.”라고 흐뭇하게 되새기는 타입.",
       "image": "/images/quiz/christmas_cake/result_insta_hip.png",
@@ -76,7 +78,7 @@
       "type": "insta_hip"
     },
     "custom_art": {
-      "name": "미친듯이 화려한 디자인의 특별 제작 케이크",
+      "name": "미친듯이 화려한 디자인의\n특별 제작 케이크",
       "title": "케이크는 예술이다.",
       "description": "당신에게 케이크는 거의 예술 작품이다.\n층층이 쌓인 데코, 과감한 색감, 비정상적인 형태.\n마치 브랜드 컨셉 케이크마냥 화려한 케이크를 보고 남들은 이걸 이 돈 주고 샀다고? 싶겠지만 어디서든 볼 수 있는 케이크에는 끌리지 않는다.\n맛은 기본만 하면 되고, 중요한 건 “이걸 여기 올려놓는 순간 공간의 분위기가 바뀌는가.”다.",
       "image": "/images/quiz/christmas_cake/result_custom_art.png",

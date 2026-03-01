@@ -59,6 +59,7 @@ export const ResultUIConfigZ = z.object({
   resultFontFamily: z.string().optional(),
   resultTextStroke: z.string().optional(),
   resultHeroColor: z.string().optional(),
+  resultHeroFontWeight: z.number().optional(),
 });
 
 export const LandingUIConfigZ = z.object({
