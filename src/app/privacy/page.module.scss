@@ -1,0 +1,152 @@
+.container {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  width: 100%;
+  padding: 24px 20px 48px;
+  flex: 1;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.effectiveDate {
+  font-size: 13px;
+  color: #888888;
+  margin-bottom: 28px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.intro {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444444;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #6366f1;
+  margin-bottom: 2px;
+}
+
+.subTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333333;
+  margin-top: 4px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444444;
+  word-break: keep-all;
+}
+
+.list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444444;
+    word-break: keep-all;
+  }
+}
+
+.link {
+  color: #6366f1;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: #4f46e5;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #6366f1;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Table */
+.table {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.tableHeader {
+  display: flex;
+  background-color: #f5f3ff;
+  border-bottom: 1px solid #e5e5e5;
+
+  .tableCell {
+    font-weight: 700;
+    color: #333333;
+  }
+}
+
+.tableRow {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.tableCell {
+  flex: 1;
+  padding: 10px 12px;
+  line-height: 1.5;
+  color: #444444;
+  word-break: keep-all;
+}
+
+/* Contact Info */
+.contactInfo {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  p {
+    font-size: 14px;
+    color: #333333;
+    line-height: 1.6;
+  }
+}
