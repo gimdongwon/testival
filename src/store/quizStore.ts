@@ -22,7 +22,7 @@ type QuizActions = {
   resetAll: () => void;
 };
 
-export const useQuizStore = create<QuizState & QuizActions>((set) => ({
+const useQuizStore = create<QuizState & QuizActions>((set) => ({
   indices: {},
   selections: {},
 

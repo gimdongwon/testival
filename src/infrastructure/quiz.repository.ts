@@ -7,9 +7,7 @@ export interface QuizRepository {
   list(): Promise<
     Array<{ meta: Pick<TestMeta, 'id' | 'title' | 'thumbnail'> }>
   >;
-  getViewCount(id: string): Promise<number>;
   getAllViewCounts(): Promise<Record<string, number>>;
-  incrementViewCount(id: string): Promise<number>;
 }
 
 export const getQuizRepository = (): QuizRepository => {

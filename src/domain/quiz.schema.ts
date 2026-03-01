@@ -218,8 +218,6 @@ export const TestDefinitionZ = z
   });
 
 /** 타입 추론 */
-export type Choice = z.infer<typeof ChoiceZ>;
-export type Question = z.infer<typeof QuestionZ>;
 export type ResultDetail = z.infer<typeof ResultDetailZ>;
 export type TestMeta = z.infer<typeof TestMetaZ>;
 export type TestDefinition = z.infer<typeof TestDefinitionZ>;

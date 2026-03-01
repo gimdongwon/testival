@@ -101,14 +101,6 @@
   overflow-wrap: break-word;
 }
 
-.containerDark .quizTitle {
-  color: #fff;
-}
-
-.containerLight .quizTitle {
-  color: #333;
-}
-
 .views {
   display: flex;
   align-items: center;
@@ -120,22 +112,7 @@
   font-size: 12px;
 }
 
-.containerDark .playIcon {
-  color: #fff;
-}
-
-.containerLight .playIcon {
-  color: #000;
-}
-
 .count {
   font-weight: 500;
 }
 
-.containerDark .count {
-  color: #fff;
-}
-
-.containerLight .count {
-  color: #666;
-}

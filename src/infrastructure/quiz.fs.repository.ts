@@ -10,8 +10,6 @@ import {
 
 // KV 클라이언트를 조건부로 import
 type KVClient = {
-  get: <T = unknown>(key: string) => Promise<T | null>;
-  incr: (key: string) => Promise<number>;
   keys: (pattern: string) => Promise<string[]>;
   mget: <T = unknown[]>(...keys: string[]) => Promise<T>;
 };
@@ -112,21 +110,6 @@ export class FSQuizRepository {
     return all;
   }
 
-  async getViewCount(id: string): Promise<number> {
-    if (!kv) {
-      console.warn('KV not configured, returning 0 views');
-      return 0;
-    }
-    try {
-      const key = `quiz:views:${id}`;
-      const views = (await kv.get<number>(key)) ?? 0;
-      return views;
-    } catch (error) {
-      console.error('Failed to get view count:', error);
-      return 0;
-    }
-  }
-
   async getAllViewCounts(): Promise<Record<string, number>> {
     if (!kv) {
       console.warn('KV not configured, returning empty views');
@@ -154,19 +137,4 @@ export class FSQuizRepository {
     }
   }
 
-  async incrementViewCount(id: string): Promise<number> {
-    if (!kv) {
-      console.warn('KV not configured, cannot increment view count');
-      return 0;
-    }
-    try {
-      const key = `quiz:views:${id}`;
-      await kv.incr(key);
-      const views = (await kv.get<number>(key)) ?? 1;
-      return views;
-    } catch (error) {
-      console.error('Failed to increment view count:', error);
-      return 0;
-    }
-  }
 }

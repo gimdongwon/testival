@@ -7,7 +7,7 @@ import GAListener from '@/lib/ga-listener';
 import { Analytics } from '@vercel/analytics/next';
 
 const siteUrl = 'https://testival.kr';
-const defaultTitle = 'Testival - 테스티발 심리테스트';
+const defaultTitle = 'Testival - 테스티벌 심리테스트';
 const defaultDesc = '재미있는 심리테스트를 무료로 즐겨보세요.';
 const defaultImage = `${siteUrl}/images/quiz/common/og-image.png`;
 const defaultImageAlt =
