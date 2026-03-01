@@ -17,7 +17,7 @@
   },
   "ui": {
     "result": {
-      "theme": "black",
+      "theme": "white",
       "imageMode": "long",
       "showReceipt": false,
       "backgroundColor": "#FF6AA2"

@@ -23,8 +23,6 @@
       "imageMode": "long",
       "showReceipt": false,
       "backgroundColor": "#d1d8ea",
-      "resetBtnBackgroundColor": "#fff",
-      "resetBtnTextColor": "#000",
       "resultFontFamily": "'WAGURI', sans-serif",
       "resultTextStroke": "5.2px #000"
     },

@@ -23,11 +23,10 @@
       "showReceipt": false,
       "backgroundColor": "#FFFFFF",
       "shareBtnBottom": "450px",
-      "resetBtnBackgroundColor": "#000",
-      "resetBtnTextColor": "#fff",
       "resultFontFamily": "'MBC1961', 'Noto Sans KR', sans-serif",
       "resultTextStroke": "2.5px #fff",
-      "resultHeroColor": "#000"
+      "resultHeroColor": "#000",
+      "loadingTextColor": "#000"
     },
     "landing": {
       "buttonTheme": "black"

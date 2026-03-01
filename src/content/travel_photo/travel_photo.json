@@ -28,10 +28,11 @@
   },
   "ui": {
     "result": {
-      "theme": "white",
+      "theme": "black",
       "imageMode": "long",
       "showReceipt": false,
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#FFFFFF",
+      "loadingTextColor": "#000"
     },
     "landing": {
       "buttonTheme": "black"

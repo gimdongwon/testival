@@ -31,6 +31,7 @@ const LoadingContent = ({ def }: { def: TestDefinition }) => {
     (resultConfig?.theme === 'white' ? '#fff' : '#000');
 
   const bgImage = `/images/quiz/${testId}/content_background.png`;
+  const loadingTextColor = resultConfig?.loadingTextColor ?? '#ffffff';
 
   return (
     <div
@@ -40,7 +41,11 @@ const LoadingContent = ({ def }: { def: TestDefinition }) => {
         backgroundImage: `url("${bgImage}")`,
       }}
     >
-      <p className={styles.loadingText} aria-live='polite'>
+      <p
+        className={styles.loadingText}
+        style={{ color: loadingTextColor }}
+        aria-live='polite'
+      >
         로딩중
       </p>
     </div>

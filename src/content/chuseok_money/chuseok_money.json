@@ -14,7 +14,8 @@
       "imageMode": "bg",
       "showReceipt": true,
       "backgroundColor": "#FFFFFF",
-      "resetBtnBackgroundColor": "#ED1B7A"
+      "resultBackgroundImage": "/images/quiz/chuseok/result_background.png",
+      "loadingTextColor": "#000"
     },
     "landing": { "buttonTheme": "white" },
     "question": { "optionVariant": "dark" }

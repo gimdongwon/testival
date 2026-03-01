@@ -89,30 +89,20 @@ export default function ResultClient({
     showReceipt: false,
   };
 
-  // 버튼 테마
-  const btnVariantClass =
-    config.theme === 'white' ? styles.btnLight : styles.btnDark;
+  const shareBtnBg =
+    config.shareBtnBackgroundColor ??
+    (config.theme === 'black' ? '#000' : '#fff');
+  const shareBtnColor =
+    config.shareBtnColor ?? (config.theme === 'black' ? '#fff' : '#000');
 
-  const shareBtnIconColor = config.theme === 'white' ? '#fff' : '#000';
-
-  const hasCustomResetBg = Boolean(config.resetBtnBackgroundColor);
-  const resetBtnIconColor = hasCustomResetBg
-    ? '#fff'
-    : config.theme === 'white'
-      ? '#1a1a1a'
-      : '#fff';
-
-  const resetBtnStyle: CSSProperties = config.resetBtnBackgroundColor
-    ? {
-        backgroundColor: config.resetBtnBackgroundColor,
-        color: config.resetBtnBackgroundColor === '#000' ? '#fff' : '#000',
-      }
-    : {};
+  const bgImage = config.resultBackgroundImage
+    ? `url("${config.resultBackgroundImage}")`
+    : `url("/images/quiz/${testId}/content_background.png")`;
 
   const resultBgStyle: CSSProperties & Record<'--result-bg-color', string> = {
     ['--result-bg-color']:
       config.backgroundColor ?? (config.theme === 'white' ? '#fff' : '#000'),
-    backgroundImage: `url("/images/quiz/${testId}/content_background.png")`,
+    backgroundImage: bgImage,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -179,7 +169,6 @@ export default function ResultClient({
             quizTitle={def.meta.title}
             result={displayDetail}
             theme={config.theme}
-            accentColor={config.resetBtnBackgroundColor}
             scoreLabel={scoreLabel}
             fontFamily={config.resultFontFamily}
             textStroke={config.resultTextStroke}
@@ -190,28 +179,26 @@ export default function ResultClient({
 
       <div className={styles.shareBtnWrapper}>
         <button
-          className={`${styles.shareBtn} ${btnVariantClass}`}
+          className={styles.shareBtn}
           onClick={handleClickShareBtn}
+          style={{ backgroundColor: shareBtnBg, color: shareBtnColor }}
         >
           <span>내 결과 공유하기</span>
-          <ShareIcon color={shareBtnIconColor} width={12} height={16} />
+          <ShareIcon color={shareBtnColor} width={12} height={16} />
         </button>
         <button
-          className={`${styles.resetBtn} ${btnVariantClass}`}
+          className={styles.resetBtn}
           aria-label='처음부터 다시하기'
           onClick={handleClickResetBtn}
-          style={resetBtnStyle}
+          style={{ backgroundColor: '#ED1B7A', color: '#fff' }}
         >
           처음부터 다시하기
-          <ResetIcon color={resetBtnIconColor} width={13} height={15} />
+          <ResetIcon color='#fff' width={13} height={15} />
         </button>
       </div>
 
       {recommendedQuizzes && recommendedQuizzes.length > 0 && (
-        <RecommendedQuizzes
-          quizzes={recommendedQuizzes}
-          theme={config.theme !== 'white' ? 'light' : 'dark'}
-        />
+        <RecommendedQuizzes quizzes={recommendedQuizzes} theme={config.theme} />
       )}
 
       <CoupangAd />

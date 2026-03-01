@@ -21,7 +21,8 @@
       "theme": "black",
       "imageMode": "long",
       "showReceipt": false,
-      "backgroundColor": "#000000"
+      "backgroundColor": "#000",
+      "loadingTextColor": "#000"
     },
     "landing": { "buttonTheme": "black" },
     "question": { "optionVariant": "chuseokDark" }

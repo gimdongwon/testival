@@ -14,19 +14,19 @@ interface QuizRecommendation {
 
 interface RecommendedQuizzesProps {
   quizzes: QuizRecommendation[];
-  theme?: 'light' | 'dark';
+  theme?: 'white' | 'black';
 }
 
 const RecommendedQuizzes: React.FC<RecommendedQuizzesProps> = ({
   quizzes,
-  theme = 'dark',
+  theme = 'black',
 }) => {
   if (!quizzes || quizzes.length === 0) {
     return null;
   }
 
   const containerClass =
-    theme === 'light' ? styles.containerLight : styles.containerDark;
+    theme === 'white' ? styles.containerWhite : styles.containerBlack;
 
   return (
     <section className={`${styles.container} ${containerClass}`}>

@@ -11,5 +11,5 @@ export default function ShareIcon({
   width = 24,
   height = 24,
 }: Props) {
-  return <ShareSvg width={width} height={height} style={{ color }} />;
+  return <ShareSvg width={width} height={height} style={{ color: color }} />;
 }

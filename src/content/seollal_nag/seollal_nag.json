@@ -14,7 +14,7 @@
       "imageMode": "bg",
       "showReceipt": true,
       "backgroundColor": "#FFFFFF",
-      "resetBtnBackgroundColor": "#000"
+      "loadingTextColor": "#000"
     },
     "landing": { "buttonTheme": "white" },
     "question": {

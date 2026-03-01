@@ -58,28 +58,3 @@
   gap: 8px;
 }
 
-/* ── 버튼 테마 variants ── */
-
-.btnDark {
-  &.shareBtn {
-    background-color: #fff;
-    color: #000;
-  }
-
-  &.resetBtn {
-    background-color: #333;
-    color: #fff;
-  }
-}
-
-.btnLight {
-  &.shareBtn {
-    background-color: #1a1a1a;
-    color: #fff;
-  }
-
-  &.resetBtn {
-    background-color: #e5e5e5;
-    color: #1a1a1a;
-  }
-}

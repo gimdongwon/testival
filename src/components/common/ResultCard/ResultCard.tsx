@@ -8,7 +8,6 @@ type ResultCardProps = {
   quizTitle: string;
   result: ResultDetail;
   theme: 'black' | 'white';
-  accentColor?: string;
   scoreLabel?: string;
   fontFamily?: string;
   textStroke?: string;
