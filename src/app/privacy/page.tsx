@@ -59,8 +59,10 @@ const PrivacyPage = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>2. 수집하는 개인정보 항목</h2>
             <p className={styles.text}>
-              서비스는 회원가입 절차 없이 운영되며, 이용자로부터 이름, 이메일,
-              전화번호 등 개인식별정보를 직접 수집하지 않습니다.
+              서비스는 회원가입을 통해 이름, 이메일, 전화번호 등
+              개인식별정보를 직접 입력받지 않습니다. 다만, 서비스 이용
+              과정에서 IP 주소, 쿠키 등 일부 정보가 자동으로 수집될 수
+              있습니다.
             </p>
 
             <h3 className={styles.subTitle}>자동 수집 항목</h3>
@@ -94,12 +96,15 @@ const PrivacyPage = () => {
               3. 개인정보의 보유 및 이용 기간
             </h2>
             <p className={styles.text}>
-              서비스는 개인식별정보를 직접 수집·저장하지 않으므로 별도의 보유
+              서비스는 개인식별정보를 직접 입력받지 않으므로 별도의 보유
               기간이 적용되지 않습니다. 자동 수집 정보의 보유 기간은 다음과
               같습니다.
             </p>
             <ul className={styles.list}>
-              <li>퀴즈 조회수 데이터: 서비스 운영 기간 동안 보유</li>
+              <li>
+                퀴즈 조회수 데이터: 서비스 운영 목적 달성 시까지 보유하며,
+                최대 3년을 초과하지 않습니다
+              </li>
               <li>
                 세션 저장소(sessionStorage) 데이터: 브라우저 탭 또는 창 종료 시
                 자동 삭제
@@ -139,7 +144,9 @@ const PrivacyPage = () => {
               </div>
               <div className={styles.tableRow}>
                 <span className={styles.tableCell}>Google AdSense</span>
-                <span className={styles.tableCell}>맞춤형 광고 제공</span>
+                <span className={styles.tableCell}>
+                  맞춤형 광고 제공 (DoubleClick 쿠키 포함)
+                </span>
               </div>
               <div className={styles.tableRow}>
                 <span className={styles.tableCell}>쿠팡파트너스</span>
@@ -151,11 +158,61 @@ const PrivacyPage = () => {
               </div>
             </div>
 
-            <h3 className={styles.subTitle}>쿠키 거부 방법</h3>
+            <h3 className={styles.subTitle}>
+              Google AdSense 및 광고 쿠키 안내
+            </h3>
             <p className={styles.text}>
-              이용자는 웹 브라우저 설정을 통해 쿠키 저장을 거부하거나 삭제할 수
-              있습니다. 다만, 쿠키를 거부할 경우 일부 서비스 이용에 제한이 있을
-              수 있습니다.
+              서비스는 Google AdSense를 통해 광고를 게재하며, 이 과정에서
+              다음과 같은 기술이 사용됩니다.
+            </p>
+            <ul className={styles.list}>
+              <li>
+                Google은 DoubleClick 쿠키를 사용하여 이용자의 관심사에
+                기반한 맞춤형 광고를 제공합니다.
+              </li>
+              <li>
+                제3자 광고 파트너(광고 네트워크)가 쿠키를 사용하여 이용자에게
+                적합한 광고를 표시할 수 있습니다.
+              </li>
+              <li>
+                이용자는{' '}
+                <a
+                  href='https://adssettings.google.com'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={styles.link}
+                  aria-label='Google 광고 설정 페이지 (새 탭에서 열림)'
+                >
+                  Google 광고 설정
+                </a>
+                에서 맞춤형 광고를 비활성화할 수 있습니다.
+              </li>
+              <li>
+                또한{' '}
+                <a
+                  href='https://www.aboutads.info/choices/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={styles.link}
+                  aria-label='DAA 옵트아웃 페이지 (새 탭에서 열림)'
+                >
+                  www.aboutads.info
+                </a>
+                를 통해 제3자 광고 쿠키 사용을 거부할 수 있습니다.
+              </li>
+            </ul>
+            <p className={styles.text}>
+              유럽경제지역(EEA) 및 영국 소재 이용자의 경우, 관련 법령에 따라
+              광고 쿠키 사용 전 별도의 동의를 요청할 수 있습니다.
+            </p>
+
+            <h3 className={styles.subTitle}>쿠키 동의 및 거부 방법</h3>
+            <p className={styles.text}>
+              서비스는 이용자의 최초 방문 시 쿠키 사용에 대한 동의를 요청할 수
+              있습니다. 이용자는 동의 배너를 통해 쿠키 사용을 수락하거나
+              거부할 수 있으며, 웹 브라우저 설정을 통해서도 쿠키 저장을
+              거부하거나 삭제할 수 있습니다. 다만, 쿠키를 거부할 경우 일부
+              서비스 이용에 제한이 있을 수 있습니다.
             </p>
             <ul className={styles.list}>
               <li>
@@ -173,9 +230,9 @@ const PrivacyPage = () => {
               5. 개인정보의 제3자 제공 및 위탁
             </h2>
             <p className={styles.text}>
-              서비스는 이용자의 개인정보를 제3자에게 직접 제공하지 않습니다.
-              다만, 아래 서비스와의 연동을 통해 자동 수집된 정보가 해당 서비스로
-              전달될 수 있습니다.
+              서비스는 이용자의 정보를 판매하거나 임의로 제3자에게 제공하지
+              않습니다. 다만, 서비스 운영을 위해 아래 제3자 서비스와의 연동
+              과정에서 자동 수집된 정보가 해당 서비스로 전송될 수 있습니다.
             </p>
 
             <div className={styles.table}>
@@ -241,6 +298,23 @@ const PrivacyPage = () => {
                 </a>
               </li>
             </ul>
+
+            <h3 className={styles.subTitle}>개인정보의 해외 이전</h3>
+            <p className={styles.text}>
+              서비스는 Google LLC(미국), Vercel Inc.(미국) 등 해외에 서버를
+              둔 제3자 서비스를 이용하고 있으며, 서비스 이용 과정에서 수집된
+              정보가 해당 서비스의 해외 서버로 전송·저장될 수 있습니다. 각
+              서비스 제공자는 자사의 개인정보처리방침에 따라 적절한 보호
+              조치를 적용하고 있습니다.
+            </p>
+            <p className={styles.text}>
+              유럽경제지역(EEA), 영국, 스위스 소재 이용자의 경우, 해당
+              서비스 제공자가 EU 표준계약조항(SCC) 등 적절한 보호 장치를
+              적용하여 개인정보를 이전하고 있습니다. 이용자는 자신의
+              개인정보에 대한 접근, 정정, 삭제, 처리 제한, 이동성에 대한
+              권리를 행사할 수 있으며, 관련 문의는 아래 개인정보
+              보호책임자에게 연락해 주시기 바랍니다.
+            </p>
           </section>
 
           <section className={styles.section}>
@@ -289,9 +363,9 @@ const PrivacyPage = () => {
               7. 개인정보의 파기 절차 및 방법
             </h2>
             <p className={styles.text}>
-              서비스는 이용자의 개인식별정보를 직접 수집·저장하지 않으므로
-              별도의 파기 절차가 적용되지 않습니다. 자동 수집된 정보는 다음과
-              같이 처리됩니다.
+              서비스는 이용자의 개인식별정보를 직접 입력받지 않으므로 별도의
+              파기 절차가 적용되지 않습니다. 자동 수집된 정보는 다음과 같이
+              처리됩니다.
             </p>
             <ul className={styles.list}>
               <li>브라우저 메모리 저장 데이터: 페이지 이탈 시 자동 삭제</li>
@@ -355,10 +429,11 @@ const PrivacyPage = () => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>9. 아동의 개인정보 보호</h2>
             <p className={styles.text}>
-              서비스는 만 14세 미만 아동의 개인정보를 별도로 수집하지 않으며,
-              회원가입 절차가 없어 이용자의 연령을 확인하지 않습니다. 만 14세
-              미만 아동의 법정대리인은 해당 아동의 개인정보에 대한 열람, 수정,
-              삭제를 요청할 수 있습니다.
+              서비스는 회원가입 절차가 없어 이용자의 연령을 확인하지 않으며,
+              만 14세 미만 아동을 대상으로 별도의 개인식별정보를 수집하거나
+              저장하지 않습니다. 만 14세 미만 아동의 법정대리인이 자동 수집된
+              정보(쿠키 등)에 관해 문의하거나 삭제를 요청하고자 하는 경우,
+              아래 개인정보 보호책임자에게 연락해 주시기 바랍니다.
             </p>
           </section>
 
