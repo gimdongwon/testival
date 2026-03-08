@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import styles from './QuestionCard.module.scss';
 
 export type QuestionOption = {
   id: string;
-  label: string; // "A.", "B." 등 표시용 접두사
+  label: string;
   text: string;
 };
 
@@ -14,30 +15,22 @@ export type QuestionCardProps = {
   title: string;
   options: QuestionOption[];
   onSelect?: (optionId: string) => void;
-  backgroundImage?: string; // 배경 이미지 경로 (선택)
+  backgroundImage?: string;
+  questionImage?: string;
+  cardBorderColor?: string;
   style?: React.CSSProperties;
   optionClassName?: string;
   questionTextColor?: string;
   questionFontFamily?: string;
-  /** 선택지 컨테이너를 n열 그리드로 렌더링 (기본 1 = 기존 스택) */
   columns?: number;
-  /** 옵션 라벨/텍스트 및 컨테이너의 폰트 패밀리(케이스별 오버라이드용) */
   optionFontFamily?: string;
-  /** Q번호(Q1, Q2 등)에 적용할 커스텀 스타일 */
   questionNumberStyle?: React.CSSProperties;
-  /** 질문 제목에 적용할 커스텀 스타일 */
   questionTitleStyle?: React.CSSProperties;
-  /** 옵션 라벨(A, B 등)에 적용할 커스텀 스타일 */
   optionLabelStyle?: React.CSSProperties;
-  /** 질문 번호 뒤의 점(.) 숨김 여부 */
   hideQuestionNumberDot?: boolean;
-  /** 질문 번호 앞의 "Q" 접두사 숨김 여부 */
   hideQuestionNumberPrefix?: boolean;
-  /** 옵션 라벨(A., B. 등) 숨김 여부 */
   hideOptionLabel?: boolean;
-  /** 옵션별 배경색 배열 (인덱스 순서대로 적용) */
   optionColors?: string[];
-  /** 옵션 텍스트 스타일 */
   optionTextStyle?: React.CSSProperties;
 };
 
@@ -46,6 +39,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   title,
   options,
   onSelect,
+  questionImage,
+  cardBorderColor,
   style,
   optionClassName,
   questionTextColor,
@@ -61,10 +56,22 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   optionColors,
   optionTextStyle,
 }) => {
+  const borderStyle = cardBorderColor
+    ? { border: `1.5px solid ${cardBorderColor}` }
+    : undefined;
+
+  const optionBorderStyle = cardBorderColor
+    ? { border: `1.5px solid ${cardBorderColor}` }
+    : undefined;
+
   return (
     <div className={styles.centerGrid}>
-      <div className={styles.card}>
-        <div className={styles.cardHeader} aria-label='질문지 상단'>
+      <div className={`${styles.card} ${cardBorderColor ? styles.cardBordered : ''}`}>
+        <div
+          className={`${styles.cardHeaderGroup} ${cardBorderColor ? styles.bordered : ''}`}
+          style={borderStyle}
+          aria-label='질문지 상단'
+        >
           <span
             className={styles.cardQnum}
             style={
@@ -79,32 +86,46 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             {hideQuestionNumberPrefix ? '' : 'Q'}{number}
             {hideQuestionNumberDot ? '' : '.'}
           </span>
+          <h2
+            className={styles.cardTitle}
+            style={
+              questionTitleStyle
+                ? (questionTitleStyle as React.CSSProperties)
+                : {
+                    color: questionTextColor,
+                    fontFamily: questionFontFamily,
+                  }
+            }
+          >
+            {title}
+          </h2>
         </div>
 
-        <h2
-          className={styles.cardTitle}
-          style={
-            questionTitleStyle
-              ? (questionTitleStyle as React.CSSProperties)
-              : {
-                  color: questionTextColor,
-                  fontFamily: questionFontFamily,
-                }
-          }
-        >
-          {title}
-        </h2>
+        {questionImage && (
+          <div
+            className={`${styles.questionImageWrapper} ${cardBorderColor ? styles.bordered : ''}`}
+            style={borderStyle}
+          >
+            <Image
+              src={questionImage}
+              alt={`질문 ${number} 이미지`}
+              width={300}
+              height={200}
+              className={styles.questionImage}
+              priority
+            />
+          </div>
+        )}
 
         <div
-          className={styles.cardOptions}
+          className={`${styles.cardOptions} ${questionImage ? styles.hasImage : ''}`}
           role='list'
-          /* columns > 1 이면 grid로 전환하여 가로 배치 */
           style={{
             ...(columns > 1
               ? ({
                   display: 'grid',
                   gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-                  gap: 16,
+                  gap: 20,
                   alignItems: 'stretch',
                   justifyItems: 'stretch',
                 } as React.CSSProperties)
@@ -113,18 +134,16 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
           }}
         >
           {options.map((opt, idx) => {
-            // 옵션별 배경색 계산
             const backgroundColor = optionColors?.[idx];
-            
-            // 배경색이 설정되어 있으면 적용
+
             const buttonStyle = backgroundColor
               ? {
                   ...style,
+                  ...optionBorderStyle,
                   backgroundColor,
                   color: '#fff',
-                  border: 'none',
                 }
-              : style;
+              : { ...style, ...optionBorderStyle };
 
             return (
               <div className={styles.fullWidth} key={opt.id}>

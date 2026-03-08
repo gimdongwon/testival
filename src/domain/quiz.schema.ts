@@ -30,6 +30,7 @@ export const ScoringConfigZ = z.object({
 export const QuestionZ = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
+  image: z.string().optional(),
   choices: z
     .array(ChoiceZ)
     .min(2, '각 문항은 최소 2개 이상의 선택지가 필요합니다.'),
@@ -40,7 +41,7 @@ export const ResultDetailZ = z.object({
   name: z.string().min(1),
   title: z.string().min(1),
   description: z.string().min(1),
-  image: z.string().min(1), // 예: "/images/quiz/chuseok-basic/result_1.png"
+  image: z.string().min(1).optional(),
   keywords: z.array(z.string().min(1)).min(1).max(10).default([]),
   type: z.string().min(1),
 });
@@ -60,6 +61,8 @@ export const ResultUIConfigZ = z.object({
   resultTextStroke: z.string().optional(),
   resultHeroColor: z.string().optional(),
   resultHeroFontWeight: z.number().optional(),
+  resultDescriptionHeader: z.string().optional(),
+  stampImage: z.string().optional(),
 });
 
 export const LandingUIConfigZ = z.object({
@@ -80,7 +83,8 @@ export const QuestionUIConfigZ = z.object({
   optionFontFamily: z.string().optional(),
   questionNumberStyle: z.record(z.string(), z.unknown()).optional(),
   questionTitleStyle: z.record(z.string(), z.unknown()).optional(),
-  columns: z.number().int().positive().optional(), // 선택지 그리드 컬럼 수 (기본값: 1)
+  columns: z.number().int().positive().optional(),
+  cardBorderColor: z.string().optional(),
 });
 
 /** 테스트별 UI 설정 */

@@ -69,6 +69,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   // optionLabelStyle이 없으면 optionTextStyle을 폴백으로 사용
   const optionLabelStyle = (qUi.optionLabelStyle ?? qUi.optionTextStyle) as CSSProperties | undefined;
   const optionFontFamily = qUi.optionFontFamily;
+  const cardBorderColor = qUi.cardBorderColor;
 
   const progressStyle: CSSProperties &
     Record<'--progress' | '--progress-fill-color', string> = {
@@ -99,6 +100,8 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
         <QuestionCard
           number={currentStep}
           title={q.title}
+          questionImage={q.image}
+          cardBorderColor={cardBorderColor}
           options={options}
           onSelect={handleSelect}
           optionClassName={optionClassName}

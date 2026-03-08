@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "id": "yarr",
+    "title": "야르 테스트",
+    "description": "당신은 얼마나 야르합니까?",
+    "mode": "amount-sum",
+    "resultTypes": ["grade_5", "grade_4", "grade_3", "grade_2", "grade_1"],
+    "locale": "ko",
+    "version": 1
+  },
+  "scoring": {
+    "amountSumBrackets": [
+      { "key": "grade_5", "min": 0, "max": 0 },
+      { "key": "grade_4", "min": 10, "max": 20 },
+      { "key": "grade_3", "min": 30, "max": 40 },
+      { "key": "grade_2", "min": 50, "max": 50 },
+      { "key": "grade_1", "min": 60, "max": 60 }
+    ]
+  },
+  "ui": {
+    "result": {
+      "theme": "black",
+      "imageMode": "long",
+      "showReceipt": false,
+      "backgroundColor": "#f5f0eb",
+      "resultDescriptionHeader": "종합의견",
+      "loadingTextColor": "#000",
+      "stampImage": "/images/quiz/yarr/stamp.png"
+    },
+    "landing": { "buttonTheme": "white" },
+    "question": {
+      "optionVariant": "light",
+      "progressFillColor": "#e8a87c",
+      "columns": 2,
+      "hideOptionLabel": true,
+      "cardBorderColor": "#000",
+      "optionTextStyle": {
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "fontFamily": "'Noto Sans KR', sans-serif"
+      },
+      "questionNumberStyle": {
+        "color": "#333",
+        "fontSize": "32px",
+        "textShadow": "none"
+      },
+      "questionTitleStyle": {
+        "color": "#222",
+        "fontSize": "20px",
+        "lineHeight": "1.2",
+        "fontWeight": "400",
+        "letterSpacing": "2.2px",
+        "textShadow": "none"
+      }
+    }
+  },
+  "resultDetails": {
+    "grade_5": {
+      "name": "5등급",
+      "title": "야르가 뭔지 모름",
+      "description": "요약: 야르? 그게 뭐예요…?\n\n✓당신은 \"야르\"라는 단어가 뜨자마자 뇌가 잠깐 멈췄습니다.\n✓친구가 \"야르~\" 하면 \"어디 아파?\"라고 물을 확률이 높아요.\n✓단어 유행에 안 휩쓸리는 타입…이라기보다 그냥 안 들어봄.\n✓오늘부터 실전 연습: \"오… 야르.\" (일단 조용히 말해보기)\n\n한줄 결론: 야르를 느껴야 한다.",
+      "keywords": ["야르 무지", "안 들어봄", "뇌 멈춤"],
+      "type": "grade_5"
+    },
+    "grade_4": {
+      "name": "4등급",
+      "title": "당신은 전혀\n야르하지 않습니다",
+      "description": "요약: 야르가 몸에 안 붙는 사람\n\n✓\"야르~\"를 알긴 하는데, 입에서 나오는 순간 본인이 제일 민망함.\n✓\"대박\" \"쩐다\" 같은 안전한 단어로 돌려 말하게 됨.\n✓분위기 맞추려고 하긴 하는데, 들을 때마다 어쩐지 불편하다.\n✓진짜로 개쩔 때도 \"오… 좋다…\"로 끝냄.\n\n한줄 결론: 야르는 당신에게 아직 낯설다.",
+      "keywords": ["민망", "안전한 단어", "불편"],
+      "type": "grade_4"
+    },
+    "grade_3": {
+      "name": "3등급",
+      "title": "야르쟈나이…",
+      "description": "요약: 야르…인 척하는 중\n\n✓야르를 알고는 있는데, 확신은 없다.\n✓\"지금 야르 써도 돼?\" 긴가민가한 게 티가 남.\n✓가끔 멋있게 \"야르~\" 했다가, 혼자 속으로 \"아 방금 좀…\" 하고 후회함.\n✓근데 또 누가 쓰면 바로 따라함.\n✓당신의 대표 멘트: \"야르쟈나이…?\"\n\n한줄 결론: 야르의 문 앞에서 망설이는 중.",
+      "keywords": ["긴가민가", "인 척", "야르쟈나이"],
+      "type": "grade_3"
+    },
+    "grade_2": {
+      "name": "2등급",
+      "title": "꽤나 야르.",
+      "description": "요약: 야르를 적당히 잘 쓰는 사람\n\n✓야르를 필요할 때 딱 씁니다. 과하지 않음.\n✓\"야르\" 한마디로 분위기 정리하고 빠지는 센스가 있어요.\n✓남들이 \"그건 좀…\"라고 할 때 당신은 \"아니, 이건 야르야.\" 하고 끝냄.\n\n한줄 결론: 야르를 컨트롤하는 사람. 야르 고수.",
+      "keywords": ["센스", "컨트롤", "야르 고수"],
+      "type": "grade_2"
+    },
+    "grade_1": {
+      "name": "1등급",
+      "title": "진심 야르하네요~",
+      "description": "요약: 적재적소에 야르를 쓸 줄 아는 사람\n\n✓신기한 거 보면: 야르~\n✓맛있으면: 야르~\n✓귀여우면: 야르~\n✓하지만 쓰지 말아야할 때도 정확히 알고 있는 사람.\n✓심지어 야르를 들으면 도파민이 나옴.\n\n한줄 결론: 당신은 야르 그 자체. 야르 장인.",
+      "keywords": ["야르 장인", "도파민", "야르 그 자체"],
+      "type": "grade_1"
+    }
+  },
+  "messages": {
+    "grade_5": "야르가 뭔지 모름",
+    "grade_4": "당신은 전혀 야르하지 않습니다",
+    "grade_3": "야르쟈나이…",
+    "grade_2": "꽤나 야르.",
+    "grade_1": "진심 야르하네요~"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "다음 대화의 답변으로\n적절한 것은?",
+      "image": "/images/quiz/yarr/question_1.png",
+      "choices": [
+        { "id": "q1a", "label": "야르~", "amount": 10 },
+        { "id": "q1b", "label": "네?", "amount": 0 }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "다음 그림의 상황에서\n남자가 할 말은?",
+      "image": "/images/quiz/yarr/question_2.png",
+      "choices": [
+        { "id": "q2a", "label": "오, 이거 완전 야르네요.", "amount": 0 },
+        { "id": "q2b", "label": "아이고.", "amount": 10 }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "다음 그림 속 선택지 중\n가장 야르한 걸 고르시오",
+      "image": "/images/quiz/yarr/question_3.png",
+      "choices": [
+        { "id": "q3a", "label": "침대", "amount": 10 },
+        { "id": "q3b", "label": "창문", "amount": 0 }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "다음 그림 중 주말 날씨로\n가장 야르한 것을 고르시오",
+      "image": "/images/quiz/yarr/question_4.png",
+      "choices": [
+        { "id": "q4a", "label": "A", "amount": 0 },
+        { "id": "q4b", "label": "B", "amount": 10 }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "다음 그림을 설명하는\n가장 적절한 대화를 고르시오",
+      "image": "/images/quiz/yarr/question_5.png",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "남자: 저.. 혹시… 야르세요?\n여자: 아, 야르네요.",
+          "amount": 0
+        },
+        {
+          "id": "q5b",
+          "label": "남자: 거긴 제 자리인데요.\n여자: 아, 죄송합니다.",
+          "amount": 10
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "다음 그림을 설명하는\n가장 적절한 대화를 고르시오",
+      "image": "/images/quiz/yarr/question_6.png",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "여자: 야르쟈나이?\n남자: 야르~!",
+          "amount": 10
+        },
+        {
+          "id": "q6b",
+          "label": "여자: 어때요?\n남자: 이븐하게 익지 않았네요.",
+          "amount": 0
+        }
+      ]
+    }
+  ]
+}

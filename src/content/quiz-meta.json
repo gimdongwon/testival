@@ -1,6 +1,12 @@
 {
   "metas": [
     {
+      "id": "yarr",
+      "title": "야르 테스트",
+      "description": "당신은 얼마나 야르합니까?",
+      "keywords": ["야르", "야르테스트", "야르쟈나이", "야르장인"]
+    },
+    {
       "id": "dujjoenku",
       "title": "두쫀쿠에 미친 자 테스트",
       "description": "당신은 두친자일까? 아닐까?",
