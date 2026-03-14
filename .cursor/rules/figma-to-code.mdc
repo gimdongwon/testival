@@ -1,0 +1,59 @@
+---
+description: Figma MCP를 활용한 디자인-코드 변환 워크플로우
+alwaysApply: false
+---
+
+# Figma → Code 워크플로우
+
+Figma URL이 제공되면 아래 워크플로우를 따른다.
+
+## 1단계: URL 파싱
+
+Figma URL에서 fileKey와 nodeId를 추출한다.
+
+- `figma.com/design/:fileKey/:fileName?node-id=1-2` → nodeId의 `-`를 `:`로 변환
+- `figma.com/design/:fileKey/branch/:branchKey/:fileName` → branchKey를 fileKey로 사용
+- `figma.com/board/:fileKey/:fileName` → FigJam, `get_figjam` 사용
+
+## 2단계: 디자인 정보 수집
+
+1. `get_design_context(fileKey, nodeId)` — 구조/레이아웃/색상/타이포 정보
+2. `get_screenshot(fileKey, nodeId)` — 시각적 레퍼런스 (1:1 비교용)
+3. 응답이 크거나 잘린 경우: `get_metadata`로 노드맵 확인 → 하위 노드 개별 fetch
+
+## 3단계: 프로젝트에 맞게 변환
+
+Figma MCP 출력은 React + Tailwind 기반이다. **이 프로젝트에 맞게 반드시 변환**한다.
+
+### 스타일링 변환
+
+```
+❌ Tailwind 유틸리티 클래스 그대로 사용
+✅ SCSS Modules (.module.scss) 로 변환
+```
+
+- `className="flex items-center gap-4"` → `.container { display: flex; align-items: center; gap: 1rem; }`
+- 색상: 프로젝트 CSS 변수 또는 퀴즈 JSON `ui` 필드 활용
+- 폰트: `globals.css`에 정의된 `@font-face` 재사용
+
+### 컴포넌트 재사용
+
+기존 공용 컴포넌트(`src/components/common/`)를 먼저 확인하고 재사용한다.
+새 컴포넌트 생성 시 폴더 구조를 따른다: `ComponentName/ComponentName.tsx` + `.module.scss` + `index.ts`
+
+### 에셋 처리
+
+- Figma MCP가 반환하는 localhost 에셋 URL은 **그대로 사용**한다
+- 새로운 아이콘 패키지를 설치하지 않는다 — 에셋은 Figma 페이로드에서 가져온다
+- placeholder 이미지를 만들지 않는다
+- 최종 이미지는 `public/images/quiz/{quiz_id}/`에 배치한다
+
+## 4단계: 검증
+
+구현 후 Figma 스크린샷과 비교하여 확인한다.
+
+- 레이아웃 (간격, 정렬, 크기)
+- 타이포그래피 (폰트, 크기, 굵기)
+- 색상 일치
+- 반응형 동작
+- 접근성 (WCAG 기준)

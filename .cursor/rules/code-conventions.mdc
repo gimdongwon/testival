@@ -1,0 +1,83 @@
+---
+description: 컴포넌트, 스타일링, 서버/클라이언트 분리, 상태관리, 테스트 규칙
+globs: **/*.{ts,tsx,scss}
+alwaysApply: false
+---
+
+# 코드 컨벤션
+
+## 컴포넌트 구조
+
+컴포넌트는 폴더 단위로 구성하고 barrel export를 사용한다.
+
+```
+ComponentName/
+├── index.ts                  # export { default } from './ComponentName'
+├── ComponentName.tsx         # 구현
+└── ComponentName.module.scss # 스타일
+```
+
+- 공용 컴포넌트: `src/components/common/`
+- 기능별 컴포넌트: `src/components/{feature}/`
+- PascalCase 네이밍, `import ComponentName from '@/components/common/ComponentName'`
+
+## Server / Client 분리
+
+- **페이지(page.tsx)는 기본적으로 Server Component**로 작성한다.
+- 클라이언트 로직이 필요한 경우 `.client.tsx` 파일로 분리한다.
+- Server Component에서 데이터를 fetch하고 Client Component에 props로 전달한다.
+
+```
+app/quiz/[id]/result/
+├── page.tsx           # Server: repo에서 데이터 fetch
+└── result.client.tsx  # Client: 'use client', 인터랙션 처리
+```
+
+```tsx
+// ❌ page.tsx에 'use client' 직접 사용
+'use client';
+export default function Page() { ... }
+
+// ✅ page.tsx는 Server, .client.tsx에 위임
+// page.tsx
+export default async function Page({ params }) {
+  const data = await repo.getById(id);
+  return <ResultClient def={data} />;
+}
+```
+
+## 스타일링
+
+- **SCSS Modules** 사용 (Tailwind 아님)
+- 파일명: `ComponentName.module.scss`
+- CSS 변수 활용: `:root`에 `--background`, `--foreground`
+- 퀴즈별 커스텀 테마는 JSON의 `ui` 필드로 런타임 style 적용
+- 커스텀 폰트는 `globals.css`의 `@font-face`로 관리
+
+## 상태 관리 (Zustand)
+
+- 스토어: `src/store/quizStore.ts`
+- **읽기**: `useQuizView(testId)` 훅으로 구독 (참조 안정, 최소 리렌더)
+- **쓰기**: `quizActions.start(testId)` — `getState()` 경유로 리렌더 없이 액션 호출
+
+```tsx
+// ❌ 컴포넌트 안에서 스토어 전체 구독
+const store = useQuizStore();
+
+// ✅ 필요한 상태만 선택적 구독
+const { index, selected } = useQuizView(testId);
+quizActions.choose(testId, qId, cId);
+```
+
+## 테스트
+
+- Vitest + Testing Library, 테스트 파일은 `src/__tests__/`에 위치
+- 컴포넌트 테스트: `src/__tests__/components/`
+- 단위 테스트: `src/__tests__/` (scoring, store, content-integrity)
+- `yarn test` (1회 실행), `yarn test:watch` (워치), `yarn test:ui` (UI)
+
+## 타입
+
+- Zod 스키마에서 타입 추론: `type TestDefinition = z.infer<typeof TestDefinitionZ>`
+- 컴포넌트 props는 `type` 키워드로 정의 (interface 대신)
+- 이벤트 핸들러: `handle` 접두사 (`handleClick`, `handleKeyDown`)

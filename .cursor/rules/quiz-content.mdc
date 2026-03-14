@@ -1,0 +1,122 @@
+---
+description: 퀴즈 콘텐츠 JSON 작성 가이드 및 새 퀴즈 추가 체크리스트
+globs: src/content/**/*.json
+alwaysApply: false
+---
+
+# 퀴즈 콘텐츠 JSON 작성 가이드
+
+퀴즈 JSON은 `src/domain/quiz.schema.ts`의 `TestDefinitionZ` Zod 스키마를 따른다.
+
+## 파일 구조
+
+새 퀴즈를 추가하려면 3곳을 수정한다.
+
+```
+src/content/{namespace}/
+├── {quiz_id}.json     # 퀴즈 전체 정의
+└── index.json         # 목록용 메타: { "metaList": [{ "id", "title", "thumbnail" }] }
+
+src/content/quiz-meta.json  # metas 배열에 등록 (순서 = 홈 노출 순서)
+```
+
+## JSON 최상위 구조
+
+```json
+{
+  "meta": { ... },            // 필수: 메타 정보
+  "resultDetails": { ... },   // 필수: 결과 타입별 상세
+  "messages": { ... },        // 선택: 결과 타입별 짧은 카피
+  "scoring": { ... },         // 선택: amount-sum 모드 브라켓
+  "ui": { ... },              // 선택: 결과/랜딩/질문 UI 커스텀
+  "questions": [ ... ]        // 필수: 문항 배열 (최소 1개)
+}
+```
+
+## 키 일관성 규칙 (가장 중요!)
+
+`meta.resultTypes` 배열이 모든 키의 기준이다. 아래 모든 키는 반드시 `resultTypes`에 포함되어야 한다.
+
+- `resultDetails`의 각 키
+- `messages`의 각 키
+- weighted 모드: 각 선택지 `weights`의 키
+- amount-sum 모드: `scoring.amountSumBrackets[].key`
+- type-count 모드: 각 선택지 `mapType` 값
+
+## 모드별 선택지 필드
+
+### weighted (가중치 합산)
+
+선택지마다 `weights`로 결과 타입별 점수를 부여한다. 합산 후 최고 점수 타입이 결과.
+
+```json
+{ "id": "q1a", "label": "선택지 텍스트", "weights": { "typeA": 3, "typeB": 1 } }
+```
+
+### amount-sum (금액 합산)
+
+선택지마다 `amount` 숫자를 부여한다. 합계가 `scoring.amountSumBrackets`에 매핑된다.
+
+```json
+// 선택지
+{ "id": "q1a", "label": "선택지 텍스트", "amount": 10 }
+
+// scoring 설정 (각 bracket에 min 또는 max 중 하나는 필수)
+"scoring": {
+  "amountSumBrackets": [
+    { "key": "grade_5", "min": 0, "max": 0 },
+    { "key": "grade_4", "min": 10, "max": 20 }
+  ]
+}
+```
+
+### type-count (타입 매핑, 향후 확장)
+
+선택지마다 `mapType`으로 결과 타입을 직접 매핑한다.
+
+```json
+{ "id": "q1a", "label": "선택지 텍스트", "mapType": "typeA" }
+```
+
+## ID 네이밍 컨벤션
+
+- 질문 ID: `q1`, `q2`, `q3`, ...
+- 선택지 ID: `q1a`, `q1b`, `q1c`, ... (질문 ID + 알파벳 순서)
+
+## resultDetails 구조
+
+```json
+"resultDetails": {
+  "typeKey": {
+    "name": "결과 이름 (카드 상단)",
+    "title": "결과 제목 (굵은 텍스트)",
+    "description": "결과 설명 (여러 줄 가능, \\n 줄바꿈)",
+    "image": "/images/quiz/{quiz_id}/result_{type}.png",
+    "keywords": ["키워드1", "키워드2"],
+    "type": "typeKey"
+  }
+}
+```
+
+- `type` 필드는 해당 `resultDetails`의 키와 **동일한 값**이어야 한다.
+- `keywords`는 1~10개, 결과 페이지에서 `#키워드` 형태로 표시된다.
+- `image`는 선택이며, 없으면 텍스트 전용 결과 카드가 렌더된다.
+
+## 이미지 경로 규칙
+
+```
+public/images/quiz/{quiz_id}/
+├── og-image.png              # OG 이미지 (필수)
+├── content_background.png    # 배경 이미지 (선택)
+├── question_1.png            # 질문 이미지 (선택)
+├── result_{type}.png         # 결과 이미지 (선택, OG 공유에도 사용)
+└── stamp.png                 # 스탬프 등 특수 이미지 (선택)
+```
+
+## 새 퀴즈 추가 체크리스트
+
+1. `src/content/{namespace}/{quiz_id}.json` 작성
+2. `src/content/{namespace}/index.json` 작성 (metaList)
+3. `src/content/quiz-meta.json`의 `metas` 배열 맨 위에 추가
+4. `public/images/quiz/{quiz_id}/` 디렉토리에 이미지 배치
+5. `yarn test`로 content-integrity 테스트 통과 확인
