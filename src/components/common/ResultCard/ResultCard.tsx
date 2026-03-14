@@ -14,6 +14,7 @@ type ResultCardProps = {
   heroColor?: string;
   heroFontWeight?: number;
   descriptionHeader?: string;
+  heroGap?: string;
   stampImage?: string;
 };
 
@@ -30,6 +31,7 @@ const ResultCard = ({
   heroColor,
   heroFontWeight,
   descriptionHeader,
+  heroGap,
   stampImage,
 }: ResultCardProps) => {
   const heroStyle: CSSProperties = {
@@ -41,9 +43,12 @@ const ResultCard = ({
       : {}),
   };
 
-  const titleStyle: CSSProperties | undefined = fontFamily
-    ? { fontFamily }
-    : undefined;
+  const titleStyle: CSSProperties = {
+    ...(fontFamily ? { fontFamily } : {}),
+    ...(textStroke
+      ? { WebkitTextStroke: textStroke, paintOrder: 'stroke fill' as const }
+      : {}),
+  };
 
   const hasImage = !!result.image;
 
@@ -53,8 +58,11 @@ const ResultCard = ({
     return (
       <div className={styles.card}>
         <div className={styles.resultOuterCard}>
-          <div className={styles.heroSectionNoImage}>
-            <h2 className={styles.heroTitleLarge} style={titleStyle}>
+          <div
+            className={styles.heroSectionNoImage}
+            style={heroGap !== undefined ? { gap: heroGap } : undefined}
+          >
+            <h2 className={styles.heroTitleLarge} style={Object.keys(titleStyle).length > 0 ? titleStyle : undefined}>
               {result.title}
             </h2>
             <p className={styles.heroGradeLabel}>{result.name}</p>
@@ -125,7 +133,7 @@ const ResultCard = ({
       </div>
 
       <div className={styles.contentCard}>
-        <h3 className={styles.resultTitle} style={titleStyle}>
+        <h3 className={styles.resultTitle} style={Object.keys(titleStyle).length > 0 ? titleStyle : undefined}>
           {result.title}
         </h3>
         <p className={styles.description}>{result.description}</p>

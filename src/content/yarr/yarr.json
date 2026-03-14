@@ -24,6 +24,8 @@
       "showReceipt": false,
       "backgroundColor": "#f5f0eb",
       "resultDescriptionHeader": "종합의견",
+      "resultTextStroke": "3px #000",
+      "resultHeroGap": "0px",
       "loadingTextColor": "#000",
       "stampImage": "/images/quiz/yarr/stamp.png"
     },

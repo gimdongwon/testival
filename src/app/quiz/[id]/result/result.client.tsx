@@ -175,6 +175,7 @@ export default function ResultClient({
             heroColor={config.resultHeroColor}
             heroFontWeight={config.resultHeroFontWeight}
             descriptionHeader={config.resultDescriptionHeader}
+            heroGap={config.resultHeroGap}
             stampImage={config.stampImage}
           />
         )

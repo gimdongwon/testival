@@ -62,6 +62,7 @@ export const ResultUIConfigZ = z.object({
   resultHeroColor: z.string().optional(),
   resultHeroFontWeight: z.number().optional(),
   resultDescriptionHeader: z.string().optional(),
+  resultHeroGap: z.string().optional(),
   stampImage: z.string().optional(),
 });
 
