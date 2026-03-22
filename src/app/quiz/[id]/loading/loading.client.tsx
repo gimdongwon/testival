@@ -21,7 +21,7 @@ const LoadingContent = ({ def }: { def: TestDefinition }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push(`/quiz/${testId}/result?type=${type}`);
-    }, 20000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [router, testId, type]);
