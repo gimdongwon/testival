@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import styles from './question.module.scss';
 import { notFound } from 'next/navigation';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
@@ -23,10 +24,18 @@ const QuestionPage = async ({
   );
 
   return (
-    <div
-      className={styles.pageContainer}
-      style={{ backgroundImage: `url("${bgPath}")` }}
-    >
+    <div className={styles.pageContainer}>
+      <div className={styles.bgWrapper}>
+        <Image
+          src={bgPath}
+          alt=""
+          fill
+          priority
+          quality={85}
+          sizes="(max-width: 430px) 100vw, 430px"
+          className={styles.bgImage}
+        />
+      </div>
       <QuizQuestionClient def={def} />
     </div>
   );

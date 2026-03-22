@@ -16,6 +16,11 @@ type ResultCardProps = {
   descriptionHeader?: string;
   heroGap?: string;
   stampImage?: string;
+  hideResultTitle?: boolean;
+  resultTitleStyle?: Record<string, unknown>;
+  descriptionStyle?: Record<string, unknown>;
+  contentBorderColor?: string;
+  contentBorderRadius?: string;
 };
 
 const parseGradeNumber = (name: string): string | null => {
@@ -33,6 +38,11 @@ const ResultCard = ({
   descriptionHeader,
   heroGap,
   stampImage,
+  hideResultTitle,
+  resultTitleStyle: resultTitleStyleOverride,
+  descriptionStyle: descriptionStyleOverride,
+  contentBorderColor,
+  contentBorderRadius,
 }: ResultCardProps) => {
   const heroStyle: CSSProperties = {
     ...(fontFamily ? { fontFamily } : {}),
@@ -48,7 +58,20 @@ const ResultCard = ({
     ...(textStroke
       ? { WebkitTextStroke: textStroke, paintOrder: 'stroke fill' as const }
       : {}),
+    ...(resultTitleStyleOverride as CSSProperties | undefined),
   };
+
+  const descStyle: CSSProperties | undefined = descriptionStyleOverride
+    ? (descriptionStyleOverride as CSSProperties)
+    : undefined;
+
+  const cardBorderStyle: CSSProperties | undefined =
+    contentBorderColor || contentBorderRadius
+      ? {
+          ...(contentBorderColor ? { borderColor: contentBorderColor } : {}),
+          ...(contentBorderRadius ? { borderRadius: contentBorderRadius } : {}),
+        }
+      : undefined;
 
   const hasImage = !!result.image;
 
@@ -75,7 +98,10 @@ const ResultCard = ({
               </div>
             )}
             <div className={styles.descriptionBody}>
-              <p className={styles.description}>{result.description}</p>
+              <p
+                className={styles.description}
+                dangerouslySetInnerHTML={{ __html: result.description.replace(/\n/g, '<br/>') }}
+              />
             </div>
 
             {gradeNumber && stampImage && (
@@ -117,12 +143,14 @@ const ResultCard = ({
             {scoreLabel}
           </p>
         )}
-        <h2 className={styles.heroName} style={heroStyle}>
-          {result.name}
-        </h2>
+        {!hideResultTitle && (
+          <h2 className={styles.heroName} style={heroStyle}>
+            {result.name}
+          </h2>
+        )}
       </div>
 
-      <div className={styles.imageCard}>
+      <div className={styles.imageCard} style={cardBorderStyle}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className={styles.resultImage}
@@ -132,11 +160,15 @@ const ResultCard = ({
         />
       </div>
 
-      <div className={styles.contentCard}>
+      <div className={styles.contentCard} style={cardBorderStyle}>
         <h3 className={styles.resultTitle} style={Object.keys(titleStyle).length > 0 ? titleStyle : undefined}>
           {result.title}
         </h3>
-        <p className={styles.description}>{result.description}</p>
+        <p
+          className={styles.description}
+          style={descStyle}
+          dangerouslySetInnerHTML={{ __html: result.description.replace(/\n/g, '<br/>') }}
+        />
 
         {result.keywords.length > 0 && (
           <ul className={styles.keywords} aria-label='결과 키워드'>

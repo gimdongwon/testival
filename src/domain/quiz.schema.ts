@@ -64,6 +64,12 @@ export const ResultUIConfigZ = z.object({
   resultDescriptionHeader: z.string().optional(),
   resultHeroGap: z.string().optional(),
   stampImage: z.string().optional(),
+  hideResultTitle: z.boolean().optional(),
+  loadingTextStyle: z.record(z.string(), z.unknown()).optional(),
+  resultTitleStyle: z.record(z.string(), z.unknown()).optional(),
+  descriptionStyle: z.record(z.string(), z.unknown()).optional(),
+  contentBorderColor: z.string().optional(),
+  contentBorderRadius: z.string().optional(),
 });
 
 export const LandingUIConfigZ = z.object({

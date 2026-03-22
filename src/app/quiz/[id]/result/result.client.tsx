@@ -177,6 +177,11 @@ export default function ResultClient({
             descriptionHeader={config.resultDescriptionHeader}
             heroGap={config.resultHeroGap}
             stampImage={config.stampImage}
+            hideResultTitle={config.hideResultTitle}
+            resultTitleStyle={config.resultTitleStyle as Record<string, unknown> | undefined}
+            descriptionStyle={config.descriptionStyle as Record<string, unknown> | undefined}
+            contentBorderColor={config.contentBorderColor}
+            contentBorderRadius={config.contentBorderRadius}
           />
         )
       )}
