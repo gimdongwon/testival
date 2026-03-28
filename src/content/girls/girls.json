@@ -36,7 +36,6 @@
         "WebkitBackgroundClip": "text",
         "WebkitTextFillColor": "transparent",
         "backgroundClip": "text",
-        "WebkitTextStroke": "2px #fff",
         "textShadow": "none",
         "filter": "drop-shadow(5px 5px 0px #002139)"
       },
@@ -71,11 +70,11 @@
         "fontWeight": "400",
         "background": "linear-gradient(139deg, #F67EEB 31.9%, #956BFF 85.6%)",
         "WebkitBackgroundClip": "text",
-        "WebkitTextFillColor": "transparent",
+        "WebkitTextFillColor": "#F67EEB",
         "backgroundClip": "text",
         "WebkitTextStroke": "3px #fff",
-        "textShadow": "none",
-        "filter": "drop-shadow(5px 5px 0px #002139)"
+        "textShadow": "5px 5px 0px #002139",
+        "color": "#fff"
       },
       "questionTitleStyle": {
         "color": "#fff",
@@ -85,7 +84,8 @@
         "fontWeight": "400",
         "lineHeight": "1.2",
         "textShadow": "none",
-        "WebkitTextStroke": "1.5px #002139"
+        "WebkitTextStroke": "3.5px #002139",
+        "paintOrder": "stroke fill"
       }
     }
   },
