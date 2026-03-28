@@ -56,6 +56,34 @@ const ContactPage = () => {
               </div>
             </a>
             <a
+              href='https://www.youtube.com/@testival.official'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={styles.altCard}
+              aria-label='YouTube 채널 방문하기 (새 탭에서 열림)'
+              tabIndex={0}
+            >
+              <span className={styles.altEmoji}>▶️</span>
+              <div>
+                <span className={styles.altLabel}>YouTube</span>
+                <span className={styles.altValue}>@testival.official</span>
+              </div>
+            </a>
+            <a
+              href='https://www.tiktok.com/@testival.official'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={styles.altCard}
+              aria-label='TikTok 방문하기 (새 탭에서 열림)'
+              tabIndex={0}
+            >
+              <span className={styles.altEmoji}>🎵</span>
+              <div>
+                <span className={styles.altLabel}>TikTok</span>
+                <span className={styles.altValue}>@testival.official</span>
+              </div>
+            </a>
+            <a
               href='https://x.com/testival2025'
               target='_blank'
               rel='noopener noreferrer'

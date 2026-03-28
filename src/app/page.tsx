@@ -51,7 +51,10 @@ const Home = async () => {
     logo: 'https://testival.kr/images/quiz/common/favicon.png',
     description: '심리테스트 & 재미있는 테스트 플랫폼',
     sameAs: [
-      // SNS 링크가 있다면 여기에 추가
+      'https://www.instagram.com/testival.official/',
+      'https://www.youtube.com/@testival.official',
+      'https://www.tiktok.com/@testival.official',
+      'https://x.com/testival2025',
     ],
   };
 

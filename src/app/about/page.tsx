@@ -48,6 +48,16 @@ const SNS_LINKS = [
     href: 'https://www.instagram.com/testival.official/',
   },
   {
+    label: 'YouTube',
+    handle: '@testival.official',
+    href: 'https://www.youtube.com/@testival.official',
+  },
+  {
+    label: 'TikTok',
+    handle: '@testival.official',
+    href: 'https://www.tiktok.com/@testival.official',
+  },
+  {
     label: 'X (Twitter)',
     handle: '@testival2025',
     href: 'https://x.com/testival2025',
