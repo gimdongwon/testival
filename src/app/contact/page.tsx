@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
 import ContactForm from './contact.client';
 import styles from './page.module.scss';
 
@@ -100,6 +101,8 @@ const ContactPage = () => {
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 };

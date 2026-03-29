@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
 import styles from './page.module.scss';
 
 export const metadata: Metadata = {
@@ -450,6 +451,8 @@ const PrivacyPage = () => {
           </section>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };

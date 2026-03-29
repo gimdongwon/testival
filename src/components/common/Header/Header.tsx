@@ -62,6 +62,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
     { href: '/', label: '홈' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact Us' },
+    { href: '/terms', label: '이용약관' },
     { href: '/privacy', label: '개인정보처리방침' },
   ];
 
