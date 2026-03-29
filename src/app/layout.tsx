@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'google-site-verification-code', // Google Search Console에서 발급받은 코드로 변경
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? '',
   },
 };
 
