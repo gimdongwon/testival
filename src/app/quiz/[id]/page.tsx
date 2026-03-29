@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
 import styles from './detail.module.scss';
@@ -9,14 +8,21 @@ import { getLandingUIConfig } from '@/domain/quiz.schema';
 import { getAvailableWebP } from '@/lib/resolveQuizImages';
 import { resolveImage } from '@/lib/imageUtils';
 import ViewTracker from '@/components/quiz/ViewTracker';
+import Footer from '@/components/common/Footer';
+import StickyStartButton, { QUIZ_INFO_ID } from './sticky-start-button.client';
+
+const MODE_LABELS: Record<string, string> = {
+  weighted: '성향 분석형',
+  'amount-sum': '점수 합산형',
+  'type-count': '유형 매칭형',
+};
 
 const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const repo = getQuizRepository();
   const { id } = await params;
   const def = await repo.getById(id);
   if (!def) return notFound();
-  
-  // JSON UI 설정 기반 버튼 색상 - 타입 안전하게 가져오기
+
   const landingConfig = getLandingUIConfig(def);
   const variantClass =
     landingConfig.buttonTheme === 'white' ? styles.whiteBtn : styles.blackBtn;
@@ -24,7 +30,15 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const webpFiles = getAvailableWebP(id);
   const mainImage = resolveImage(`/images/quiz/${id}/main.png`, webpFiles);
 
-  // Structured Data (JSON-LD) - 퀴즈 정보
+  const questionCount = def.questions.length;
+  const resultCount = def.meta.resultTypes.length;
+  const estimatedMinutes = Math.max(1, Math.ceil(questionCount * 0.5));
+  const modeLabel = MODE_LABELS[def.meta.mode] ?? '심리테스트';
+
+  const resultNames = Object.values(def.resultDetails)
+    .slice(0, 6)
+    .map((r) => r.name);
+
   const quizJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Quiz',
@@ -45,9 +59,9 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
     inLanguage: 'ko-KR',
     educationalUse: 'self-assessment',
     typicalAgeRange: '13-',
+    numberOfQuestions: questionCount,
   };
 
-  // Structured Data (JSON-LD) - Breadcrumb
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -69,7 +83,6 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <>
-      {/* Structured Data (JSON-LD) */}
       <Script
         id="quiz-jsonld"
         type="application/ld+json"
@@ -97,16 +110,68 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           />
         </div>
         <div className={styles.warpper}>
-          <Link
+          <StickyStartButton
             href={`/quiz/${id}/question`}
-            aria-label='테스트 시작하기'
-            role='button'
-            className={`${styles.primaryLinkBtn} ${variantClass}`}
-          >
-            테스트 시작하기
-          </Link>
+            variantClass={variantClass}
+          />
         </div>
       </main>
+
+      <section id={QUIZ_INFO_ID} className={styles.quizInfo} aria-label='테스트 정보'>
+        <div className={styles.quizInfoInner}>
+          <h1 className={styles.quizTitle}>{def.meta.title}</h1>
+          {def.meta.description && (
+            <p className={styles.quizDescription}>{def.meta.description}</p>
+          )}
+
+          <div className={styles.quizMeta}>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>문항 수</span>
+              <span className={styles.metaValue}>{questionCount}문항</span>
+            </div>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>소요 시간</span>
+              <span className={styles.metaValue}>약 {estimatedMinutes}분</span>
+            </div>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>결과 유형</span>
+              <span className={styles.metaValue}>{resultCount}가지</span>
+            </div>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>테스트 방식</span>
+              <span className={styles.metaValue}>{modeLabel}</span>
+            </div>
+          </div>
+
+          {resultNames.length > 0 && (
+            <div className={styles.resultPreview}>
+              <h2 className={styles.resultPreviewTitle}>
+                이런 결과가 나올 수 있어요
+              </h2>
+              <ul className={styles.resultList}>
+                {resultNames.map((name) => (
+                  <li key={name} className={styles.resultItem}>
+                    {name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className={styles.quizNotice}>
+            <h2 className={styles.noticeTitle}>안내사항</h2>
+            <ul className={styles.noticeList}>
+              <li>회원가입 없이 바로 시작할 수 있어요.</li>
+              <li>응답은 저장되지 않으며, 결과만 확인할 수 있어요.</li>
+              <li>테스트 결과는 재미를 위한 것이며, 전문적인 심리 분석이 아닙니다.</li>
+              <li>결과 페이지에서 친구에게 공유할 수 있어요.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <Footer />
     </>
   );
 };

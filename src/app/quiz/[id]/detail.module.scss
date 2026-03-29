@@ -37,6 +37,7 @@
     font-family: noto sans KR;
     box-sizing: border-box;
     z-index: 2;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   /* Variants: compose with .primaryLinkBtn */
@@ -51,4 +52,133 @@
     --btn-color: #000;
     --btn-border: #111;
   }
+
+  .infoBtn {
+    --btn-bg: #6366f1;
+    --btn-color: #fff;
+    --btn-border: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 }
+
+/* Quiz Info Section */
+.quizInfo {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  background: #fafafa;
+}
+
+.quizInfoInner {
+  padding: 28px 20px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quizTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.quizDescription {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555555;
+  word-break: keep-all;
+}
+
+.quizMeta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+}
+
+.metaLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #999999;
+}
+
+.metaValue {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333333;
+}
+
+.resultPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resultPreviewTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #6366f1;
+}
+
+.resultList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resultItem {
+  padding: 6px 14px;
+  background: #f0eeff;
+  color: #6366f1;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  word-break: keep-all;
+}
+
+.quizNotice {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+.noticeTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #555555;
+}
+
+.noticeList {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+
+  li {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #777777;
+    word-break: keep-all;
+  }
+}
+
