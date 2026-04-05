@@ -272,5 +272,24 @@ describe('ResultCard 컴포넌트', () => {
         expect(screen.getByText(`#${keyword}`)).toBeInTheDocument();
       }
     });
+
+    it('spring 레이아웃: [대괄호] 안이 여러 줄이어도 히어로 제목에 닫는 괄호만 남지 않아야 한다', () => {
+      render(
+        <ResultCard
+          quizTitle="봄 퀴즈"
+          result={makeResult({
+            name: '우리만의 아지트\n[감성 숙소\n파자마 파티]',
+            title: '"밤새도록 넷플릭스+수다 조합!"',
+          })}
+          theme="black"
+          resultHeroLayout="spring"
+        />
+      );
+
+      const heroHeadline = screen.getByRole('heading', { level: 2 });
+      expect(heroHeadline).toHaveTextContent('감성 숙소');
+      expect(heroHeadline).toHaveTextContent('파자마 파티');
+      expect(heroHeadline.textContent).not.toContain(']');
+    });
   });
 });

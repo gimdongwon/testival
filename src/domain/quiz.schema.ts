@@ -65,11 +65,17 @@ export const ResultUIConfigZ = z.object({
   resultHeroGap: z.string().optional(),
   stampImage: z.string().optional(),
   hideResultTitle: z.boolean().optional(),
+  resultHeroLayout: z.enum(['default', 'spring']).optional(),
+  resultHeroQuoteStyle: z.record(z.string(), z.unknown()).optional(),
+  resultHeroHeadlineStyle: z.record(z.string(), z.unknown()).optional(),
   loadingTextStyle: z.record(z.string(), z.unknown()).optional(),
   resultTitleStyle: z.record(z.string(), z.unknown()).optional(),
   descriptionStyle: z.record(z.string(), z.unknown()).optional(),
   contentBorderColor: z.string().optional(),
   contentBorderRadius: z.string().optional(),
+  resultImageBorder: z.string().optional(),
+  resultImageBorderRadius: z.string().optional(),
+  resultImageAspectRatio: z.string().optional(),
 });
 
 export const LandingUIConfigZ = z.object({
@@ -92,6 +98,8 @@ export const QuestionUIConfigZ = z.object({
   questionTitleStyle: z.record(z.string(), z.unknown()).optional(),
   columns: z.number().int().positive().optional(),
   cardBorderColor: z.string().optional(),
+  optionBorderColor: z.string().optional(),
+  contentPaddingTop: z.string().optional(),
 });
 
 /** 테스트별 UI 설정 */

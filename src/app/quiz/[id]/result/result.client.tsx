@@ -178,10 +178,16 @@ export default function ResultClient({
             heroGap={config.resultHeroGap}
             stampImage={config.stampImage}
             hideResultTitle={config.hideResultTitle}
+            resultHeroLayout={config.resultHeroLayout}
+            resultHeroQuoteStyle={config.resultHeroQuoteStyle as Record<string, unknown> | undefined}
+            resultHeroHeadlineStyle={config.resultHeroHeadlineStyle as Record<string, unknown> | undefined}
             resultTitleStyle={config.resultTitleStyle as Record<string, unknown> | undefined}
             descriptionStyle={config.descriptionStyle as Record<string, unknown> | undefined}
             contentBorderColor={config.contentBorderColor}
             contentBorderRadius={config.contentBorderRadius}
+            resultImageBorder={config.resultImageBorder}
+            resultImageBorderRadius={config.resultImageBorderRadius}
+            resultImageAspectRatio={config.resultImageAspectRatio}
           />
         )
       )}

@@ -121,6 +121,10 @@
 }
 
 .optionBtn {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  font: inherit;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -134,6 +138,13 @@
   white-space: pre-line;
   background-color: var(--option-bg, #fff);
   color: var(--option-color, #000);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 무테 카드: 마지막 선택지 하단이 부모(12px) 클립과 겹칠 때 WebKit 합성 보정 */
+.card:not(.cardBordered) .cardOptions .fullWidth:last-child .optionBtn {
+  border-radius: 12px;
 }
 
 /* Theming helpers (compose with .optionBtn) */

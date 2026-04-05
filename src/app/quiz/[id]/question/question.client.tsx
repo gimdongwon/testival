@@ -50,7 +50,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
 
   // JSON UI 설정 - 타입 안전하게 가져오기
   const qUi = getQuestionUIConfig(def);
-  
+
   const optionClassName =
     qUi.optionVariant === 'chuseokDark'
       ? questionCardStyles.optionChuseokDark
@@ -70,6 +70,8 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const optionLabelStyle = (qUi.optionLabelStyle ?? qUi.optionTextStyle) as CSSProperties | undefined;
   const optionFontFamily = qUi.optionFontFamily;
   const cardBorderColor = qUi.cardBorderColor;
+  const optionBorderColor = qUi.optionBorderColor;
+  const contentPaddingTop = qUi.contentPaddingTop;
 
   const progressStyle: CSSProperties &
     Record<'--progress' | '--progress-fill-color', string> = {
@@ -96,12 +98,20 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           <div className={styles.progressFill} style={progressStyle} />
         </div>
       </div>
-      <div className={styles.contentContainer}>
+      <div
+        className={styles.contentContainer}
+        style={
+          contentPaddingTop
+            ? ({ paddingTop: contentPaddingTop } as CSSProperties)
+            : undefined
+        }
+      >
         <QuestionCard
           number={currentStep}
           title={q.title}
           questionImage={q.image}
           cardBorderColor={cardBorderColor}
+          optionBorderColor={optionBorderColor}
           options={options}
           onSelect={handleSelect}
           optionClassName={optionClassName}

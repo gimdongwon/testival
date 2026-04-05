@@ -146,3 +146,12 @@ a {
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'YeongamWolchulsan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/YeongamWolchulsanTTF.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

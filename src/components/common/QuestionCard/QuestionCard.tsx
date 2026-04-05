@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { type CSSProperties } from 'react';
 import Image from 'next/image';
 import styles from './QuestionCard.module.scss';
 
@@ -32,6 +32,7 @@ export type QuestionCardProps = {
   hideOptionLabel?: boolean;
   optionColors?: string[];
   optionTextStyle?: React.CSSProperties;
+  optionBorderColor?: string;
 };
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -55,13 +56,17 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   hideOptionLabel = false,
   optionColors,
   optionTextStyle,
+  optionBorderColor: optionBorderColorProp,
 }) => {
   const borderStyle = cardBorderColor
     ? { border: `1.5px solid ${cardBorderColor}` }
     : undefined;
 
-  const optionBorderStyle = cardBorderColor
-    ? { border: `1.5px solid ${cardBorderColor}` }
+  const optionBorderResolved = optionBorderColorProp ?? cardBorderColor;
+  const optionCustomBorderStyle: CSSProperties | undefined = optionBorderResolved
+    ? {
+        border: `2px solid ${optionBorderResolved}`,
+      }
     : undefined;
 
   return (
@@ -139,11 +144,11 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             const buttonStyle = backgroundColor
               ? {
                   ...style,
-                  ...optionBorderStyle,
+                  ...optionCustomBorderStyle,
                   backgroundColor,
                   color: '#fff',
                 }
-              : { ...style, ...optionBorderStyle };
+              : { ...style, ...optionCustomBorderStyle };
 
             return (
               <div className={styles.fullWidth} key={opt.id}>
