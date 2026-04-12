@@ -65,6 +65,7 @@ export const ResultUIConfigZ = z.object({
   resultHeroGap: z.string().optional(),
   stampImage: z.string().optional(),
   hideResultTitle: z.boolean().optional(),
+  hideResultScore: z.boolean().optional(),
   resultHeroLayout: z.enum(['default', 'spring']).optional(),
   resultHeroQuoteStyle: z.record(z.string(), z.unknown()).optional(),
   resultHeroHeadlineStyle: z.record(z.string(), z.unknown()).optional(),

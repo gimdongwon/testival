@@ -1,5 +1,6 @@
 // app/quiz/[id]/result/page.tsx
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 import ResultClient from './result.client';
 import type { Metadata } from 'next';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
@@ -78,9 +79,12 @@ export default async function Page({
   const recommendedQuizzes = await getRecommendedQuizzes(id, 3);
 
   return (
-    <ResultClient
-      def={def}
-      recommendedQuizzes={recommendedQuizzes}
-    />
+    <Suspense fallback={null}>
+      <ResultClient
+        def={def}
+        recommendedQuizzes={recommendedQuizzes}
+      />
+    </Suspense>
   );
 }
+

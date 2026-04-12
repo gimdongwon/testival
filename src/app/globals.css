@@ -61,6 +61,15 @@ a {
 }
 
 @font-face {
+  font-family: 'Shilla_Culture(M)';
+  src: url('/fonts/Shilla_Culture-M.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+
+@font-face {
   font-family: 'MangoByeolbyeol';
   src: url('/fonts/MangoByeolbyeol.otf') format('opentype');
   font-weight: 400;

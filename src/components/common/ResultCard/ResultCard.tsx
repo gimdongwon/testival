@@ -56,6 +56,9 @@ const parseGradeNumber = (name: string): string | null => {
   return match ? match[1] : null;
 };
 
+const stripHtml = (html: string): string =>
+  html.replace(/<[^>]*>/g, '');
+
 const ResultCard = ({
   result,
   scoreLabel,
@@ -116,8 +119,9 @@ const ResultCard = ({
         }
       : undefined;
 
+  // image가 없을때
   const hasImage = !!result.image;
-
+  
   if (!hasImage) {
     const gradeNumber = parseGradeNumber(result.name);
 
@@ -131,7 +135,7 @@ const ResultCard = ({
             <h2 className={styles.heroTitleLarge} style={Object.keys(titleStyle).length > 0 ? titleStyle : undefined}>
               {result.title}
             </h2>
-            <p className={styles.heroGradeLabel}>{result.name}</p>
+            <p className={styles.heroGradeLabel} dangerouslySetInnerHTML={{ __html: result.name.replace(/\n/g, '<br/>') }} />
           </div>
 
           <div className={styles.borderedContentCard}>
@@ -141,7 +145,7 @@ const ResultCard = ({
               </div>
             )}
             <div className={styles.descriptionBody}>
-              <p
+              <div
                 className={styles.description}
                 dangerouslySetInnerHTML={{ __html: result.description.replace(/\n/g, '<br/>') }}
               />
@@ -198,14 +202,14 @@ const ResultCard = ({
               <p className={styles.heroQuote} style={heroQuoteStyle}>
                 {result.title}
               </p>
-              <h2 className={styles.heroName} style={heroHeadlineStyle}>
-                {springHeadlineFromName(result.name)}
-              </h2>
+              <h2 className={styles.heroName} style={heroHeadlineStyle}
+                dangerouslySetInnerHTML={{ __html: springHeadlineFromName(result.name).replace(/\n/g, '<br/>') }}
+              />
             </>
           ) : (
-            <h2 className={styles.heroName} style={heroStyle}>
-              {result.name}
-            </h2>
+            <h2 className={styles.heroName} style={{ ...heroStyle, ...heroHeadlineStyle }}
+              dangerouslySetInnerHTML={{ __html: result.name.replace(/\n/g, '<br/>') }}
+            />
           ))}
       </div>
 
@@ -219,7 +223,7 @@ const ResultCard = ({
         <img
           className={styles.resultImage}
           src={result.image}
-          alt={`${result.name} 결과 이미지`}
+          alt={`${stripHtml(result.name)} 결과 이미지`}
           draggable={false}
         />
       </div>
@@ -228,7 +232,7 @@ const ResultCard = ({
         <h3 className={styles.resultTitle} style={Object.keys(titleStyle).length > 0 ? titleStyle : undefined}>
           {isSpringHero ? springCardTitleFromName(result.name) : result.title}
         </h3>
-        <p
+        <div
           className={styles.description}
           style={descStyle}
           dangerouslySetInnerHTML={{ __html: result.description.replace(/\n/g, '<br/>') }}

@@ -1,0 +1,299 @@
+{
+  "meta": {
+    "id": "mid-term",
+    "title": "중간고사 운세 테스트",
+    "description": "내 학점은 어떻게 될까? 중간고사 운세를 확인해보세요!",
+    "mode": "amount-sum",
+    "resultTypes": [
+      "grade_a",
+      "grade_b",
+      "grade_c",
+      "grade_d",
+      "grade_f"
+    ],
+    "locale": "ko",
+    "version": 1
+  },
+  "ui": {
+    "result": {
+      "theme": "black",
+      "imageMode": "long",
+      "showReceipt": false,
+      "backgroundColor": "#FFFFFF",
+      "resultFontFamily": "'Shilla_Culture', 'Noto Sans KR', sans-serif",
+      "resultTextStroke": "2px #fff",
+      "resultHeroColor": "#000",
+      "loadingTextColor": "#000",
+      "resultHeroHeadlineStyle": {
+        "fontSize": "30px",
+        "fontWeight": 500,
+        "lineHeight": "1.2"
+      },
+      "resultImageBorderRadius": "24px",
+      "hideResultScore": true
+    },
+    "landing": {
+      "buttonTheme": "black"
+    },
+    "question": {
+      "optionVariant": "light",
+      "progressFillColor": "#FB2575",
+      "columns": 2,
+      "hideOptionLabel": true,
+      "optionBorderColor": "#000",
+      "optionTextStyle": {
+        "fontSize": "18px",
+        "fontWeight": "700",
+        "color": "#000000",
+        "fontFamily": "'Noto Sans KR', sans-serif"
+      },
+      "optionFontFamily": "'Noto Sans KR', sans-serif",
+      "questionNumberStyle": {
+        "color": "#4E474F",
+        "fontSize": "20px",
+        "fontFamily": "'ylee MHIM', 'Noto Sans KR', sans-serif"
+      },
+      "questionTitleStyle": {
+        "color": "#4E474F",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "lineHeight": "140%",
+        "fontFamily": "'Noto Sans KR', sans-serif"
+      },
+      "optionLabelStyle": {
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "color": "#000000",
+        "fontFamily": "'Noto Sans KR', sans-serif"
+      }
+    }
+  },
+  "resultDetails": {
+    "grade_a": {
+      "name": "<strong style=\"color:#2C251C; text-align:center; -webkit-text-stroke-width:0.5px; -webkit-text-stroke-color:#2C251C; font-family:'Shilla_Culture(B)'; font-size:60px; font-style:normal; font-weight:700; line-height:100%;\">100점 / A+</strong><p style=\"color:#2C251C; text-align:center; font-family:'Shilla_Culture(B)'; font-size:24px; font-style:normal; font-weight:500; line-height:110%; margin-top: 5px;\">깨달음의 끝, 스터디계의 부처</p>",
+      "title": "깨달음의 끝, 스터디계의 부처",
+      "description": "<div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">운세</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">이번 중간고사, 우주의 기운이<br/>당신의 찍기 실력과 암기력을 돕습니다!</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">특징</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">유혹에 흔들리지 않는 에이스.<br/>남들이 유튜브 알고리즘에 빠져 허우적댈 때<br/>묵묵히 진도를 빼는 멘탈 갑입니다.<br/>당신은 이미 모든 걸 깨닫고 통달한 상태.<br/>당신의 펜이 향하는 곳이 곧 정답이니 <br/>자신감을 가지세요!</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">행운의 아이템</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">잉크가 절대 마르지 않는 영원의 검은색 볼펜</div>",
+      "image": "/images/quiz/mid-term/result_grade_a.png",
+      "keywords": [
+        "수제자",
+        "에이스",
+        "멘탈갑"
+      ],
+      "type": "grade_a"
+    },
+    "grade_b": {
+      "name": "<strong style=\"color:#2C251C; text-align:center; -webkit-text-stroke-width:0.5px; -webkit-text-stroke-color:#2C251C; font-family:'Shilla_Culture(B)'; font-size:60px; font-style:normal; font-weight:700; line-height:100%;\">90점 / B+</strong><p style=\"color:#2C251C; text-align:center; font-family:'Shilla_Culture(B)'; font-size:24px; font-style:normal; font-weight:500; line-height:110%; margin-top: 5px;\">벼락치기계의 닥터 스트레인지</p>",
+      "title": "벼락치기계의 닥터 스트레인지",
+      "description": "<div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">운세</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">효율의 끝판왕!<br/>모든 경우의 수를 계산한 뒤<br/>최소한의 시간으로<br/>최대한의 점수를 뽑아냅니다.</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">특징</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">평소엔 놀다가 발등에 불이 떨어져야<br/>초인적인 힘을 발휘하는 타입.<br/><br/>기출문제의 흐름을 읽는 눈치와<br/>찍기 신공이 발동해 예상보다 높은 점수를<br/>얻을 운세입니다.<br/><br/>이미 모든 정답 확률을 계산 끝냈습니다.<br/>최소한의 노력으로 최대의 결과를 얻는,<br/>진정한 '효율의 지배자'입니다.</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">행운의 아이템</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">시험 직전 5분 요약본</div>",
+      "image": "/images/quiz/mid-term/result_grade_b.png",
+      "keywords": [
+        "벼락치기",
+        "효율끝판왕",
+        "눈치코치"
+      ],
+      "type": "grade_b"
+    },
+    "grade_c": {
+      "name": "<strong style=\"color:#2C251C; text-align:center; -webkit-text-stroke-width:0.5px; -webkit-text-stroke-color:#2C251C; font-family:'Shilla_Culture(B)'; font-size:60px; font-style:normal; font-weight:700; line-height:100%;\">75점 / C+</strong><p style=\"color:#2C251C; text-align:center; font-family:'Shilla_Culture(B)'; font-size:24px; font-style:normal; font-weight:500; line-height:110%; margin-top: 5px;\">학점 외줄 타기 장인:<br/>아슬아슬 중도의 길</p>",
+      "title": "학점 외줄 타기 장인:\n아슬아슬 중도의 길",
+      "description": "<div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">운세</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">재수강, 그 절묘한 경계선 위에서<br/>아슬아슬하게 균형을 잡는<br/>적당히 놀고 적당히 타협하는<br/>평화주의자.</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">특징</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">공부도 중요하지만<br/>내 삶의 워라밸도 중요합니다.<br/>남들 맞는 만큼 맞고,<br/>틀리는 건 같이 틀려주는 것이 중도.<br/>평균이라는 중도의 길을<br/>아슬아슬하게 타는 당신은 능력자.</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">행운의 아이템</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">아슬아슬하게 충전된 보조배터리</div>",
+      "image": "/images/quiz/mid-term/result_grade_c.png",
+      "keywords": [
+        "평화주의자",
+        "워라밸",
+        "낭만러"
+      ],
+      "type": "grade_c"
+    },
+    "grade_d": {
+      "name": "<strong style=\"color:#2C251C; text-align:center; -webkit-text-stroke-width:0.5px; -webkit-text-stroke-color:#2C251C; font-family:'Shilla_Culture(B)'; font-size:60px; font-style:normal; font-weight:700; line-height:100%;\">65점 / D+</strong><p style=\"color:#2C251C; text-align:center; font-family:'Shilla_Culture(B)'; font-size:24px; font-style:normal; font-weight:500; line-height:110%; margin-top: 5px;\">깔아주기 요정!<br/>자비로운 기부천사</p>",
+      "title": "깔아주기 요정!\n자비로운 기부천사",
+      "description": "<div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">운세</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">친구들의 등급 상승을 위해<br/>내 점수를 희생하는<br/>성스러운 운세입니다.</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">특징</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">책을 펴면 잠이 오고, 폰을 켜면 눈이 맑아집니다.<br/>이번 시험은 이미 마음속에서<br/>떠나보냈을지도 모릅니다.<br/>그래도 괜찮아요.<br/>친구들은 당신에게 고마워할 거고<br/>다음 시험이 있으니까요!<br/>(아마도)</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">행운의 아이템</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">편안한 수면바지</div>",
+      "image": "/images/quiz/mid-term/result_grade_d.png",
+      "keywords": [
+        "기부천사",
+        "깔아주기",
+        "기말노림"
+      ],
+      "type": "grade_d"
+    },
+    "grade_f": {
+      "name": "<strong style=\"color:#2C251C; text-align:center; -webkit-text-stroke-width:0.5px; -webkit-text-stroke-color:#2C251C; font-family:'Shilla_Culture(B)'; font-size:60px; font-style:normal; font-weight:700; line-height:100%;\">50점 / D</strong><p style=\"color:#2C251C; text-align:center; font-family:'Shilla_Culture(B)'; font-size:24px; font-style:normal; font-weight:500; line-height:110%; margin-top: 5px;\">성적:<br/>404 Not found</p>",
+      "title": "성적:\n404 Not found",
+      "description": "<div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">운세</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">벼락치기요?<br/>아니요, 당신은 그냥 '벼락'을 맞았습니다.</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">특징</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">마침 밖엔 꽃이 폈고<br/>봄바람이 기분좋게 부는데,<br/>성적이 뭐가 중요하겠습니까?<br/><br/>조용히 답안지를 덮으며<br/>그 어떤 미련도 없이<br/>시원하게 성적을 놓아주는<br/>마음가짐도 가끔 필요합니다.</div><div style=\"text-align:center; margin-bottom:12px;\"><span style=\"display:inline-block; background-color:#2C251C; color:#fff; font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;\">행운의 아이템</span></div><div style=\"font-size:14px; font-weight:400; text-align:center; color:#2C251C; line-height:1.4; margin-bottom:32px;\">벚꽃 한 송이</div>",
+      "image": "/images/quiz/mid-term/result_grade_f.png",
+      "keywords": [
+        "무소유",
+        "순백의뇌",
+        "마이너스손"
+      ],
+      "type": "grade_f"
+    }
+  },
+  "messages": {
+    "grade_a": "이번 중간고사, 우주의 기운이 당신의 찍기 실력과 암기력을 돕습니다!",
+    "grade_b": "효율의 끝판왕! 모든 경우의 수를 계산한 뒤 최소한의 시간으로 최대한의 점수를 뽑아냅니다.",
+    "grade_c": "재수강, 그 절묘한 경계선 위에서 아슬아슬하게 균형을 잡는 적당히 놀고 적당히 타협하는 평화주의자.",
+    "grade_d": "친구들의 등급 상승을 위해 내 점수를 희생하는 성스러운 운세입니다.",
+    "grade_f": "벼락치기요? 아니요, 당신은 그냥 '벼락'을 맞았습니다."
+  },
+  "scoring": {
+    "amountSumBrackets": [
+      {
+        "key": "grade_f",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "grade_d",
+        "min": 2,
+        "max": 3
+      },
+      {
+        "key": "grade_c",
+        "min": 4,
+        "max": 5
+      },
+      {
+        "key": "grade_b",
+        "min": 6,
+        "max": 7
+      },
+      {
+        "key": "grade_a",
+        "min": 8,
+        "max": 8
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "시험공부를 시작하기 전,\n갑자기 책상 정리를 한 적이\n여러번 있다.",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "O",
+          "amount": 0
+        },
+        {
+          "id": "q1b",
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "공부를 시작하면\n평소에 거들떠보지도 않던 뉴스,\n심지어 벽지 무늬까지\n재밌게 느껴진다.",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "O",
+          "amount": 0
+        },
+        {
+          "id": "q2b",
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "\"오늘까지만 푹 쉬고\n내일부터 진짜 한다\"라는 다짐을\n이번 주에 3번 이상 했다.",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "O",
+          "amount": 0
+        },
+        {
+          "id": "q3b",
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "밤샘 공부하려고\n에너지 드링크를 마셨지만,\n심장만 빨라지고 잠든 적이 있다.",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "O",
+          "amount": 0
+        },
+        {
+          "id": "q4b",
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "공부하다 문득\n\"행복이란 뭘까...\"하고\n현타가 온다.",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "O",
+          "amount": 0
+        },
+        {
+          "id": "q5b",
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "시험 범위가 너무 많으면\n\"설마 여기서 나오겠어?\"하고\n스스로 범위를 확 줄여버린다.",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "O",
+          "amount": 0
+        },
+        {
+          "id": "q6b",
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "공부에 집중하겠다며 폰을\n뒤집어 두지만, 알림이 안 울려도\n무의식적으로 화면을 켜게 된다.",
+      "choices": [
+        {
+          "id": "q7a",
+          "label": "O",
+          "amount": 0
+        },
+        {
+          "id": "q7b",
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "\"지금 자고 새벽에 일찍 일어나서\n하는 게 더 효율적이야\"라며\n알람을 5개 맞추고 잔다.",
+      "choices": [
+        {
+          "id": "q8a",
+          "label": "O",
+          "amount": 0
+        },
+        {
+          "id": "q8b",
+          "label": "X",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@ import styles from './Result.module.scss';
 import ResetIcon from '@/components/icons/reset';
 import ShareIcon from '@/components/icons/share';
 import Receipt from '@/components/chuseok_money/receipt';
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import type { CSSProperties } from 'react';
 import { useQuizView } from '@/store/quizStore';
 import { score } from '@/lib/scoring';
@@ -28,6 +28,12 @@ export default function ResultClient({
   const searchParams = useSearchParams();
   const testId = def.meta.id;
   const { selected } = useQuizView(testId);
+
+  // Hydration 안전: 마운트 전까지 store 의존 렌더링을 지연
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const type = searchParams.get('type');
 
@@ -121,7 +127,7 @@ export default function ResultClient({
     total: number;
     detail?: ResultDetail;
   }>(() => {
-    if (def.meta.mode !== 'amount-sum') {
+    if (def.meta.mode !== 'amount-sum' || !mounted) {
       return { items: [], total: 0, detail: undefined };
     }
     const built = def.questions
@@ -138,13 +144,14 @@ export default function ResultClient({
     const topKey = scored.top as keyof typeof def.resultDetails;
     const detailInfo = def.resultDetails[topKey];
     return { items: built, total: totalAmount, detail: detailInfo };
-  }, [def, selected]);
+  }, [def, selected, mounted]);
 
   const displayDetail = resultDetail ?? detail;
   const showReceipt = config.showReceipt && config.imageMode === 'bg';
 
   // amount-sum 모드: URL type에 해당하는 bracket의 min-max로 점수 라벨 생성
   const scoreLabel = useMemo(() => {
+    if (config.hideResultScore) return undefined;
     if (def.meta.mode !== 'amount-sum' || !type) return undefined;
     const brackets = def.scoring?.amountSumBrackets;
     if (!brackets) return undefined;
@@ -153,7 +160,7 @@ export default function ResultClient({
     const { min, max } = bracket;
     if (min === max) return `${min ?? 0}점`;
     return `${min ?? 0}-${max ?? 0}점`;
-  }, [def, type]);
+  }, [def, type, config.hideResultScore]);
 
   return (
     <section
