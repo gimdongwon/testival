@@ -37,7 +37,7 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const resultNames = Object.values(def.resultDetails)
     .slice(0, 6)
-    .map((r) => r.name);
+    .map((r) => r.name.replace(/<[^>]*>/g, ''));
 
   const quizJsonLd = {
     '@context': 'https://schema.org',
