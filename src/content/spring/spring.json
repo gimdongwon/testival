@@ -23,6 +23,7 @@
       "theme": "black",
       "imageMode": "long",
       "showReceipt": false,
+      "resultLayout": "spring",
       "backgroundColor": "#f9f4ee",
       "loadingTextColor": "#4e474f",
       "hideResultTitle": false,

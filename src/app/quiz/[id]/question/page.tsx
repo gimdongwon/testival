@@ -19,8 +19,8 @@ const QuestionPage = async ({
 
   const webpFiles = getAvailableWebP(id);
   const bgPath = resolveImage(
-    `/images/quiz/${id}/content_background.png`,
-    webpFiles
+    `/images/quiz/${id}/content_background.png?v=1`,
+    webpFiles,
   );
 
   return (
@@ -28,11 +28,10 @@ const QuestionPage = async ({
       <div className={styles.bgWrapper}>
         <Image
           src={bgPath}
-          alt=""
+          alt=''
           fill
           priority
           quality={85}
-          sizes="(max-width: 430px) 100vw, 430px"
           className={styles.bgImage}
         />
       </div>

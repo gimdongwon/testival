@@ -19,6 +19,7 @@
       "theme": "black",
       "imageMode": "long",
       "showReceipt": false,
+      "resultLayout": "grade",
       "backgroundColor": "#FFFFFF",
       "resultFontFamily": "'Shilla_Culture', 'Noto Sans KR', sans-serif",
       "resultTextStroke": "2px #fff",
