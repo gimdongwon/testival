@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { quizActions, useQuizView } from '@/store/quizStore';
-import { renderHook, act } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 
 describe('quizStore 테스트', () => {
   beforeEach(() => {
