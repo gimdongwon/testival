@@ -20,7 +20,8 @@ const LoadingContent = ({ def }: { def: TestDefinition }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push(`/quiz/${testId}/result?type=${type}`);
+      const resultPath = testId === 'goodboyfriend' ? 'new-result' : 'result';
+      router.push(`/quiz/${testId}/${resultPath}?type=${type}`);
     }, 2000);
 
     return () => clearTimeout(timer);
