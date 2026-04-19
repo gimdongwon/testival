@@ -46,8 +46,13 @@ export const ResultDetailZ = z.object({
   type: z.string().min(1),
 });
 
+/** 결과 레이아웃 프리셋 */
+export const ResultLayoutZ = z.enum(['classic', 'spring', 'grade', 'goodboyfriend']).default('classic');
+export type ResultLayout = z.infer<typeof ResultLayoutZ>;
+
 /** 결과 페이지 UI 설정(콘텐츠 JSON에서 오버라이드 가능) */
 export const ResultUIConfigZ = z.object({
+  resultLayout: ResultLayoutZ.optional(),
   theme: z.enum(['black', 'white']),
   imageMode: z.enum(['long', 'bg']),
   showReceipt: z.boolean().default(false),

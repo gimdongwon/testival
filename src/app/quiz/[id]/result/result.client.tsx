@@ -15,7 +15,7 @@ import { getResultUIConfig } from '@/domain/quiz.schema';
 import RecommendedQuizzes from '@/components/common/RecommendedQuizzes';
 import CoupangAd from '@/components/common/CoupangAd';
 import type { QuizRecommendation } from '@/lib/recommendedQuizzes';
-import ResultCard from '@/components/common/ResultCard';
+import { getResultComponent } from '@/components/results';
 
 export default function ResultClient({
   def,
@@ -171,32 +171,16 @@ export default function ResultClient({
       {showReceipt ? (
         <Receipt items={items} total={total} detail={detail} />
       ) : (
-        displayDetail && (
-          <ResultCard
-            quizTitle={def.meta.title}
-            result={displayDetail}
-            theme={config.theme}
-            scoreLabel={scoreLabel}
-            fontFamily={config.resultFontFamily}
-            textStroke={config.resultTextStroke}
-            heroColor={config.resultHeroColor}
-            heroFontWeight={config.resultHeroFontWeight}
-            descriptionHeader={config.resultDescriptionHeader}
-            heroGap={config.resultHeroGap}
-            stampImage={config.stampImage}
-            hideResultTitle={config.hideResultTitle}
-            resultHeroLayout={config.resultHeroLayout}
-            resultHeroQuoteStyle={config.resultHeroQuoteStyle as Record<string, unknown> | undefined}
-            resultHeroHeadlineStyle={config.resultHeroHeadlineStyle as Record<string, unknown> | undefined}
-            resultTitleStyle={config.resultTitleStyle as Record<string, unknown> | undefined}
-            descriptionStyle={config.descriptionStyle as Record<string, unknown> | undefined}
-            contentBorderColor={config.contentBorderColor}
-            contentBorderRadius={config.contentBorderRadius}
-            resultImageBorder={config.resultImageBorder}
-            resultImageBorderRadius={config.resultImageBorderRadius}
-            resultImageAspectRatio={config.resultImageAspectRatio}
-          />
-        )
+        displayDetail && config && (() => {
+          const ResultComponent = getResultComponent(config.resultLayout ?? undefined);
+          return (
+            <ResultComponent
+              result={displayDetail}
+              config={config}
+              scoreLabel={scoreLabel}
+            />
+          );
+        })()
       )}
 
       <div className={styles.shareBtnWrapper}>
