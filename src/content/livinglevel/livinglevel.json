@@ -16,21 +16,31 @@
       "imageMode": "long",
       "showReceipt": false,
       "backgroundColor": "#FAFAF7",
-      "resultFontFamily": "'Yeossihyangyakeonhae', 'GmarketSans', 'Noto Sans KR', sans-serif",
-      "resultHeroColor": "#030001",
-      "contentBorderColor": "#030001",
-      "contentBorderRadius": "16px",
-      "resultImageBorder": "2px solid #030001",
-      "resultImageBorderRadius": "16px",
-      "loadingTextColor": "#030001"
+      "resultHeroStyle": {
+        "fontFamily": "'Yeossihyangyakeonhae', 'GmarketSans', 'Noto Sans KR', sans-serif",
+        "color": "#030001"
+      },
+      "resultImageStyle": {
+        "border": "2px solid #030001",
+        "borderRadius": "16px"
+      },
+      "contentCardStyle": {
+        "borderColor": "#030001",
+        "borderRadius": "16px"
+      },
+      "loadingTextStyle": {
+        "color": "#030001"
+      }
     },
     "landing": {
       "buttonTheme": "black"
     },
     "question": {
       "optionVariant": "light",
-      "optionFontFamily": "'Noto Sans KR', sans-serif",
-      "optionBorderColor": "#030001",
+      "optionStyle": {
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "borderColor": "#030001"
+      },
       "questionNumberStyle": {
         "color": "#030001",
         "fontFamily": "Yeossihyangyakeonhae, YeongamWolchulsan",

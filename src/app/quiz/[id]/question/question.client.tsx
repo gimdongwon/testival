@@ -68,9 +68,12 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const optionTextStyle = qUi.optionTextStyle as CSSProperties | undefined;
   // optionLabelStyle이 없으면 optionTextStyle을 폴백으로 사용
   const optionLabelStyle = (qUi.optionLabelStyle ?? qUi.optionTextStyle) as CSSProperties | undefined;
-  const optionFontFamily = qUi.optionFontFamily;
+  const optionStyleGroup = qUi.optionStyle as CSSProperties | undefined;
+  const optionFontFamily =
+    qUi.optionFontFamily ?? (optionStyleGroup?.fontFamily as string | undefined);
   const cardBorderColor = qUi.cardBorderColor;
-  const optionBorderColor = qUi.optionBorderColor;
+  const optionBorderColor =
+    qUi.optionBorderColor ?? (optionStyleGroup?.borderColor as string | undefined);
   const contentPaddingTop = qUi.contentPaddingTop;
 
   const progressStyle: CSSProperties &

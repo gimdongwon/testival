@@ -82,6 +82,11 @@ export const ResultUIConfigZ = z.object({
   resultImageBorder: z.string().optional(),
   resultImageBorderRadius: z.string().optional(),
   resultImageAspectRatio: z.string().optional(),
+  // Grouped element-level styles (preferred over the flat fields above).
+  // When both are supplied for the same element, the grouped style wins.
+  resultHeroStyle: z.record(z.string(), z.unknown()).optional(),
+  resultImageStyle: z.record(z.string(), z.unknown()).optional(),
+  contentCardStyle: z.record(z.string(), z.unknown()).optional(),
 });
 
 export const LandingUIConfigZ = z.object({
@@ -106,6 +111,8 @@ export const QuestionUIConfigZ = z.object({
   cardBorderColor: z.string().optional(),
   optionBorderColor: z.string().optional(),
   contentPaddingTop: z.string().optional(),
+  // Grouped style for the option button (fontFamily, borderColor, etc.).
+  optionStyle: z.record(z.string(), z.unknown()).optional(),
 });
 
 /** 테스트별 UI 설정 */

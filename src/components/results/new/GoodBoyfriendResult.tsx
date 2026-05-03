@@ -23,25 +23,34 @@ const GoodBoyfriendResult = ({ result, config }: ResultLayoutProps) => {
     resultImageBorderRadius,
   } = config;
 
+  const heroOverride = config.resultHeroStyle as CSSProperties | undefined;
+  const imageOverride = config.resultImageStyle as CSSProperties | undefined;
+  const contentOverride = config.contentCardStyle as CSSProperties | undefined;
+
   const heroStyle: CSSProperties = {
     ...(fontFamily ? { fontFamily } : {}),
     ...(heroColor ? { color: heroColor } : {}),
+    ...(heroOverride ?? {}),
   };
 
+  const hasLegacyImageFields = Boolean(resultImageBorder || resultImageBorderRadius);
   const imageFrameStyle: CSSProperties | undefined =
-    resultImageBorder || resultImageBorderRadius
+    hasLegacyImageFields || imageOverride
       ? {
           ...(resultImageBorder ? { border: resultImageBorder } : {}),
           ...(resultImageBorderRadius ? { borderRadius: resultImageBorderRadius } : {}),
+          ...(imageOverride ?? {}),
         }
       : undefined;
 
+  const hasLegacyContentFields = Boolean(contentBorderColor || contentBorderRadius);
   const contentCardStyle: CSSProperties | undefined =
-    contentBorderColor || contentBorderRadius
+    hasLegacyContentFields || contentOverride
       ? {
           ...(contentBorderColor ? { borderColor: contentBorderColor } : {}),
           ...(contentBorderRadius ? { borderRadius: contentBorderRadius } : {}),
           backgroundColor: '#FFFFFF',
+          ...(contentOverride ?? {}),
         }
       : undefined;
 
