@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "id": "livinglevel",
+    "title": "살림 레벨 테스트",
+    "description": "슬기로운 자취 생활, 생존 능력 검증 테스트 🧹",
+    "mode": "amount-sum",
+    "resultTypes": ["livingMaster", "daisoVip", "tetrisMaster", "germMan"],
+    "thumbnail": "/images/quiz/livinglevel/og-image.png",
+    "locale": "ko",
+    "version": 1
+  },
+  "ui": {
+    "result": {
+      "resultLayout": "goodboyfriend",
+      "theme": "black",
+      "imageMode": "long",
+      "showReceipt": false,
+      "backgroundColor": "#FAFAF7",
+      "resultFontFamily": "'Yeossihyangyakeonhae', 'GmarketSans', 'Noto Sans KR', sans-serif",
+      "resultHeroColor": "#030001",
+      "contentBorderColor": "#030001",
+      "contentBorderRadius": "16px",
+      "resultImageBorder": "2px solid #030001",
+      "resultImageBorderRadius": "16px",
+      "loadingTextColor": "#030001"
+    },
+    "landing": {
+      "buttonTheme": "black"
+    },
+    "question": {
+      "optionVariant": "light",
+      "optionFontFamily": "'Noto Sans KR', sans-serif",
+      "optionBorderColor": "#030001",
+      "questionNumberStyle": {
+        "color": "#030001",
+        "fontFamily": "Yeossihyangyakeonhae, YeongamWolchulsan",
+        "textShadow": "none",
+        "WebkitTextStroke": "3px #fff",
+        "paintOrder": "stroke fill",
+        "fontWeight": 500
+      },
+      "questionTitleStyle": {
+        "WebkitTextStroke": "3px #fff",
+        "paintOrder": "stroke fill",
+        "color": "#030001",
+        "fontFamily": "'Yeossihyangyakeonhae', 'YeongamWolchulsan', 'Noto Sans KR', sans-serif",
+        "textShadow": "none"
+      }
+    }
+  },
+  "scoring": {
+    "amountSumBrackets": [
+      { "key": "germMan", "min": 0, "max": 20 },
+      { "key": "tetrisMaster", "min": 30, "max": 50 },
+      { "key": "daisoVip", "min": 60, "max": 80 },
+      { "key": "livingMaster", "min": 90, "max": 100 }
+    ]
+  },
+  "resultDetails": {
+    "livingMaster": {
+      "title": "맑은 눈의 살림 광인",
+      "name": "자취방이 시그니엘 급?",
+      "description": "<p style='text-align: center;'>집안의 모든 물건이 오와 열을 맞추고 있으며,<br/>과탄산소다와 베이킹소다의 배합 비율을<br/>마스터한 살림의 신!</p><br/><p style='text-align: center;'>더러운 꼴을 보면 심박수가 올라가는 당신은<br/>진정한 어른입니다.<br/>독립의 정석이자 자취생들의 워너비!</p><br/><div style='margin-top: 32px; text-align: center;'><span style='background:#F5D775; color:#030001; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>살림 꿀팁</span><p style='margin-top: 12px;'>이미 완벽합니다.<br/>다만 살림에 너무 많은 에너지를 쏟느라<br/>본인 체력이 방전되지 않게,<br/>가끔은 로봇청소기·식기세척기 같은<br/>'자본주의의 맛'을 보는 것도 추천해요.</p></div><div style='margin-top: 24px; text-align: center;'><span style='background:#030001; color:white; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>환상의 짝꿍</span><p style='margin-top: 12px;'>걸어 다니는 세균맨<br/>(개조하는 맛이 있음)</p></div><div style='margin-top: 24px; text-align: center;'><span style='background:#030001; color:white; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>파국의 짝꿍</span><p style='margin-top: 12px;'>다이소 VIP 살림꾼<br/>(내 방식대로 안 해서 킹받음)</p></div>",
+      "image": "/images/quiz/livinglevel/result_livingmaster.png",
+      "type": "livingMaster"
+    },
+    "daisoVip": {
+      "title": "다이소 VIP",
+      "name": "사람 냄새나는 살림꾼",
+      "description": "<p style='text-align: center;'>유튜브나 인스타에서 본 살림 꿀팁이나<br/>신박한 다이소 청소템은<br/>일단 사서 써봐야 직성이 풀립니다.</p><br/><p style='text-align: center;'>완벽하진 않지만 나름의 규칙과 청소 주기가 있어서<br/>친구들을 언제든 초대할 수 있는<br/>쾌적한 상태를 유지하네요.</p><br/><div style='margin-top: 32px; text-align: center;'><span style='background:#F5D775; color:#030001; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>살림 꿀팁</span><p style='margin-top: 12px;'>아이템에 너무 의존하지 마세요!<br/>장비빨보다는 매일 5분씩<br/>'사용한 물건 제자리 두기' 규칙이<br/>집을 더 넓고 깔끔하게 만들어줍니다.</p></div><div style='margin-top: 24px; text-align: center;'><span style='background:#030001; color:white; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>환상의 짝꿍</span><p style='margin-top: 12px;'>방구석 테트리스 장인</p></div><div style='margin-top: 24px; text-align: center;'><span style='background:#030001; color:white; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>파국의 짝꿍</span><p style='margin-top: 12px;'>맑은 눈의 살림 광인</p></div>",
+      "image": "/images/quiz/livinglevel/result_daisovip.png",
+      "type": "daisoVip"
+    },
+    "tetrisMaster": {
+      "title": "방구석 테트리스 장인",
+      "name": "잔소리 필수!",
+      "description": "<p style='text-align: center;'>\"치워야지~\" 생각만 3만 번쯤 하다가,<br/>발 디딜 틈이 없어지거나 입을 옷이 없을 때쯤<br/>비로소 움직이는 벼락치기형 자취러입니다.</p><br/><p style='text-align: center;'>물건을 버리지는 못하고<br/>구석에 차곡차곡 쌓아두는<br/>테트리스 실력만큼은 국가대표급이네요.</p><br/><div style='margin-top: 32px; text-align: center;'><span style='background:#F5D775; color:#030001; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>살림 꿀팁</span><p style='margin-top: 12px;'>'동선 최소화'가 답입니다.<br/>물티슈를 방 곳곳에 비치해 두고,<br/>눈에 띌 때마다 슥 닦고 버리는 습관만 들여도<br/>주말 대청소의 고통이 반으로 줄어들어요!</p></div><div style='margin-top: 24px; text-align: center;'><span style='background:#030001; color:white; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>환상의 짝꿍</span><p style='margin-top: 12px;'>다이소 VIP 살림꾼</p></div><div style='margin-top: 24px; text-align: center;'><span style='background:#030001; color:white; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>파국의 짝꿍</span><p style='margin-top: 12px;'>걸어 다니는 세균맨</p></div>",
+      "image": "/images/quiz/livinglevel/result_tetrismaster.png",
+      "type": "tetrisMaster"
+    },
+    "germMan": {
+      "title": "걸어 다니는 세균맨",
+      "name": "곰팡이와 물아일체",
+      "description": "<p style='text-align: center;'>집안일은 내일의 나에게 미루는 달인입니다.</p><br/><p style='text-align: center;'>방바닥에 굴러다니는 머리카락은<br/>이미 방의 일부가 되었고,<br/>냉장고 속 식재료는<br/>스스로 생태계를 구축하고 있네요. (대단해!)</p><br/><p style='text-align: center;'>당장 엄마가 기습 방문하면<br/>등짝이 남아나지 않을 위급한 상태!</p><br/><div style='margin-top: 32px; text-align: center;'><span style='background:#F5D775; color:#030001; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>살림 꿀팁</span><p style='margin-top: 12px;'>거창한 대청소는 포기하세요.<br/>일단 '쓰레기통에 제때 버리기'와<br/>'먹은 그릇 물에 담가두기' 딱 두 가지만 시작해도<br/>사람 사는 집 냄새가 날 겁니다.</p></div><div style='margin-top: 24px; text-align: center;'><span style='background:#030001; color:white; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>환상의 짝꿍</span><p style='margin-top: 12px;'>맑은 눈의 살림 광인<br/>(다 해줄 테니 넌 숨만 쉬어)</p></div><div style='margin-top: 24px; text-align: center;'><span style='background:#030001; color:white; padding: 4px 16px; border-radius: 20px; font-weight: bold; font-size: 14px;'>파국의 짝꿍</span><p style='margin-top: 12px;'>걸어 다니는 세균맨<br/>(쓰레기집 단체 분양 임박)</p></div>",
+      "image": "/images/quiz/livinglevel/result_germman.png",
+      "type": "germMan"
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "케찹 등 소스류를 쓴 후\n냉장고에 넣기 전",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "입구에 묻은 양념 한 번 스윽 닦고 닫는다",
+          "amount": 10
+        },
+        {
+          "id": "q1b",
+          "label": "대충 닫는다",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "고기 굽고 난 뒤,\n가스레인지(인덕션)는?",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "기름 굳기 전에 행주로 바로 닦아낸다",
+          "amount": 10
+        },
+        {
+          "id": "q2b",
+          "label": "나중에 날 잡고 닦는다",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "빨래할 때 나는?",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "뒤집어진 양말은 일일이\n똑바로 뒤집어서 빤다",
+          "amount": 10
+        },
+        {
+          "id": "q3b",
+          "label": "그냥 그대로 빤다",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "아침에 일어난 직후,\n내 침대의 상태는?",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "이불을 쫙 펴서 정리한다",
+          "amount": 10
+        },
+        {
+          "id": "q4b",
+          "label": "자고 일어난 형태 그대로 보존",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "밥 먹고 난 뒤 설거지는?",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "귀찮아도 바로바로 씻어둔다",
+          "amount": 10
+        },
+        {
+          "id": "q5b",
+          "label": "하루정도는 모아뒀다가 한번에 한다",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "마라탕 배달 먹고 남은\n새빨간 플라스틱 용기는?",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "주방세제로 씻고 말려서 분리수거",
+          "amount": 10
+        },
+        {
+          "id": "q6b",
+          "label": "물로 대충 헹구거나 그대로 분리수거\n(지구야 미안해)",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "화장실 바닥 하수구에 쌓인\n머리카락 뭉치는?",
+      "choices": [
+        {
+          "id": "q7a",
+          "label": "샤워 끝날 때마다, 혹은\n이틀에 한 번 싹 걷어내서 버린다",
+          "amount": 10
+        },
+        {
+          "id": "q7b",
+          "label": "샤워하다 물이 안 내려가기 시작하면\n그때 해결",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "냉장고 안쪽\n깊숙한 곳에는…",
+      "choices": [
+        {
+          "id": "q8a",
+          "label": "반찬통마다 뭐가 들었는지 다 안다.\n썩어가는 음식은 없음",
+          "amount": 10
+        },
+        {
+          "id": "q8b",
+          "label": "무언가 새로운 생명체가 배양되고 있다",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "title": "수건으로 얼굴을 닦는데\n꿉꿉한 냄새가 날 때\n나의 대처법은?",
+      "choices": [
+        {
+          "id": "q9a",
+          "label": "냄새나는 수건들을 다시 세탁한다",
+          "amount": 10
+        },
+        {
+          "id": "q9b",
+          "label": "걍 쓴다",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "title": "주말, 청소 루틴은?",
+      "choices": [
+        {
+          "id": "q10a",
+          "label": "창문 활짝 열고 청소기+물걸레로 싹쓸기",
+          "amount": 10
+        },
+        {
+          "id": "q10b",
+          "label": "창문 열면 춥고 덥고 미세먼지 들어옴.\n공기청정기 풀가동하고 침대와 한 몸",
+          "amount": 0
+        }
+      ]
+    }
+  ]
+}
