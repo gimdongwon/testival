@@ -8,15 +8,30 @@ import { useQuizView } from '@/store/quizStore';
 import { score } from '@/lib/scoring';
 import type { TestDefinition } from '@/domain/quiz.schema';
 import { getResultUIConfig } from '@/domain/quiz.schema';
+import { resolveImage } from '@/lib/imageUtils';
 
-const LoadingContent = ({ def }: { def: TestDefinition }) => {
+const LoadingContent = ({
+  def,
+  webpFiles,
+}: {
+  def: TestDefinition;
+  webpFiles: string[];
+}) => {
   const router = useRouter();
   const testId = def.meta.id;
   const { selected } = useQuizView(testId);
 
   const { top } = useMemo(() => score(def, selected), [def, selected]);
-  const type = def.resultDetails[top as keyof typeof def.resultDetails]
-    .type as string;
+  const detail = def.resultDetails[top as keyof typeof def.resultDetails];
+  const type = detail.type as string;
+
+  // 2초 대기 동안 결과 이미지를 미리 받아둠 → 결과 페이지에서 캐시 히트
+  useEffect(() => {
+    if (!detail.image) return;
+    const src = resolveImage(detail.image, webpFiles);
+    const img = new window.Image();
+    img.src = src;
+  }, [detail.image, webpFiles]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

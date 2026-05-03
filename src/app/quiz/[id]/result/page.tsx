@@ -1,11 +1,14 @@
 // app/quiz/[id]/result/page.tsx
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import ReactDOM from 'react-dom';
 import ResultClient from './result.client';
 import type { Metadata } from 'next';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
 import quizMeta from '@/content/quiz-meta.json';
 import { getRecommendedQuizzes } from '@/lib/recommendedQuizzes';
+import { getAvailableWebP } from '@/lib/resolveQuizImages';
+import { resolveImage } from '@/lib/imageUtils';
 
 type Props = {
   params: Promise<{
@@ -67,13 +70,41 @@ export async function generateMetadata({
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { id } = await params;
+  const { type } = await searchParams;
   const repo = getQuizRepository();
   const def = await repo.getById(id);
   if (!def) return notFound();
+
+  // type 쿼리가 있으면 결과 이미지를 webp로 해석하고 SSR 단계에서 preload
+  let resolvedDef = def;
+  if (typeof type === 'string') {
+    const entry = Object.entries(def.resultDetails).find(
+      ([, d]) => d.type === type
+    );
+    if (entry) {
+      const [key, detail] = entry;
+      if (detail.image) {
+        const webpFiles = getAvailableWebP(id);
+        const resolved = resolveImage(detail.image, webpFiles);
+        ReactDOM.preload(resolved, { as: 'image', fetchPriority: 'high' });
+        if (resolved !== detail.image) {
+          resolvedDef = {
+            ...def,
+            resultDetails: {
+              ...def.resultDetails,
+              [key]: { ...detail, image: resolved },
+            },
+          };
+        }
+      }
+    }
+  }
 
   // 추천 퀴즈 가져오기
   const recommendedQuizzes = await getRecommendedQuizzes(id, 3);
@@ -81,7 +112,7 @@ export default async function Page({
   return (
     <Suspense fallback={null}>
       <ResultClient
-        def={def}
+        def={resolvedDef}
         recommendedQuizzes={recommendedQuizzes}
       />
     </Suspense>
