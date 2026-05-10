@@ -1,0 +1,323 @@
+{
+  "meta": {
+    "id": "young40",
+    "title": "영포티 테스트",
+    "description": "럭키비키 외치는 40대? 당신의 '영포티' 레벨을 확인하세요. 요즘 유행어 좀 쓴다고 MZ 된 줄 아는 우리 부장님, 남편, 아빠… 10초 만에 팩폭을 날려주세요.",
+    "mode": "amount-sum",
+    "resultTypes": ["gentleman", "mz_hosoin", "aje_fatal", "young40_peak"],
+    "thumbnail": "/images/quiz/young40/content_background.png",
+    "locale": "ko",
+    "version": 1
+  },
+  "scoring": {
+    "amountSumBrackets": [
+      { "key": "gentleman", "min": 0, "max": 2 },
+      { "key": "mz_hosoin", "min": 3, "max": 5 },
+      { "key": "aje_fatal", "min": 6, "max": 8 },
+      { "key": "young40_peak", "min": 9, "max": 10 }
+    ]
+  },
+  "ui": {
+    "result": {
+      "theme": "white",
+      "imageMode": "long",
+      "showReceipt": false,
+      "resultLayout": "young40",
+      "backgroundColor": "#f9f1e5",
+      "loadingTextColor": "#111e32",
+      "loadingTextStyle": {
+        "color": "#111E32",
+        "textAlign": "center",
+        "textShadow": "0 1px 2px rgba(0, 0, 0, 0.32), 0 2px 6px rgba(0, 0, 0, 0.12)",
+        "WebkitTextStrokeWidth": "3px",
+        "WebkitTextStrokeColor": "#FFF",
+        "fontFamily": "Hakgyoansim Allimjang TTF",
+        "fontSize": "28px",
+        "fontWeight": 600,
+        "lineHeight": "110%"
+      },
+      "resultTextStroke": "2.5px #FFFFFF",
+      "resultTitleStyle": {
+        "fontFamily": "'Hakgyoansim Allimjang', 'Noto Sans KR', sans-serif",
+        "fontWeight": 800,
+        "fontSize": "32px",
+        "lineHeight": "1.1",
+        "color": "#0e1d35",
+        "textAlign": "center",
+        "letterSpacing": "0",
+        "textShadow": "0 1px 2px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.1)"
+      },
+      "descriptionStyle": {
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "lineHeight": "1.2",
+        "color": "#111e32",
+        "textAlign": "center",
+        "maxWidth": "280px",
+        "margin": "0 auto",
+        "width": "100%"
+      }
+    },
+    "landing": { "buttonTheme": "white" },
+    "question": {
+      "optionVariant": "light",
+      "progressFillColor": "#c45c48",
+      "columns": 1,
+      "hideOptionLabel": false,
+      "optionLabels": ["O", "X"],
+      "optionColors": ["#d9dee3", "#efc7b6"],
+      "optionBorderColors": ["#46618a", "#db7b53"],
+      "optionsGap": "12px",
+      "optionsMarginTop": "28px",
+      "optionTextStyle": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "color": "#111e32",
+        "textAlign": "left",
+        "lineHeight": "normal"
+      },
+      "optionLabelStyle": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "color": "#111e32",
+        "minWidth": "22px",
+        "textAlign": "center"
+      },
+      "optionStyle": {
+        "padding": "16px 21px",
+        "borderRadius": "8px",
+        "gap": "10px",
+        "alignItems": "center"
+      },
+      "questionNumberStyle": {
+        "color": "#111e32",
+        "fontSize": "32px",
+        "textShadow": "none",
+        "fontFamily": "'Hakgyoansim Allimjang', 'Noto Sans KR', sans-serif",
+        "fontWeight": 700
+      },
+      "questionTitleStyle": {
+        "color": "#111E32",
+        "textAlign": "center",
+        "textShadow": "0 1px 2px rgba(0, 0, 0, 0.32), 0 2px 6px rgba(0, 0, 0, 0.12)",
+        "WebkitTextStrokeWidth": "5.79px",
+        "WebkitTextStrokeColor": "#FFF",
+        "fontFamily": "'Hakgyoansim Allimjang TTF', 'Hakgyoansim Allimjang', 'Noto Sans KR', sans-serif",
+        "fontSize": "28px",
+        "fontStyle": "normal",
+        "fontWeight": 600,
+        "lineHeight": "110%",
+        "paintOrder": "stroke fill",
+        "letterSpacing": "0",
+        "maxWidth": "320px",
+        "marginLeft": "auto",
+        "marginRight": "auto",
+        "width": "100%",
+        "boxSizing": "border-box"
+      }
+    }
+  },
+  "resultDetails": {
+    "gentleman": {
+      "name": "훌륭한 신사",
+      "title": "당신은 훌륭한\n신사(gentleman)입니다.",
+      "personalitySectionTitle": "성격 특징",
+      "description": "「나 같은 아저씨가 뭐가 좋다고…」\n\n나이 듦을 자연스럽게 받아들이는 멋진 어른입니다. 억지로 젊은 척·트렌디한 척하지 않아 오히려 더 세련되고 담백해 보입니다.<div style=\"display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;margin-top:20px\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#d9dee3;border:1px solid #46618a;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">환상의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">눈에서 하트 나오는 2030 여친/아내</p></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#efc7b6;border:1px solid #db7b53;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">파국의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">으~! 영포티다 으~</p></div></div>",
+      "keywords": ["담백함", "세련됨", "자연스러움", "존경"],
+      "type": "gentleman",
+      "image": "/images/quiz/young40/result_gentleman.png"
+    },
+    "mz_hosoin": {
+      "name": "MZ 호소인",
+      "title": "위태위태한\nMZ 호소인",
+      "personalitySectionTitle": "성격 특징",
+      "description": "약간의 영포티 기질이 스멀스멀 올라오고 있습니다.\n\n젊은 감각을 유지하려 노력하는 건 좋지만,\n가끔 무리수를 던져 주변의 탄식을 부를 수 있어요.\n\n주변에서 「그건 좀…」 소리를 듣는다면\n당장 멈추는 게 좋습니다.<div style=\"display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;margin-top:20px\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#d9dee3;border:1px solid #46618a;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">환상의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">팩폭 날려주는 솔직한 아내/딸</p></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#efc7b6;border:1px solid #db7b53;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">파국의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">치명적 아재 파탈</p></div></div>",
+      "keywords": ["경계", "무리수", "셀프 점검", "MZ 척"],
+      "type": "mz_hosoin",
+      "image": "/images/quiz/young40/result_mz_hosoin.png"
+    },
+    "aje_fatal": {
+      "name": "중증형",
+      "title": "치명적 아재 파탈\n(중증)",
+      "personalitySectionTitle": "성격 특징",
+      "description": "가슴에 하트 로고 박힌 가디건을 입고\n한정판 조던을 신으며\n「나 정도면 관리 잘한 편이지.」라고\n굳게 믿고 계시는군요.\n\n대화할 때마다 「오빠가~」를 남발하며\nMZ 후배들과 완벽하게 통한다고 착각하지만,\n현실은 2030 여성들에게\n눈빛으로 경멸 당하고 있습니다.\n\n비싼 아이템으로 포장해도 숨겨지지 않는\n그 「치명적인 척」,\n당장 압수입니다!<div style=\"display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;margin-top:20px\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#d9dee3;border:1px solid #46618a;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">환상의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">으~! 영포티다 으~</p></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#efc7b6;border:1px solid #db7b53;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">파국의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">훌륭한 신사(gentleman)</p></div></div>",
+      "keywords": ["착각", "오빠 미학", "과시", "중증"],
+      "type": "aje_fatal",
+      "image": "/images/quiz/young40/result_aje_fatal.png"
+    },
+    "young40_peak": {
+      "name": "영포티 끝판왕",
+      "title": "으~!\n영포티다 으~",
+      "personalitySectionTitle": "성격 특징",
+      "description": "구제불능 영포티 그 자체입니다. 눈치 제로, 자아도취 MAX 상태일 수 있어요.\n\n20대도 안 쓰는 철 지난 유행어를 남발하며 젊은 여성들에게 통할 거라 굳게 믿고 있다면, 주변인들이 심각하게 피로감을 느낄 수 있습니다.\n\n셔츠 단추와 억지 플러팅, 한번쯤 리셋이 필요해 보입니다.<div style=\"display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;margin-top:20px\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#d9dee3;border:1px solid #46618a;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">환상의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">치명적 아재 파탈 (중증)</p></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#efc7b6;border:1px solid #db7b53;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">파국의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">훌륭한 신사(gentleman)</p></div></div>",
+      "keywords": ["구제불능", "유행어", "자아도취", "눈치 제로"],
+      "type": "young40_peak",
+      "image": "/images/quiz/young40/result_young40_peak.png"
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "하트(아미)나 여우(메종키츠네), 우영미 등\n로고 박힌 옷을 입는다",
+      "choices": [
+        {
+          "id": "q1a",
+          "label": "MZ 브랜드 하나쯤은 입어줘야지",
+          "amount": 1
+        },
+        {
+          "id": "q1b",
+          "label": "로고 플레이 부담스러움. 로고 없는 깔끔한 옷 선호",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "가볍게 말할 때는\n‘ㅋ’를 하나 붙이는 편이다",
+      "choices": [
+        {
+          "id": "q2a",
+          "label": "안 쓰면 정 없잖아~",
+          "amount": 1
+        },
+        {
+          "id": "q2b",
+          "label": "쓸 거면 많이 쓰거나 아예 안 쓰거나",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "내 액면가는?",
+      "choices": [
+        {
+          "id": "q3a",
+          "label": "다들 나이 들으면 놀람",
+          "amount": 1
+        },
+        {
+          "id": "q3b",
+          "label": "내 나이로 보임",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "아저씨라는 소리를 들으면",
+      "choices": [
+        {
+          "id": "q4a",
+          "label": "솔직히 기분 나쁘다",
+          "amount": 1
+        },
+        {
+          "id": "q4b",
+          "label": "아저씨 맞는데 뭐 어때",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "「나 정도면 MZ랑 말 잘 통하지」\n생각함?",
+      "choices": [
+        {
+          "id": "q5a",
+          "label": "후배들이 나 편하게 생각함",
+          "amount": 1
+        },
+        {
+          "id": "q5b",
+          "label": "나이 차이는 어쩔 수 없음",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "카톡 프사가 명언\n혹은 외제차다",
+      "choices": [
+        {
+          "id": "q6a",
+          "label": "내 취향과 철학임",
+          "amount": 1
+        },
+        {
+          "id": "q6b",
+          "label": "그냥 평범한 사진",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "유행어(럭키비키 등)\n잘 아는 편?",
+      "choices": [
+        {
+          "id": "q7a",
+          "label": "트렌드 따라가야지이~",
+          "amount": 1
+        },
+        {
+          "id": "q7b",
+          "label": "잘 모름",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "title": "대화할 때 자기 자신을\n「오빠가~」「형이~」라고\n3인칭으로 칭한다?",
+      "choices": [
+        {
+          "id": "q8a",
+          "label": "그게 자연스러운데?",
+          "amount": 1
+        },
+        {
+          "id": "q8b",
+          "label": "내 입으로 오빠라고 하기 오글거림",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "title": "카페 가는 MZ 후배들을 마주침",
+      "choices": [
+        {
+          "id": "q9a",
+          "label": "사줄겸 같이 카페 간다",
+          "amount": 1
+        },
+        {
+          "id": "q9b",
+          "label": "자기들끼리 다녀오게 냅둔다",
+          "amount": 0
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "title": "여성 후배에게\n장난치는 편?",
+      "choices": [
+        {
+          "id": "q10a",
+          "label": "위트 있고 매너 있는 정도",
+          "amount": 1
+        },
+        {
+          "id": "q10b",
+          "label": "ㄴㄴ 절대 안 침",
+          "amount": 0
+        }
+      ]
+    }
+  ]
+}

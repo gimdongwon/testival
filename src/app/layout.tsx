@@ -88,6 +88,16 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <head>
+        {/* HakgyoansimAllimjang (영포티 결과/일부 퀴즈 타이틀 전용) — CSS @import는 렌더 블로킹이라 link로 분리 */}
+        <link
+          rel='preconnect'
+          href='https://cdn.jsdelivr.net'
+          crossOrigin='anonymous'
+        />
+        <link
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang.css'
+        />
         {/* Google Tag Manager */}
         <Script id='google-tag-manager' strategy='beforeInteractive'>
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

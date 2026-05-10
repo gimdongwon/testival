@@ -147,6 +147,7 @@ const ResultCard = ({
             <div className={styles.descriptionBody}>
               <div
                 className={styles.description}
+                style={descStyle}
                 dangerouslySetInnerHTML={{ __html: result.description.replace(/\n/g, '<br/>') }}
               />
             </div>

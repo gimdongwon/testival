@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+/* 두꺼운 선택지 테두리+radius가 오른쪽에서 잘리지 않도록 (무테 카드) */
+.card:not(.cardBordered) {
+  overflow: visible;
+}
+
 .card.cardBordered {
   top: 0;
   overflow: visible;
@@ -71,7 +76,21 @@
   line-height: 1.25;
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
   text-decoration: none;
-  white-space: pre-line;
+}
+
+.cardTitleStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0;
+}
+
+.cardTitleLine {
+  display: block;
+  margin: 0;
+  /* 부모(.cardTitleStack)가 line-height: 0 이라 inline 오버라이드 없으면 줄 높이가 0으로 무너짐 — 기존 .cardTitle 값 복원 */
+  line-height: 1.25;
+  word-break: keep-all;
 }
 
 /* ── Question image ── */
@@ -109,6 +128,10 @@
   gap: 10px;
   margin-top: 100px;
   width: 100%;
+  /* 테두리+radius가 부모에 잘리지 않도록 */
+  overflow: visible;
+  box-sizing: border-box;
+  padding: 0 2px 8px;
 }
 
 .cardOptions.hasImage {
@@ -118,6 +141,8 @@
 .fullWidth {
   display: block;
   width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
 }
 
 .optionBtn {
@@ -139,12 +164,8 @@
   background-color: var(--option-bg, #fff);
   color: var(--option-color, #000);
   box-sizing: border-box;
-  overflow: hidden;
-}
-
-/* 무테 카드: 마지막 선택지 하단이 부모(12px) 클립과 겹칠 때 WebKit 합성 보정 */
-.card:not(.cardBordered) .cardOptions .fullWidth:last-child .optionBtn {
-  border-radius: 12px;
+  /* radius+두꺼운 border 조합에서 모서리가 잘리는 현상 방지 */
+  overflow: visible;
 }
 
 /* Theming helpers (compose with .optionBtn) */

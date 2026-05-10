@@ -1,8 +1,8 @@
 'use client';
 
 import type { CSSProperties } from 'react';
-import type { ResultLayoutProps } from './ClassicResult';
-import styles from '../common/ResultCard/ResultCard.module.scss';
+import type { ResultLayoutProps } from '../types';
+import styles from '../../common/ResultCard/ResultCard.module.scss';
 
 const stripHtml = (html: string): string =>
   html.replace(/<[^>]*>/g, '');
@@ -21,7 +21,7 @@ const springHeadlineFromName = (name: string): string => {
     .filter(Boolean);
   if (lines.length === 0) return name;
   const afterFirst = lines.slice(1).join('\n');
-  const multiLineBracket = afterFirst.match(/^\[([\\s\S]+)\]$/);
+  const multiLineBracket = afterFirst.match(/^\[([\s\S]+)\]$/);
   if (multiLineBracket) return multiLineBracket[1]?.trim() ?? afterFirst;
   const last = lines[lines.length - 1] ?? '';
   const bracket = last.match(/^\[(.+)\]$/);

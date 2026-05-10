@@ -1,15 +1,8 @@
 'use client';
 
 import type { CSSProperties } from 'react';
-import type { ResultDetail, ResultUIConfig } from '@/domain/quiz.schema';
-import styles from '../common/ResultCard/ResultCard.module.scss';
-
-/** 모든 Result 레이아웃 컴포넌트가 받는 공통 props */
-export type ResultLayoutProps = {
-  result: ResultDetail;
-  config: ResultUIConfig;
-  scoreLabel?: string;
-};
+import type { ResultLayoutProps } from '../types';
+import styles from '../../common/ResultCard/ResultCard.module.scss';
 
 const stripHtml = (html: string): string =>
   html.replace(/<[^>]*>/g, '');
@@ -39,6 +32,9 @@ const ClassicResult = ({ result, config, scoreLabel }: ResultLayoutProps) => {
     resultHeroHeadlineStyle,
     resultTitleStyle: resultTitleStyleOverride,
     descriptionStyle: descriptionStyleOverride,
+    descriptionHeaderStyle: descriptionHeaderStyleOverride,
+    descriptionHeaderTextStyle: descriptionHeaderTextStyleOverride,
+    descriptionBodyStyle: descriptionBodyStyleOverride,
     contentBorderColor,
     contentBorderRadius,
     resultImageBorder,
@@ -66,6 +62,21 @@ const ClassicResult = ({ result, config, scoreLabel }: ResultLayoutProps) => {
   const descStyle: CSSProperties | undefined = descriptionStyleOverride
     ? (descriptionStyleOverride as CSSProperties)
     : undefined;
+
+  const descriptionHeaderWrapperStyle: CSSProperties | undefined =
+    descriptionHeaderStyleOverride
+      ? (descriptionHeaderStyleOverride as CSSProperties)
+      : undefined;
+
+  const descriptionHeaderInnerTextStyle: CSSProperties | undefined =
+    descriptionHeaderTextStyleOverride
+      ? (descriptionHeaderTextStyleOverride as CSSProperties)
+      : undefined;
+
+  const descriptionBodyWrapperStyle: CSSProperties | undefined =
+    descriptionBodyStyleOverride
+      ? (descriptionBodyStyleOverride as CSSProperties)
+      : undefined;
 
   const contentCardBorderStyle: CSSProperties | undefined =
     contentBorderColor || contentBorderRadius
@@ -106,13 +117,17 @@ const ClassicResult = ({ result, config, scoreLabel }: ResultLayoutProps) => {
 
           <div className={styles.borderedContentCard}>
             {descriptionHeader && (
-              <div className={styles.descriptionHeader}>
-                <span>{descriptionHeader}</span>
+              <div
+                className={styles.descriptionHeader}
+                style={descriptionHeaderWrapperStyle}
+              >
+                <span style={descriptionHeaderInnerTextStyle}>{descriptionHeader}</span>
               </div>
             )}
-            <div className={styles.descriptionBody}>
+            <div className={styles.descriptionBody} style={descriptionBodyWrapperStyle}>
               <div
                 className={styles.description}
+                style={descStyle}
                 dangerouslySetInnerHTML={{ __html: result.description.replace(/\n/g, '<br/>') }}
               />
             </div>

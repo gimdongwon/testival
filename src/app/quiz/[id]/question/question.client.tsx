@@ -29,6 +29,9 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const total = def.questions.length;
   const q = def.questions[index];
 
+  // JSON UI 설정 (options useMemo보다 먼저 초기화)
+  const qUi = getQuestionUIConfig(def);
+
   const currentStep = index + 1;
   const progressPercent = Math.round((currentStep / total) * 100);
 
@@ -36,10 +39,10 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     () =>
       q.choices.map((c, i) => ({
         id: c.id,
-        label: LABELS[i] ?? '',
+        label: qUi.optionLabels?.[i] ?? LABELS[i] ?? '',
         text: c.label,
       })),
-    [q.choices]
+    [q.choices, qUi.optionLabels]
   );
 
   const handleSelect = (choiceId: string) => {
@@ -47,9 +50,6 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     if (index === total - 1) router.push(`/quiz/${testId}/loading`);
     else quizActions.next(testId, total);
   };
-
-  // JSON UI 설정 - 타입 안전하게 가져오기
-  const qUi = getQuestionUIConfig(def);
 
   const optionClassName =
     qUi.optionVariant === 'chuseokDark'
@@ -81,6 +81,8 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     ['--progress']: `${progressPercent}%`,
     ['--progress-fill-color']: qUi.progressFillColor ?? '#555',
   };
+
+  const optionButtonGroupStyle = qUi.optionStyle as CSSProperties | undefined;
 
   // JSON 설정에서 columns 가져오기 (기본값: 1)
   // 2지선다의 경우 자동으로 2컬럼 적용 가능하도록 fallback 로직 포함
@@ -128,6 +130,10 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           optionColors={optionColors}
           optionTextStyle={optionTextStyle}
           optionLabelStyle={optionLabelStyle}
+          optionBorderColors={qUi.optionBorderColors}
+          optionsGap={qUi.optionsGap}
+          optionsMarginTop={qUi.optionsMarginTop}
+          optionButtonStyle={optionButtonGroupStyle}
           columns={columns}
           optionFontFamily={optionFontFamily}
         />

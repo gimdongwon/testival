@@ -1,8 +1,8 @@
 'use client';
 
 import type { CSSProperties } from 'react';
-import type { ResultLayoutProps } from './ClassicResult';
-import styles from '../common/ResultCard/ResultCard.module.scss';
+import type { ResultLayoutProps } from '../types';
+import styles from '../../common/ResultCard/ResultCard.module.scss';
 
 const stripHtml = (html: string): string =>
   html.replace(/<[^>]*>/g, '');

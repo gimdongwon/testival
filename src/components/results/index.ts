@@ -1,24 +1,27 @@
 import type { ComponentType } from 'react';
 import type { ResultLayout } from '@/domain/quiz.schema';
-import type { ResultLayoutProps } from './ClassicResult';
 
-import ClassicResult from './ClassicResult';
-import SpringResult from './SpringResult';
-import GradeResult from './GradeResult';
-import GoodBoyfriendResult from './new/GoodBoyfriendResult';
+import ClassicResult from './classic/ClassicResult';
+import SpringResult from './spring/SpringResult';
+import GradeResult from './grade/GradeResult';
+import GoodBoyfriendResult from './new/goodboyfriend/GoodBoyfriendResult';
+import Young40Result from './new/young40/Young40Result';
+import type { ResultLayoutProps } from './types';
 
-export type { ResultLayoutProps };
+export type { ResultLayoutProps } from './types';
 
 /**
  * resultLayout 값 → 결과 레이아웃 컴포넌트 매핑
  *
- * 새로운 레이아웃을 추가할 때 이 레지스트리에 등록하면 됩니다.
+ * 디렉터리: classic/ · spring/ · grade/ · new/<퀴즈>/ (커스텀 전용)
+ * 새 커스텀 레이아웃은 new/ 아래에 폴더를 만든 뒤 여기에 등록합니다.
  */
 export const RESULT_LAYOUTS: Record<ResultLayout, ComponentType<ResultLayoutProps>> = {
   classic: ClassicResult,
   spring: SpringResult,
   grade: GradeResult,
   goodboyfriend: GoodBoyfriendResult,
+  young40: Young40Result,
 };
 
 /**

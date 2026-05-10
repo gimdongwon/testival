@@ -1,7 +1,7 @@
 'use client';
 
 import type { CSSProperties } from 'react';
-import type { ResultLayoutProps } from '../ClassicResult';
+import type { ResultLayoutProps } from '../../types';
 import styles from './GoodBoyfriendResult.module.scss';
 
 const stripHtml = (html: string): string =>

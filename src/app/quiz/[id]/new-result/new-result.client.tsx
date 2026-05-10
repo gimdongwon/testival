@@ -1,10 +1,8 @@
 // app/quiz/[id]/new-result/new-result.client.tsx
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import styles from './NewResult.module.scss';
-import ResetIcon from '@/components/icons/reset';
-import ShareIcon from '@/components/icons/share';
 import { useMemo, useState, useEffect } from 'react';
 import type { CSSProperties } from 'react';
 import { useQuizView } from '@/store/quizStore';
@@ -13,6 +11,7 @@ import type { TestDefinition, ResultDetail } from '@/domain/quiz.schema';
 import { getResultUIConfig } from '@/domain/quiz.schema';
 import RecommendedQuizzes from '@/components/common/RecommendedQuizzes';
 import CoupangAd from '@/components/common/CoupangAd';
+import ResultShareActions from '@/components/common/ResultShareActions/ResultShareActions';
 import type { QuizRecommendation } from '@/lib/recommendedQuizzes';
 import { getResultComponent } from '@/components/results';
 
@@ -23,7 +22,6 @@ export default function NewResultClient({
   def: TestDefinition;
   recommendedQuizzes: QuizRecommendation[];
 }) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const testId = def.meta.id;
   const { selected } = useQuizView(testId);
@@ -34,57 +32,6 @@ export default function NewResultClient({
   }, []);
 
   const type = searchParams.get('type');
-
-  const handleClickShareBtn = () => {
-    if (typeof window === 'undefined' || !window?.location?.href) {
-      alert('URL을 복사할 수 없습니다.');
-      return;
-    }
-
-    const currentUrl = window.location.href;
-
-    if (
-      navigator.clipboard &&
-      typeof navigator.clipboard.writeText === 'function'
-    ) {
-      navigator.clipboard
-        .writeText(currentUrl)
-        .then(() => {
-          alert('URL이 복사되었습니다!');
-        })
-        .catch(() => {
-          alert('URL 복사에 실패했습니다. 다시 시도해주세요.');
-        });
-      return;
-    }
-
-    // fallback: execCommand
-    const textArea = document.createElement('textarea');
-    textArea.value = currentUrl;
-    textArea.style.position = 'fixed';
-    textArea.style.opacity = '0';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-
-    try {
-      const successful = document.execCommand('copy');
-      if (successful) {
-        alert('URL이 복사되었습니다!');
-      } else {
-        alert('URL 복사에 실패했습니다. 다시 시도해주세요.');
-      }
-    } catch (err) {
-      console.error(err);
-      alert('URL 복사에 실패했습니다. 다시 시도해주세요.');
-    }
-
-    document.body.removeChild(textArea);
-  };
-
-  const handleClickResetBtn = () => {
-    router.push(`/quiz/${testId}`);
-  };
 
   const resultUIConfig = getResultUIConfig(def);
   const config = resultUIConfig ?? {
@@ -99,13 +46,20 @@ export default function NewResultClient({
   const shareBtnColor =
     config.shareBtnColor ?? (config.theme === 'black' ? '#fff' : '#000');
 
+  const isYoung40Shell = config.resultLayout === 'young40';
+
   const bgImage = config.resultBackgroundImage
     ? `url("${config.resultBackgroundImage}")`
-    : `url("/images/quiz/${testId}/content_background.png")`;
+    : isYoung40Shell
+      ? 'none'
+      : `url("/images/quiz/${testId}/content_background.png")`;
+
+  const shellBgColor = isYoung40Shell
+    ? '#0f203b'
+    : (config.backgroundColor ?? (config.theme === 'white' ? '#fff' : '#000'));
 
   const resultBgStyle: CSSProperties & Record<'--result-bg-color', string> = {
-    ['--result-bg-color']:
-      config.backgroundColor ?? (config.theme === 'white' ? '#fff' : '#000'),
+    ['--result-bg-color']: shellBgColor,
     backgroundImage: bgImage,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -155,38 +109,26 @@ export default function NewResultClient({
       aria-label='테스트 결과'
       style={resultBgStyle}
     >
-      {displayDetail && (
-        (() => {
-          const ResultComponent = getResultComponent(config.resultLayout ?? undefined);
-          return (
-            <ResultComponent
-              result={displayDetail}
-              config={config}
-              scoreLabel={scoreLabel}
-            />
-          );
-        })()
-      )}
-
-      <div className={styles.shareBtnWrapper}>
-        <button
-          className={styles.shareBtn}
-          onClick={handleClickShareBtn}
-          style={{ backgroundColor: shareBtnBg, color: shareBtnColor }}
-        >
-          <span>내 결과 공유하기</span>
-          <ShareIcon color={shareBtnColor} width={12} height={16} />
-        </button>
-        <button
-          className={styles.resetBtn}
-          aria-label='처음부터 다시하기'
-          onClick={handleClickResetBtn}
-          style={{ backgroundColor: '#ED1B7A', color: '#fff' }}
-        >
-          처음부터 다시하기
-          <ResetIcon color='#fff' width={13} height={15} />
-        </button>
+      <div className={styles.resultBody}>
+        {displayDetail && (
+          (() => {
+            const ResultComponent = getResultComponent(config.resultLayout ?? undefined);
+            return (
+              <ResultComponent
+                result={displayDetail}
+                config={config}
+                scoreLabel={scoreLabel}
+              />
+            );
+          })()
+        )}
       </div>
+
+      <ResultShareActions
+        testId={testId}
+        shareBtnBg={shareBtnBg}
+        shareBtnColor={shareBtnColor}
+      />
 
       {recommendedQuizzes && recommendedQuizzes.length > 0 && (
         <RecommendedQuizzes quizzes={recommendedQuizzes} theme={config.theme} />

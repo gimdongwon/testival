@@ -7,8 +7,25 @@ import type { CSSProperties } from 'react';
 import { useQuizView } from '@/store/quizStore';
 import { score } from '@/lib/scoring';
 import type { TestDefinition } from '@/domain/quiz.schema';
-import { getResultUIConfig } from '@/domain/quiz.schema';
+import { getResultUIConfig, usesDedicatedNewResultPage } from '@/domain/quiz.schema';
 import { resolveImage } from '@/lib/imageUtils';
+
+/** JSON 등에서 온 소문자 webkit* 키는 React가 경고함 — Webkit* 로 통일 */
+const normalizeLoadingTextStyle = (raw: CSSProperties): CSSProperties => {
+  const r = raw as Record<string, unknown>;
+  const out = { ...r };
+
+  if (out.WebkitTextStrokeWidth === undefined && out.webkitTextStrokeWidth !== undefined) {
+    out.WebkitTextStrokeWidth = out.webkitTextStrokeWidth;
+    delete out.webkitTextStrokeWidth;
+  }
+  if (out.WebkitTextStrokeColor === undefined && out.webkitTextStrokeColor !== undefined) {
+    out.WebkitTextStrokeColor = out.webkitTextStrokeColor;
+    delete out.webkitTextStrokeColor;
+  }
+
+  return out as CSSProperties;
+};
 
 const LoadingContent = ({
   def,
@@ -34,13 +51,15 @@ const LoadingContent = ({
   }, [detail.image, webpFiles]);
 
   useEffect(() => {
+    const useNewResult = usesDedicatedNewResultPage(def);
+
     const timer = setTimeout(() => {
-      const resultPath = testId === 'goodboyfriend' ? 'new-result' : 'result';
+      const resultPath = useNewResult ? 'new-result' : 'result';
       router.push(`/quiz/${testId}/${resultPath}?type=${type}`);
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, [router, testId, type]);
+  }, [router, testId, type, def]);
 
   const resultConfig = getResultUIConfig(def);
   const bgColor =
@@ -53,7 +72,7 @@ const LoadingContent = ({
 
   const loadingTextColor = resultConfig?.loadingTextColor ?? '#ffffff';
   const loadingTextStyle: CSSProperties = resultConfig?.loadingTextStyle
-    ? (resultConfig.loadingTextStyle as CSSProperties)
+    ? normalizeLoadingTextStyle(resultConfig.loadingTextStyle as CSSProperties)
     : { color: loadingTextColor };
 
   return (

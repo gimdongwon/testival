@@ -1,10 +1,11 @@
 // app/quiz/[id]/result/page.tsx
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import ResultClient from './result.client';
 import type { Metadata } from 'next';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
+import { usesDedicatedNewResultPage } from '@/domain/quiz.schema';
 import quizMeta from '@/content/quiz-meta.json';
 import { getRecommendedQuizzes } from '@/lib/recommendedQuizzes';
 import { getAvailableWebP } from '@/lib/resolveQuizImages';
@@ -76,10 +77,27 @@ export default async function Page({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { id } = await params;
-  const { type } = await searchParams;
+  const resolvedSearch = await searchParams;
+  const { type } = resolvedSearch;
   const repo = getQuizRepository();
   const def = await repo.getById(id);
   if (!def) return notFound();
+
+  if (usesDedicatedNewResultPage(def)) {
+    const qs = new URLSearchParams();
+    for (const [key, val] of Object.entries(resolvedSearch)) {
+      if (val === undefined) continue;
+      if (Array.isArray(val)) {
+        for (const v of val) {
+          qs.append(key, v);
+        }
+      } else {
+        qs.set(key, val);
+      }
+    }
+    const query = qs.toString();
+    redirect(query ? `/quiz/${id}/new-result?${query}` : `/quiz/${id}/new-result`);
+  }
 
   // type 쿼리가 있으면 결과 이미지를 webp로 해석하고 SSR 단계에서 preload
   let resolvedDef = def;

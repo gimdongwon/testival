@@ -41,13 +41,17 @@ export const ResultDetailZ = z.object({
   name: z.string().min(1),
   title: z.string().min(1),
   description: z.string().min(1),
+  /** 영포티 등: 화이트 카드 상단 섹션 제목(기본값은 레이아웃에서 처리) */
+  personalitySectionTitle: z.string().min(1).optional(),
   image: z.string().min(1).optional(),
   keywords: z.array(z.string().min(1)).min(1).max(10).default([]),
   type: z.string().min(1),
 });
 
 /** 결과 레이아웃 프리셋 */
-export const ResultLayoutZ = z.enum(['classic', 'spring', 'grade', 'goodboyfriend']).default('classic');
+export const ResultLayoutZ = z
+  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40'])
+  .default('classic');
 export type ResultLayout = z.infer<typeof ResultLayoutZ>;
 
 /** 결과 페이지 UI 설정(콘텐츠 JSON에서 오버라이드 가능) */
@@ -77,6 +81,12 @@ export const ResultUIConfigZ = z.object({
   loadingTextStyle: z.record(z.string(), z.unknown()).optional(),
   resultTitleStyle: z.record(z.string(), z.unknown()).optional(),
   descriptionStyle: z.record(z.string(), z.unknown()).optional(),
+  /** 무이미지 결과 카드: 설명 상단 뱃지(랩퍼) — padding, background, borderRadius 등 */
+  descriptionHeaderStyle: z.record(z.string(), z.unknown()).optional(),
+  /** 무이미지 결과 카드: 설명 상단 뱃지 내부 텍스트 */
+  descriptionHeaderTextStyle: z.record(z.string(), z.unknown()).optional(),
+  /** 무이미지 결과 카드: 설명 본문 영역 랩퍼 */
+  descriptionBodyStyle: z.record(z.string(), z.unknown()).optional(),
   contentBorderColor: z.string().optional(),
   contentBorderRadius: z.string().optional(),
   resultImageBorder: z.string().optional(),
@@ -110,6 +120,14 @@ export const QuestionUIConfigZ = z.object({
   columns: z.number().int().positive().optional(),
   cardBorderColor: z.string().optional(),
   optionBorderColor: z.string().optional(),
+  /** 선택지마다 다른 테두리색 (예: O/X 두 톤) */
+  optionBorderColors: z.array(z.string()).optional(),
+  /** 선택지 앞 라벨 문자열 (예: ["O","X"]) — 없으면 A. B. … */
+  optionLabels: z.array(z.string()).optional(),
+  /** 선택지 목록 세로 간격 (예: "12px") */
+  optionsGap: z.string().optional(),
+  /** 선택지 블록 상단 여백 (예: "24px") — 카드 기본 100px 등 오버라이드 */
+  optionsMarginTop: z.string().optional(),
   contentPaddingTop: z.string().optional(),
   // Grouped style for the option button (fontFamily, borderColor, etc.).
   optionStyle: z.record(z.string(), z.unknown()).optional(),
@@ -264,6 +282,12 @@ export function getQuestionUIConfig(def: TestDefinition): Partial<QuestionUIConf
 
 export function getResultUIConfig(def: TestDefinition): ResultUIConfig | undefined {
   return def.ui?.result;
+}
+
+/** 커스텀 결과 UI 전용 라우트 `/quiz/[id]/new-result`를 쓰는 레이아웃 */
+export function usesDedicatedNewResultPage(def: TestDefinition): boolean {
+  const layout = getResultUIConfig(def)?.resultLayout;
+  return layout === 'goodboyfriend' || layout === 'young40';
 }
 
 export function getLandingUIConfig(def: TestDefinition): LandingUIConfig {

@@ -1,0 +1,284 @@
+/* Young40Result — 영포티 테스트 전용 결과 레이아웃 (Figma result_young40) */
+
+.page {
+  width: 100%;
+  background: #0f203b;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cream {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  margin-top: 40px;
+  background: #f9f1e5;
+  padding: 32px 20px 0;
+  overflow: hidden;
+}
+
+.decor {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background:
+    radial-gradient(
+      circle at 12% 14%,
+      rgba(14, 29, 53, 0.2) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 88% 10%,
+      rgba(14, 29, 53, 0.18) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 6% 72%,
+      rgba(14, 29, 53, 0.12) 0%,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 88%,
+      rgba(14, 29, 53, 0.15) 0%,
+      transparent 30%
+    );
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 0 4px 16px;
+}
+
+.badge {
+  margin: 0;
+  padding: 3px 18px;
+  border-radius: 20px;
+  background: #f5c255;
+  color: #0e1d35;
+  font-family: 'Cafe24Classictype', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.1;
+  transform: rotate(-3deg);
+}
+
+.titleWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 8px;
+}
+
+/* Figma 1620:1543 — 세미 타이틀: 컨테이너 leading 0, 줄마다 1.1 (학교안심 알림장 B) */
+.mainTitle {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0;
+  text-align: center;
+}
+
+.mainTitleLine {
+  display: block;
+  margin: 0;
+  line-height: 1.1;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.column {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding-bottom: 12px;
+}
+
+.illustration {
+  width: 100%;
+  max-width: 320px;
+  /* Figma 1620:1459 — 일러스트 프레임 고정 높이, 이미지는 cover로 채움 */
+  height: 380px;
+  border: 2px solid #fbdea1;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f9f1e5 0%, #eec0b0 100%);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.illustrationInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.dots {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/quiz/young40/result_dots_6px.png');
+  background-size: 6px 6px;
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.character {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.whiteCard {
+  width: 100%;
+  max-width: 320px;
+  padding: 30px;
+  background: #fff;
+  border: 1.5px solid #111e32;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(15, 32, 59, 0.12);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.traitSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+/* Figma 1626:2045 — 성격 특징 필 라벨 */
+.traitHeading {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 22px;
+  border-radius: 74px;
+  background: #fbdea1;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: #111e32;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Figma 1620:1468 — 래퍼: 폰트/색은 inline descriptionStyle, 줄 단위는 자식 <p> */
+.traitBody {
+  margin: 0;
+  width: 100%;
+  max-width: 280px;
+  word-break: keep-all;
+  line-height: 0;
+}
+
+.traitLine {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  color: inherit;
+  line-height: 1.2;
+  text-align: inherit;
+}
+
+.traitBlank {
+  margin: 0;
+  line-height: 1.2;
+  min-height: 1.2em;
+}
+
+.compatibilityBlock {
+  width: 100%;
+}
+
+.tearBand {
+  line-height: 0;
+  margin-top: -2px;
+  width: 100%;
+  max-width: 430px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tearImg {
+  display: block;
+  width: 100%;
+  height: 72px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  list-style: none;
+  padding: 8px 0 0;
+  margin: 0;
+  max-width: 320px;
+}
+
+.keyword {
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: rgba(17, 30, 50, 0.75);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(17, 30, 50, 0.2);
+}
