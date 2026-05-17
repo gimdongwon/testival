@@ -51,7 +51,7 @@ const PrivacyPage = () => {
                 개선을 위한 통계 분석
               </li>
               <li>
-                광고 게재: Google AdSense, 쿠팡파트너스를 통한 맞춤형 광고 제공
+                광고 게재: Google AdSense를 통한 맞춤형 광고 제공
               </li>
               <li>서비스 안정성 확보: 서비스 오류 파악 및 성능 모니터링</li>
             </ul>
@@ -148,10 +148,6 @@ const PrivacyPage = () => {
                 <span className={styles.tableCell}>
                   맞춤형 광고 제공 (DoubleClick 쿠키 포함)
                 </span>
-              </div>
-              <div className={styles.tableRow}>
-                <span className={styles.tableCell}>쿠팡파트너스</span>
-                <span className={styles.tableCell}>제휴 광고 및 구매 추적</span>
               </div>
               <div className={styles.tableRow}>
                 <span className={styles.tableCell}>Vercel Analytics</span>
@@ -254,11 +250,6 @@ const PrivacyPage = () => {
                 <span className={styles.tableCell}>호스팅, 성능 분석</span>
                 <span className={styles.tableCell}>접속 로그, 성능 데이터</span>
               </div>
-              <div className={styles.tableRow}>
-                <span className={styles.tableCell}>쿠팡</span>
-                <span className={styles.tableCell}>제휴 광고</span>
-                <span className={styles.tableCell}>쿠키, 클릭 정보</span>
-              </div>
             </div>
 
             <p className={styles.text}>
@@ -285,17 +276,6 @@ const PrivacyPage = () => {
                   aria-label='Vercel 개인정보처리방침 (새 탭에서 열림)'
                 >
                   Vercel Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href='https://privacy.coupang.com'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className={styles.link}
-                  aria-label='쿠팡 개인정보처리방침 (새 탭에서 열림)'
-                >
-                  쿠팡 개인정보처리방침
                 </a>
               </li>
             </ul>

@@ -3,7 +3,6 @@ import { getQuizRepository } from '@/infrastructure/quiz.repository';
 import Header from '@/components/common/Header';
 import MainImageSlide from '@/components/MainImageSlide/MainImageSlide';
 import QuizListCard from '@/components/common/QuizListCard';
-import CoupangAd from '@/components/common/CoupangAd';
 import styles from './page.module.scss';
 import Footer from '@/components/common/Footer';
 import Script from 'next/script';
@@ -101,9 +100,6 @@ const Home = async () => {
         <div className={styles.slideSection}>
           <MainImageSlide images={mainSlideImages} links={mainSlideLinks} />
         </div>
-
-        {/* 쿠팡파트너스 광고 - 슬라이드와 추천 심테 사이 */}
-        <CoupangAd />
 
         <main className={styles.main}>
           <section className={styles.quizListSection}>

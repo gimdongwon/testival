@@ -167,8 +167,8 @@ const TermsPage = () => {
             </p>
             <ul className={styles.list}>
               <li>
-                서비스에는 Google AdSense, 쿠팡파트너스 등 제3자 광고 네트워크를
-                통한 광고가 표시될 수 있습니다.
+                서비스에는 Google AdSense 등 제3자 광고 네트워크를 통한 광고가
+                표시될 수 있습니다.
               </li>
               <li>
                 광고 게재로 인해 이용자에게 발생하는 손실이나 손해에 대해 서비스는

@@ -10,7 +10,6 @@ import { score } from '@/lib/scoring';
 import type { TestDefinition, ResultDetail } from '@/domain/quiz.schema';
 import { getResultUIConfig } from '@/domain/quiz.schema';
 import RecommendedQuizzes from '@/components/common/RecommendedQuizzes';
-import CoupangAd from '@/components/common/CoupangAd';
 import ResultShareActions from '@/components/common/ResultShareActions/ResultShareActions';
 import type { QuizRecommendation } from '@/lib/recommendedQuizzes';
 import { getResultComponent } from '@/components/results';
@@ -133,8 +132,6 @@ export default function NewResultClient({
       {recommendedQuizzes && recommendedQuizzes.length > 0 && (
         <RecommendedQuizzes quizzes={recommendedQuizzes} theme={config.theme} />
       )}
-
-      <CoupangAd />
     </section>
   );
 }
