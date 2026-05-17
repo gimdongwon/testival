@@ -50,7 +50,7 @@ export const ResultDetailZ = z.object({
 
 /** 결과 레이아웃 프리셋 */
 export const ResultLayoutZ = z
-  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40'])
+  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape'])
   .default('classic');
 export type ResultLayout = z.infer<typeof ResultLayoutZ>;
 
@@ -62,6 +62,9 @@ export const ResultUIConfigZ = z.object({
   showReceipt: z.boolean().default(false),
   backgroundColor: z.string().optional(),
   resultBackgroundImage: z.string().optional(),
+  loadingText: z.string().optional(),
+  loadingBackgroundColor: z.string().optional(),
+  loadingBackgroundImage: z.string().optional(),
   loadingTextColor: z.string().optional(),
   shareBtnBottom: z.string().optional(),
   shareBtnBackgroundColor: z.string().optional(),
@@ -287,7 +290,7 @@ export function getResultUIConfig(def: TestDefinition): ResultUIConfig | undefin
 /** 커스텀 결과 UI 전용 라우트 `/quiz/[id]/new-result`를 쓰는 레이아웃 */
 export function usesDedicatedNewResultPage(def: TestDefinition): boolean {
   const layout = getResultUIConfig(def)?.resultLayout;
-  return layout === 'goodboyfriend' || layout === 'young40';
+  return layout === 'goodboyfriend' || layout === 'young40' || layout === 'soloescape';
 }
 
 export function getLandingUIConfig(def: TestDefinition): LandingUIConfig {

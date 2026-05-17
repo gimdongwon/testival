@@ -46,10 +46,12 @@ export default function NewResultClient({
     config.shareBtnColor ?? (config.theme === 'black' ? '#fff' : '#000');
 
   const isYoung40Shell = config.resultLayout === 'young40';
+  const isSoloEscapeShell = config.resultLayout === 'soloescape';
+  const skipDefaultBgImage = isYoung40Shell || isSoloEscapeShell;
 
   const bgImage = config.resultBackgroundImage
     ? `url("${config.resultBackgroundImage}")`
-    : isYoung40Shell
+    : skipDefaultBgImage
       ? 'none'
       : `url("/images/quiz/${testId}/content_background.png")`;
 

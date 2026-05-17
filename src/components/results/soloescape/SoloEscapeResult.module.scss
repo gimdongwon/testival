@@ -1,0 +1,222 @@
+/* SoloEscapeResult — 솔로 탈출 테스트 전용 결과 레이아웃 (Figma 1749:646) */
+
+.page {
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 24px 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-sizing: border-box;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ────────────────────────────
+ * 카드 #1: 확률 + 일러스트
+ * ──────────────────────────── */
+.heroCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 26px 19px 21px;
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 16px 40px rgba(90, 60, 140, 0.12);
+}
+
+.captionBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #b68cff 0%, #8a63dd 100%);
+  color: #ffffff;
+  font-family: 'Cafe24Classictype', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
+  transform: rotate(-2deg);
+  filter: drop-shadow(0 8px 10px rgba(120, 80, 200, 0.18));
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.headline {
+  display: block;
+  font-family: 'PyeongchangPeace', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -1.7px;
+  color: #31183d;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.percent {
+  /* Figma 1749:799 — text-[100px] leading-[90px] tracking-[-8px].
+     display:block로 박스를 부모 폭만큼 잡아 마지막 글자의 음수 letter-spacing
+     오버행이 background-clip:text 영역 밖으로 새지 않게 한다.
+     (inline-block은 내용 너비에 박스가 맞춰지면서 % 우측이 잘렸음) */
+  display: block;
+  width: 100%;
+  font-family: 'PyeongchangPeace', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 1;
+  letter-spacing: -8px;
+  text-align: center;
+  background: linear-gradient(180deg, #b289ff 0%, #6d33d8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ────────────────────────────
+ * 카드 #2: 카테고리 pill + 설명
+ * ──────────────────────────── */
+.descriptionCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 29.8px;
+  padding: 31.875px 23px 27px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 14px 30px rgba(90, 60, 140, 0.1);
+}
+
+.categoryPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #af8cff 0%, #8c65df 100%);
+  color: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.96px;
+  text-align: center;
+  white-space: nowrap;
+  filter: drop-shadow(0 12px 10px rgba(120, 70, 210, 0.18));
+}
+
+.descriptionBody {
+  margin: 0;
+  width: 100%;
+  max-width: 293px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 30.6px;
+  color: #4b3854;
+  text-align: center;
+  word-break: keep-all;
+  white-space: pre-line;
+
+  b,
+  strong {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    color: #8b63df;
+  }
+}
+
+/* ────────────────────────────
+ * 카드 #3·4: 환상의 짝꿍 / 파국의 짝꿍
+ * ──────────────────────────── */
+.matchupGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.matchupCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 19px 17px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 12px 24px rgba(90, 60, 140, 0.08);
+  box-sizing: border-box;
+}
+
+.matchupLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px 9px;
+  border-radius: 999px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.1;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.matchupGood .matchupLabel {
+  background: linear-gradient(180deg, #ff90c6 0%, #ff5fa9 100%);
+}
+
+.matchupBad .matchupLabel {
+  background: linear-gradient(180deg, #b18dff 0%, #7f58df 100%);
+}
+
+.matchupName {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -1.4px;
+  color: #31193d;
+  text-align: center;
+  word-break: keep-all;
+  white-space: pre-line;
+}

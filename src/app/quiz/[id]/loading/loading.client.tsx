@@ -63,12 +63,14 @@ const LoadingContent = ({
 
   const resultConfig = getResultUIConfig(def);
   const bgColor =
+    resultConfig?.loadingBackgroundColor ??
     resultConfig?.backgroundColor ??
     (resultConfig?.theme === 'white' ? '#fff' : '#000');
 
-  const bgImage = resultConfig?.resultBackgroundImage
-    ? resultConfig.resultBackgroundImage
-    : `/images/quiz/${testId}/content_background.png`;
+  const bgImage =
+    resultConfig?.loadingBackgroundImage ??
+    resultConfig?.resultBackgroundImage ??
+    `/images/quiz/${testId}/content_background.png`;
 
   const loadingTextColor = resultConfig?.loadingTextColor ?? '#ffffff';
   const loadingTextStyle: CSSProperties = resultConfig?.loadingTextStyle
@@ -88,7 +90,7 @@ const LoadingContent = ({
         style={loadingTextStyle}
         aria-live='polite'
       >
-        로딩중
+        {resultConfig?.loadingText ?? '로딩중'}
       </p>
     </div>
   );

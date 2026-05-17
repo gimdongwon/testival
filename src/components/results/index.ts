@@ -6,6 +6,7 @@ import SpringResult from './spring/SpringResult';
 import GradeResult from './grade/GradeResult';
 import GoodBoyfriendResult from './new/goodboyfriend/GoodBoyfriendResult';
 import Young40Result from './new/young40/Young40Result';
+import SoloEscapeResult from './soloescape/SoloEscapeResult';
 import type { ResultLayoutProps } from './types';
 
 export type { ResultLayoutProps } from './types';
@@ -13,8 +14,8 @@ export type { ResultLayoutProps } from './types';
 /**
  * resultLayout 값 → 결과 레이아웃 컴포넌트 매핑
  *
- * 디렉터리: classic/ · spring/ · grade/ · new/<퀴즈>/ (커스텀 전용)
- * 새 커스텀 레이아웃은 new/ 아래에 폴더를 만든 뒤 여기에 등록합니다.
+ * 디렉터리: classic/ · spring/ · grade/ · soloescape/ · new/<퀴즈>/ (구 커스텀)
+ * 새 커스텀 레이아웃은 results/ 바로 아래에 폴더를 만든 뒤 여기에 등록합니다.
  */
 export const RESULT_LAYOUTS: Record<ResultLayout, ComponentType<ResultLayoutProps>> = {
   classic: ClassicResult,
@@ -22,6 +23,7 @@ export const RESULT_LAYOUTS: Record<ResultLayout, ComponentType<ResultLayoutProp
   grade: GradeResult,
   goodboyfriend: GoodBoyfriendResult,
   young40: Young40Result,
+  soloescape: SoloEscapeResult,
 };
 
 /**

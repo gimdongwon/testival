@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "id": "solo_escape",
+    "title": "솔로 탈출 테스트",
+    "description": "연애보다 내 루틴이 소중한데, 밤만 되면 가끔 미치게 외롭다? 내 안의 연애 세포 생존 여부로 알아보는 솔로 탈출 가능성 체크! 과연 나는 언제쯤 탈출할 수 있을까?",
+    "mode": "amount-sum",
+    "resultTypes": ["bulldozer", "love_open", "mouth_solo", "voluntary_solo"],
+    "thumbnail": "/images/quiz/solo_escape/content_background.png",
+    "locale": "ko",
+    "version": 1
+  },
+  "scoring": {
+    "amountSumBrackets": [
+      { "key": "bulldozer", "min": 0, "max": 1 },
+      { "key": "love_open", "min": 2, "max": 3 },
+      { "key": "mouth_solo", "min": 4, "max": 5 },
+      { "key": "voluntary_solo", "min": 6, "max": 7 }
+    ]
+  },
+  "ui": {
+    "result": {
+      "resultLayout": "soloescape",
+      "theme": "black",
+      "imageMode": "long",
+      "showReceipt": false,
+      "backgroundColor": "#f4ecff",
+      "loadingTextColor": "#31183d",
+      "loadingTextStyle": {
+        "fontFamily": "'PyeongchangPeace', 'Noto Sans KR', sans-serif",
+        "fontSize": "28px",
+        "fontWeight": 700,
+        "lineHeight": "1.2",
+        "letterSpacing": "-1.4px",
+        "color": "#31183d",
+        "textAlign": "center",
+        "textShadow": "none"
+      },
+      "hideResultScore": true,
+      "resultDescriptionHeader": "성격 특징",
+      "resultTitleStyle": {
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "fontWeight": 700,
+        "fontSize": "22px",
+        "lineHeight": "1.35",
+        "color": "#2d1b2e",
+        "textAlign": "center"
+      },
+      "descriptionStyle": {
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "lineHeight": "1.5",
+        "color": "#3d2a3e",
+        "textAlign": "center",
+        "maxWidth": "300px",
+        "margin": "0 auto",
+        "width": "100%"
+      }
+    },
+    "landing": { "buttonTheme": "white" },
+    "question": {
+      "optionVariant": "light",
+      "progressFillColor": "#e85d75",
+      "columns": 2,
+      "hideOptionLabel": true,
+      "optionsGap": "20px",
+      "optionsMarginTop": "32px",
+      "optionTextStyle": {
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "'Noto Sans KR', sans-serif",
+        "color": "#000000",
+        "textAlign": "center"
+      },
+      "optionStyle": {
+        "padding": "16px 21px",
+        "borderRadius": "30px",
+        "border": "4px solid #ffffff",
+        "background": "#ffffff",
+        "boxShadow": "0 12px 30px rgba(50, 20, 90, 0.18)",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "minHeight": "150px"
+      },
+      "questionNumberStyle": {
+        "fontFamily": "'PyeongchangPeace', 'Noto Sans KR', sans-serif",
+        "fontSize": "22px",
+        "fontWeight": 700,
+        "lineHeight": "1.33",
+        "textAlign": "center",
+        "textShadow": "none",
+        "background": "linear-gradient(180deg, #ff98c5 0%, #ff4f9f 100%)",
+        "WebkitBackgroundClip": "text",
+        "backgroundClip": "text",
+        "WebkitTextFillColor": "transparent",
+        "color": "transparent"
+      },
+      "questionTitleStyle": {
+        "fontFamily": "'PyeongchangPeace', 'Noto Sans KR', sans-serif",
+        "fontSize": "28px",
+        "fontWeight": 700,
+        "lineHeight": "1.2",
+        "color": "#31193d",
+        "textAlign": "center",
+        "textShadow": "none",
+        "letterSpacing": "0",
+        "maxWidth": "320px",
+        "marginLeft": "auto",
+        "marginRight": "auto"
+      }
+    }
+  },
+  "resultDetails": {
+    "bulldozer": {
+      "name": "999%",
+      "title": "솔로 탈출 확률 999%\n당장 내일도 탈출 가능, 인간 불도저",
+      "description": "삐빅-!<br/><b>지금 당장 연애가 시급합니다.</b><br/><br/>혼자인 것에 한계를 느끼고,<br/>사랑을 주고받을 준비가<br/>1000% 되어 있어요.<br/><br/>스치는 바람에도 설레는 당신,<br/>이미 눈빛부터<br/>로맨틱 필터 장착 완료!<br/><br/>곧 <b>운명 같은 연애</b>가<br/>멱살 잡고 시작될 테니<br/>기대하세요!<div><span>환상의 짝꿍</span><p>사랑은 열린 문,\n연애 세포\n부팅 완료</p><span>파국의 짝꿍</span><p>자발적 솔로\n프로 갓생러</p></div>",
+      "keywords": ["불도저", "연애급함", "로맨틱", "탈출임박"],
+      "type": "bulldozer",
+      "image": "/images/quiz/solo_escape/result_bulldozer.png"
+    },
+    "love_open": {
+      "name": "70%",
+      "title": "솔로 탈출 확률 70%\n사랑은 열린 문, 연애 세포 부팅 완료",
+      "description": "솔로 탈출 준비 완료!<br/><b>마음의 문은 이미 활짝 열려 있습니다.</b><br/><br/>혼자 노는 것도 좋지만,<br/>이제는 누군가와 맛집도 가고<br/>일상도 공유하고 싶은 마음이<br/>더 커졌네요.<br/><br/>조만간 당신과 딱 맞는<br/>좋은 사람이 나타날 예정입니다.<br/><b>곧 솔로 탈출이 가능하겠는데요?</b><div><span>환상의 짝꿍</span><p>인간 불도저</p><span>파국의 짝꿍</span><p>아가리\n솔로 탈출러</p></div>",
+      "keywords": ["연애준비", "열린문", "일상공유", "탈출각"],
+      "type": "love_open",
+      "image": "/images/quiz/solo_escape/result_love_open.png"
+    },
+    "mouth_solo": {
+      "name": "30%",
+      "title": "솔로 탈출 확률 30%\n철벽의 아가리 솔로 탈출러",
+      "description": "입으로는 매일 \"외롭다\",<br/>\"연애하고 싶다\" 노래를 부르지만,<br/>막상 판을 깔아주면<br/><b>귀찮아서 도망치는 타입!</b><br/><br/>연애 세포가 아직<br/>겨울잠에서 깨지 못했어요.<br/><br/>하지만 누군가 당신의 철벽을 허물고<br/>훅 들어온다면<br/>탈출할 가능성은 가지고 있습니다.<br/><br/>일단 집 밖으로 한 발짝만 나가볼까요?<div><span>환상의 짝꿍</span><p>자발적 솔로\n프로 갓생러</p><span>파국의 짝꿍</span><p>사랑은 열린 문,\n연애 세포\n부팅 완료</p></div>",
+      "keywords": ["아가리", "철벽", "외로움", "겨울잠"],
+      "type": "mouth_solo",
+      "image": "/images/quiz/solo_escape/result_mouth_solo.png"
+    },
+    "voluntary_solo": {
+      "name": "1%",
+      "title": "솔로 탈출 확률 1%\n자발적 솔로, 프로 갓생러",
+      "description": "\"솔로 탈출이요? 제가 왜요?\"<br/><br/>당신은 솔로 라이프에 <b>200% 만족</b>하는<br/>진정한 독립군입니다!<br/><br/>외로울 틈조차 없이 자기계발과 취미로<br/>꽉 찬 '갓생'을 살고 있네요.<br/>억지로 솔로를 탈출할 필요는<br/>1도 없습니다.<br/><br/>혼자서도 완벽하게 빛나는<br/>당신의 멋진 인생을 응원합니다!<br/>(자발적 솔로 유지 확정 🎉)<div><span>환상의 짝꿍</span><p>아가리\n솔로 탈출러</p><span>파국의 짝꿍</span><p>인간 불도저</p></div>",
+      "keywords": ["갓생", "자발적솔로", "독립", "만족"],
+      "type": "voluntary_solo",
+      "image": "/images/quiz/solo_escape/result_voluntary_solo.png"
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "title": "썸보다 내 삶의 루틴이\n더 중요하다.",
+      "choices": [
+        { "id": "q1a", "label": "O", "amount": 1 },
+        { "id": "q1b", "label": "X", "amount": 0 }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "주말에 억지로 약속 잡는 것보다\n집에서 배달시켜 먹는 게 백 배 낫다.",
+      "choices": [
+        { "id": "q2a", "label": "O", "amount": 1 },
+        { "id": "q2b", "label": "X", "amount": 0 }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "\"나 외로워...\" 말은 자주 하지만,\n막상 소개팅 들어오면 나갈지 말지 고민된다.",
+      "choices": [
+        { "id": "q3a", "label": "O", "amount": 1 },
+        { "id": "q3b", "label": "X", "amount": 0 }
+      ]
+    },
+    {
+      "id": "q4",
+      "title": "혼밥/혼영/혼술이 편하다.",
+      "choices": [
+        { "id": "q4a", "label": "O", "amount": 1 },
+        { "id": "q4b", "label": "X", "amount": 0 }
+      ]
+    },
+    {
+      "id": "q5",
+      "title": "눈이 높은 건 아닌데,\n딱히 만날 사람도 없고 맘에 드는 사람도 없다.",
+      "choices": [
+        { "id": "q5a", "label": "O", "amount": 1 },
+        { "id": "q5b", "label": "X", "amount": 0 }
+      ]
+    },
+    {
+      "id": "q6",
+      "title": "가끔 미치게 외롭다가도,\n막상 혼자 누워있으면 '역시 혼자가 편해' 싶다.",
+      "choices": [
+        { "id": "q6a", "label": "O", "amount": 1 },
+        { "id": "q6b", "label": "X", "amount": 0 }
+      ]
+    },
+    {
+      "id": "q7",
+      "title": "내 삶의 만족도는 솔직히\n지금 이대로도 꽤 괜찮은 편이다.",
+      "choices": [
+        { "id": "q7a", "label": "O", "amount": 1 },
+        { "id": "q7b", "label": "X", "amount": 0 }
+      ]
+    }
+  ]
+}
