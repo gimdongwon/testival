@@ -4,17 +4,38 @@
     "title": "영포티 테스트",
     "description": "럭키비키 외치는 40대? 당신의 '영포티' 레벨을 확인하세요. 요즘 유행어 좀 쓴다고 MZ 된 줄 아는 우리 부장님, 남편, 아빠… 10초 만에 팩폭을 날려주세요.",
     "mode": "amount-sum",
-    "resultTypes": ["gentleman", "mz_hosoin", "aje_fatal", "young40_peak"],
+    "resultTypes": [
+      "gentleman",
+      "mz_hosoin",
+      "aje_fatal",
+      "young40_peak"
+    ],
     "thumbnail": "/images/quiz/young40/content_background.png",
     "locale": "ko",
     "version": 1
   },
   "scoring": {
     "amountSumBrackets": [
-      { "key": "gentleman", "min": 0, "max": 2 },
-      { "key": "mz_hosoin", "min": 3, "max": 5 },
-      { "key": "aje_fatal", "min": 6, "max": 8 },
-      { "key": "young40_peak", "min": 9, "max": 10 }
+      {
+        "key": "gentleman",
+        "min": 0,
+        "max": 2
+      },
+      {
+        "key": "mz_hosoin",
+        "min": 3,
+        "max": 5
+      },
+      {
+        "key": "aje_fatal",
+        "min": 6,
+        "max": 8
+      },
+      {
+        "key": "young40_peak",
+        "min": 9,
+        "max": 10
+      }
     ]
   },
   "ui": {
@@ -24,17 +45,22 @@
       "showReceipt": false,
       "resultLayout": "young40",
       "backgroundColor": "#f9f1e5",
+      "loadingText": "로딩중...",
+      "loadingBackgroundColor": "#111E32",
+      "loadingBackgroundImage": "/images/quiz/young40/loading_background.svg",
       "loadingTextColor": "#111e32",
       "loadingTextStyle": {
         "color": "#111E32",
         "textAlign": "center",
-        "textShadow": "0 1px 2px rgba(0, 0, 0, 0.32), 0 2px 6px rgba(0, 0, 0, 0.12)",
+        "textShadow": "0 4px 4px rgba(0, 0, 0, 0.25)",
         "WebkitTextStrokeWidth": "3px",
         "WebkitTextStrokeColor": "#FFF",
-        "fontFamily": "Hakgyoansim Allimjang TTF",
+        "fontFamily": "'Hakgyoansim Allimjang TTF', 'Hakgyoansim Allimjang', 'Noto Sans KR', sans-serif",
         "fontSize": "28px",
-        "fontWeight": 600,
-        "lineHeight": "110%"
+        "fontStyle": "normal",
+        "fontWeight": 700,
+        "lineHeight": "110%",
+        "paintOrder": "stroke fill"
       },
       "resultTextStroke": "2.5px #FFFFFF",
       "resultTitleStyle": {
@@ -59,15 +85,26 @@
         "width": "100%"
       }
     },
-    "landing": { "buttonTheme": "white" },
+    "landing": {
+      "buttonTheme": "white"
+    },
     "question": {
       "optionVariant": "light",
       "progressFillColor": "#c45c48",
       "columns": 1,
       "hideOptionLabel": false,
-      "optionLabels": ["O", "X"],
-      "optionColors": ["#d9dee3", "#efc7b6"],
-      "optionBorderColors": ["#46618a", "#db7b53"],
+      "optionLabels": [
+        "O",
+        "X"
+      ],
+      "optionColors": [
+        "#d9dee3",
+        "#efc7b6"
+      ],
+      "optionBorderColors": [
+        "#46618a",
+        "#db7b53"
+      ],
       "optionsGap": "12px",
       "optionsMarginTop": "28px",
       "optionTextStyle": {
@@ -126,7 +163,12 @@
       "title": "당신은 훌륭한\n신사(gentleman)입니다.",
       "personalitySectionTitle": "성격 특징",
       "description": "「나 같은 아저씨가 뭐가 좋다고…」\n\n나이 듦을 자연스럽게 받아들이는 멋진 어른입니다. 억지로 젊은 척·트렌디한 척하지 않아 오히려 더 세련되고 담백해 보입니다.<div style=\"display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;margin-top:20px\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#d9dee3;border:1px solid #46618a;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">환상의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">눈에서 하트 나오는 2030 여친/아내</p></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#efc7b6;border:1px solid #db7b53;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">파국의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">으~! 영포티다 으~</p></div></div>",
-      "keywords": ["담백함", "세련됨", "자연스러움", "존경"],
+      "keywords": [
+        "담백함",
+        "세련됨",
+        "자연스러움",
+        "존경"
+      ],
       "type": "gentleman",
       "image": "/images/quiz/young40/result_gentleman.png"
     },
@@ -135,7 +177,12 @@
       "title": "위태위태한\nMZ 호소인",
       "personalitySectionTitle": "성격 특징",
       "description": "약간의 영포티 기질이 스멀스멀 올라오고 있습니다.\n\n젊은 감각을 유지하려 노력하는 건 좋지만,\n가끔 무리수를 던져 주변의 탄식을 부를 수 있어요.\n\n주변에서 「그건 좀…」 소리를 듣는다면\n당장 멈추는 게 좋습니다.<div style=\"display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;margin-top:20px\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#d9dee3;border:1px solid #46618a;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">환상의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">팩폭 날려주는 솔직한 아내/딸</p></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#efc7b6;border:1px solid #db7b53;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">파국의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">치명적 아재 파탈</p></div></div>",
-      "keywords": ["경계", "무리수", "셀프 점검", "MZ 척"],
+      "keywords": [
+        "경계",
+        "무리수",
+        "셀프 점검",
+        "MZ 척"
+      ],
       "type": "mz_hosoin",
       "image": "/images/quiz/young40/result_mz_hosoin.png"
     },
@@ -144,7 +191,12 @@
       "title": "치명적 아재 파탈\n(중증)",
       "personalitySectionTitle": "성격 특징",
       "description": "가슴에 하트 로고 박힌 가디건을 입고\n한정판 조던을 신으며\n「나 정도면 관리 잘한 편이지.」라고\n굳게 믿고 계시는군요.\n\n대화할 때마다 「오빠가~」를 남발하며\nMZ 후배들과 완벽하게 통한다고 착각하지만,\n현실은 2030 여성들에게\n눈빛으로 경멸 당하고 있습니다.\n\n비싼 아이템으로 포장해도 숨겨지지 않는\n그 「치명적인 척」,\n당장 압수입니다!<div style=\"display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;margin-top:20px\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#d9dee3;border:1px solid #46618a;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">환상의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">으~! 영포티다 으~</p></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#efc7b6;border:1px solid #db7b53;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">파국의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">훌륭한 신사(gentleman)</p></div></div>",
-      "keywords": ["착각", "오빠 미학", "과시", "중증"],
+      "keywords": [
+        "착각",
+        "오빠 미학",
+        "과시",
+        "중증"
+      ],
       "type": "aje_fatal",
       "image": "/images/quiz/young40/result_aje_fatal.png"
     },
@@ -153,7 +205,12 @@
       "title": "으~!\n영포티다 으~",
       "personalitySectionTitle": "성격 특징",
       "description": "구제불능 영포티 그 자체입니다. 눈치 제로, 자아도취 MAX 상태일 수 있어요.\n\n20대도 안 쓰는 철 지난 유행어를 남발하며 젊은 여성들에게 통할 거라 굳게 믿고 있다면, 주변인들이 심각하게 피로감을 느낄 수 있습니다.\n\n셔츠 단추와 억지 플러팅, 한번쯤 리셋이 필요해 보입니다.<div style=\"display:flex;flex-direction:column;align-items:center;gap:20px;width:100%;margin-top:20px\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#d9dee3;border:1px solid #46618a;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">환상의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">치명적 아재 파탈 (중증)</p></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:4px;width:100%\"><span style=\"display:inline-flex;align-items:center;justify-content:center;background:#efc7b6;border:1px solid #db7b53;border-radius:74px;padding:2px 22px;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:400;color:#111e32\">파국의 짝꿍</span><p style=\"margin:0;width:100%;max-width:280px;text-align:center;font-family:'Noto Sans KR',sans-serif;font-size:14px;line-height:1.2;color:#111e32;word-break:keep-all\">훌륭한 신사(gentleman)</p></div></div>",
-      "keywords": ["구제불능", "유행어", "자아도취", "눈치 제로"],
+      "keywords": [
+        "구제불능",
+        "유행어",
+        "자아도취",
+        "눈치 제로"
+      ],
       "type": "young40_peak",
       "image": "/images/quiz/young40/result_young40_peak.png"
     }

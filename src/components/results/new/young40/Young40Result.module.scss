@@ -87,8 +87,26 @@
   padding: 0 8px;
 }
 
+/* Figma 1620:1500 — 타이틀 뒤 브러시 하이라이트(노란 페인트 스트로크) */
+.titleBrush {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  aspect-ratio: 271.922 / 102.908;
+  transform: translate(-50%, -50%);
+  background-image: url('/images/quiz/young40/result_title_brush.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: -1;
+}
+
 /* Figma 1620:1543 — 세미 타이틀: 컨테이너 leading 0, 줄마다 1.1 (학교안심 알림장 B) */
 .mainTitle {
+  position: relative;
+  z-index: 1;
   margin: 0;
   display: flex;
   flex-direction: column;

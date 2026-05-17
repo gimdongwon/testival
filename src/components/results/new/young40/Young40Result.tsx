@@ -87,6 +87,7 @@ const Young40Result = ({ result, config }: ResultLayoutProps) => {
         <header className={styles.header}>
           <p className={styles.badge}>당신의 결과</p>
           <div className={styles.titleWrap}>
+            <span className={styles.titleBrush} aria-hidden />
             <span className={styles.srOnly}>{stripHtml(result.name)}</span>
             <h1 className={styles.mainTitle} style={titleStyle}>
               {result.title.split('\n').map((line, i) => (
