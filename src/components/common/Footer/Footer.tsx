@@ -82,7 +82,8 @@ const Footer = () => {
             &copy; {currentYear} Testival. All rights reserved.
           </p>
           <p className={styles.disclaimer}>
-            본 사이트의 테스트 결과는 오락 목적으로만 제공되며, 전문적인 심리
+            본 사이트의 테스트는 빅5(OCEAN), MBTI 등 검증된 심리학 모델을 참고해
+            제작했지만, 결과는 자기 이해를 돕는 참고용이며 전문적인 심리 진단이나
             상담을 대체하지 않습니다.
           </p>
         </div>
