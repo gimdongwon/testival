@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
+import { listGuides } from '@/lib/guides';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const repo = getQuizRepository();
@@ -61,5 +62,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  return [...staticPages, ...quizEntries];
+  const guides = await listGuides();
+  const guideEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/guide`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    ...guides.map((g) => ({
+      url: `${baseUrl}/guide/${g.slug}`,
+      lastModified: g.updatedAt
+        ? new Date(g.updatedAt)
+        : new Date(g.publishedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ];
+
+  return [...staticPages, ...guideEntries, ...quizEntries];
 }

@@ -60,6 +60,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
 
   const navLinks = [
     { href: '/', label: '홈' },
+    { href: '/guide', label: '가이드' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact Us' },
     { href: '/terms', label: '이용약관' },

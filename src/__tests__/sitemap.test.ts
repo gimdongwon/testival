@@ -36,4 +36,10 @@ describe('sitemap', () => {
       }
     }
   });
+
+  it('가이드 인덱스를 sitemap에 포함한다', async () => {
+    const entries = await sitemap();
+    const urls = entries.map((e) => e.url);
+    expect(urls).toContain('https://testival.kr/guide');
+  });
 });
