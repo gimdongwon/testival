@@ -134,22 +134,41 @@
 }
 
 .resultList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  gap: 10px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .resultItem {
-  padding: 6px 14px;
+  padding: 12px 14px;
   background: #f0eeff;
+  border-radius: 12px;
+  word-break: keep-all;
+}
+
+.resultItemName {
+  font-size: 14px;
+  font-weight: 700;
   color: #6366f1;
+  margin: 0 0 4px;
+}
+
+.resultItemTitle {
   font-size: 13px;
   font-weight: 600;
-  border-radius: 20px;
-  word-break: keep-all;
+  color: #333;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+.resultItemSnippet {
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
+  margin: 0;
+  line-height: 1.55;
 }
 
 .quizNotice {

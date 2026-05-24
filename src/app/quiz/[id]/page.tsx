@@ -35,9 +35,15 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const estimatedMinutes = Math.max(1, Math.ceil(questionCount * 0.5));
   const modeLabel = MODE_LABELS[def.meta.mode] ?? '심리테스트';
 
-  const resultNames = Object.values(def.resultDetails)
+  const stripTags = (s: string): string =>
+    s.replace(/<[^>]*>/g, '').replace(/\n/g, ' ').trim();
+  const resultSummaries = Object.values(def.resultDetails)
     .slice(0, 6)
-    .map((r) => r.name.replace(/<[^>]*>/g, ''));
+    .map((r) => ({
+      name: stripTags(r.name),
+      title: stripTags(r.title),
+      snippet: stripTags(r.description).slice(0, 180),
+    }));
 
   const quizJsonLd = {
     '@context': 'https://schema.org',
@@ -143,15 +149,21 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
             </div>
           </div>
 
-          {resultNames.length > 0 && (
+          {resultSummaries.length > 0 && (
             <div className={styles.resultPreview}>
               <h2 className={styles.resultPreviewTitle}>
                 이런 결과가 나올 수 있어요
               </h2>
               <ul className={styles.resultList}>
-                {resultNames.map((name) => (
-                  <li key={name} className={styles.resultItem}>
-                    {name}
+                {resultSummaries.map((r) => (
+                  <li key={r.name} className={styles.resultItem}>
+                    <h3 className={styles.resultItemName}>{r.name}</h3>
+                    {r.title && (
+                      <p className={styles.resultItemTitle}>{r.title}</p>
+                    )}
+                    {r.snippet && (
+                      <p className={styles.resultItemSnippet}>{r.snippet}…</p>
+                    )}
                   </li>
                 ))}
               </ul>
