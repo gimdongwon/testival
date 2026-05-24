@@ -36,6 +36,26 @@ const QuestionPage = async ({
         />
       </div>
       <QuizQuestionClient def={def} />
+
+      {/* SEO/크롤러용 — 모든 문항 텍스트를 SSR HTML에 노출. 사용자 화면에는 안 보임. */}
+      <section className={styles.seoOnly} aria-hidden='true'>
+        <h2>{def.meta.title} — 전체 문항 목록</h2>
+        {def.meta.description && <p>{def.meta.description}</p>}
+        <ol>
+          {def.questions.map((q, i) => (
+            <li key={q.id}>
+              <p>
+                Q{i + 1}. {q.title.replace(/\n/g, ' ')}
+              </p>
+              <ul>
+                {q.choices.map((c) => (
+                  <li key={c.id}>{c.label}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </section>
     </div>
   );
 };

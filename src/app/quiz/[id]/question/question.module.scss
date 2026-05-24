@@ -45,3 +45,16 @@
   transition: width 200ms ease;
   width: var(--progress, 0%);
 }
+
+// SEO/크롤러용 — 시각적으로 숨기지만 HTML에는 존재 (sr-only 패턴)
+.seoOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: normal;
+  border: 0;
+}
