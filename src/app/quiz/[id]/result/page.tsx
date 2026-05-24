@@ -19,13 +19,33 @@ type Props = {
 };
 export const revalidate = 600;
 
+const SEO_HIDDEN_STYLE: React.CSSProperties = {
+  position: 'absolute',
+  width: 1,
+  height: 1,
+  overflow: 'hidden',
+  clip: 'rect(0,0,0,0)',
+};
+
+const stripTags = (s: string): string =>
+  s.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+
+// Task 10에서 ResultDetailZ에 추가될 예정인 longDescription 필드.
+// 스키마 업데이트 전에도 SSR 본문에 안전하게 노출할 수 있도록 정의.
+const getLongDescription = (detail: unknown): string | undefined => {
+  if (detail && typeof detail === 'object' && 'longDescription' in detail) {
+    const v = (detail as { longDescription?: unknown }).longDescription;
+    return typeof v === 'string' && v.length > 0 ? v : undefined;
+  }
+  return undefined;
+};
+
 export async function generateMetadata({
   params,
   searchParams,
 }: Props): Promise<Metadata> {
   const { id } = await params;
   const { type } = await searchParams;
-  if (!type) return notFound();
   const SITE_URL = 'https://testival.kr';
   type QuizMetaEntry = Readonly<{
     id: string;
@@ -45,7 +65,14 @@ export async function generateMetadata({
     return { title: baseTitle, description: baseDescription };
   };
   const { title, description: desc } = getMetaById(id);
-  const img = `${SITE_URL}/images/quiz/${id}/result_${type}.png`;
+  const img =
+    typeof type === 'string'
+      ? `${SITE_URL}/images/quiz/${id}/result_${type}.png`
+      : `${SITE_URL}/images/quiz/${id}/og-image.png`;
+  const canonicalUrl =
+    typeof type === 'string'
+      ? `${SITE_URL}/quiz/${id}/result?type=${type}`
+      : `${SITE_URL}/quiz/${id}/result`;
 
   return {
     title,
@@ -53,7 +80,7 @@ export async function generateMetadata({
     openGraph: {
       type: 'article',
       siteName: `Testival ${id}`,
-      url: `${SITE_URL}/quiz/${id}/result`,
+      url: canonicalUrl,
       title,
       description: desc,
       images: [{ url: img, width: 1200, height: 630 }],
@@ -65,7 +92,7 @@ export async function generateMetadata({
       description: desc,
       images: [img],
     },
-    alternates: { canonical: `${SITE_URL}/quiz/${id}/result` },
+    alternates: { canonical: canonicalUrl },
   };
 }
 
@@ -127,13 +154,52 @@ export default async function Page({
   // 추천 퀴즈 가져오기
   const recommendedQuizzes = await getRecommendedQuizzes(id, 3);
 
+  // SSR body for crawlers — visible result text rendered server-side
+  const typeStr = typeof type === 'string' ? type : null;
+  const matchedDetail = typeStr
+    ? Object.values(def.resultDetails).find((d) => d.type === typeStr)
+    : null;
+
   return (
-    <Suspense fallback={null}>
-      <ResultClient
-        def={resolvedDef}
-        recommendedQuizzes={recommendedQuizzes}
-      />
-    </Suspense>
+    <>
+      <section style={SEO_HIDDEN_STYLE} aria-hidden='true'>
+        <h1>{def.meta.title} — 결과</h1>
+        {def.meta.description && <p>{def.meta.description}</p>}
+
+        {matchedDetail ? (
+          <article>
+            <h2>{stripTags(matchedDetail.title)}</h2>
+            <p>{stripTags(matchedDetail.description)}</p>
+            {(() => {
+              const long = getLongDescription(matchedDetail);
+              return long ? <p>{long}</p> : null;
+            })()}
+          </article>
+        ) : (
+          <>
+            <h2>이 테스트에서 나올 수 있는 결과</h2>
+            {Object.values(def.resultDetails).map((d) => {
+              const long = getLongDescription(d);
+              return (
+                <article key={d.type}>
+                  <h3>
+                    {stripTags(d.name)} — {stripTags(d.title)}
+                  </h3>
+                  <p>{stripTags(d.description)}</p>
+                  {long && <p>{long}</p>}
+                </article>
+              );
+            })}
+          </>
+        )}
+      </section>
+
+      <Suspense fallback={null}>
+        <ResultClient
+          def={resolvedDef}
+          recommendedQuizzes={recommendedQuizzes}
+        />
+      </Suspense>
+    </>
   );
 }
-
