@@ -147,6 +147,9 @@ export const TestUIZ = z.object({
 export const TestMetaZ = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
+  // NOTE: 개별 quiz JSON의 meta.description은 페이지 UI용(짧을 수 있음).
+  // SEO용 description은 quiz-meta.json에 따로 관리되며, 그쪽은
+  // meta-uniqueness.test.ts에서 70자 이상 강제됨.
   description: z.string().optional(),
   mode: z.enum(['weighted', 'type-count', 'amount-sum']),
   resultTypes: z.array(z.string().min(1)).min(2),
