@@ -12,6 +12,8 @@ const discoverQuizFiles = (): { namespace: string; id: string; filePath: string 
 
   for (const entry of entries) {
     if (!entry.isDirectory()) continue;
+    // /guides는 quiz가 아니라 별도 콘텐츠 타입이므로 제외
+    if (entry.name === 'guides') continue;
     const nsDir = path.join(CONTENT_ROOT, entry.name);
     const files = fs.readdirSync(nsDir).filter(
       (f) => f.endsWith('.json') && f !== 'index.json'
@@ -92,6 +94,7 @@ describe('콘텐츠 무결성 테스트', () => {
       fs
         .readdirSync(CONTENT_ROOT, { withFileTypes: true })
         .filter((e) => e.isDirectory())
+        .filter((e) => e.name !== 'guides')
         .map((e) => e.name)
     )('네임스페이스 "%s"의 index.json이 올바른 구조여야 한다', (ns) => {
       const indexPath = path.join(CONTENT_ROOT, ns, 'index.json');

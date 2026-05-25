@@ -41,6 +41,11 @@ export const ResultDetailZ = z.object({
   name: z.string().min(1),
   title: z.string().min(1),
   description: z.string().min(1),
+  /** SSR 본문에 노출되는 800자+ 심층 해설 (SEO 강화용, plain text) */
+  longDescription: z
+    .string()
+    .min(800, 'longDescription은 SEO 최소 800자 이상이어야 합니다')
+    .optional(),
   /** 영포티 등: 화이트 카드 상단 섹션 제목(기본값은 레이아웃에서 처리) */
   personalitySectionTitle: z.string().min(1).optional(),
   image: z.string().min(1).optional(),
