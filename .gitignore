@@ -43,5 +43,7 @@ next-env.d.ts
 # tool-specific
 .cursor/
 .gemini/
+.claude/
+.codex/
 .playwright-mcp/
 .mcp.json

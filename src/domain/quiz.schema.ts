@@ -55,7 +55,7 @@ export const ResultDetailZ = z.object({
 
 /** 결과 레이아웃 프리셋 */
 export const ResultLayoutZ = z
-  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape'])
+  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa'])
   .default('classic');
 export type ResultLayout = z.infer<typeof ResultLayoutZ>;
 
@@ -298,7 +298,12 @@ export function getResultUIConfig(def: TestDefinition): ResultUIConfig | undefin
 /** 커스텀 결과 UI 전용 라우트 `/quiz/[id]/new-result`를 쓰는 레이아웃 */
 export function usesDedicatedNewResultPage(def: TestDefinition): boolean {
   const layout = getResultUIConfig(def)?.resultLayout;
-  return layout === 'goodboyfriend' || layout === 'young40' || layout === 'soloescape';
+  return (
+    layout === 'goodboyfriend' ||
+    layout === 'young40' ||
+    layout === 'soloescape' ||
+    layout === 'eolppa'
+  );
 }
 
 export function getLandingUIConfig(def: TestDefinition): LandingUIConfig {
