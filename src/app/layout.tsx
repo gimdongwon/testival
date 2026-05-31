@@ -76,7 +76,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? '',
+    google: '3_bGFUvkzTaqaI2fmqRwJciLAfamvQdqZbZaWY_hpXw',
+    other: {
+      'naver-site-verification': '424d40114b6ffc31647c709f11bee92fda970836',
+    },
   },
 };
 
