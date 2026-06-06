@@ -1,0 +1,266 @@
+/* CcTestResult — 사내 연애 감별 테스트 전용 결과 레이아웃 (Figma 1823:519) */
+
+$accent: #dc503c;
+
+.page {
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 56px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ────────────────────────────
+ * Hero: 배지 + 레벨 라벨 + 타이틀
+ * ──────────────────────────── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: $accent;
+  color: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.heroLevel {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  color: rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.heroTitle {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroTitleIntro {
+  display: block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 33.8px;
+  letter-spacing: -0.78px;
+  color: #1a1a1a;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.heroTitleName {
+  display: block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 33.8px;
+  letter-spacing: -0.78px;
+  color: $accent;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ────────────────────────────
+ * 캐릭터 이미지 카드
+ * (테두리/그라디언트/키워드 칩은 이미지에 포함)
+ * ──────────────────────────── */
+.imageWrap {
+  width: 328px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.resultImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 36px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ────────────────────────────
+ * 캐릭터 분석 카드
+ * ──────────────────────────── */
+.analysisCard {
+  display: flex;
+  flex-direction: column;
+  width: 330px;
+  max-width: 100%;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.analysisHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 40px;
+  background: $accent;
+}
+
+.analysisHeaderLabel {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.55px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+.analysisQuote {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 21.6px;
+  color: #ffffff;
+  word-break: keep-all;
+}
+
+.analysisBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24.9px;
+  padding: 20px 38px 40px;
+}
+
+.analysisParagraph {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 13.5px;
+  line-height: 24.98px;
+  color: rgba(0, 0, 0, 0.55);
+  text-align: left;
+  white-space: pre-line;
+  word-break: keep-all;
+
+  b,
+  strong {
+    font-weight: 700;
+    color: #000000;
+  }
+}
+
+/* ── 구분선 (대시) ── */
+.divider {
+  width: 100%;
+  height: 0;
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.tipHeader {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 13.5px;
+  line-height: 24.98px;
+  color: $accent;
+  white-space: nowrap;
+}
+
+/* ────────────────────────────
+ * 궁합 섹션
+ * ──────────────────────────── */
+.matchupSection {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 333px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.matchupSectionLabel {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.55px;
+  color: rgba(26, 26, 26, 0.35);
+  text-align: center;
+}
+
+.matchupGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.matchupCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.9px;
+  padding: 15px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.matchupHeader {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.matchupGood .matchupHeader {
+  color: $accent;
+}
+
+.matchupBad .matchupHeader {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.matchupName {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16.9px;
+  color: #000000;
+  text-align: center;
+  white-space: pre-line;
+  word-break: keep-all;
+}

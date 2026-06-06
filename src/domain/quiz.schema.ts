@@ -55,7 +55,7 @@ export const ResultDetailZ = z.object({
 
 /** 결과 레이아웃 프리셋 */
 export const ResultLayoutZ = z
-  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa'])
+  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest'])
   .default('classic');
 export type ResultLayout = z.infer<typeof ResultLayoutZ>;
 
@@ -302,7 +302,8 @@ export function usesDedicatedNewResultPage(def: TestDefinition): boolean {
     layout === 'goodboyfriend' ||
     layout === 'young40' ||
     layout === 'soloescape' ||
-    layout === 'eolppa'
+    layout === 'eolppa' ||
+    layout === 'cctest'
   );
 }
 
