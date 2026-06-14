@@ -45,7 +45,7 @@ const QuestionPage = async ({
           {def.questions.map((q, i) => (
             <li key={q.id}>
               <p>
-                Q{i + 1}. {q.title.replace(/\n/g, ' ')}
+                Q{i + 1}. {q.title.replace(/\n/g, ' ').replace(/\*\*/g, '')}
               </p>
               <ul>
                 {q.choices.map((c) => (

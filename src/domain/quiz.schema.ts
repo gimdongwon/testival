@@ -55,7 +55,7 @@ export const ResultDetailZ = z.object({
 
 /** 결과 레이아웃 프리셋 */
 export const ResultLayoutZ = z
-  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest'])
+  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest', 'coward'])
   .default('classic');
 export type ResultLayout = z.infer<typeof ResultLayoutZ>;
 
@@ -116,6 +116,10 @@ export const QuestionUIConfigZ = z.object({
   questionTextColor: z.string().optional(),
   questionFontFamily: z.string().optional(),
   progressFillColor: z.string().optional(),
+  /** 진행바 트랙(배경) 색상 — 다크 테마 등에서 기본 회색 오버라이드 */
+  progressTrackColor: z.string().optional(),
+  /** 질문 제목 내 **강조** 구간 색상 (예: 다크 테마 빨강 포인트) */
+  questionTitleAccentColor: z.string().optional(),
   hideQuestionNumberDot: z.boolean().optional(),
   hideQuestionNumberPrefix: z.boolean().optional(),
   hideOptionLabel: z.boolean().optional(),

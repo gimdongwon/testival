@@ -26,6 +26,8 @@ export type QuestionCardProps = {
   optionFontFamily?: string;
   questionNumberStyle?: React.CSSProperties;
   questionTitleStyle?: React.CSSProperties;
+  /** 제목 내 **강조** 구간 색상 (지정 시 `**텍스트**` 구간만 이 색으로 렌더) */
+  questionTitleAccentColor?: string;
   optionLabelStyle?: React.CSSProperties;
   hideQuestionNumberDot?: boolean;
   hideQuestionNumberPrefix?: boolean;
@@ -84,6 +86,20 @@ const splitQuestionTitleStyles = (
   return { heading, lineFx: lineFxOut };
 };
 
+/** `**텍스트**` 구간을 강조 색상 span으로 렌더링한다(색상 미지정 시 그대로). */
+const renderTitleLine = (line: string, accentColor?: string): React.ReactNode => {
+  if (!accentColor || !line.includes('**')) return line;
+  return line.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith('**') && part.endsWith('**') ? (
+      <span key={i} style={{ color: accentColor }}>
+        {part.slice(2, -2)}
+      </span>
+    ) : (
+      <React.Fragment key={i}>{part}</React.Fragment>
+    )
+  );
+};
+
 const QuestionCard: React.FC<QuestionCardProps> = ({
   number,
   title,
@@ -99,6 +115,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   optionFontFamily,
   questionNumberStyle,
   questionTitleStyle,
+  questionTitleAccentColor,
   optionLabelStyle,
   hideQuestionNumberDot = false,
   hideQuestionNumberPrefix = false,
@@ -165,7 +182,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
           >
             {titleLines.map((line, i) => (
               <span key={i} className={styles.cardTitleLine} style={titleLineFxStyle}>
-                {line}
+                {renderTitleLine(line, questionTitleAccentColor)}
               </span>
             ))}
           </h2>

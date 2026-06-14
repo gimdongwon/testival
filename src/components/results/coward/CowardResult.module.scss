@@ -1,0 +1,355 @@
+/* CowardResult — 납량특집 쫄보 테스트 전용 결과 레이아웃 (Figma 1873:376) */
+
+$neon: #c3f400;
+$accent-red: #c5020b;
+$card-bg: #1c1b1b;
+$card-border: #444933;
+
+.page {
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 70px 31.5px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  box-sizing: border-box;
+  color: #e5e2e1;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ────────────────────────────
+ * Hero: 레벨 배지 + 타이틀 + 언더라인
+ * ──────────────────────────── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+}
+
+.levelBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(195, 244, 0, 0.8);
+  color: #ffffff;
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.7px;
+  white-space: nowrap;
+}
+
+.titleWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Yeossihyangyakeonhae-Bold', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+  color: #ffffff;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.titleIntro {
+  display: block;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.titleName {
+  display: block;
+  font-size: 36px;
+  line-height: 1.1;
+}
+
+.titleUnderline {
+  width: 48px;
+  height: 4px;
+  border-radius: 9999px;
+  background: $neon;
+}
+
+/* ────────────────────────────
+ * 캐릭터 이미지 카드
+ * ──────────────────────────── */
+.imageCard {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  background: $card-bg;
+  border: 1px solid $card-border;
+  box-shadow: 0 0 15px 0 rgba(204, 255, 0, 0.3);
+  overflow: hidden;
+}
+
+.resultImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.imageFade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 52px;
+  background: linear-gradient(to top, #131313 0%, rgba(19, 19, 19, 0) 100%);
+  pointer-events: none;
+}
+
+/* ────────────────────────────
+ * 성격 설명 카드
+ * ──────────────────────────── */
+.descCard {
+  position: relative;
+  border-radius: 12px;
+  background: $card-bg;
+  border: 1px solid $card-border;
+  padding: 25px;
+  overflow: hidden;
+}
+
+.descQuoteMark {
+  position: absolute;
+  top: -6px;
+  right: 8px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 80px;
+  line-height: 1;
+  color: #e5e2e1;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.descBody {
+  position: relative;
+}
+
+.descParagraph {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 29.25px;
+  color: #e5e2e1;
+  white-space: pre-line;
+  word-break: keep-all;
+
+  & + & {
+    margin-top: 29.25px;
+  }
+}
+
+.accent {
+  font-weight: 700;
+  color: $accent-red;
+}
+
+/* ────────────────────────────
+ * 스탯 그리드 (생존 확률 + 귀신 한줄평)
+ * ──────────────────────────── */
+.statsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statRow,
+.quoteRow {
+  background: #201f1f;
+  border: 1px solid rgba(68, 73, 51, 0.5);
+  border-radius: 8px;
+  padding: 17px;
+  box-sizing: border-box;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+}
+
+.quoteRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.7px;
+  color: #c4c9ac;
+
+  svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: auto;
+  }
+}
+
+.statValue {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: $neon;
+  white-space: nowrap;
+}
+
+.ghostQuote {
+  margin: 0;
+  padding-left: 26px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  word-break: keep-all;
+}
+
+/* ────────────────────────────
+ * 분위기용 심전도 라인
+ * ──────────────────────────── */
+.ecg {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 8px 17px;
+  border-radius: 9999px;
+  background: #0e0e0e;
+  border: 1px solid rgba(68, 73, 51, 0.3);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ecgSvg {
+  display: block;
+  width: 100%;
+  height: 32px;
+}
+
+.ecgFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(19, 19, 19, 0.5) 0%,
+    rgba(19, 19, 19, 0) 50%,
+    rgba(19, 19, 19, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+/* ────────────────────────────
+ * 궁합 섹션
+ * ──────────────────────────── */
+.matchupSection {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.matchupSectionLabel {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.55px;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+}
+
+.matchupGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.matchupCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.9px;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.04);
+}
+
+.matchupGood {
+  background: rgba(195, 244, 0, 0.15);
+  border: 1px solid rgba(195, 244, 0, 0.2);
+
+  .matchupHeader {
+    color: $neon;
+  }
+}
+
+.matchupBad {
+  background: rgba(197, 2, 11, 0.15);
+  border: 1px solid rgba(197, 2, 11, 0.2);
+
+  .matchupHeader {
+    color: $accent-red;
+  }
+}
+
+.matchupHeader {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.matchupName {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16.9px;
+  color: #ffffff;
+  text-align: center;
+  white-space: pre-line;
+  word-break: keep-all;
+}

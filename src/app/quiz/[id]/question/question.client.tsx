@@ -61,6 +61,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
   const questionFontFamily = qUi.questionFontFamily;
   const questionNumberStyle = qUi.questionNumberStyle as CSSProperties | undefined;
   const questionTitleStyle = qUi.questionTitleStyle as CSSProperties | undefined;
+  const questionTitleAccentColor = qUi.questionTitleAccentColor;
   const hideQuestionNumberDot = qUi.hideQuestionNumberDot ?? false;
   const hideQuestionNumberPrefix = qUi.hideQuestionNumberPrefix ?? false;
   const hideOptionLabel = qUi.hideOptionLabel ?? false;
@@ -82,6 +83,11 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
     ['--progress-fill-color']: qUi.progressFillColor ?? '#555',
   };
 
+  const progressTrackStyle: CSSProperties &
+    Record<'--progress-track-color', string> | undefined = qUi.progressTrackColor
+    ? { ['--progress-track-color']: qUi.progressTrackColor }
+    : undefined;
+
   const optionButtonGroupStyle = qUi.optionStyle as CSSProperties | undefined;
 
   // JSON 설정에서 columns 가져오기 (기본값: 1)
@@ -99,7 +105,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
         aria-valuenow={currentStep}
         tabIndex={0}
       >
-        <div className={styles.progressTrack}>
+        <div className={styles.progressTrack} style={progressTrackStyle}>
           <div className={styles.progressFill} style={progressStyle} />
         </div>
       </div>
@@ -124,6 +130,7 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           questionFontFamily={questionFontFamily}
           questionNumberStyle={questionNumberStyle}
           questionTitleStyle={questionTitleStyle}
+          questionTitleAccentColor={questionTitleAccentColor}
           hideQuestionNumberDot={hideQuestionNumberDot}
           hideQuestionNumberPrefix={hideQuestionNumberPrefix}
           hideOptionLabel={hideOptionLabel}
