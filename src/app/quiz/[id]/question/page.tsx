@@ -19,7 +19,7 @@ const QuestionPage = async ({
 
   const webpFiles = getAvailableWebP(id);
   const bgPath = resolveImage(
-    `/images/quiz/${id}/content_background.png?v=1`,
+    `/images/quiz/${id}/content_background.png?v=2`,
     webpFiles,
   );
 

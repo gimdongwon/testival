@@ -1,0 +1,365 @@
+/* ──────────────────────────────────────────────────────────
+   couple_level_test 전용 결과 레이아웃
+   라이트(크림) 테마 · 구조화된 섹션(유형/처방전/데이트코스/궁합)
+   디자인 토큰 출처: Figma node 1941:556
+   ────────────────────────────────────────────────────────── */
+
+$cream: #fbf7f0;
+$ink: #2c1f1a;
+$body-text: #5a4840;
+$muted: #a89890;
+$terra: #c97b5a;
+$terra-light: #e8b4a0;
+$accent-red: #d45f45;
+$gold: #f5d77e;
+$line: #e8e0d8;
+
+.page {
+  width: 100%;
+  background-color: $cream;
+  color: $ink;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* ── 히어로 (캐릭터 일러스트 · 타이틀 포함) ── */
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 375 / 480;
+  background-color: #1c1410;
+  overflow: hidden;
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  user-select: none;
+}
+
+/* ── 본문 ── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px 24px 36px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 섹션 헤더 (라벨 + 그라데이션 디바이더) */
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.sectionLabel {
+  flex-shrink: 0;
+  font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $muted;
+  white-space: nowrap;
+}
+
+.sectionDivider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, $line, rgba(232, 224, 216, 0));
+}
+
+/* 공통 강조 */
+.accentWarm {
+  font-weight: 700;
+  color: $accent-red;
+}
+
+.accentGold {
+  font-weight: 700;
+  color: rgba(245, 215, 126, 0.88);
+}
+
+/* ── 우리 커플 유형 카드 ── */
+.typeCard {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(232, 180, 160, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(44, 31, 26, 0.06);
+  padding: 21px;
+  overflow: hidden;
+}
+
+.typeGlow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(
+    circle at top right,
+    rgba(245, 215, 126, 0.25),
+    rgba(245, 215, 126, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.typeTop {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.emojiBadge {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 20px;
+  line-height: 1;
+  background: linear-gradient(135deg, $terra-light 0%, $terra 100%);
+}
+
+.habitBadge {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 11px 14px;
+  background: rgba(245, 215, 126, 0.18);
+  border: 1px solid rgba(245, 215, 126, 0.5);
+  border-radius: 0 14px 14px 14px;
+}
+
+/* 말풍선 꼬리 */
+.habitBadge::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 11px;
+  height: 11px;
+  background: rgba(245, 215, 126, 0.18);
+  border-left: 1px solid rgba(245, 215, 126, 0.5);
+  border-top: 1px solid rgba(245, 215, 126, 0.5);
+}
+
+.habitLabel {
+  font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: $terra;
+}
+
+.habitQuote {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.16px;
+  color: $ink;
+  word-break: keep-all;
+}
+
+.typeDesc {
+  position: relative;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.typeParagraph {
+  margin: 0;
+  font-size: 13px;
+  line-height: 22.75px;
+  letter-spacing: 0.065px;
+  color: $body-text;
+  word-break: keep-all;
+}
+
+/* ── 처방전(Doctor's Note) 카드 ── */
+.rxCard {
+  position: relative;
+  background: $ink;
+  border-radius: 20px;
+  padding: 22px;
+  overflow: hidden;
+}
+
+.rxGlow {
+  position: absolute;
+  pointer-events: none;
+}
+
+.rxGlowTop {
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(
+    circle,
+    rgba(232, 92, 58, 0.25),
+    rgba(232, 92, 58, 0) 70%
+  );
+}
+
+.rxGlowBottom {
+  bottom: -20px;
+  left: -20px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(245, 215, 126, 0.12),
+    rgba(245, 215, 126, 0) 70%
+  );
+}
+
+.rxHead {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rxPill {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.rxNote {
+  font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.rxBody {
+  position: relative;
+  margin: 16px 0 0;
+  font-size: 14px;
+  line-height: 24.5px;
+  letter-spacing: 0.07px;
+  color: rgba(255, 255, 255, 0.88);
+  word-break: keep-all;
+}
+
+/* ── 단골 데이트 코스 카드 ── */
+.spotCard {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  background: #fff;
+  border: 1px solid $line;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(44, 31, 26, 0.05);
+  padding: 21px;
+}
+
+.spotHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spotIcon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 18px;
+  line-height: 1;
+  background: rgba(232, 180, 160, 0.25);
+}
+
+.spotLabel {
+  font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.65px;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+.spotBody {
+  margin: 0;
+  font-size: 14px;
+  line-height: 23.8px;
+  letter-spacing: 0.07px;
+  color: $ink;
+  word-break: keep-all;
+}
+
+/* ── 궁합 ── */
+.matchupGrid {
+  display: flex;
+  gap: 10px;
+}
+
+.matchupCard {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 19px 17px;
+  border-radius: 18px;
+  border: 1px solid;
+}
+
+.matchupGood {
+  border-color: rgba(232, 180, 160, 0.5);
+  background: linear-gradient(
+    143deg,
+    rgba(232, 180, 160, 0.25) 0%,
+    rgba(242, 196, 176, 0.15) 100%
+  );
+}
+
+.matchupBad {
+  border-color: $line;
+  background: linear-gradient(
+    143deg,
+    rgba(44, 31, 26, 0.04) 0%,
+    rgba(168, 152, 144, 0.07) 100%
+  );
+}
+
+.matchupLabel {
+  font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.matchupGood .matchupLabel {
+  color: $terra;
+}
+
+.matchupBad .matchupLabel {
+  color: $muted;
+}
+
+.matchupName {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16.8px;
+  color: $ink;
+  word-break: keep-all;
+}

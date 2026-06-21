@@ -55,7 +55,7 @@ export const ResultDetailZ = z.object({
 
 /** 결과 레이아웃 프리셋 */
 export const ResultLayoutZ = z
-  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest', 'coward'])
+  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest', 'coward', 'couple'])
   .default('classic');
 export type ResultLayout = z.infer<typeof ResultLayoutZ>;
 
@@ -126,6 +126,10 @@ export const QuestionUIConfigZ = z.object({
   optionColors: z.array(z.string()).optional(),
   optionTextStyle: z.record(z.string(), z.unknown()).optional(),
   optionLabelStyle: z.record(z.string(), z.unknown()).optional(),
+  /** 선택지마다 다른 라벨(글자) 색 (예: O는 테라코타, X는 회색) */
+  optionLabelColors: z.array(z.string()).optional(),
+  /** 질문 번호와 제목 사이 구분선 스타일 (지정 시 구분선 렌더) */
+  headerDividerStyle: z.record(z.string(), z.unknown()).optional(),
   optionFontFamily: z.string().optional(),
   questionNumberStyle: z.record(z.string(), z.unknown()).optional(),
   questionTitleStyle: z.record(z.string(), z.unknown()).optional(),

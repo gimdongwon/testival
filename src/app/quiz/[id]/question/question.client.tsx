@@ -137,6 +137,8 @@ export default function QuizQuestionClient({ def }: { def: TestDefinition }) {
           optionColors={optionColors}
           optionTextStyle={optionTextStyle}
           optionLabelStyle={optionLabelStyle}
+          optionLabelColors={qUi.optionLabelColors}
+          headerDividerStyle={qUi.headerDividerStyle as CSSProperties | undefined}
           optionBorderColors={qUi.optionBorderColors}
           optionsGap={qUi.optionsGap}
           optionsMarginTop={qUi.optionsMarginTop}

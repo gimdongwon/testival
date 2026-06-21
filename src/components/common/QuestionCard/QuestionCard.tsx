@@ -29,6 +29,10 @@ export type QuestionCardProps = {
   /** 제목 내 **강조** 구간 색상 (지정 시 `**텍스트**` 구간만 이 색으로 렌더) */
   questionTitleAccentColor?: string;
   optionLabelStyle?: React.CSSProperties;
+  /** 선택지마다 다른 라벨(글자) 색 (예: O는 테라코타, X는 회색) */
+  optionLabelColors?: string[];
+  /** 지정 시 질문 번호와 제목 사이에 구분선을 렌더 (배경/opacity 등은 인라인 스타일로) */
+  headerDividerStyle?: React.CSSProperties;
   hideQuestionNumberDot?: boolean;
   hideQuestionNumberPrefix?: boolean;
   hideOptionLabel?: boolean;
@@ -117,6 +121,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   questionTitleStyle,
   questionTitleAccentColor,
   optionLabelStyle,
+  optionLabelColors,
+  headerDividerStyle,
   hideQuestionNumberDot = false,
   hideQuestionNumberPrefix = false,
   hideOptionLabel = false,
@@ -172,6 +178,9 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             {hideQuestionNumberPrefix ? '' : 'Q'}{number}
             {hideQuestionNumberDot ? '' : '.'}
           </span>
+          {headerDividerStyle && (
+            <span className={styles.headerDivider} style={headerDividerStyle} />
+          )}
           <h2
             className={`${styles.cardTitle} ${styles.cardTitleStack}`}
             style={{
@@ -253,7 +262,14 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                   style={buttonStyle}
                 >
                   {!hideOptionLabel && (
-                    <span className={styles.optionLabel} style={optionLabelStyle}>
+                    <span
+                      className={styles.optionLabel}
+                      style={
+                        optionLabelColors?.[idx]
+                          ? { ...optionLabelStyle, color: optionLabelColors[idx] }
+                          : optionLabelStyle
+                      }
+                    >
                       {opt.label}
                     </span>
                   )}
