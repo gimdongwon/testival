@@ -11,6 +11,7 @@ import EolppaResult from './eolppa/EolppaResult';
 import CcTestResult from './cctest/CcTestResult';
 import CowardResult from './coward/CowardResult';
 import CoupleResult from './couple/CoupleResult';
+import TetomanResult from './tetoman/TetomanResult';
 import type { ResultLayoutProps } from './types';
 
 export type { ResultLayoutProps } from './types';
@@ -32,6 +33,7 @@ export const RESULT_LAYOUTS: Record<ResultLayout, ComponentType<ResultLayoutProp
   cctest: CcTestResult,
   coward: CowardResult,
   couple: CoupleResult,
+  tetoman: TetomanResult,
 };
 
 /**

@@ -48,6 +48,17 @@ export const ResultDetailZ = z.object({
     .optional(),
   /** 영포티 등: 화이트 카드 상단 섹션 제목(기본값은 레이아웃에서 처리) */
   personalitySectionTitle: z.string().min(1).optional(),
+  /** tetoman(에겐/테토) 레이아웃: 결과 상단 점수 라벨 (예: "에겐녀 100%") */
+  scoreText: z.string().min(1).optional(),
+  /** tetoman 레이아웃: 에겐/테토 게이지 퍼센트 (0~100) */
+  gauge: z.object({ egen: z.number(), teto: z.number() }).optional(),
+  /** tetoman 레이아웃: 궁합(💞 환상의 짝꿍 / 💔 파국의 짝꿍) 카드 */
+  compatibility: z
+    .object({
+      good: z.object({ title: z.string().min(1), body: z.string().min(1) }),
+      bad: z.object({ title: z.string().min(1), body: z.string().min(1) }),
+    })
+    .optional(),
   image: z.string().min(1).optional(),
   keywords: z.array(z.string().min(1)).min(1).max(10).default([]),
   type: z.string().min(1),
@@ -55,7 +66,7 @@ export const ResultDetailZ = z.object({
 
 /** 결과 레이아웃 프리셋 */
 export const ResultLayoutZ = z
-  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest', 'coward', 'couple'])
+  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest', 'coward', 'couple', 'tetoman'])
   .default('classic');
 export type ResultLayout = z.infer<typeof ResultLayoutZ>;
 
