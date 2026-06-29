@@ -52,6 +52,8 @@ export async function generateMetadata({
   return {
     title,
     description: desc,
+    // 파라미터 기반 결과 인스턴스 — 색인 제외(내부 링크는 따라가도록 follow 유지)
+    robots: { index: false, follow: true },
     openGraph: {
       type: 'article',
       siteName: `Testival ${id}`,

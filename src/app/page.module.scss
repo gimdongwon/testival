@@ -126,12 +126,23 @@
   }
 }
 
+/* 답변은 항상 HTML에 존재하고, 닫힘 상태는 시각적으로만 접는다(크롤러는 본문을 읽음) */
 .faqAnswer {
-  padding: 0 16px 14px;
+  padding: 0 16px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
   font-size: 13px;
   line-height: 1.7;
   color: #666666;
   word-break: keep-all;
   user-select: text;
   cursor: text;
+  transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease;
+}
+
+.faqAnswerOpen {
+  max-height: 600px;
+  opacity: 1;
+  padding: 0 16px 14px;
 }

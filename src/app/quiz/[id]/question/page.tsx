@@ -5,7 +5,13 @@ import { notFound } from 'next/navigation';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
 import { getAvailableWebP } from '@/lib/resolveQuizImages';
 import { resolveImage } from '@/lib/imageUtils';
+import type { Metadata } from 'next';
 import QuizQuestionClient from './question.client';
+
+// 진행용 기능 페이지 — 색인 제외 (본문 콘텐츠 없는 풀이 단계)
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 const QuestionPage = async ({
   params,

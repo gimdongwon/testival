@@ -8,26 +8,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://testival.kr';
   const now = new Date();
 
-  // 각 퀴즈별 랜딩 + result type별 URL
-  const quizEntries: MetadataRoute.Sitemap = [];
-  for (const item of list) {
-    quizEntries.push({
-      url: `${baseUrl}/quiz/${item.meta.id}`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    });
-    const def = await repo.getById(item.meta.id);
-    if (!def) continue;
-    for (const type of def.meta.resultTypes) {
-      quizEntries.push({
-        url: `${baseUrl}/quiz/${item.meta.id}/result?type=${type}`,
-        lastModified: now,
-        changeFrequency: 'weekly',
-        priority: 0.6,
-      });
-    }
-  }
+  // 각 퀴즈별 랜딩 URL만 색인 대상.
+  // result?type= 파라미터 URL은 개인 결과 인스턴스라 sitemap에서 제외하고
+  // 페이지 단에서 noindex 처리한다(진행용/파라미터 기능 페이지는 색인 제외 방침).
+  const quizEntries: MetadataRoute.Sitemap = list.map((item) => ({
+    url: `${baseUrl}/quiz/${item.meta.id}`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
 
   const staticPages: MetadataRoute.Sitemap = [
     {

@@ -21,7 +21,7 @@ describe('sitemap', () => {
     expect(urls).not.toContain('https://testival.kr/quiz/solo_escape/result');
   });
 
-  it('각 quiz의 result type별 URL을 모두 포함한다', async () => {
+  it('result type별 파라미터 URL은 sitemap에서 제외한다(개인 결과 인스턴스, noindex 대상)', async () => {
     const entries = await sitemap();
     const urls = entries.map((e) => e.url);
     const repo = getQuizRepository();
@@ -30,7 +30,7 @@ describe('sitemap', () => {
       const def = await repo.getById(item.meta.id);
       if (!def) continue;
       for (const type of def.meta.resultTypes) {
-        expect(urls).toContain(
+        expect(urls).not.toContain(
           `https://testival.kr/quiz/${item.meta.id}/result?type=${type}`,
         );
       }

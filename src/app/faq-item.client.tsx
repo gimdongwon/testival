@@ -37,9 +37,15 @@ const FaqList = ({ items }: FaqListProps) => {
           }}
         >
           <div className={styles.faqQuestion}>{item.question}</div>
-          {openIndex === index && (
-            <p className={styles.faqAnswer}>{item.answer}</p>
-          )}
+          {/* 답변은 항상 DOM에 렌더(크롤러 노출). 닫힘 상태는 CSS로 접고 aria-hidden 처리 */}
+          <p
+            className={`${styles.faqAnswer} ${
+              openIndex === index ? styles.faqAnswerOpen : ''
+            }`}
+            aria-hidden={openIndex !== index}
+          >
+            {item.answer}
+          </p>
         </div>
       ))}
     </div>

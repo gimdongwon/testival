@@ -77,6 +77,10 @@ export async function generateMetadata({
   return {
     title,
     description: desc,
+    // ?type= 파라미터가 붙은 개인 결과 인스턴스는 색인 제외.
+    // 타입 없는 베이스 URL은 결과 미리보기 본문이 있어 색인 허용.
+    robots:
+      typeof type === 'string' ? { index: false, follow: true } : undefined,
     openGraph: {
       type: 'article',
       siteName: `Testival ${id}`,
