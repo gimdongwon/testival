@@ -146,3 +146,15 @@
   opacity: 1;
   padding: 0 16px 14px;
 }
+
+/* Screen Reader & Crawler Only */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

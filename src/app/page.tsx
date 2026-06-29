@@ -75,6 +75,54 @@ const Home = async () => {
     })),
   };
 
+  // Structured Data (JSON-LD) - FAQ 정보
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Testival은 어떤 서비스인가요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Testival(테스티벌)은 다양한 심리테스트, 성격 테스트, 재미 테스트를 무료로 제공하는 온라인 테스트 플랫폼입니다. "Test"와 "Festival"의 합성어로, 테스트의 축제라는 의미를 담고 있어요.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '회원가입이 필요한가요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '아니요! Testival의 모든 테스트는 회원가입 없이 무료로 이용할 수 있습니다. 사이트에 접속하면 바로 원하는 테스트를 시작할 수 있어요.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '테스트 결과는 정확한가요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Testival의 테스트는 오락 및 재미를 위한 목적으로 제작되었습니다. 전문적인 심리 상담이나 진단을 대체하지 않으며, 가벼운 마음으로 즐겨주시면 좋겠습니다.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '내 응답 데이터는 저장되나요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '테스트 진행 중 선택한 답변은 브라우저 메모리에만 임시 저장되며, 서버로 전송되거나 저장되지 않습니다. 페이지를 떠나면 즉시 삭제됩니다. 개인정보를 수집하지 않으니 안심하고 이용해 주세요.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '결과를 친구에게 공유할 수 있나요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '네! 테스트 결과 페이지에서 "내 결과 공유하기" 버튼을 누르면 결과 페이지 URL이 복사됩니다. 카카오톡, 인스타그램 등 원하는 곳에 공유해 보세요.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       {/* Structured Data (JSON-LD) */}
@@ -92,6 +140,11 @@ const Home = async () => {
         id='itemlist-jsonld'
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <Script
+        id='faq-jsonld'
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className={styles.container}>
@@ -151,6 +204,33 @@ const Home = async () => {
                 },
               ]}
             />
+          </section>
+
+          {/* 크롤러/SEO 전용 플랫 FAQ 텍스트 영역 (aria-hidden이 없어 검색봇이 스킵 없이 파싱함) */}
+          <section className={styles.srOnly}>
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <ul>
+              <li>
+                <h3>Q. Testival은 어떤 서비스인가요?</h3>
+                <p>A. Testival(테스티벌)은 다양한 심리테스트, 성격 테스트, 재미 테스트를 무료로 제공하는 온라인 테스트 플랫폼입니다. &quot;Test&quot;와 &quot;Festival&quot;의 합성어로, 테스트의 축제라는 의미를 담고 있어요.</p>
+              </li>
+              <li>
+                <h3>Q. 회원가입이 필요한가요?</h3>
+                <p>A. 아니요! Testival의 모든 테스트는 회원가입 없이 무료로 이용할 수 있습니다. 사이트에 접속하면 바로 원하는 테스트를 시작할 수 있어요.</p>
+              </li>
+              <li>
+                <h3>Q. 테스트 결과는 정확한가요?</h3>
+                <p>A. Testival의 테스트는 오락 및 재미를 위한 목적으로 제작되었습니다. 전문적인 심리 상담이나 진단을 대체하지 않으며, 가벼운 마음으로 즐겨주시면 좋겠습니다.</p>
+              </li>
+              <li>
+                <h3>Q. 내 응답 데이터는 저장되나요?</h3>
+                <p>A. 테스트 진행 중 선택한 답변은 브라우저 메모리에만 임시 저장되며, 서버로 전송되거나 저장되지 않습니다. 페이지를 떠나면 즉시 삭제됩니다. 개인정보를 수집하지 않으니 안심하고 이용해 주세요.</p>
+              </li>
+              <li>
+                <h3>Q. 결과를 친구에게 공유할 수 있나요?</h3>
+                <p>A. 네! 테스트 결과 페이지에서 &quot;내 결과 공유하기&quot; 버튼을 누르면 결과 페이지 URL이 복사됩니다. 카카오톡, 인스타그램 등 원하는 곳에 공유해 보세요.</p>
+              </li>
+            </ul>
           </section>
         </main>
 
