@@ -2,7 +2,10 @@ import React from 'react';
 import { getQuizRepository } from '@/infrastructure/quiz.repository';
 import Header from '@/components/common/Header';
 import MainImageSlide from '@/components/MainImageSlide/MainImageSlide';
-import QuizListCard from '@/components/common/QuizListCard';
+import HomeCategorySection, {
+  type HomeCategoryItem,
+} from '@/components/HomeCategories/HomeCategorySection';
+import { HOME_CATEGORIES } from '@/lib/homeCategories';
 import styles from './page.module.scss';
 import Footer from '@/components/common/Footer';
 import Script from 'next/script';
@@ -28,6 +31,25 @@ const Home = async () => {
 
   // 슬라이드 클릭 시 이동할 링크 배열
   const mainSlideLinks = list.map((item) => `/quiz/${item.meta.id}`);
+
+  // 카테고리 렌더용: id → 카드 아이템 매핑
+  const byId = new Map(list.map((item) => [item.meta.id, item]));
+  const buildItems = (ids: string[]): HomeCategoryItem[] =>
+    ids
+      .map((id) => byId.get(id))
+      .filter((item): item is NonNullable<typeof item> => Boolean(item))
+      .map((item) => {
+        const webpFiles = getAvailableWebP(item.meta.id);
+        return {
+          id: item.meta.id,
+          title: item.meta.title,
+          thumbnail: resolveImage(
+            `/images/quiz/${item.meta.id}/og-image.png`,
+            webpFiles,
+          ),
+          views: allViews[item.meta.id] ?? 0,
+        };
+      });
 
   // Structured Data (JSON-LD) - 웹사이트 정보
   const websiteJsonLd = {
@@ -155,28 +177,17 @@ const Home = async () => {
         </div>
 
         <main className={styles.main}>
-          <section className={styles.quizListSection}>
-            <div className={styles.sectionHeader}>
-              <h1 className={styles.sectionTitle}>추천 심리테스트 </h1>
-            </div>
-            <div className={styles.quizList}>
-              {list.map((item) => {
-                const webpFiles = getAvailableWebP(item.meta.id);
-                return (
-                  <QuizListCard
-                    key={item.meta.id}
-                    id={item.meta.id}
-                    title={item.meta.title}
-                    thumbnail={resolveImage(
-                      `/images/quiz/${item.meta.id}/og-image.png`,
-                      webpFiles,
-                    )}
-                    views={allViews[item.meta.id] ?? 0}
-                  />
-                );
-              })}
-            </div>
-          </section>
+          <h1 className={styles.srOnly}>
+            Testival — 무료 심리테스트 · 성격 테스트 모음
+          </h1>
+
+          {HOME_CATEGORIES.map((category) => (
+            <HomeCategorySection
+              key={category.key}
+              category={category}
+              items={buildItems(category.quizIds)}
+            />
+          ))}
 
           <section className={styles.faqSection}>
             <h2 className={styles.faqTitle}>자주 묻는 질문</h2>
