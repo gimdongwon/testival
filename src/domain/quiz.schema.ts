@@ -59,6 +59,16 @@ export const ResultDetailZ = z.object({
       bad: z.object({ title: z.string().min(1), body: z.string().min(1) }),
     })
     .optional(),
+  /** homebody 레이아웃: 결과 상단 칩 (예: ["집콕력 95%", "외출쿼터"]) */
+  chips: z.array(z.string().min(1)).max(4).optional(),
+  /** homebody 레이아웃: 💡 조언 */
+  advice: z.string().min(1).optional(),
+  /** homebody 레이아웃: 🍀 찰떡 생존템 */
+  survivalItem: z.string().min(1).optional(),
+  /** homebody 레이아웃: 💞 환상의 짝꿍 */
+  goodMatch: z.string().min(1).optional(),
+  /** homebody 레이아웃: 💔 파국의 짝꿍 */
+  badMatch: z.string().min(1).optional(),
   image: z.string().min(1).optional(),
   keywords: z.array(z.string().min(1)).min(1).max(10).default([]),
   type: z.string().min(1),
@@ -66,13 +76,15 @@ export const ResultDetailZ = z.object({
 
 /** 결과 레이아웃 프리셋 */
 export const ResultLayoutZ = z
-  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest', 'coward', 'couple', 'tetoman'])
+  .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest', 'coward', 'couple', 'tetoman', 'homebody'])
   .default('classic');
 export type ResultLayout = z.infer<typeof ResultLayoutZ>;
 
 /** 결과 페이지 UI 설정(콘텐츠 JSON에서 오버라이드 가능) */
 export const ResultUIConfigZ = z.object({
   resultLayout: ResultLayoutZ.optional(),
+  /** tetoman 레이아웃 색 테마 (기본 pink; teto_man은 blue) */
+  resultTheme: z.enum(['pink', 'blue']).optional(),
   theme: z.enum(['black', 'white']),
   imageMode: z.enum(['long', 'bg']),
   showReceipt: z.boolean().default(false),
@@ -120,6 +132,8 @@ export const ResultUIConfigZ = z.object({
 
 export const LandingUIConfigZ = z.object({
   buttonTheme: z.enum(['black', 'white']).default('black'),
+  /** 랜딩 메인 이미지 상단 여백 (고정 헤더 아래로 내릴 때, 예: "30px") */
+  contentPaddingTop: z.string().optional(),
 });
 
 export const QuestionUIConfigZ = z.object({

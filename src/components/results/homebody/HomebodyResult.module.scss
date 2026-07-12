@@ -1,0 +1,178 @@
+/* HomebodyResult — 집순이/집돌이 결과 레이아웃 (Figma 2055:913 외) */
+
+$ink: #202024;
+$muted: #5e5a56;
+$body-gray: #656565;
+
+.page {
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  /* 상단 고정 헤더(40px) 아래 여백 확보 */
+  padding: 54px 18px 40px;
+  box-sizing: border-box;
+}
+
+/* ── 카드 1 ── */
+.mainCard {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fbfaf7;
+  border: 1px solid #e4ddd4;
+  border-radius: 35px;
+  padding: 40px 16px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.subtitle {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  color: $muted;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Hakgyoansim Allimjang TTF', 'Hakgyoansim Allimjang',
+    'Noto Sans KR', sans-serif;
+  color: $ink;
+  text-align: center;
+}
+
+.titleLine {
+  display: block;
+  /* Figma는 nowrap — 한 줄 유지, 폭에 맞춰 축소 (예: "카페라도 가야 돼"의 돼가 떨어지지 않도록) */
+  white-space: nowrap;
+  font-size: clamp(24px, 8vw, 44px);
+  line-height: 1.12;
+}
+
+.imageCard {
+  margin-top: 4px;
+  width: 100%;
+  max-width: 307px;
+  aspect-ratio: 307 / 320;
+  border: 3px solid #d8cfc5;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── 칩 ── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 24px;
+  border-radius: 45px;
+  background: #f0e5d6;
+  border: 1.2px solid $ink;
+  color: $ink;
+  font-family: 'Noto Sans KR', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ── 설명 ── */
+.description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.headline {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1.5;
+  color: $ink;
+  word-break: keep-all;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.paragraph {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $body-gray;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+/* ── 카드 2 (조언/생존템/궁합) ── */
+.sectionCard {
+  width: 100%;
+  box-sizing: border-box;
+  background: #f2ece5;
+  border: 1px solid #e0d4c8;
+  border-radius: 35px;
+  padding: 30px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionLabel {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1.5;
+  color: $ink;
+}
+
+.sectionBody {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $body-gray;
+  word-break: keep-all;
+}

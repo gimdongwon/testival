@@ -100,7 +100,15 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <main aria-label='메인비주얼' className={styles.landingMain}>
+      <main
+        aria-label='메인비주얼'
+        className={styles.landingMain}
+        style={
+          landingConfig.contentPaddingTop
+            ? { marginTop: landingConfig.contentPaddingTop }
+            : undefined
+        }
+      >
         <ViewTracker quizId={id} />
         <div className={styles.imageWrapper}>
           <Image

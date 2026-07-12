@@ -22,17 +22,34 @@ const toParagraphs = (text: string): string[] =>
     .map((p) => p.trim())
     .filter(Boolean);
 
-const TetomanResult = ({ result }: ResultLayoutProps) => {
+const TetomanResult = ({ result, config }: ResultLayoutProps) => {
   const titleLines = result.title.split('\n');
   const titleIntro = titleLines.slice(0, -1);
   const titleName = titleLines[titleLines.length - 1] ?? '';
 
   const gauge = result.gauge;
   const compat = result.compatibility;
+  // 진짜 테토남(blue): 테토를 위에, 에겐을 아래에 (Figma 2017:563 외)
+  const tetoFirst = config?.resultTheme === 'blue';
+  const gaugeRows = gauge
+    ? (tetoFirst
+        ? [
+            { key: 'teto', label: '테토', value: gauge.teto, isTeto: true },
+            { key: 'egen', label: '에겐', value: gauge.egen, isTeto: false },
+          ]
+        : [
+            { key: 'egen', label: '에겐', value: gauge.egen, isTeto: false },
+            { key: 'teto', label: '테토', value: gauge.teto, isTeto: true },
+          ])
+    : [];
 
   return (
-    <div className={styles.page}>
-      {/* ── 히어로(핑크 배경): 라벨 · 점수 · 타이틀 · 게이지 · 일러스트 ── */}
+    <div
+      className={`${styles.page} ${
+        config?.resultTheme === 'blue' ? styles.themeBlue : ''
+      }`}
+    >
+      {/* ── 히어로: 라벨 · 점수 · 타이틀 · 게이지 · 일러스트 ── */}
       <div className={styles.hero}>
         <span className={styles.resultLabel}>RESULT</span>
         {result.scoreText && (
@@ -50,26 +67,20 @@ const TetomanResult = ({ result }: ResultLayoutProps) => {
 
         {gauge && (
           <div className={styles.gauge}>
-            <div className={styles.gaugeRow}>
-              <span className={styles.gaugeLabel}>에겐</span>
-              <span className={styles.gaugeTrack}>
-                <span
-                  className={styles.gaugeFill}
-                  style={{ width: `${gauge.egen}%` }}
-                />
-              </span>
-              <span className={styles.gaugePercent}>{gauge.egen}%</span>
-            </div>
-            <div className={styles.gaugeRow}>
-              <span className={styles.gaugeLabel}>테토</span>
-              <span className={styles.gaugeTrack}>
-                <span
-                  className={`${styles.gaugeFill} ${styles.gaugeFillTeto}`}
-                  style={{ width: `${gauge.teto}%` }}
-                />
-              </span>
-              <span className={styles.gaugePercent}>{gauge.teto}%</span>
-            </div>
+            {gaugeRows.map((row) => (
+              <div key={row.key} className={styles.gaugeRow}>
+                <span className={styles.gaugeLabel}>{row.label}</span>
+                <span className={styles.gaugeTrack}>
+                  <span
+                    className={`${styles.gaugeFill} ${
+                      row.isTeto ? styles.gaugeFillTeto : ''
+                    }`}
+                    style={{ width: `${row.value}%` }}
+                  />
+                </span>
+                <span className={styles.gaugePercent}>{row.value}%</span>
+              </div>
+            ))}
           </div>
         )}
 
