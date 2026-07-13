@@ -1,0 +1,64 @@
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.45;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #6366f1;
+  word-break: keep-all;
+}
+
+.subheading {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6366f1;
+  line-height: 1.5;
+  margin-top: 4px;
+  word-break: keep-all;
+}
+
+.paragraph {
+  font-size: 12px;
+  font-weight: 400;
+  color: #555555;
+  line-height: 1.7;
+  word-break: keep-all;
+
+  strong {
+    font-weight: 700;
+    color: #333333;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 18px;
+  margin: 0;
+
+  li {
+    font-size: 12px;
+    font-weight: 400;
+    color: #555555;
+    line-height: 1.65;
+    word-break: keep-all;
+
+    strong {
+      font-weight: 700;
+      color: #333333;
+    }
+  }
+}

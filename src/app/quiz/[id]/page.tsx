@@ -9,6 +9,7 @@ import { getAvailableWebP } from '@/lib/resolveQuizImages';
 import { resolveImage } from '@/lib/imageUtils';
 import ViewTracker from '@/components/quiz/ViewTracker';
 import Footer from '@/components/common/Footer';
+import QuizArticle from '@/components/common/QuizArticle';
 import StickyStartButton, { QUIZ_INFO_ID } from './sticky-start-button.client';
 
 const MODE_LABELS: Record<string, string> = {
@@ -176,6 +177,10 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                 ))}
               </ul>
             </div>
+          )}
+
+          {def.article && def.article.length > 0 && (
+            <QuizArticle sections={def.article} />
           )}
 
           <div className={styles.quizNotice}>

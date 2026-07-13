@@ -74,6 +74,26 @@ export const ResultDetailZ = z.object({
   type: z.string().min(1),
 });
 
+/**
+ * 랜딩 하단 장문 콘텐츠(Article) — SEO/애드센스 대응용 정보성 텍스트.
+ * 콘텐츠 JSON의 최상위 `article` 필드에 선언하며, `/quiz/[id]` 페이지에서
+ * SSR로 렌더된다(크롤러가 읽는 본문 텍스트 증대).
+ */
+export const ArticleBlockZ = z.discriminatedUnion('type', [
+  /** 문단 */
+  z.object({ type: z.literal('p'), text: z.string().min(1) }),
+  /** 소제목(섹션 내부, 예: 결과 유형별 점수 구간) */
+  z.object({ type: z.literal('h3'), text: z.string().min(1) }),
+  /** 불릿 목록 */
+  z.object({ type: z.literal('ul'), items: z.array(z.string().min(1)).min(1) }),
+]);
+
+/** Article 섹션: 제목(h2) + 본문 블록 목록 */
+export const ArticleSectionZ = z.object({
+  heading: z.string().min(1),
+  body: z.array(ArticleBlockZ).min(1),
+});
+
 /** 결과 레이아웃 프리셋 */
 export const ResultLayoutZ = z
   .enum(['classic', 'spring', 'grade', 'goodboyfriend', 'young40', 'soloescape', 'eolppa', 'cctest', 'coward', 'couple', 'tetoman', 'homebody'])
@@ -209,6 +229,8 @@ export const TestDefinitionZ = z
     scoring: ScoringConfigZ.optional(),
     // UI 설정(선택): 결과 페이지 등 렌더링 설정
     ui: TestUIZ.optional(),
+    // 랜딩 하단 장문 콘텐츠(선택): SEO/애드센스용 정보성 텍스트
+    article: z.array(ArticleSectionZ).optional(),
     questions: z.array(QuestionZ).min(1, '최소 1개 이상의 문항이 필요합니다.'),
   })
   .superRefine((data, ctx) => {
@@ -312,6 +334,8 @@ export const TestDefinitionZ = z
   });
 
 /** 타입 추론 */
+export type ArticleBlock = z.infer<typeof ArticleBlockZ>;
+export type ArticleSection = z.infer<typeof ArticleSectionZ>;
 export type ResultDetail = z.infer<typeof ResultDetailZ>;
 export type TestMeta = z.infer<typeof TestMetaZ>;
 export type TestDefinition = z.infer<typeof TestDefinitionZ>;
