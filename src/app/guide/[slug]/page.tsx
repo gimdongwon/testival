@@ -4,7 +4,9 @@ import Script from 'next/script';
 import Link from 'next/link';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
+import RelatedLinks from '@/components/common/RelatedLinks';
 import { listGuides, getGuideBySlug } from '@/lib/guides';
+import { getQuizRepository } from '@/infrastructure/quiz.repository';
 import styles from './page.module.scss';
 
 export const dynamicParams = false;
@@ -53,6 +55,29 @@ export default async function GuideDetailPage({
   const { slug } = await params;
   const g = await getGuideBySlug(slug);
   if (!g) return notFound();
+
+  // 관련 테스트: relatedQuizzes id를 실제 퀴즈 메타로 해석(없는 id는 스킵).
+  const repo = getQuizRepository();
+  const [allQuizzes, allGuides] = await Promise.all([
+    repo.list(),
+    listGuides(),
+  ]);
+  const quizById = new Map(allQuizzes.map((q) => [q.meta.id, q]));
+  const relatedQuizLinks = (g.relatedQuizzes ?? [])
+    .map((id) => quizById.get(id))
+    .filter((q): q is NonNullable<typeof q> => Boolean(q))
+    .map((q) => ({
+      href: `/quiz/${q.meta.id}`,
+      label: q.meta.title,
+    }));
+  const otherGuideLinks = allGuides
+    .filter((x) => x.slug !== g.slug)
+    .slice(0, 4)
+    .map((x) => ({
+      href: `/guide/${x.slug}`,
+      label: x.title,
+      sub: x.description,
+    }));
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -107,6 +132,21 @@ export default async function GuideDetailPage({
               </section>
             ))}
           </div>
+          {relatedQuizLinks.length > 0 && (
+            <div className={styles.relatedBlock}>
+              <RelatedLinks title="관련 테스트 해보기" links={relatedQuizLinks} />
+            </div>
+          )}
+          {otherGuideLinks.length > 0 && (
+            <div className={styles.relatedBlock}>
+              <RelatedLinks
+                title="다른 가이드 더 보기"
+                links={otherGuideLinks}
+                moreHref="/guide"
+                moreLabel="가이드 전체 보기 →"
+              />
+            </div>
+          )}
         </article>
       </main>
       <Footer />

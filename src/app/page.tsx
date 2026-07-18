@@ -8,6 +8,8 @@ import HomeCategorySection, {
 import { HOME_CATEGORIES } from '@/lib/homeCategories';
 import styles from './page.module.scss';
 import Footer from '@/components/common/Footer';
+import RelatedLinks from '@/components/common/RelatedLinks';
+import { listGuides } from '@/lib/guides';
 import Script from 'next/script';
 import { getAvailableWebP } from '@/lib/resolveQuizImages';
 import { resolveImage } from '@/lib/imageUtils';
@@ -22,6 +24,9 @@ const Home = async () => {
 
   // 모든 퀴즈의 조회수를 한 번에 가져오기
   const allViews = await repo.getAllViewCounts();
+
+  // 홈 → 가이드 내부 링크(크롤 발견성): 최신 가이드 목록
+  const guides = await listGuides();
 
   // 슬라이드용 메인 이미지 배열 (각 퀴즈의 og-image 사용, webp 우선)
   const mainSlideImages = list.map((item) => {
@@ -188,6 +193,21 @@ const Home = async () => {
               items={buildItems(category.quizIds)}
             />
           ))}
+
+          {guides.length > 0 && (
+            <section className={styles.guideSection}>
+              <RelatedLinks
+                title="심리 이야기 · 가이드"
+                links={guides.slice(0, 8).map((g) => ({
+                  href: `/guide/${g.slug}`,
+                  label: g.title,
+                  sub: g.description,
+                }))}
+                moreHref="/guide"
+                moreLabel="가이드 전체 보기 →"
+              />
+            </section>
+          )}
 
           <section className={styles.faqSection}>
             <h2 className={styles.faqTitle}>자주 묻는 질문</h2>

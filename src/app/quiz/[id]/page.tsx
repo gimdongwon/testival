@@ -10,6 +10,8 @@ import { resolveImage } from '@/lib/imageUtils';
 import ViewTracker from '@/components/quiz/ViewTracker';
 import Footer from '@/components/common/Footer';
 import QuizArticle from '@/components/common/QuizArticle';
+import RelatedLinks from '@/components/common/RelatedLinks';
+import { getGuidesForQuiz } from '@/lib/guides';
 import StickyStartButton, { QUIZ_INFO_ID } from './sticky-start-button.client';
 
 const MODE_LABELS: Record<string, string> = {
@@ -23,6 +25,8 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const def = await repo.getById(id);
   if (!def) return notFound();
+
+  const relatedGuides = await getGuidesForQuiz(id);
 
   const landingConfig = getLandingUIConfig(def);
   const variantClass =
@@ -181,6 +185,19 @@ const DetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 
           {def.article && def.article.length > 0 && (
             <QuizArticle sections={def.article} />
+          )}
+
+          {relatedGuides.length > 0 && (
+            <RelatedLinks
+              title="함께 읽어보면 좋은 글"
+              links={relatedGuides.map((g) => ({
+                href: `/guide/${g.slug}`,
+                label: g.title,
+                sub: g.description,
+              }))}
+              moreHref="/guide"
+              moreLabel="가이드 전체 보기 →"
+            />
           )}
 
           <div className={styles.quizNotice}>

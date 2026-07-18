@@ -18,6 +18,8 @@ export const GuideZ = z.object({
   updatedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   category: z.enum(['mbti', 'lifestyle', 'season', 'meta']),
   sections: z.array(GuideSectionZ).min(2),
+  // 관련 퀴즈 id 목록(선택): 가이드↔퀴즈 상호 내부 링크용.
+  relatedQuizzes: z.array(z.string().min(1)).optional(),
 });
 
 export const GuideIndexZ = z.object({

@@ -23,6 +23,20 @@ export async function listGuides(): Promise<Guide[]> {
   return guides.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }
 
+/**
+ * 특정 퀴즈와 연결된 가이드 목록(가이드의 relatedQuizzes에 해당 퀴즈 id가 포함).
+ * 퀴즈 랜딩 페이지에서 "함께 읽어보면 좋은 글" 내부 링크에 사용.
+ */
+export async function getGuidesForQuiz(
+  quizId: string,
+  limit = 3,
+): Promise<Guide[]> {
+  const guides = await listGuides();
+  return guides
+    .filter((g) => g.relatedQuizzes?.includes(quizId))
+    .slice(0, limit);
+}
+
 export async function getGuideBySlug(slug: string): Promise<Guide | null> {
   const filePath = path.join(GUIDES_DIR, `${slug}.json`);
   try {
